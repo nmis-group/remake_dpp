@@ -1,0 +1,11 @@
+{
+    "name": "remake-dpp-docs",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "docs": "mintlify dev docs"
+    },
+    "devDependencies": {
+        "mintlify": "^4.0.0"
+    }
+}
