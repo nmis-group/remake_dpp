@@ -1,0 +1,289 @@
+isa95_source: xsd
+total_definitions: 2276
+domain_mappings:
+  PowerConversion:
+    domain_class: PowerConversion
+    isa95_type_ids: []
+    isa95_types: {}
+  EnergyStorage:
+    domain_class: EnergyStorage
+    isa95_type_ids:
+    - EquipmentLevelType
+    - RequestStateType
+    isa95_types:
+      EquipmentLevelType:
+        name: EquipmentLevelType
+        description: 'Defines the role based equipment hierarchy level as defined
+          in ISA 95. Defined values are: - Enterprise - Site - Area - WorkCenter -
+          WorkUnit - ProcessCell - Unit - ProductionLine - WorkCell - ProductionUnit
+          - StorageZone - StorageUnit - EquipmentModule - Control Module'
+        group: ComplexType
+        source: B2MML-Common.xsd
+      RequestStateType:
+        name: RequestStateType
+        description: Indicates the state of an operations or work request. Defined
+          values are - Forecast - Released - Cancelled - Waiting - Ready - Running
+          - Completed - Aborted - Held - Suspended - Closed
+        group: ComplexType
+        source: B2MML-Common.xsd
+  Actuator:
+    domain_class: Actuator
+    isa95_type_ids:
+    - DependencyType
+    - MOMFunctionType
+    isa95_types:
+      DependencyType:
+        name: DependencyType
+        description: 'Defines an execution dependency constraint of two elements.
+          Defined values are (explained using dependency type between element A and
+          element B) - at start: start B at A start; - after start: start B after
+          A start; - after end: start B after A end; - not follow: B cannot follow
+          A; - possible parallel: B may run in parallel to A; - not in parallel: B
+          may not run in parallel to A; - no later after start: start B no later than
+          dependency factor after A start: - no earlier after start: start B no earlier
+          than dependency factor after A start; - no later after end: start B no later
+          than dependency factor after A end; - no earlier after end: B no earlier
+          than dependency factor after A end.'
+        group: ComplexType
+        source: B2MML-Common.xsd
+      MOMFunctionType:
+        name: MOMFunctionType
+        description: Defines the MOM function of the operations event publisher. Part
+          3 MOM Activity Model defined values are resource management, definition
+          management, detailed scheduling, dispatching, execution management, data
+          collection, performance analysis, and tracking
+        group: ComplexType
+        source: B2MML-Common.xsd
+  Sensor:
+    domain_class: Sensor
+    isa95_type_ids:
+    - CapabilityTypeType
+    - ClassPropertyTypeType
+    - EnterpriseFunctionType
+    - OperationsEventExtensionType
+    - OperationsRecordActionType
+    - OperationsTypeType
+    - RequiredByRequestedSegmentResponseType
+    - ResponseStateType
+    - SpatialDefinitionType
+    isa95_types:
+      CapabilityTypeType:
+        name: CapabilityTypeType
+        description: 'Defines the type of capability. Defined values are - Committed:
+          capacity that is committed for future productive use; - Unattainable: capacity
+          that is not attainable for future productive use given the equipment condition,
+          equipment utilization, personnel availability or material availability;
+          - Available: capacity that is available for additional future productive
+          use; - Used: a historical value that defines the portion of the capacity
+          with acceptable quality; - Unused: a historical value that defines the portion
+          of the capacity that was not used or had unacceptable quality; and - Total:
+          the sum of used and unused capability or the sum of available, unattainable
+          and committed capability.'
+        group: ComplexType
+        source: B2MML-Common.xsd
+      ClassPropertyTypeType:
+        name: ClassPropertyTypeType
+        description: 'Defines the type of the property. Defined types are - ClassType:
+          the property value is defined for the class and there is no value associated
+          with an instance; - InstanceType: the property value of the class is undefined;
+          and - DefaultType: the property value is defined for the class as the default
+          instance value, but individual instances of the class may redefine specific
+          values.'
+        group: ComplexType
+        source: B2MML-Common.xsd
+      EnterpriseFunctionType:
+        name: EnterpriseFunctionType
+        description: Defines the enterprise function of the operations event publisher.
+          Defined values from Part 1 Functional Model are order processing, operations
+          scheduling, production control, material and energy control, procurement,
+          quality assurance, product inventory control, product cost accounting, product
+          shipping administration, maintenance management, marketing and sales, RD,
+          and engineering.
+        group: ComplexType
+        source: B2MML-Common.xsd
+      OperationsEventExtensionType:
+        name: OperationsEventExtensionType
+        description: 'Defines constraints on the inclusion of the respective operations
+          event class in a hierarchy. Defined value are -sealed: no entry can use
+          this entry as its parent; -(No entry): no entry allows any entry to represent
+          this entry as its parent /ancestor. Extension can contain a set of entries
+          of other operations event classes who represent this entry in their parent.'
+        group: ComplexType
+        source: B2MML-Common.xsd
+      OperationsRecordActionType:
+        name: OperationsRecordActionType
+        description: The permitted set of actions applied to the operations record
+          entry template object in the operations record template by the publisher.
+          Defined values for action are added, changed, deleted, and observed. If
+          no action is specified, this is equivalent to all actions being allowed.
+        group: ComplexType
+        source: B2MML-Common.xsd
+      OperationsTypeType:
+        name: OperationsTypeType
+        description: Describes the category of the activity. Defined values are -
+          Production, Maintenance, Quality, Inventory, or Mixed. - Mixed” can be used
+          when the activity covers several categories.
+        group: ComplexType
+        source: B2MML-Common.xsd
+      RequiredByRequestedSegmentResponseType:
+        name: RequiredByRequestedSegmentResponseType
+        description: Indicates if a segment response assicated with a segment request
+          is required. Defined values are - Required - Optional
+        group: ComplexType
+        source: B2MML-Common.xsd
+      ResponseStateType:
+        name: ResponseStateType
+        description: Defines the states to a operations response. Defined values are
+          - Ready - Running - Completed - Aborted - Holding - Paused - Closed
+        group: ComplexType
+        source: B2MML-Common.xsd
+      SpatialDefinitionType:
+        name: SpatialDefinitionType
+        description: The spatial definition provides a means of communicating zero-dimensional
+          point, one-dimensional line, or two-dimensional shape or three-dimensional
+          solid geospatial location data for planning/scheduling, actuals, resources,
+          and analytics. Spatial definition identifies a value and the predefined
+          coordinate reference system.
+        group: ComplexType
+        source: B2MML-Common.xsd
+  ControlUnit:
+    domain_class: ControlUnit
+    isa95_type_ids:
+    - AssemblyTypeType
+    isa95_types:
+      AssemblyTypeType:
+        name: AssemblyTypeType
+        description: 'Defines the type of the assembly. Defined types are - physical:
+          the components of the assembly are physically connected or in the same area.
+          - logical: the components of the assembly are not necessarily physically
+          connected or in the same area.'
+        group: ComplexType
+        source: B2MML-Common.xsd
+  UserInterface:
+    domain_class: UserInterface
+    isa95_type_ids: []
+    isa95_types: {}
+  Thermal:
+    domain_class: Thermal
+    isa95_type_ids: []
+    isa95_types: {}
+  Fluidics:
+    domain_class: Fluidics
+    isa95_type_ids:
+    - AssemblyRelationshipType
+    isa95_types:
+      AssemblyRelationshipType:
+        name: AssemblyRelationshipType
+        description: 'Defines the type of the relationships. Defined types are - Permanent:
+          an assembly that is not intended to be split during the production process;
+          - Transient: a temporary assembly using during production, such as a pallet
+          of different materials or a batch kit.'
+        group: ComplexType
+        source: B2MML-Common.xsd
+  Structural:
+    domain_class: Structural
+    isa95_type_ids:
+    - ResourceLocationTypeType
+    isa95_types:
+      ResourceLocationTypeType:
+        name: ResourceLocationTypeType
+        description: 'Indicates whether the storage location attribute refers to an
+          operational location, equipment or physical asset object, or contains a
+          description of the storage location. Mandatory where a storage location
+          is specified. Defined values are - Operational Location ID:storage location
+          attribute references an operational location (OperationalLocationID); -
+          Operational Location: storage location attribute references an operational
+          location (OperationalLocationID); - Equipment: storage location attribute
+          references an equipment object (EquipmentID); - Person: storage location
+          attribute references a person (PersonID) - Physical Asset: storage location
+          attribute references a physical asset (PhysicalAssetID); and - Description:
+          storage location attribute contains a description of the storage location,
+          such as a street address.'
+        group: ComplexType
+        source: B2MML-Common.xsd
+  Transmission:
+    domain_class: Transmission
+    isa95_type_ids: []
+    isa95_types: {}
+  Protection:
+    domain_class: Protection
+    isa95_type_ids:
+    - OperationsEventLevelType
+    - OperationsEventTypeType
+    isa95_types:
+      OperationsEventLevelType:
+        name: OperationsEventLevelType
+        description: The type of Level 3 operations event. Defined values are event,
+          alert, and alarm. This attribute must be defined in the corresponding operations
+          event definition.
+        group: ComplexType
+        source: B2MML-Common.xsd
+      OperationsEventTypeType:
+        name: OperationsEventTypeType
+        description: The type of Level 3 operations event. Defined values are event,
+          alert, and alarm. This attribute must be defined in the corresponding operations
+          event definition.
+        group: ComplexType
+        source: B2MML-Common.xsd
+  Connectivity:
+    domain_class: Connectivity
+    isa95_type_ids: []
+    isa95_types: {}
+  SoftwareModule:
+    domain_class: SoftwareModule
+    isa95_type_ids:
+    - JobOrderCommandType
+    - JobOrderDispatchStatusType
+    isa95_types:
+      JobOrderCommandType:
+        name: JobOrderCommandType
+        description: 'Defines the commands to a job order, as defined in ISA 95 and
+          ISA 88. Defined values are: - Start - Stop - Hold - Restart - Abort - Reset
+          - Pause - Resume'
+        group: ComplexType
+        source: B2MML-Common.xsd
+      JobOrderDispatchStatusType:
+        name: JobOrderDispatchStatusType
+        description: Defines the states to a job order, as defined in ISA 95 and ISA
+          88. Defined values are - Waiting - Pending - Cancelled - Dispatched - Ready
+          - Running - Completed - Aborted - Held - Suspended - Closed
+        group: ComplexType
+        source: B2MML-Common.xsd
+  Consumable:
+    domain_class: Consumable
+    isa95_type_ids:
+    - DispositionType
+    - MaterialUseType
+    isa95_types:
+      DispositionType:
+        name: DispositionType
+        description: 'Defines Planning and logistics disposition of a material lot
+          or assembly of material lots. Defined values for the disposition of a material
+          lot are - Planned: a material lot that does not yet physically exist, is
+          assigned to an operations request (segment requirement) or work request
+          (Part 4 object) or job order (Part 4 object); - In process: the material
+          lot is in the process of being worked on; - Restricted: a material lot is
+          not permitted for normal use due to a restriction condition. EXAMPLE 5 A
+          material lot can be awaiting a quality decision or a material lot can be
+          physically inaccessible. - Unrestricted: material lot is permitted for normal
+          use without restriction; and - Closed: material lot has been reconciled
+          as completely consumed, sold or disposed of.'
+        group: ComplexType
+        source: B2MML-Common.xsd
+      MaterialUseType:
+        name: MaterialUseType
+        description: Defines the expected use of the material class, material definition,
+          material lot, or material sublot in the context of the operations segment.
+          Defined values for production operations are - Consumable, Consumed, Produced,
+          By-product Produced, Co-product Produced, and Yield Produced. Defined values
+          for maintenance operations are - Consumable, Material Consumed, and Material
+          Produced. Defined values for quality test operations are - Consumable, Destructive
+          Sample, Returned Sample, and Retained Sample. Defined values for inventory
+          operations defined values are - Consumable, Material Consumed, Material
+          Produced, and Inventoried.
+        group: ComplexType
+        source: B2MML-Common.xsd
+  Fastener:
+    domain_class: Fastener
+    isa95_type_ids: []
+    isa95_types: {}

@@ -1,0 +1,49 @@
+# pyproject.toml
+# This file defines build, metadata, and packaging info for the Digital Product Passport Python package.
+
+[build-system]
+# Required build dependencies for packaging
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nmis_dpp_test"  # Your package name on PyPI
+version = "0.1.0"      # Update with each release
+description = "A modular Python package for Digital Product Passport modeling with identity, structure, lifecycle, risk, sustainability, provenance layers, and universal part classes."
+authors = [
+    { name = "Anmol Kumar", email = "anmol.kumar@starth.ac.uk" }
+]
+license = { file = "LICENSE.txt" }
+readme = "README.md"
+requires-python = ">=3.7"
+
+# If you want users to easily run your command-line scripts, you may add optional entry-points here.
+# Example (remove # to use):
+# [project.scripts]
+# dpp-cli = "dpp_passport.cli:main"
+
+# Optional: List required dependencies (add if needed)
+# dependencies = ["dataclasses; python_version<'3.7'"]
+
+
+[tool.setuptools]
+# Automatically find top-level packages
+packages = ["nmis_dpp"]
+
+[tool.setuptools.package-data]
+# Include additional files in your package (add as needed)
+# "nmis_dpp" = ["*.json", "*.yaml"]
+
+# Optional: Enable pytest discovery if you want to run tests with `pytest` automatically
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+# Optional: Classifiers for PyPI (helps users find your package)
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
