@@ -1,66 +1,39 @@
 {
     "$schema": "https://mintlify.com/docs.json",
-    "theme": "sequoia",
     "name": "DPP Bridge (nmis_dpp)",
-    "colors": {
-        "primary": "#16a34a"
-    },
+    "theme": "sequoia",
     "logo": {
         "light": "/logo-light.png",
         "dark": "/logo-dark.png"
     },
     "navigation": {
-        "sidebar": [
+        "groups": [
             {
                 "group": "Getting Started",
                 "pages": [
-                    {
-                        "name": "Introduction",
-                        "href": "/intro"
-                    },
-                    {
-                        "name": "Quickstart",
-                        "href": "/quickstart"
-                    }
+                    "intro",
+                    "quickstart"
                 ]
             },
             {
                 "group": "Core Concepts",
                 "pages": [
-                    {
-                        "name": "GAS: General Architectural Schema",
-                        "href": "/concepts-gas"
-                    },
-                    {
-                        "name": "ECLASS Ontology Mapping",
-                        "href": "/schemas-eclass"
-                    },
-                    {
-                        "name": "ISA‑95 / B2MML Mapping",
-                        "href": "/schemas-isa95"
-                    }
+                    "concepts-gas",
+                    "schemas-eclass",
+                    "schemas-isa95"
                 ]
             },
             {
                 "group": "Python API",
                 "pages": [
-                    {
-                        "name": "Models & Part Classes",
-                        "href": "/api-model"
-                    },
-                    {
-                        "name": "Schema Registry & Mappers",
-                        "href": "/api-schema-registry"
-                    }
+                    "api-model",
+                    "api-schema-registry"
                 ]
             },
             {
                 "group": "Usage",
                 "pages": [
-                    {
-                        "name": "Python Usage Examples",
-                        "href": "/usage-python"
-                    }
+                    "usage-python"
                 ]
             }
         ]
