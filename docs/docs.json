@@ -1,69 +1,68 @@
 {
     "$schema": "https://mintlify.com/docs.json",
-    "name": "DPP Bridge (nmis_dpp)",
     "theme": "sequoia",
+    "name": "DPP Bridge (nmis_dpp)",
+    "colors": {
+        "primary": "#16a34a"
+    },
     "logo": {
         "light": "/logo-light.png",
         "dark": "/logo-dark.png"
     },
-    "colors": {
-        "primary": "#007bff",
-        "background": "#f8f9fa",
-        "text": "#212529",
-        "border": "#dee2e6"
-    },
-    "navigation": [
-        {
-            "group": "Getting Started",
-            "pages": [
-                {
-                    "name": "Introduction",
-                    "href": "/intro"
-                },
-                {
-                    "name": "Quickstart",
-                    "href": "/quickstart"
-                }
-            ]
-        },
-        {
-            "group": "Core Concepts",
-            "pages": [
-                {
-                    "name": "GAS: General Architectural Schema",
-                    "href": "/concepts-gas"
-                },
-                {
-                    "name": "ECLASS Ontology Mapping",
-                    "href": "/schemas-eclass"
-                },
-                {
-                    "name": "ISA‑95 / B2MML Mapping",
-                    "href": "/schemas-isa95"
-                }
-            ]
-        },
-        {
-            "group": "Python API",
-            "pages": [
-                {
-                    "name": "Models & Part Classes",
-                    "href": "/api-model"
-                },
-                {
-                    "name": "Schema Registry & Mappers",
-                    "href": "/api-schema-registry"
-                }
-            ]
-        },
-        {
-            "group": "Usage",
-            "pages": [
-                {
-                    "name": "Python Usage Examples",
-                    "href": "/usage-python"
-                }
-            ]
-        }
-    ]
+    "navigation": {
+        "sidebar": [
+            {
+                "group": "Getting Started",
+                "pages": [
+                    {
+                        "name": "Introduction",
+                        "href": "/intro"
+                    },
+                    {
+                        "name": "Quickstart",
+                        "href": "/quickstart"
+                    }
+                ]
+            },
+            {
+                "group": "Core Concepts",
+                "pages": [
+                    {
+                        "name": "GAS: General Architectural Schema",
+                        "href": "/concepts-gas"
+                    },
+                    {
+                        "name": "ECLASS Ontology Mapping",
+                        "href": "/schemas-eclass"
+                    },
+                    {
+                        "name": "ISA‑95 / B2MML Mapping",
+                        "href": "/schemas-isa95"
+                    }
+                ]
+            },
+            {
+                "group": "Python API",
+                "pages": [
+                    {
+                        "name": "Models & Part Classes",
+                        "href": "/api-model"
+                    },
+                    {
+                        "name": "Schema Registry & Mappers",
+                        "href": "/api-schema-registry"
+                    }
+                ]
+            },
+            {
+                "group": "Usage",
+                "pages": [
+                    {
+                        "name": "Python Usage Examples",
+                        "href": "/usage-python"
+                    }
+                ]
+            }
+        ]
+    }
 }
