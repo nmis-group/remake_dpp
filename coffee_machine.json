@@ -1,0 +1,642 @@
+{
+  "identity": {
+    "global_ids": {
+      "gtin": "00-CAFE-9000",
+      "serial": "CM2025-001"
+    },
+    "make_model": {
+      "brand": "BaristaPro",
+      "model": "EspressoMaster 9000"
+    },
+    "ownership": {
+      "manufacturer": "CoffeeTech Industries"
+    },
+    "conformity": [
+      "CE",
+      "UL",
+      "CB"
+    ]
+  },
+  "structure": {
+    "hierarchy": {
+      "product": "EspressoMaster 9000"
+    },
+    "parts": [
+      {
+        "part_id": "M01-MainPump",
+        "name": "High Pressure Pump",
+        "type": "Actuator",
+        "properties": {},
+        "ontology_bindings": {},
+        "torque": 1.5,
+        "speed": 3000,
+        "duty_cycle": null,
+        "voltage": 230,
+        "actuation_type": "vibration_pump"
+      },
+      {
+        "part_id": "M02-Grinder",
+        "name": "Bean Grinder Motor",
+        "type": "Actuator",
+        "properties": {},
+        "ontology_bindings": {},
+        "torque": 2.0,
+        "speed": 1500,
+        "duty_cycle": null,
+        "voltage": 230,
+        "actuation_type": "electric_motor"
+      },
+      {
+        "part_id": "M03-BrewGroup",
+        "name": "Brew Group Driver",
+        "type": "Actuator",
+        "properties": {},
+        "ontology_bindings": {},
+        "torque": 5.0,
+        "speed": 60,
+        "duty_cycle": null,
+        "voltage": 24,
+        "actuation_type": "servo"
+      },
+      {
+        "part_id": "H01-Boiler",
+        "name": "Main Boiler",
+        "type": "Thermal",
+        "properties": {},
+        "ontology_bindings": {},
+        "power": 1400,
+        "delta_t": 95,
+        "airflow": 0
+      },
+      {
+        "part_id": "H02-SteamThermoblock",
+        "name": "Steam Thermoblock",
+        "type": "Thermal",
+        "properties": {},
+        "ontology_bindings": {},
+        "power": 1200,
+        "delta_t": 130,
+        "airflow": 0
+      },
+      {
+        "part_id": "H03-CupWarmer",
+        "name": "Cup Warmer Plate",
+        "type": "Thermal",
+        "properties": {},
+        "ontology_bindings": {},
+        "power": 50,
+        "delta_t": 40,
+        "airflow": 0
+      },
+      {
+        "part_id": "S01-NTC",
+        "name": "NTC Temp Sensor 1",
+        "type": "Sensor",
+        "properties": {},
+        "ontology_bindings": {},
+        "sensor_type": "temperature",
+        "range_min": 0,
+        "range_max": 150,
+        "accuracy": null,
+        "drift": null,
+        "response_time": null
+      },
+      {
+        "part_id": "S02-NTC",
+        "name": "NTC Temp Sensor 2",
+        "type": "Sensor",
+        "properties": {},
+        "ontology_bindings": {},
+        "sensor_type": "temperature",
+        "range_min": 0,
+        "range_max": 150,
+        "accuracy": null,
+        "drift": null,
+        "response_time": null
+      },
+      {
+        "part_id": "S03-NTC",
+        "name": "NTC Temp Sensor 3",
+        "type": "Sensor",
+        "properties": {},
+        "ontology_bindings": {},
+        "sensor_type": "temperature",
+        "range_min": 0,
+        "range_max": 150,
+        "accuracy": null,
+        "drift": null,
+        "response_time": null
+      },
+      {
+        "part_id": "S04-Flow",
+        "name": "Flow Meter",
+        "type": "Sensor",
+        "properties": {},
+        "ontology_bindings": {},
+        "sensor_type": "flow",
+        "range_min": 0,
+        "range_max": 2000,
+        "accuracy": null,
+        "drift": null,
+        "response_time": null
+      },
+      {
+        "part_id": "S05-Level",
+        "name": "Water Tank Level",
+        "type": "Sensor",
+        "properties": {},
+        "ontology_bindings": {},
+        "sensor_type": "capacitive_level",
+        "range_min": null,
+        "range_max": null,
+        "accuracy": null,
+        "drift": null,
+        "response_time": null
+      },
+      {
+        "part_id": "F01-Tank",
+        "name": "Water Tank",
+        "type": "Fluidics",
+        "properties": {},
+        "ontology_bindings": {},
+        "flow_rate": null,
+        "pressure": null,
+        "fluid_type": "water",
+        "volume": 2.5
+      },
+      {
+        "part_id": "F02-Sprout",
+        "name": "Coffee Sprout",
+        "type": "Fluidics",
+        "properties": {},
+        "ontology_bindings": {},
+        "flow_rate": null,
+        "pressure": null,
+        "fluid_type": "coffee",
+        "volume": null
+      },
+      {
+        "part_id": "F11-Tube",
+        "name": "PTFE Tube 1",
+        "type": "Fluidics",
+        "properties": {},
+        "ontology_bindings": {},
+        "flow_rate": null,
+        "pressure": 15,
+        "fluid_type": "water/steam",
+        "volume": null
+      },
+      {
+        "part_id": "F12-Tube",
+        "name": "PTFE Tube 2",
+        "type": "Fluidics",
+        "properties": {},
+        "ontology_bindings": {},
+        "flow_rate": null,
+        "pressure": 15,
+        "fluid_type": "water/steam",
+        "volume": null
+      },
+      {
+        "part_id": "F13-Tube",
+        "name": "PTFE Tube 3",
+        "type": "Fluidics",
+        "properties": {},
+        "ontology_bindings": {},
+        "flow_rate": null,
+        "pressure": 15,
+        "fluid_type": "water/steam",
+        "volume": null
+      },
+      {
+        "part_id": "F14-Tube",
+        "name": "PTFE Tube 4",
+        "type": "Fluidics",
+        "properties": {},
+        "ontology_bindings": {},
+        "flow_rate": null,
+        "pressure": 15,
+        "fluid_type": "water/steam",
+        "volume": null
+      },
+      {
+        "part_id": "F15-Tube",
+        "name": "PTFE Tube 5",
+        "type": "Fluidics",
+        "properties": {},
+        "ontology_bindings": {},
+        "flow_rate": null,
+        "pressure": 15,
+        "fluid_type": "water/steam",
+        "volume": null
+      },
+      {
+        "part_id": "E01-MainBoard",
+        "name": "Main PCB Controller",
+        "type": "ControlUnit",
+        "properties": {},
+        "ontology_bindings": {},
+        "cpu_type": "STM32",
+        "memory": 1.0,
+        "firmware_version": "3.4.1",
+        "io_count": null
+      },
+      {
+        "part_id": "P01-PSU",
+        "name": "Power Supply 230V-24V",
+        "type": "PowerConversion",
+        "properties": {},
+        "ontology_bindings": {},
+        "input_voltage": 230,
+        "output_voltage": 24,
+        "power_rating": 150,
+        "efficiency": null
+      },
+      {
+        "part_id": "UI01-Display",
+        "name": "Touch Display",
+        "type": "UserInterface",
+        "properties": {},
+        "ontology_bindings": {},
+        "ui_type": "touchscreen",
+        "display_size": 5.0,
+        "input_methods": null,
+        "indicator_count": null
+      },
+      {
+        "part_id": "ST01-Chassis",
+        "name": "Main Chassis Frame",
+        "type": "Structural",
+        "properties": {},
+        "ontology_bindings": {},
+        "material": "Steel",
+        "mass": 2.5,
+        "dimensions": null,
+        "load_rating": null
+      },
+      {
+        "part_id": "ST02-HousingL",
+        "name": "Housing Left",
+        "type": "Structural",
+        "properties": {},
+        "ontology_bindings": {},
+        "material": "ABS Plastic",
+        "mass": 0.4,
+        "dimensions": null,
+        "load_rating": null
+      },
+      {
+        "part_id": "ST03-HousingR",
+        "name": "Housing Right",
+        "type": "Structural",
+        "properties": {},
+        "ontology_bindings": {},
+        "material": "ABS Plastic",
+        "mass": 0.4,
+        "dimensions": null,
+        "load_rating": null
+      },
+      {
+        "part_id": "ST04-DripTray",
+        "name": "Drip Tray",
+        "type": "Structural",
+        "properties": {},
+        "ontology_bindings": {},
+        "material": "Steel/Plastic",
+        "mass": 0.8,
+        "dimensions": null,
+        "load_rating": null
+      },
+      {
+        "part_id": "C01-Cable",
+        "name": "Harness Segment 1",
+        "type": "Connectivity",
+        "properties": {},
+        "ontology_bindings": {},
+        "interface_type": "power/signal",
+        "connector_standard": null,
+        "pin_count": null
+      },
+      {
+        "part_id": "C02-Cable",
+        "name": "Harness Segment 2",
+        "type": "Connectivity",
+        "properties": {},
+        "ontology_bindings": {},
+        "interface_type": "power/signal",
+        "connector_standard": null,
+        "pin_count": null
+      },
+      {
+        "part_id": "C03-Cable",
+        "name": "Harness Segment 3",
+        "type": "Connectivity",
+        "properties": {},
+        "ontology_bindings": {},
+        "interface_type": "power/signal",
+        "connector_standard": null,
+        "pin_count": null
+      },
+      {
+        "part_id": "C04-Cable",
+        "name": "Harness Segment 4",
+        "type": "Connectivity",
+        "properties": {},
+        "ontology_bindings": {},
+        "interface_type": "power/signal",
+        "connector_standard": null,
+        "pin_count": null
+      },
+      {
+        "part_id": "C05-Cable",
+        "name": "Harness Segment 5",
+        "type": "Connectivity",
+        "properties": {},
+        "ontology_bindings": {},
+        "interface_type": "power/signal",
+        "connector_standard": null,
+        "pin_count": null
+      },
+      {
+        "part_id": "FAST-01",
+        "name": "Screw M4x12",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 12,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-02",
+        "name": "Screw M5x20",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 20,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-03",
+        "name": "Screw M3x10",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 10,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-04",
+        "name": "Screw M4x12",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 12,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-05",
+        "name": "Screw M4x12",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 12,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-06",
+        "name": "Screw M3x10",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 10,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-07",
+        "name": "Screw M4x12",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 12,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-08",
+        "name": "Screw M5x20",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 20,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-09",
+        "name": "Screw M4x12",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 12,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-10",
+        "name": "Screw M3x10",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 10,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-11",
+        "name": "Screw M4x12",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 12,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-12",
+        "name": "Screw M5x20",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 20,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-13",
+        "name": "Screw M4x12",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 12,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-14",
+        "name": "Screw M5x20",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 20,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-15",
+        "name": "Screw M5x20",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 20,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-16",
+        "name": "Screw M3x10",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 10,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-17",
+        "name": "Screw M4x12",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 12,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-18",
+        "name": "Screw M3x10",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 10,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-19",
+        "name": "Screw M3x10",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 10,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-20",
+        "name": "Screw M4x12",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 12,
+        "strength": null
+      },
+      {
+        "part_id": "FAST-21",
+        "name": "Screw M5x20",
+        "type": "Fastener",
+        "properties": {},
+        "ontology_bindings": {},
+        "fastener_type": "screw",
+        "material": "Stainless Steel",
+        "diameter": null,
+        "length": 20,
+        "strength": null
+      }
+    ],
+    "interfaces": [],
+    "materials": [],
+    "bom_refs": []
+  },
+  "lifecycle": {
+    "manufacture": {
+      "date": "2025-06-01",
+      "factory": "Plant A"
+    },
+    "use": {},
+    "serviceability": {},
+    "events": [],
+    "end_of_life": {}
+  },
+  "risk": {
+    "criticality": {},
+    "fmea": [],
+    "security": {}
+  },
+  "sustainability": {
+    "mass": 12.5,
+    "energy": {},
+    "recycled_content": {},
+    "remanufacture": {}
+  },
+  "provenance": {
+    "signatures": [],
+    "trace_links": []
+  }
+}

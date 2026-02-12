@@ -1,0 +1,2712 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--EXPORT_PROGRAM:=1.0.7-ECLASS XML 5.0.0 export-->
+<!--File saved on: 2025-10-28 22:18:36.955 GMT-->
+<!--XML Schema used: ECLASS XML 5.0.0-->
+<dic:eclass_dictionary xmlns:dic="urn:eclass:xml-schema:dictionary:5.0" xmlns:ontoml="urn:iso:std:iso:is:13584:-32:ed-1:tech:xml-schema:ontoml" xmlns:cmn="urn:eclass:xml-schema:common:5.0" xmlns:hea="urn:eclass:xml-schema:header:5.0" xmlns:idt="urn:iso:std:iso:ts:29002:-5:ed-1:tech:xml-schema:identifier" xmlns:cat="urn:iso:std:iso:ts:29002:-10:ed-1:tech:xml-schema:catalogue" xmlns:basic="urn:iso:std:iso:ts:29002:-4:ed-1:tech:xml-schema:basic" xmlns:val="urn:iso:std:iso:ts:29002:-10:ed-1:tech:xml-schema:value" xmlns:dt="urn:eclass:template:xml-schema:data-type:5.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:eclass:xml-schema:dictionary:5.0 https://www.eclass.eu/eclassxml/5.0/ECLASSXML/dictionary/dictionary.xsd">
+  <hea:header>
+    <schema_version>ECLASS XML 5.0</schema_version>
+    <generator_version>1.0.7-ECLASS XML 5.0.0 export</generator_version>
+    <generation_date>2025-10-28T22:18:36.955Z</generation_date>
+    <creator>
+      <cmn:organisation>ECLASS e.V.</cmn:organisation>
+      <cmn:contact>
+        <cmn:email>ECLASS e.V.</cmn:email>
+        <cmn:url>http://eclass-cdp.com</cmn:url>
+      </cmn:contact>
+    </creator>
+    <authorisation>
+      <cmn:name>ECLASS e.V.</cmn:name>
+      <cmn:contact>
+        <cmn:email>ECLASS e.V.</cmn:email>
+      </cmn:contact>
+    </authorisation>
+    <content_date>2025-10-25T00:35:26.228Z</content_date>
+    <content_identification>
+      <cmn:irdi>0173-1#11-ECLASS16.0#001</cmn:irdi>
+    </content_identification>
+    <content_description language_code="ENG">ECLASS16.0 ASSET</content_description>
+    <content_language language_ref="0112-1#LG-EN#001"/>
+    <originating_system>ECLASS ContentDevelopmentPlatform</originating_system>
+  </hea:header>
+  <ontoml:ontoml>
+    <header id="0173-1#11-ECLASS16.0#001">
+      <global_language language_code="en" country_code="US"/>
+      <description>ECLASS16.0 ASSET</description>
+      <version>ECLASS XML 5.0.0</version>
+      <name>ECLASS16_0_ASSET_EN_SG_43.xml</name>
+      <date_time_stamp>2025-10-28T22:18:36.963Z</date_time_stamp>
+      <author>ECLASS e.V. ECLASS e.V.</author>
+      <organisation>ECLASS</organisation>
+      <pre_processor_version>1.0.7-ECLASS XML 5.0.0 export</pre_processor_version>
+      <originating_system>ECLASS ContentDevelopmentPlatform</originating_system>
+      <authorisation>ECLASS e.V.</authorisation>
+      <ontoml_information>
+        <revision>16.0</revision>
+        <preferred_name>
+          <label>ECLASS16.0</label>
+        </preferred_name>
+      </ontoml_information>
+      <ontoml_structure>
+        <source_document_identifier>869</source_document_identifier>
+        <status>IS</status>
+        <name>ONTOML</name>
+        <date>2019</date>
+      </ontoml_structure>
+    </header>
+    <dictionary>
+      <is_complete>true</is_complete>
+      <contained_classes>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY031#011" guid="139e5b65de244730a5bb1e0c1746c718">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Half die prism (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical prism at the shape of a half cube with light input and output at the surface at the leg of a right triangle which deflects the beam 90° and inverts the image</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX576#006"/>
+          <hierarchical_position>43020204</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY032#011" guid="a276f5936972426088e991d83b3b3914">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Pentaprism (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Five-sided reflecting prism which deflects the beam 90° invariant to low changes of the input angle of the beam and it has no invertion of the image</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX576#006"/>
+          <hierarchical_position>43020205</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY033#011" guid="365eda318fed4649bc77079d278d9cd9">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Rhomboid prism (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical prism with a base area of a parallelogram which realizes a displacement of the beam without any invertion</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX576#006"/>
+          <hierarchical_position>43020206</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY034#011" guid="cf03f4635b80420991aa8b5f14b137ec">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Triple prism (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical prism with three reflecting surfaces perpendicular to each other (corner of a cube) which reflects a beam in its opposite direction invariant to the input angle of the beam</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX576#006"/>
+          <hierarchical_position>43020207</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY035#011" guid="eba5c01d32d8422580ddf6f5f77c3dbc">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Isosceles dispersion prism (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical prism with a base area of a isosceles triangle with non perpendicular light input and output at the surfaces that are perpendicular to the basic area at the two equal legs of the triangle which deflects the light at different angles per wavelength</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX576#006"/>
+          <hierarchical_position>43020208</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY036#011" guid="9394a8a91fb2406daddddb67663f9f65">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Prism (optical component, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX576#006"/>
+          <hierarchical_position>43020290</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY025#011" guid="be14974235594fb294fe285133a38bee">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Micro lens (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Lens in an array with an aperture of less than a few millimetres including lenses which work by refraction at the surface, refraction in the bulk of the substrate, diffraction or a combination of these</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN EN ISO 14880-1:2005-05, ISO 14880-1 Technical Corrigendum 1:2003-08</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX575#006"/>
+          <hierarchical_position>43020107</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFW998#006" guid="94d0ecea420f4d0abae310352437d6cd">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical instrument</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Instrument whose function is mainly based on optical phenomena, consisting of several assemblies and/or components, illumination systems, instruments with light conduction and instruments which, apart from optical units, contain assemblies and/or components from other fields, e.g. electronic components</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN ISO 9022-1:2012-10, ISO 9022-1:2012-04</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFR088#006"/>
+          <hierarchical_position>43050000</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX588#006" guid="9c9cc664268e4e6c8fea08c75c2db910">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Microscope (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Instrument for enhancement of the power of seeing, that means to make visible infinitesimal details which are invisible for the normal eye. Delineation to segment 21, 32, 34 see note</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN 58629-1:2006-01</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFW998#006"/>
+          <hierarchical_position>43050100</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY076#011" guid="f8d94f13990e4de38bcac418dcda76ae">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Light microscope (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Type of microscope which uses visible light and a system of lenses to magnify images of small samples. Delineation to segment 32 see note</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX588#006"/>
+          <hierarchical_position>43050101</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY077#011" guid="b4b360d720594ca49579ef3158834806">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Electron microscope (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Type of microscope that uses an electron beam to illuminate a specimen and produce a magnified image</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX588#006"/>
+          <hierarchical_position>43050102</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX587#006" guid="5bee9cc000a34d2a9e016c3b84d65a74">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Objective (mounted optic)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">First part of an imaging system consisting of a lens, its frame and other related parts, which alone or in connection with a tube lens create a primary image of the object. Delineation to segment 19, 24, 27 see note</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN 58629-1:2006-01</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFW997#006"/>
+          <hierarchical_position>43040400</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY078#011" guid="0c365251c2a7461487d79ae27db691ee">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Microscope (optical instrument, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX588#006"/>
+          <hierarchical_position>43050190</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY072#011" guid="b331396fd334408384fd3f13d04df876">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Mirror lens (mounted optic)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Special objective which uses lens elements and mirrors for imaging</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX587#006"/>
+          <hierarchical_position>43040401</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGN029#007" guid="04076a2f621547a0b382a06c25718040">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Microscope (optical instrument, parts)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects with spare part characteristics that maintain or re-store the original condition of the objects classified under the parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX588#006"/>
+          <hierarchical_position>43050191</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY073#011" guid="0d4bc30268454c818981eaa311b19a61">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Zoom lens (mounted optic)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Objective of variable focal length in which the change of focal length is realized under movement of an optical component or subassembly without a change of the object and image plane</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">In Anlehnung an DIN 58629-1:2006-01</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX587#006"/>
+          <hierarchical_position>43040402</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGN031#007" guid="0bf32b3384034f2392ecf59515a6c1ac">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Microscope (optical instrument, accessories)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects with complemental characteristics, without which the basic function of the objects classified under the parent-class on the 3rd level is still guaranteed</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX588#006"/>
+          <hierarchical_position>43050192</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY074#011" guid="6e068619b62e4e5ea25de0e728679291">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Microscope lens (mounted optic)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Objective used for microscopical imaging with a standardized thread for the connection to the microscope</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX587#006"/>
+          <hierarchical_position>43040403</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX589#006" guid="d47fb0c5424648189359e9c39f32d862">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Binoculars/telescope (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Instrument that makes objects in the distance appear larger</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW998#006"/>
+          <hierarchical_position>43050200</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY075#011" guid="a017c2e614c6410e8b11681091ac5a47">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Objective (mounted optic, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX587#006"/>
+          <hierarchical_position>43040490</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY079#011" guid="03b83663530d42158db709ebece06a41">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Binoculars (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Pair of identical or mirror-symmetrical telescopes mounted side-by-side and aligned to point accurately in the same direction, allowing the viewer to use both eyes (binocular vision) when viewing distant objects. Delineation to segment 41 see note</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX589#006"/>
+          <hierarchical_position>43050201</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGN024#007" guid="d63a82b863c94235b4cf71ac028c9687">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Objective (mounted optic, parts)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects with spare part characteristics that maintain or re-store the original condition of the objects classified under the parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX587#006"/>
+          <hierarchical_position>43040491</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY080#011" guid="1a8158c927504fe292c99f434db3a7f4">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical telescope (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical instrument at monocular design for making distant objects appear nearer and consequently larger</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX589#006"/>
+          <hierarchical_position>43050202</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGN026#007" guid="4763679a2edf453591cdb7828d3b548b">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Objective (mounted optic, accessories)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects with complemental characteristics, without which the basic function of the objects classified under the parent-class on the 3rd level is still guaranteed</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX587#006"/>
+          <hierarchical_position>43040492</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY081#011" guid="19d2f28e7c714f579236d122daa96186">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Riflescope (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sighting device based on an optical refracting telescope equipped with some form of graphic image pattern (a reticle) mounted in an optically appropriate position in their optical system to give an accurate aiming point</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX589#006"/>
+          <hierarchical_position>43050203</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY082#011" guid="937fca80fba34a2ea6ca319c35256e47">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Spotting scope (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Portable telescope with added optics to present an erect image, optimized for the observation of terrestrial objects</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX589#006"/>
+          <hierarchical_position>43050204</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY083#011" guid="8033e990dac04867b89cc83b4c6a95c5">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Binoculars/telescope (optical instrument, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX589#006"/>
+          <hierarchical_position>43050290</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGN033#007" guid="09495b7d49494123b4cb1b63a4883042">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Binoculars/telescope (optical instrument, parts)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects with spare part characteristics that maintain or re-store the original condition of the objects classified under the parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX589#006"/>
+          <hierarchical_position>43050291</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGN035#007" guid="f5fbcafe29a94f8692d731c948afd0c9">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Binoculars/telescope (optical instrument, accessories)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects with complemental characteristics, without which the basic function of the objects classified under the parent-class on the 3rd level is still guaranteed</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX589#006"/>
+          <hierarchical_position>43050292</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY043#011" guid="685bc16044a847599f16234b83b32fca">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Interference filter (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Filter consisting of a glass or plastic substrate having a coating that uses the phenomenon of interference to transmit or reflect radiation in a chosen spectral range, the unwanted radiation being reflected or transmitted respectively</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN EN ISO 4007:2012-09</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX578#006"/>
+          <hierarchical_position>43020402</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX590#006" guid="9974bfd81f9c439a9a90dddc4cfe25d3">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Magnifier (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Between object and eye used lens for image magnification at the retina of the eye. Delineation to segment 21, 34 see note</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN 58629-1:2006-01</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFW998#006"/>
+          <hierarchical_position>43050300</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY084#011" guid="8349df2cb7784e99830623ac8229dabd">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Folding magnifier (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Magnifier with a swing away case designed to be used as a handle when the magnifier is in use and a protective case when not in use</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX590#006"/>
+          <hierarchical_position>43050301</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY085#011" guid="a4ec78a9b9b240d7891ee5ae7a53ed41">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Hand-held magnifier (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Magnifier with handle</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX590#006"/>
+          <hierarchical_position>43050302</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY086#011" guid="0f03f67b54f84d109d8cdae1e3459bae">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Headband magnifier (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Magnifier which is held with a band on the head</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX590#006"/>
+          <hierarchical_position>43050303</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY087#011" guid="acf2d8771b85498993004fb1fa04b27c">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Magnifying glasses (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Combination of magnifier and eyeglasses, magnifier is worn like eyeglasses</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX590#006"/>
+          <hierarchical_position>43050304</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY088#011" guid="a4997b06ff3946e48c63a6a24ebd4a24">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Illuminated magnifier (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Magnifier including illumination source</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX590#006"/>
+          <hierarchical_position>43050305</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY089#011" guid="389243d1313d4acf8ce7059bd7b56447">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Magnifier (optical instrument, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX590#006"/>
+          <hierarchical_position>43050390</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGN022#005" guid="97099d8b35504d719607485e34b41168">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical component (other)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Group (3rd level) for objects that cannot be classified into other specified groups in the existing structure, but that are classified to their parent-class on the 2nd level. A xx-xx-90-00-class cannot have any other sub-groups besides the generic xx-xx-90-90-class (…(Other, unspecified)) to be generally valid within the parent class on the 2nd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW995#006"/>
+          <hierarchical_position>43029000</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY061#011" guid="5b2ea5d6067a472eb2f59990d92ad495">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Achromatic lens (lens group)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Group of lenses designed to compensate the axial chromatical aberration for two defined wavelengths</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN 58629-1:2006-01</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX582#006"/>
+          <hierarchical_position>43030101</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGU661#007" guid="e632fbd0fdf849029ca32ef48685255c">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical component (other, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AGN022#005"/>
+          <hierarchical_position>43029090</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFW997#006" guid="3bed6b3f8f19470bbf0dd52923481ac6">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Mounted optic</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">At least one optical component or optical assembly mounted in a mechanical mount / holder</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFR088#006"/>
+          <hierarchical_position>43040000</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX585#006" guid="e3a76a4f8b784682b661a94762cc724d">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Ocular (mounted optic)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical element or group nearest to the eye in an optical imaging system, used for viewing the image formed by the objective</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN 58629-1:2006-01</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFW997#006"/>
+          <hierarchical_position>43040200</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY070#011" guid="530bf884d80045df860dbe3789ebd763">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Ocular (mounted optic, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX585#006"/>
+          <hierarchical_position>43040290</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX586#006" guid="aaa22219122c4f478bdd6742789cf73a">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Filter wheel (mounted optic)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Opto mechanical assembly with on a circle arranged filters</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW997#006"/>
+          <hierarchical_position>43040300</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY071#011" guid="27609ab200194173b25a706b827344dc">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Filter wheel (mounted optic, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX586#006"/>
+          <hierarchical_position>43040390</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGN028#005" guid="052cd79588274625ad56cbb334810596">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Mounted optic (other)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Group (3rd level) for objects that cannot be classified into other specified groups in the existing structure, but that are classified to their parent-class on the 2nd level. A xx-xx-90-00-class cannot have any other sub-groups besides the generic xx-xx-90-90-class (…(Other, unspecified)) to be generally valid within the parent class on the 2nd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW997#006"/>
+          <hierarchical_position>43049000</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGU663#007" guid="c8908c4cad2d4489b60199f03ff5c203">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Mounted optic (other, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AGN028#005"/>
+          <hierarchical_position>43049090</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFR088#006" guid="f10a9e2a724b4e55a8cddd9db9d7cefc">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optics</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Segment includes products and technologies that deal with the generation, manipulation and detection of light. This includes optical instruments such as microscopes, telescopes, cameras and glasses, optical components such as lenses, prisms and mirrors as well as laser technology and photonic systems. Other products with a focus on electrical engineering are not included in this subject area but are part of segment 27.</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">Machine generated by ChatGPT 4</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AAA002#001"/>
+          <hierarchical_position>43000000</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY054#011" guid="4fbc5928879e4acca447af846a7921c1">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Organic single vision lens (eyeglass)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Eyeglasses with one distinct optical power made from organic material</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">In Anlehnung an DIN 1259-2:2001-09</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX581#006"/>
+          <hierarchical_position>43020701</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY037#011" guid="08b9640c6d99491bb3da0eff8192b5da">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Plane mirror (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Reflecting surface which is completely flat</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN EN ISO 4007:2012-09</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX577#006"/>
+          <hierarchical_position>43020301</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY058#011" guid="4bf3e68a0fa54139aee518fe60eb196f">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Organic progressive lens (eyeglass)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Eyeglasses are characterised by a gradient of increasing lens power of organic material which realise a sharp seeing at the near and the distance</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">In Anlehnung an DIN 1259-2:2001-09</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX581#006"/>
+          <hierarchical_position>43020705</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX584#006" guid="196cfd5688124ce2b86434e7f5af9ad2">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Condenser (mounted optic)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical element that collects as large a solid angle of light as possible from a source and focuses it on the required object</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN EN ISO 4007:2012-09</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFW997#006"/>
+          <hierarchical_position>43040100</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY069#011" guid="f84087f68b6b4b06ac5f4f277568512b">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Condenser (mounted optic, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX584#006"/>
+          <hierarchical_position>43040190</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY049#011" guid="822cca4d74b942dc921b91d635278873">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Microlensarray (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Regular arrangement of microlenses on a single substrate. Delineation to segment 42 see note</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN EN ISO 14880-1:2005-05, ISO 14880-1 Technical Corrigendum 1:2003-08, ISO 14880-1:2001-08</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX580#006"/>
+          <hierarchical_position>43020601</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY056#011" guid="49ae2d0f22474a41ac40b6612ce830cc">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Mineral bifocal lens (eyeglass)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Eyeglasses with two distinct optical powers made from mineral material. Bifocals are most commonly prescribed to people with presbyopia who also require a correction for myopia, hyperopia, and/or astigmatism</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">In Anlehnung an DIN 1259-2:2001-09</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX581#006"/>
+          <hierarchical_position>43020704</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY028#011" guid="15e3c71f811346f7ad1e1bfde80bc72e">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Wedge (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Prism with a small angle between its input and output surfaces</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">in Anlehnung an DIN EN ISO 2538:2003-05</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX576#006"/>
+          <hierarchical_position>43020201</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX576#006" guid="0154128ff48e4e90b8c79755f6910f08">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Prism (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Element of transparent material with not less than two nonparallel planar surfaces which is useable for dispersion or reflection of light at an angle. Delineation to segment 21 see note</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN 58629-1:2006-01</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFW995#006"/>
+          <hierarchical_position>43020200</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY029#011" guid="f767c9469293401ca56478ef4f528010">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Bauernfeind prism (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Prism with two reflections and a typical beam deflection of 45° to 60°, no flipping or rotation of the image</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX576#006"/>
+          <hierarchical_position>43020202</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY030#011" guid="a0f4edc62cbb41079765072209320e09">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Dove prism (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical prism at the shape of a half cube with light input and output at the surface at the leg of a right triangle which deflects the beam 90° and inverts the image</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX576#006"/>
+          <hierarchical_position>43020203</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX577#006" guid="5f08e894ce0f4419af1cb993e532aabe">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Mirror (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Equipment based on an optical system that makes use of reflection. Delineation to segment 21, 22, 27, 34 see note</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN EN 1330-10:2003-05</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFW995#006"/>
+          <hierarchical_position>43020300</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY038#011" guid="c648d48bb1cc4fdca5d345d0f49ed03b">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Spherical mirror (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical component using a spherical surface for reflection</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX577#006"/>
+          <hierarchical_position>43020302</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY039#011" guid="5b37d9cc7c014f6e9fab07f9d1e40c6c">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Aspheric mirror (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical component which uses an aspherical surface for reflection</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX577#006"/>
+          <hierarchical_position>43020303</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY040#011" guid="178175f0572241a3a27ab676067e882c">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Freeform mirror (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical component which uses a free form surface for reflection</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX577#006"/>
+          <hierarchical_position>43020304</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY041#011" guid="d006fd1ae1834c5f8765086c8b541cfc">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Mirror (optical component, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX577#006"/>
+          <hierarchical_position>43020390</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGN037#007" guid="55aab535987e45f9b99290a3219ef863">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Magnifier (optical instrument, parts)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects with spare part characteristics that maintain or re-store the original condition of the objects classified under the parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX590#006"/>
+          <hierarchical_position>43050391</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGN039#007" guid="70368dedc7cc4282b646ee5af1a18b6a">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Magnifier (optical instrument, accessories)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects with complemental characteristics, without which the basic function of the objects classified under the parent-class on the 3rd level is still guaranteed</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX590#006"/>
+          <hierarchical_position>43050392</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX591#006" guid="a5f2c413a2a94e88aa707021b3631b1f">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Periscope/Corner reflector (optical instrument)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical instrument for viewing objects that are above the level of direct sight or in an otherwise obstructed field of vision</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW998#006"/>
+          <hierarchical_position>43050400</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY090#011" guid="c477592b18b44294b94a2d3a62231dfe">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Periscope/Corner reflector (optical instrument, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX591#006"/>
+          <hierarchical_position>43050490</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGN041#005" guid="cf4aef4641174ef1be1d7a4023296d7c">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical instrument (other)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Group (3rd level) for objects that cannot be classified into other specified groups in the existing structure, but that are classified to their parent-class on the 2nd level. A xx-xx-90-00-class cannot have any other sub-groups besides the generic xx-xx-90-90-class (…(Other, unspecified)) to be generally valid within the parent class on the 2nd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW998#006"/>
+          <hierarchical_position>43059000</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGU664#007" guid="2ab4d8c57d3d44f5977778084ee166f5">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical instrument (other, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AGN041#005"/>
+          <hierarchical_position>43059090</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY057#011" guid="e632377f274d4904a7c7660e039b61d1">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Organic bifocal lens (eyeglass)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Eyeglasses with two distinct optical powers made from organic material. Bifocals are most commonly prescribed to people with presbyopia who also require a correction for myopia, hyperopia, and/or astigmatism</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">In Anlehnung an DIN 1259-2:2001-09</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX581#006"/>
+          <hierarchical_position>43020703</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY055#011" guid="57d13918e5e640b794dec3917445df6c">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Mineral single vision lens (eyeglass)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Eyeglasses with one distinct optical power made from mineral material</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">In Anlehnung an DIN 1259-2:2001-09</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX581#006"/>
+          <hierarchical_position>43020702</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX574#006" guid="f34b0357dc4447bbaea8d65efbbea0d0">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Plastic (optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Materials containing a high molecular weight polymer as an essential ingredient and which, at any stage of processing into finished products, can be formed by flow. For delimitation to segments 20, 30, 31, 35, 37 see note</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN EN ISO 4007:2012-09</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFW994#006"/>
+          <hierarchical_position>43010600</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY016#011" guid="dff2598d6a19459ca4e4da7591097920">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Monomer (plastic, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Chemical compound, usually of low molecular mass, that can be converted into a polymer by combining it with itself or with other chemical compounds</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN EN ISO 472:2013-06</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX574#006"/>
+          <hierarchical_position>43010601</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY017#011" guid="f902d4c8202b47a684870c89607e5322">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Polymer (plastic, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">High molecular weight molecule, natural or synthetic, whose chemical structure can be represented by repeated small units which collectively form molecular chains. Note: This material class has three main sub-groups: elastomers, thermoplastics and thermosets</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN EN ISO 23936-2:2012-03</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX574#006"/>
+          <hierarchical_position>43010602</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY018#011" guid="a2b43d3938f04816897292a5e94f40f7">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Plastic (optical material, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX574#006"/>
+          <hierarchical_position>43010690</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY052#011" guid="5dfba922bc2542d09918953fdf91046c">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical grating (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Linear pattern whose transmittance or reflectance varies periodically in all but one azimuth where it is constant. Delineation to segment 22 see note</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN ISO 9334:2008-08</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX580#006"/>
+          <hierarchical_position>43020604</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY009#011" guid="646cb3718e884a9ea704cdbeb50af6a5">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Germanium (optical material, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX571#006"/>
+          <hierarchical_position>43010390</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX572#006" guid="9f2b6bfd0dd44eddac232a52ff5fdcbe">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Calcium fluoride (optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Calcium fluoride crystals for optical applications, synthetic, high purity. Delineation to segment 38 see note</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW994#006"/>
+          <hierarchical_position>43010400</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY010#011" guid="435f667603a841f6acf5656e527e6ac8">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Stripe (Calcium fluoride, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Quadrilateral fabricated parts, consisting of Calcium fluoride, all six sides are worked, the edges have protective bevels and they are usually described by length, width and thickness</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX572#006"/>
+          <hierarchical_position>43010401</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY011#011" guid="9e02b5520ca4431a859245c761ed1585">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Glass Disc (Calcium fluoride, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">At all surface machined cylindrical parts, consisting of Calcium fluoride, for which the diameter is larger than the thickness, described by diameter and thickness</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX572#006"/>
+          <hierarchical_position>43010402</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY012#011" guid="e311796187a441239db5857d34f91d9b">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Calcium fluoride (optical material, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX572#006"/>
+          <hierarchical_position>43010490</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX573#006" guid="fe378d79569843fc8b46201c0ac79db6">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Glass ceramics (optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Polycrystalline materials produced by controlled crystallization of basic glass. For delimitation to segments 22, 35 see note</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW994#006"/>
+          <hierarchical_position>43010500</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY013#011" guid="d222f4a817374ed08f5031d814c8e0f0">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Stripe (glass ceramics, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Quadrilateral fabricated parts, consisting of glass ceramic, all six sides are worked, the edges have protective bevels and they are usually described by length, width and thickness</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX573#006"/>
+          <hierarchical_position>43010501</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY014#011" guid="80fe020a2d124d0baf44e76a2c6178b4">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Glass Disc (glass ceramics, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">At all surfaces machined cylindrical part, consisting of glass ceramic, for which the diameter is larger than the thickness, described by diameter and thickness</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX573#006"/>
+          <hierarchical_position>43010502</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY015#011" guid="5e35c2bebb544e0ab9315bba7caacc9b">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Glass ceramics (optical material, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX573#006"/>
+          <hierarchical_position>43010590</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGN021#005" guid="3156a0f90c4a49cca29d17b66c225b84">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical material (other)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Group (3rd level) for objects that cannot be classified into other specified groups in the existing structure, but that are classified to their parent-class on the 2nd level. A xx-xx-90-00-class cannot have any other sub-groups besides the generic xx-xx-90-90-class (…(Other, unspecified)) to be generally valid within the parent class on the 2nd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW994#006"/>
+          <hierarchical_position>43019000</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGU660#007" guid="184db899dd6e4fd88062554ac93b6290">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical material (other, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AGN021#005"/>
+          <hierarchical_position>43019090</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFW996#006" guid="56a57c78e7044b229d38d29ef5d080cc">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical assembly</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Functional unit consisting of several optical components</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFR088#006"/>
+          <hierarchical_position>43030000</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX582#006" guid="3954db2569f345ee9d2f1b14f932da76">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Lens group (cemented)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Assembly of not less than two connected lenses</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW996#006"/>
+          <hierarchical_position>43030100</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY062#011" guid="c1b98402936a46d3b1b9271099a38d87">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Doublet (lens group)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Group of two lenses</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX582#006"/>
+          <hierarchical_position>43030102</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY063#011" guid="47073e5c904e439dadd2eb7aecc9512f">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Triplet (lens group)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Group of three lenses designed to compensate the axial chromatical aberration for two defined wavelengths and also the astigmatism</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX582#006"/>
+          <hierarchical_position>43030103</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY696#005" guid="96cd8987c52e4557b51f8e025b3b8fd7">
+          <date_of_original_definition>2015-11-13Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical Filter Glass</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical Glass with spezific absorption properties to influence spezifically the spectral radiation allocation at the optical wavelength area</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">Lexikon der Optik</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFW994#006"/>
+          <hierarchical_position>43010700</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY064#011" guid="6177afaa6f7c4d8ab7e332cc786bfaef">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Lens group (cemented, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX582#006"/>
+          <hierarchical_position>43030190</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFZ207#010" guid="e3973ac366ea4f13a6de53c6c13132ad">
+          <date_of_original_definition>2015-11-13Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical Filter Glass (unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFY696#005"/>
+          <hierarchical_position>43010790</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX583#006" guid="0a3d2bf4084e4c3da274ef382288f231">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Prisms group</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Subassembly of not less than two connected optical components, at least one of them is a prism</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW996#006"/>
+          <hierarchical_position>43030200</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY065#011" guid="a15e5233a24043fca449d1f7b33599e3">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Porro prism first order (prisms group)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Prism group containing two optical prisms in form of a half cube with light in- and output at the surface at the hypotenuse of a right triangle which totally rotate the image by 180°</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX583#006"/>
+          <hierarchical_position>43030201</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY066#011" guid="a67e6838dc1841a2969144637da5df14">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Porro prism second order (prisms group)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Prism group containing one double reflecting optical prism in form of a half cube and two smaller only one time reflecting prisms in form of a half cube, optical path deflected four times at 90°, no vertical offset of the light path</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX583#006"/>
+          <hierarchical_position>43030202</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY067#011" guid="270b876b44e24ee0bb1c94f00b11e26e">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Beam splitter cube (prisms group)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Cubical component of two connected semicubeprisms</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX583#006"/>
+          <hierarchical_position>43030203</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY068#011" guid="761c506ed10746d492a0e4f9bb1a5d85">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Prisms group (unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX583#006"/>
+          <hierarchical_position>43030290</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX575#006" guid="dcce9e3339404ce9b3bcb93505aba80a">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Lens (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Component made of transparent material with one or more curved surfaces, which is used for systematic change in the light beam direction. Delineation to segment 27, 34 see note</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN 58629-1:2006-01</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFW995#006"/>
+          <hierarchical_position>43020100</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGN023#005" guid="26633fcf178b4855a7acf76a1e722b5d">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical assembly (other)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Group (3rd level) for objects that cannot be classified into other specified groups in the existing structure, but that are classified to their parent-class on the 2nd level. A xx-xx-90-00-class cannot have any other sub-groups besides the generic xx-xx-90-90-class (…(Other, unspecified)) to be generally valid within the parent class on the 2nd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW996#006"/>
+          <hierarchical_position>43039000</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY019#011" guid="7f869ce729944f458829eeb2849d0f92">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Spherical lens (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Lens with two spherical surfaces whereas one of them may have a planar surface with a infinite radius</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX575#006"/>
+          <hierarchical_position>43020101</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AGU662#007" guid="2d5529aac96b403fa561be18cc45cda0">
+          <date_of_original_definition>2019-06-11Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical assembly (other, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AGN023#005"/>
+          <hierarchical_position>43039090</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY020#011" guid="4893f3199ec64fb3a5dda329352792dd">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Aspherical lens (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Lens with not less than one surface described by a aspheric formula</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX575#006"/>
+          <hierarchical_position>43020102</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFW995#006" guid="c04ad13cddc74b6899e58ee73e829e4c">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical component</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Part providing a function in optical imaging</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">Class ISOTC172-AAA011-001.014 (60.60 Released)</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFR088#006"/>
+          <hierarchical_position>43020000</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY021#011" guid="45ff0f453d61434fb8502d69354c8855">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Cylindrical lens (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Lens with two cylindrical surfaces whereas which one of them may be a planar surface with an infinite radius</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX575#006"/>
+          <hierarchical_position>43020103</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX579#006" guid="97b016103a9649f2916557cd07121878">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Rod lens (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Cylindrical optical component, which transmitted the light in direction of the cylinder axis</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW995#006"/>
+          <hierarchical_position>43020500</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY022#011" guid="f52561705cb34c78a78a45c7ba5491c5">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Freeform lens (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Lens with at least one surface described by a freeform description</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX575#006"/>
+          <hierarchical_position>43020104</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY048#011" guid="0ef5965132f14ada89f2d465701609d5">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Rod lens (optical component, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX579#006"/>
+          <hierarchical_position>43020590</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY023#011" guid="ec277dbc908c434297467a128f5b45f6">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Fresnellens (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Axial stepped lens with one in form of rings stepped surface so that the thickness of the lens is reduced (at same focal length)</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX575#006"/>
+          <hierarchical_position>43020105</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX580#006" guid="034bbf92e2fc445688fb47bf9fcfa59b">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Micro-/nanostructured optical element (optical element)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Micro- and nano-optical components and systems like refractive and diffractive miniaturised optics, dielectrical and metallical gratings, computer generated holograms, photonic crystals and metamaterials for using in lightning, projection, information technology, laser technology, power engineering and metrology</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW995#006"/>
+          <hierarchical_position>43020600</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY024#011" guid="c041ba06de314670ae89872ae6a18bc9">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Infrared optics (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical elements for the spectral range of 800 nm – 12 µm made from material like germanium, silicon, zinc sulphide, calcium fluoride and gallium arsenide</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX575#006"/>
+          <hierarchical_position>43020106</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY050#011" guid="076a03c002304903b8382fdc56e1d427">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Nano-optical element (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Multilayer micro-optics modules based on repeated usage of lithographical structuring in touch with coating and UV-structuring</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX580#006"/>
+          <hierarchical_position>43020602</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY026#011" guid="07dcd1abf18f4cf29238a5c1d95ee0f1">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical window (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical element with two planar surfaces</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX575#006"/>
+          <hierarchical_position>43020108</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY051#011" guid="66dd422fcaff4c5e85939ddea66b3a6c">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Hologram (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Photo made by holographic techniques, which reproduce an exact three-dimensional image of the original object after processing and illuminating with special homogenous light. Delineation to segment 24 see note</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX580#006"/>
+          <hierarchical_position>43020603</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY027#011" guid="5f20ed1afaf34d52a6eda142929b9cba">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Lens (optical component, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX575#006"/>
+          <hierarchical_position>43020190</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY053#011" guid="a04d0eb5e2994842a3d09a6cf548d380">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Micro-/nanostructured optical element (optical element, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX580#006"/>
+          <hierarchical_position>43020690</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX581#006" guid="ba853e254b7c4969bfe69871374a9076">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Eyeglass lens (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Eyeglass lens which is located in front of the eye without any direct contact to the eye. Delineation to segment 34, 40 see note</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW995#006"/>
+          <hierarchical_position>43020700</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY060#011" guid="6c3cc5e8d8ec4776b0dce1bc7d04371c">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Eyeglass lens (optical component, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX581#006"/>
+          <hierarchical_position>43020790</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX578#006" guid="e5ee915b9200416fa30ae7b20030c264">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Filter (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Regularly transmitting device used to modify the radiant or luminous flux, the relative spectral distribution, or both, of the radiation passing through it. A distinction is made between selective filters and non-selective filters or neutral filters or neutral grey filters according as they do or do not alter the relative spectral distribution of the radiation. A selective filter that makes a significant change in the chromaticity of the radiation is called a coloured filter, one that alters the spectral distribution but, because of metamerism, transmits radiation of nearly the same chromaticity as that of the incident radiation, may be called a grey filter. Delineation to segment 19, 27 see note</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">IEC 60050-845:1987 (845-04-105)</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFW995#006"/>
+          <hierarchical_position>43020400</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY042#011" guid="249709fc411940068fb04160da70b2b8">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Colour filter (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Filter which transmitted light of a special colour- or wavelength characteristics</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">DIN 58629-1:2006-01</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX578#006"/>
+          <hierarchical_position>43020401</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY044#011" guid="3724085740ae4cd2a1e8f8d654419a03">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Polarising filter (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Filter for defined oscillation direction of light in use of the total or partial absorption</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX578#006"/>
+          <hierarchical_position>43020403</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY045#011" guid="17ad15904ec34afbb0c0769edc2bd632">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">UV-filter (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical filter, which reduces the intensity of light in the ultraviolet spectral range</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX578#006"/>
+          <hierarchical_position>43020404</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY046#011" guid="1c671068b7544db99e1f5e820ca1567c">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">IR-filter (optical component)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Optical filter, which reduces the intensity of light in the infrared spectral range</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX578#006"/>
+          <hierarchical_position>43020405</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY047#011" guid="a3f20767586e451bbead616621e33c5c">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Filter (optical component, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX578#006"/>
+          <hierarchical_position>43020490</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFW994#006" guid="f72039b388bf4140acb6483a38155598">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Optical material</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Material that has main properties usable for optical imaging</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">Class ISOTC172-AAA002-001.013 (60.60 Released)</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFR088#006"/>
+          <hierarchical_position>43010000</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX569#006" guid="5d89ffa1411e466693eac0e266f81ddc">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Glass (optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Inorganic product produced by melting, which in principle solidifies without crystallization, intended for use in optical systems specified by its index of refraction, transmission of light, optical and material properties. Delineation to segment 22, 34 see note</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">Class ISOTC172-AAA010-001.017 (60.60 Released)</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFW994#006"/>
+          <hierarchical_position>43010100</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX996#011" guid="3d46ba2553834fa0924116f077df5c81">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Block Glass (glass, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Fine annealed glass blocks suitable for cold working with up to five unworked, as-cast surfaces, usually at least one surface is worked, described by length, width and thickness</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX569#006"/>
+          <hierarchical_position>43010101</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX997#011" guid="f70454181c16450e95eeba3939c6375a">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Ingot Glass (glass, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Either gross annealed or fine annealed strips with unworked surface and broken or cut ends</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX569#006"/>
+          <hierarchical_position>43010102</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX998#011" guid="ca49851e049f446b8a106afe0d4a6f7b">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Stripe (glass, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Quadrilateral fabricated parts, consisting of glass, all six sides are worked, the edges have protective bevels and they are usually described by length, width and thickness</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX569#006"/>
+          <hierarchical_position>43010103</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX999#011" guid="62f8bde1c7c1484382ceaaadc57f0229">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Glass Disc (glass, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">At all surface machined cylindrical parts, consisting of glass, for which the diameter is larger than the thickness, described by diameter and thickness</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX569#006"/>
+          <hierarchical_position>43010104</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY000#011" guid="91eb692f275848a6a2184cf63da6df79">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Blank (glass, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Pressed blank is a hot-formed part, consisting of glass, with mostly round cross section, with defined radii and bevels. Described by Diameter, center thickness, radius 1, radius 2, bevels</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX569#006"/>
+          <hierarchical_position>43010105</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY001#011" guid="3fbb1704498143a5ab8527ffe1dd7657">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Ball blank (glass, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Raw sphere made from optical glass with a diameter near by the double of the radius of the manufactured sphere lens</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX569#006"/>
+          <hierarchical_position>43010106</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY002#011" guid="0ca364412f6b4e3aa183b881fc46fbef">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Round rod (glass, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Raw round rod made from optical glass</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX569#006"/>
+          <hierarchical_position>43010107</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY059#011" guid="cf6706bba2ef473f95efe16dea2a3041">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Mineral progressive lens (eyeglass)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Eyeglasses are characterised by a gradient of increasing lens power of mineral material which realise a sharp seeing at the near and the distance</text>
+          </definition>
+          <source_doc_of_definition xsi:type="ontoml:IDENTIFIED_DOCUMENT_Type">
+            <document_identifier>
+              <label language_code="en" country_code="US">In Anlehnung an DIN 1259-2:2001-09</label>
+            </document_identifier>
+          </source_doc_of_definition>
+          <its_superclass class_ref="0173-1#01-AFX581#006"/>
+          <hierarchical_position>43020706</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY003#011" guid="90b44173d85245c3b69702f6285df424">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Glass (optical material, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX569#006"/>
+          <hierarchical_position>43010190</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX570#006" guid="a73e35c1d946470bbb5e21323e60af72">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Fused silica (optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Glass consisting of high-purity silica (SiO2) in amorphous (non-crystalline) form, with superior optical and physical properties for the use in the optical industry. Delineation to segment 22, 27 see note</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW994#006"/>
+          <hierarchical_position>43010200</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY004#011" guid="491a770ab6eb44bfb08e1800da795359">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Stripe (fused silica, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Quadrilateral fabricated parts, consisting of fused silica, all six sides are worked, the edges have protective bevels and they are usually described by length, width and thickness</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX570#006"/>
+          <hierarchical_position>43010201</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY005#011" guid="64536f962e0b4063978de9daff2165c6">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Glass Disc (fused silica, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">At all surfaces machined cylindrical part, consisting of fused silica, for which the diameter is larger than the thickness, described by diameter and thickness</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX570#006"/>
+          <hierarchical_position>43010202</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY006#011" guid="d861a12495874d15b049b3b124323f92">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Fused silica (optical material, unspecified)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Sub-group (4th level) for objects that cannot be classified into other specified sub-groups in the existing structure, but that are classified to their parent-class on the 3rd level</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX570#006"/>
+          <hierarchical_position>43010290</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFX571#006" guid="dd45cd3d39de48218bd56509a9ed5b2b">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Germanium (optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Germanium crystals for optical applications (high purity > 99,999%) crystalline germanium dioxide compound = optical mono- / polycrystal. Delineation to segment 38 see note</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFW994#006"/>
+          <hierarchical_position>43010300</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY007#011" guid="8079b2857f2247ccaecc8353da830557">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Stripe (Germanium, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">Quadrilateral fabricated parts, consisting of Germanium, all six sides are worked, the edges have protective bevels and they are usually described by length, width and thickness</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX571#006"/>
+          <hierarchical_position>43010301</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AFY008#011" guid="ab8f064113f34958af5e23cb2bda7e4e">
+          <date_of_original_definition>2014-11-30Z</date_of_original_definition>
+          <date_of_current_version>2025-10-24Z</date_of_current_version>
+          <date_of_current_revision>2025-10-24Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">Glass Disc (Germanium, optical material)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Non-Native">At all surfaces machined cylindrical part, consisting of Germanium, for which the diameter is larger than the thickness, described by diameter and thickness</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-AFX571#006"/>
+          <hierarchical_position>43010302</hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:ITEM_CLASS_CASE_OF_Type" id="0173-1---ASSET_1_1#01-AHY105#002" guid="ce4a2473022541c39a3aacbe4fe5ddcc">
+          <date_of_original_definition>2023-10-08Z</date_of_original_definition>
+          <date_of_current_version>2024-10-06Z</date_of_current_version>
+          <date_of_current_revision>2024-10-06Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US">Asset (empty)</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US">Asset (empty)</text>
+          </definition>
+          <its_superclass class_ref="0173-1---BASIC_1_1#01-AAA001#001"/>
+          <instance_sharable>true</instance_sharable>
+          <is_case_of>
+            <class class_ref="0173-1#01-AFZ207#010"/>
+            <class class_ref="0173-1#01-AFY072#011"/>
+            <class class_ref="0173-1#01-AFY073#011"/>
+            <class class_ref="0173-1#01-AFY074#011"/>
+            <class class_ref="0173-1#01-AFY075#011"/>
+            <class class_ref="0173-1#01-AGN024#007"/>
+            <class class_ref="0173-1#01-AGN026#007"/>
+            <class class_ref="0173-1#01-AFY043#011"/>
+            <class class_ref="0173-1#01-AFY037#011"/>
+            <class class_ref="0173-1#01-AFY056#011"/>
+            <class class_ref="0173-1#01-AFY025#011"/>
+            <class class_ref="0173-1#01-AFY038#011"/>
+            <class class_ref="0173-1#01-AFY039#011"/>
+            <class class_ref="0173-1#01-AFY040#011"/>
+            <class class_ref="0173-1#01-AFY041#011"/>
+            <class class_ref="0173-1#01-AFY055#011"/>
+            <class class_ref="0173-1#01-AFY042#011"/>
+            <class class_ref="0173-1#01-AFY044#011"/>
+            <class class_ref="0173-1#01-AFY045#011"/>
+            <class class_ref="0173-1#01-AFY046#011"/>
+            <class class_ref="0173-1#01-AFY047#011"/>
+            <class class_ref="0173-1#01-AFY016#011"/>
+            <class class_ref="0173-1#01-AFY017#011"/>
+            <class class_ref="0173-1#01-AFY018#011"/>
+            <class class_ref="0173-1#01-AFY052#011"/>
+            <class class_ref="0173-1#01-AFY054#011"/>
+            <class class_ref="0173-1#01-AFY058#011"/>
+            <class class_ref="0173-1#01-AFY049#011"/>
+            <class class_ref="0173-1#01-AFY019#011"/>
+            <class class_ref="0173-1#01-AFY020#011"/>
+            <class class_ref="0173-1#01-AFY021#011"/>
+            <class class_ref="0173-1#01-AFY022#011"/>
+            <class class_ref="0173-1#01-AFY023#011"/>
+            <class class_ref="0173-1#01-AFY024#011"/>
+            <class class_ref="0173-1#01-AFY026#011"/>
+            <class class_ref="0173-1#01-AFY027#011"/>
+            <class class_ref="0173-1#01-AFY061#011"/>
+            <class class_ref="0173-1#01-AFY069#011"/>
+            <class class_ref="0173-1#01-AFY076#011"/>
+            <class class_ref="0173-1#01-AFY077#011"/>
+            <class class_ref="0173-1#01-AFY078#011"/>
+            <class class_ref="0173-1#01-AGN029#007"/>
+            <class class_ref="0173-1#01-AGN031#007"/>
+            <class class_ref="0173-1#01-AFY079#011"/>
+            <class class_ref="0173-1#01-AFY080#011"/>
+            <class class_ref="0173-1#01-AFY081#011"/>
+            <class class_ref="0173-1#01-AFY082#011"/>
+            <class class_ref="0173-1#01-AFY083#011"/>
+            <class class_ref="0173-1#01-AGN033#007"/>
+            <class class_ref="0173-1#01-AGN035#007"/>
+            <class class_ref="0173-1#01-AFY084#011"/>
+            <class class_ref="0173-1#01-AFY085#011"/>
+            <class class_ref="0173-1#01-AFY086#011"/>
+            <class class_ref="0173-1#01-AFY087#011"/>
+            <class class_ref="0173-1#01-AFY088#011"/>
+            <class class_ref="0173-1#01-AFY089#011"/>
+            <class class_ref="0173-1#01-AGN037#007"/>
+            <class class_ref="0173-1#01-AGN039#007"/>
+            <class class_ref="0173-1#01-AFY090#011"/>
+            <class class_ref="0173-1#01-AGU664#007"/>
+            <class class_ref="0173-1#01-AFY028#011"/>
+            <class class_ref="0173-1#01-AFY029#011"/>
+            <class class_ref="0173-1#01-AFY030#011"/>
+            <class class_ref="0173-1#01-AFY031#011"/>
+            <class class_ref="0173-1#01-AFY032#011"/>
+            <class class_ref="0173-1#01-AFY033#011"/>
+            <class class_ref="0173-1#01-AFY034#011"/>
+            <class class_ref="0173-1#01-AFY035#011"/>
+            <class class_ref="0173-1#01-AFY036#011"/>
+            <class class_ref="0173-1#01-AFY057#011"/>
+            <class class_ref="0173-1#01-AFY059#011"/>
+            <class class_ref="0173-1#01-AFX996#011"/>
+            <class class_ref="0173-1#01-AFX997#011"/>
+            <class class_ref="0173-1#01-AFX998#011"/>
+            <class class_ref="0173-1#01-AFX999#011"/>
+            <class class_ref="0173-1#01-AFY000#011"/>
+            <class class_ref="0173-1#01-AFY001#011"/>
+            <class class_ref="0173-1#01-AFY002#011"/>
+            <class class_ref="0173-1#01-AFY003#011"/>
+            <class class_ref="0173-1#01-AFY004#011"/>
+            <class class_ref="0173-1#01-AFY005#011"/>
+            <class class_ref="0173-1#01-AFY006#011"/>
+            <class class_ref="0173-1#01-AFY007#011"/>
+            <class class_ref="0173-1#01-AFY008#011"/>
+            <class class_ref="0173-1#01-AFY009#011"/>
+            <class class_ref="0173-1#01-AFY010#011"/>
+            <class class_ref="0173-1#01-AFY011#011"/>
+            <class class_ref="0173-1#01-AFY012#011"/>
+            <class class_ref="0173-1#01-AFY013#011"/>
+            <class class_ref="0173-1#01-AFY014#011"/>
+            <class class_ref="0173-1#01-AFY015#011"/>
+            <class class_ref="0173-1#01-AGU660#007"/>
+            <class class_ref="0173-1#01-AFY062#011"/>
+            <class class_ref="0173-1#01-AFY063#011"/>
+            <class class_ref="0173-1#01-AFY064#011"/>
+            <class class_ref="0173-1#01-AFY065#011"/>
+            <class class_ref="0173-1#01-AFY066#011"/>
+            <class class_ref="0173-1#01-AFY067#011"/>
+            <class class_ref="0173-1#01-AFY068#011"/>
+            <class class_ref="0173-1#01-AGU662#007"/>
+            <class class_ref="0173-1#01-AFY048#011"/>
+            <class class_ref="0173-1#01-AFY050#011"/>
+            <class class_ref="0173-1#01-AFY051#011"/>
+            <class class_ref="0173-1#01-AFY053#011"/>
+            <class class_ref="0173-1#01-AFY060#011"/>
+            <class class_ref="0173-1#01-AGU661#007"/>
+            <class class_ref="0173-1#01-AFY070#011"/>
+            <class class_ref="0173-1#01-AFY071#011"/>
+            <class class_ref="0173-1#01-AGU663#007"/>
+          </is_case_of>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:CATEGORIZATION_CLASS_Type" id="0173-1#01-AAA002#001" guid="f708f5e2666157e628412aeb54dc547c">
+          <date_of_original_definition>2006-12-19Z</date_of_original_definition>
+          <date_of_current_version>2023-07-20Z</date_of_current_version>
+          <date_of_current_revision>2006-12-19Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">ECLASS</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Native">hierarchical dictionary of products, systems and services according to a logical structure and levels of detail corresponding to the specific properties of these products</text>
+          </definition>
+          <hierarchical_position></hierarchical_position>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:ITEM_CLASS_Type" id="0173-1---BASIC_1_1#01-AAA001#001" guid="e779b15189f7446cb1e436c827eba37f">
+          <date_of_original_definition>2024-04-18Z</date_of_original_definition>
+          <date_of_current_version>2024-04-18Z</date_of_current_version>
+          <date_of_current_revision>2024-04-18Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">ECLASS Application Classes</label>
+          </preferred_name>
+          <definition>
+            <text language_code="en" country_code="US" translation_quality_level="Native">representation of a type or family of product (device, equipment, software or service) which can be described by a generic set of properties</text>
+          </definition>
+          <its_superclass class_ref="0173-1#01-RAA001#001"/>
+          <instance_sharable>true</instance_sharable>
+        </ontoml:class>
+        <ontoml:class xsi:type="ontoml:ITEM_CLASS_Type" id="0173-1#01-RAA001#001" guid="fd29e8bb51a74c67919d512ea690c0d4">
+          <date_of_original_definition>2000-01-01Z</date_of_original_definition>
+          <date_of_current_version>2000-01-01Z</date_of_current_version>
+          <date_of_current_revision>2000-01-01Z</date_of_current_revision>
+          <revision>1</revision>
+          <status>66</status>
+          <source_language language_code="en" country_code="US"/>
+          <preferred_name>
+            <label language_code="en" country_code="US" translation_quality_level="Non-Native">ECLASS</label>
+          </preferred_name>
+          <definition>
+            <text>-</text>
+          </definition>
+        </ontoml:class>
+      </contained_classes>
+      <contained_suppliers>
+        <ontoml:supplier id="0173-1">
+          <revision>1</revision>
+          <org>
+            <id>0173-1</id>
+            <name>ECLASS</name>
+          </org>
+        </ontoml:supplier>
+      </contained_suppliers>
+    </dictionary>
+  </ontoml:ontoml>
+</dic:eclass_dictionary>

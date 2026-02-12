@@ -1,0 +1,8 @@
+# Python Cache
+*.pyc 
+find . -name "*.pyc" -exec git rm -f "{}" \;
+
+# Zone Identifier 
+*:Zone.Identifier
+find . -name "*:Zone.Identifier" -exec git rm -f "{}" \;
+
