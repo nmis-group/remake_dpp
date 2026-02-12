@@ -6,7 +6,7 @@ A modular Python package that enables manufacturing companies to create interope
 ## Package Layout
 
 ```text
-nmis_dpp_test/
+remake_dpp/
 ├── nmis_dpp/
 │   ├── mappers/
 │   │   ├── __init__.py

@@ -7,7 +7,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "nmis_dpp_test"  # Your package name on PyPI
+name = "remake_dpp"  # Your package name on PyPI
 version = "0.1.0"      # Update with each release
 description = "A modular Python package for Digital Product Passport modeling with identity, structure, lifecycle, risk, sustainability, provenance layers, and universal part classes."
 authors = [
