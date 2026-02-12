@@ -1,9 +1,16 @@
 {
+    "$schema": "https://mintlify.com/docs.json",
     "name": "DPP Bridge (nmis_dpp)",
     "theme": "sequoia",
     "logo": {
         "light": "/logo-light.png",
         "dark": "/logo-dark.png"
+    },
+    "colors": {
+        "primary": "#007bff",
+        "background": "#f8f9fa",
+        "text": "#212529",
+        "border": "#dee2e6"
     },
     "navigation": [
         {
