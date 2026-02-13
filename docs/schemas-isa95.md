@@ -1,7 +1,3 @@
-
-### `docs/schemas-isa95.md`
-
-```md
 ---
 title: ISA‑95 / B2MML Mapping
 description: How ISA‑95 equipment and material concepts map into GAS

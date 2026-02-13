@@ -1,7 +1,3 @@
-
-### `docs/api-model.md`
-
-```md
 ---
 title: Models & Part Classes
 description: Python dataclasses for GAS layers and parts

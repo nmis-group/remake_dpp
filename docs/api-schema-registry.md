@@ -1,7 +1,3 @@
-
-### `docs/api-schema-registry.md`
-
-```md
 ---
 title: Schema Registry & Mappers
 description: Registering and using schema mappers to export DPPs

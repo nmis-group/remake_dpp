@@ -1,7 +1,3 @@
-
-### `docs/usage-python.md`
-
-```md
 ---
 title: Python Usage Examples
 description: End-to-end mapping flows using nmis_dpp

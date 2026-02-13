@@ -1,7 +1,3 @@
-
-### `docs/concepts-gas.md`
-
-```md
 ---
 title: GAS – General Architectural Schema
 description: Internal canonical model for Digital Product Passports
