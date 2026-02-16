@@ -1,65 +1,44 @@
 {
-    "name": "NMIS REMAKE DPP",
+    "$schema": "https://mintlify.com/docs.json",
+    "name": "DPP Bridge (nmis_dpp)",
+    "theme": "sequoia",
+    "colors": {
+        "primary": "#16a34a"
+    },
     "logo": {
         "light": "/logo-light.png",
         "dark": "/logo-dark.png"
     },
-    "navigation": [
-        {
-            "group": "Overview",
-            "pages": [
-                {
-                    "name": "Introduction",
-                    "href": "/intro"
-                },
-                {
-                    "name": "Product Vision & PRD",
-                    "href": "/prd"
-                }
-            ]
-        },
-        {
-            "group": "Getting Started",
-            "pages": [
-                {
-                    "name": "Installation",
-                    "href": "/installation"
-                },
-                {
-                    "name": "Quickstart & Usage",
-                    "href": "/quickstart"
-                }
-            ]
-        },
-        {
-            "group": "Architecture",
-            "pages": [
-                {
-                    "name": "Package Layout",
-                    "href": "/layout"
-                },
-                {
-                    "name": "GAS & Schema Registry",
-                    "href": "/gas-schema-registry"
-                }
-            ]
-        },
-        {
-            "group": "Reference",
-            "pages": [
-                {
-                    "name": "Models & Part Classes",
-                    "href": "/models"
-                },
-                {
-                    "name": "Mappers (ECLASS & ISA-95)",
-                    "href": "/mappers"
-                },
-                {
-                    "name": "Testing & CI",
-                    "href": "/testing"
-                }
-            ]
-        }
-    ]
+    "navigation": {
+        "groups": [
+            {
+                "group": "Getting Started",
+                "pages": [
+                    "intro",
+                    "quickstart"
+                ]
+            },
+            {
+                "group": "Core Concepts",
+                "pages": [
+                    "concepts-gas",
+                    "schemas-eclass",
+                    "schemas-isa95"
+                ]
+            },
+            {
+                "group": "Python API",
+                "pages": [
+                    "api-model",
+                    "api-schema-registry"
+                ]
+            },
+            {
+                "group": "Usage",
+                "pages": [
+                    "usage-python"
+                ]
+            }
+        ]
+    }
 }
