@@ -1,0 +1,2 @@
+[console_scripts]
+remake_dpp = nmis_dpp.cli:main
