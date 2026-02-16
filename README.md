@@ -7,6 +7,17 @@
 ![Repo Size](https://img.shields.io/github/repo-size/nmis-group/remake_dpp.svg?label=Repo%20size&style=flat-square)
 ![Contributors](https://img.shields.io/github/contributors/nmis-group/remake_dpp.svg?style=flat&label=Contributors&maxAge=86400)
 
+## Contents
+
+- [Description](#description)
+- [Package Layout](#package-layout)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage Example](#usage-example)
+
+---
+## Description
+
 A modular Python package that enables manufacturing companies to create interoperable Digital Product Passports (DPPs) by mapping their existing business data to standardized DPP data models using automated semantic matching and intuitive configuration tools.
 
 ---
@@ -14,6 +25,16 @@ A modular Python package that enables manufacturing companies to create interope
 
 ```text
 remake_dpp/
+├── docs/
+│   ├── api-model.md
+│   ├── api-schema-registry.md
+│   ├── concepts-gas.md
+│   ├── docs.json
+│   ├── intro.md
+│   ├── quickstart.md
+│   ├── schemas-eclass.md
+│   ├── schemas-isa95.md
+│   └── usage-python.md
 ├── nmis_dpp/
 │   ├── mappers/
 │   │   ├── __init__.py
@@ -51,29 +72,34 @@ remake_dpp/
 │   │   │   │   └── BatchML-GeneralRecipeExtensions.xsd
 │   │   │   └── README.md
 │   │   └── README.md 
-│   ├── __init__.py 
-│   ├── eclass_build_mapping.py # ECLASS build mapping 
-│   ├── isa95_build_mapping.py # ISA95 build mapping 
-│   ├── model.py         # Core models for DPP layers 
-│   ├── part_class.py    # Universal part class set 
-│   ├── schema_base.py   # Base schema for DPP layers 
-│   ├── schema_registry.py # Schema registry 
-│   └── utils.py         # Any helper functions 
+│   ├── __init__.py                     # Package initialization 
+│   ├── cli.py                          # Command line interface 
+│   ├── eclass_build_mapping.py         # ECLASS build mapping 
+│   ├── isa95_build_mapping.py          # ISA95 build mapping 
+│   ├── model.py                        # Core models for DPP layers 
+│   ├── part_class.py                   # Universal part class set 
+│   ├── schema_base.py                  # Base schema for DPP layers 
+│   ├── schema_registry.py              # Schema registry 
+│   └── utils.py                        # Any helper functions 
 ├── tests/ 
-│   ├── test_mappers.py
-│   ├── test_model.py 
-│   ├── test_part_class.py
-│   ├── test_registry_extended.py
-│   ├── test_schema_registry.py 
-│   └── test_schema_registry_second.py 
-├── .gitignore
-├── eclass_part_class_mapping.yaml
-├── isa95_part_class_mapping.yaml
-├── LICENSE.txt
-├── PRD_DPP.md 
-├── pyproject.toml  
-├── README.md
-└── usage.py
+│   ├── test_mappers.py                 # Test mappers 
+│   ├── test_model.py                   # Test models 
+│   ├── test_part_class.py              # Test part classes 
+│   ├── test_registry_extended.py       # Test registry extended 
+│   ├── test_schema_registry.py         # Test schema registry 
+│   └── test_schema_registry_second.py  # Test schema registry second 
+├── .gitignore                          # Git ignore 
+├── .gitattributes                      # Git attributes
+├── coffee_machine.json                 # Coffee machine DPP 
+├── eclass_part_class_mapping.yaml      # ECLASS part class mapping
+├── generate_dpp_json.py                # Generate Coffee Machine DPP JSON 
+├── isa95_part_class_mapping.yaml       # ISA95 part class mapping 
+├── LICENSE.txt                         # License 
+├── package.json                        # Package configuration 
+├── PRD_DPP.md                          # Product requirements document 
+├── pyproject.toml                      # Project configuration 
+├── README.md                           # README 
+└── usage.py                            # Usage example
 ```
 ---
 

@@ -19,11 +19,11 @@ requires-python = ">=3.7"
 
 # If you want users to easily run your command-line scripts, you may add optional entry-points here.
 # Example (remove # to use):
-# [project.scripts]
-# dpp-cli = "dpp_passport.cli:main"
+[project.scripts]
+dpp-cli = "nmis_dpp.cli:main"
 
 # Optional: List required dependencies (add if needed)
-# dependencies = ["dataclasses; python_version<'3.7'"]
+dependencies = ["PyYAML"]
 
 
 [tool.setuptools]
