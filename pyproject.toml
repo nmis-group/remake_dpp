@@ -19,8 +19,7 @@ requires-python = ">=3.7"
 
 # Optional: List required dependencies (add if needed)
 dependencies = [
-    "PyYAML", 
-    "mintlify"
+    "PyYAML"
     ]
 
 
