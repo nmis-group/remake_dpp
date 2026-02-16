@@ -1,5 +1,12 @@
 # Digital Product Passport
 
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+![Stars](https://img.shields.io/github/stars/nmis-group/remake_dpp.svg?style=flat&label=Star&maxAge=86400)
+[![GitHub open issues](https://img.shields.io/github/issues-raw/nmis-group/remake_dpp.svg)](https://github.com/nmis-group/remake_dpp/issues)
+[![GitHub open pull requests](https://img.shields.io/github/issues-pr-raw/nmis-group/remake_dpp.svg)](https://github.com/nmis-group/remake_dpp/pulls)
+![Repo Size](https://img.shields.io/github/repo-size/nmis-group/remake_dpp.svg?label=Repo%20size&style=flat-square)
+![Contributors](https://img.shields.io/github/contributors/nmis-group/remake_dpp.svg?style=flat&label=Contributors&maxAge=86400)
+
 A modular Python package that enables manufacturing companies to create interoperable Digital Product Passports (DPPs) by mapping their existing business data to standardized DPP data models using automated semantic matching and intuitive configuration tools.
 
 ---
