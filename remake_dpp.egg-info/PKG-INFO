@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: remake_dpp
-Version: 0.2.1
+Version: 0.2.2
 Summary: A modular Python package for Digital Product Passport modeling with identity, structure, lifecycle, risk, sustainability, provenance layers, and universal part classes.
 Author-email: Anmol Kumar <anmol.kumar@starth.ac.uk>
 License: MIT License
