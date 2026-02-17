@@ -111,16 +111,21 @@ remake_dpp/
 
 ## Installation
 ### From PyPI
+
 ```shell
-pip install nmis_dpp_test
+pip install remake_dpp
 ```
+![Pip Install](assets/pip_install_remake.gif)
+
+
 ### From Source
+
 ```shell
-git clone https://github.com/nmis-group/nmis_dpp_test.git
-cd nmis_dpp_test  
+git clone git@github.com:nmis-group/remake_dpp.git
+cd remake_dpp  
 pip install .
 ```  
-
+![Git Clone](assets/git_clone_remake.gif)
 
 ---
 
@@ -128,7 +133,7 @@ pip install .
 
 We have created a simple python file to showcase the usage.
 ```shell
-cd nmis_dpp_test
+cd remake_dpp
 
 # 1. Generate a sample DPP JSON file (using helper script or usage_test logic)
 python generate_dpp_json.py
