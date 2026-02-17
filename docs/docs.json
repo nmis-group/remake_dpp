@@ -6,8 +6,8 @@
         "primary": "#16a34a"
     },
     "logo": {
-        "light": "/logo-light.png",
-        "dark": "/logo-dark.png"
+        "light": "assets/logo-light.png",
+        "dark": "assets/logo-dark.png"
     },
     "navigation": {
         "groups": [
