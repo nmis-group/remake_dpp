@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "remake_dpp"  # Your package name on PyPI
-version = "0.2.2"      # Update with each release
+version = "0.2.3"      # Update with each release
 description = "A modular Python package for Digital Product Passport modeling with identity, structure, lifecycle, risk, sustainability, provenance layers, and universal part classes."
 authors = [
     { name = "Anmol Kumar", email = "anmol.kumar@starth.ac.uk" }
