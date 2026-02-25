@@ -66,3 +66,13 @@ print(mapped["@context"])
 ```
 See tests in `tests/test_mappers.py` and `tests/test_registry_extended.py`
 for more patterns.
+
+## Create a basic Digital Product Passport - Run the example
+
+For a quick demonstration of the DPP Bridge, you can use the example coffee machine DPP:
+
+```bash
+python3 usage.py coffee_machine.json ECLASS
+# python usage.py coffee_machine.json ISA-95
+
+```

@@ -20,14 +20,14 @@ Core design ideas:
 
 - **GAS as hidden canonical model**: implemented in `nmis_dpp.model` and
   `nmis_dpp.part_class`, spanning identity, structure, lifecycle, risk,
-  sustainability, and provenance.[cite:20]
+  sustainability, and provenance.
 - **Ontology‑aware mapping**: build mappings from ECLASS 16 XML and ISA‑95 XSDs
   using the helper scripts:
   - `nmis_dpp/eclass_build_mapping.py`
   - `nmis_dpp/isa95_build_mapping.py`
 - **Schema registry & plug‑in mappers**: `nmis_dpp.schema_registry.SchemaRegistry`
   manages schema mappers like `ECLASSMapper` and `ISA95Mapper` in
-  `nmis_dpp/mappers/`, so new schemas can be added without changing GAS.[cite:24]
+  `nmis_dpp/mappers/`, so new schemas can be added without changing GAS.
 
 Use this documentation to:
 
