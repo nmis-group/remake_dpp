@@ -10,17 +10,41 @@
 ## Contents
 
 - [Description](#description)
+- [Installation](#installation)
 - [Package Layout](#package-layout)
 - [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage Example](#usage-example)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
+
 ## Description
 
 A modular Python package that enables manufacturing companies to create interoperable Digital Product Passports (DPPs) by mapping their existing business data to standardized DPP data models using automated semantic matching and intuitive configuration tools.
 
 ---
+
+## Installation
+### From PyPI
+
+```shell
+pip install remake_dpp
+```
+![Pip Install](assets/pip_install_remake.gif)
+
+
+### From Source
+
+```shell
+git clone git@github.com:nmis-group/remake_dpp.git
+cd remake_dpp  
+pip install .
+```  
+![Git Clone](assets/git_clone_remake.gif)
+
+---
+
 ## Package Layout
 
 ```text
@@ -106,49 +130,25 @@ remake_dpp/
 ## Requirements
 - Python 3.7+
 - No external dependencies (uses Python dataclasses and standard library)
+- `pyproject.toml` - for package configuration
 
 ---
 
-## Installation
-### From PyPI
+## Documentation
+
+The documentation can be loaded by navigating to the [docs/](docs/) directory after cloning the repository and running the command:
 
 ```shell
-pip install remake_dpp
-```
-![Pip Install](assets/pip_install_remake.gif)
-
-
-### From Source
-
-```shell
-git clone git@github.com:nmis-group/remake_dpp.git
-cd remake_dpp  
-pip install .
-```  
-![Git Clone](assets/git_clone_remake.gif)
-
----
-
-## Usage Example
-
-We have created a simple python file to showcase the usage.
-```shell
-cd remake_dpp
-
-# 1. Generate a sample DPP JSON file (using helper script or usage_test logic)
-python generate_dpp_json.py
-
-# 2. Run the main usage script with input file and target schema
-python usage.py coffee_machine.json ECLASS
-# python usage.py coffee_machine.json ISA-95
+mint dev
 ```
 
+This will start a local web server and open the documentation in your browser.
+
 ---
 
-## Quick Start Steps
-1. Install with `pip` or from source.
-2. Import model layers and part classes.
-3. Create instances and assemble your passport.
+## Contributing
+
+Refer to [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
 
 ---
 
