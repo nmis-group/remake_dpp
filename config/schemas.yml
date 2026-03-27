@@ -1,0 +1,45 @@
+schemas:
+  battery_dpp:
+    canonical_name: "Battery DPP JSON-LD"
+    aliases: ["battery_dpp", "battery"]
+    sectors: ["battery"]
+    dpp_types: ["Battery DPP"]
+    eu_verified: true
+    industry_accepted: true
+    description: "An EU-compliant Battery Passport schema designed to meet the February 2027 regulatory deadline for battery products."
+
+  textile_dpp:
+    canonical_name: "Textile DPP JSON-LD"
+    aliases: ["textile_dpp", "textile"]
+    sectors: ["textiles"]
+    dpp_types: ["Textile DPP"]
+    eu_verified: true
+    industry_accepted: true
+    description: "An EU-compliant Textile Passport schema designed for the 2027-2028 regulations."
+
+  generic_dpp:
+    canonical_name: "Generic DPP JSON-LD"
+    aliases: ["generic_dpp", "generic", "espr"]
+    sectors: ["generic", "machinery"]
+    dpp_types: ["Generic DPP"]
+    eu_verified: true
+    industry_accepted: true
+    description: "ESPR Generic DPP for cross-domain products, rolling out 2027-2030."
+
+  eclass16:
+    canonical_name: "ECLASS 16 XML"
+    aliases: ["eclass", "eclass16"]
+    sectors: ["generic", "machinery"]
+    dpp_types: ["Target Schema", "Product Sheet"]
+    eu_verified: false
+    industry_accepted: true
+    description: "ECLASS 16 dictionary-based representation, used for parts catalogs and machinery descriptions."
+
+  isa95:
+    canonical_name: "ISA-95 B2MML"
+    aliases: ["isa95", "b2mml"]
+    sectors: ["manufacturing", "machinery"]
+    dpp_types: ["Work Order", "Manufacturing Event"]
+    eu_verified: false
+    industry_accepted: true
+    description: "ISA-95 compliant structures for operational artifacts like work definitions or reverse-flow circular economy repairs."
