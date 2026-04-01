@@ -80,6 +80,9 @@ class SchemaRegistry:
         # Canonical schema name -> loaded config
         self._configs: Dict[str, Dict[str, Any]] = {}
 
+        # Schema catalog configuration
+        self._catalog: Optional[Dict[str, Any]] = None
+
         logger.info(f"SchemaRegistry initialized with config_dir={self.config_dir}")
 
     # -------------------------------------------------------------------------
@@ -140,6 +143,33 @@ class SchemaRegistry:
             for alias in aliases:
                 self._aliases[alias] = canonical_name
                 logger.debug(f"Alias (lazy) registered: {alias} -> {canonical_name}")
+
+    def load_schema_catalog(self) -> Dict[str, Any]:
+        """
+        Loads and caches the schema catalog defined in config/schemas.yml.
+        Assuming the configuration file is at the root directory of the project.
+        """
+        if self._catalog is not None:
+            return self._catalog
+
+        project_root = Path(__file__).parent.parent
+        catalog_path = project_root / "config" / "schemas.yml"
+
+        if not catalog_path.exists():
+            logger.warning(f"Schema catalog not found at {catalog_path}")
+            self._catalog = {}
+            return self._catalog
+
+        try:
+            with catalog_path.open("r", encoding="utf-8") as f:
+                data = yaml.safe_load(f) or {}
+                self._catalog = data.get("schemas", {})
+                logger.debug(f"Loaded schema catalog from {catalog_path}")
+        except Exception as exc:
+            logger.error(f"Failed to load schema catalog from {catalog_path}: {exc}")
+            self._catalog = {}
+
+        return self._catalog
 
     # -------------------------------------------------------------------------
     # Lookup helpers
