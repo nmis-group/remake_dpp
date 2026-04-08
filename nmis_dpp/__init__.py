@@ -17,6 +17,13 @@ from .part_class import (
 )
 from .utils import to_dict, to_json, validate_part_class
 
+# Input adapters
+from .adapters import (
+    build_dpp_from_eclass,
+    build_dpp_from_isa95,
+    build_dpp_from_csv,
+)
+
 # Import registry and default registration
 from .schema_registry import (
     SchemaRegistry, get_global_registry, register_default_mappers
@@ -43,5 +50,7 @@ __all__ = [
     # Registry
     "SchemaRegistry", "get_global_registry", "register_default_mappers",
     # Build mappings
-    "eclass_build_mapping", "isa95_build_mapping"
+    "eclass_build_mapping", "isa95_build_mapping",
+    # Input adapters
+    "build_dpp_from_eclass", "build_dpp_from_isa95", "build_dpp_from_csv",
 ]
