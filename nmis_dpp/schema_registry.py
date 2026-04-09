@@ -395,4 +395,11 @@ def register_default_mappers() -> None:
         aliases=["ISA95", "isa95", "IEC62264"],
     )
 
+    registry.register_lazy(
+        canonical_name="BatteryDPP",
+        module_path="nmis_dpp.mappers.battery_dpp_mapper",
+        class_name="BatteryDPPMapper",
+        aliases=["battery", "battery_dpp", "EU-battery"],
+    )
+
     logger.info("Default mappers registered in global SchemaRegistry")
