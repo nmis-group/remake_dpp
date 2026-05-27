@@ -2,6 +2,8 @@ LICENSE.txt
 README.md
 pyproject.toml
 nmis_dpp/__init__.py
+nmis_dpp/adapters.py
+nmis_dpp/api.py
 nmis_dpp/cli.py
 nmis_dpp/eclass_build_mapping.py
 nmis_dpp/isa95_build_mapping.py
@@ -16,6 +18,8 @@ remake_dpp.egg-info/dependency_links.txt
 remake_dpp.egg-info/entry_points.txt
 remake_dpp.egg-info/requires.txt
 remake_dpp.egg-info/top_level.txt
+tests/test_api.py
+tests/test_battery_dpp_mapper.py
 tests/test_mappers.py
 tests/test_model.py
 tests/test_part_class.py
