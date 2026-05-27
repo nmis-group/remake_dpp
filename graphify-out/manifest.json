@@ -1,0 +1,287 @@
+{
+  "/home/akumar/remake_dpp/usage.py": {
+    "mtime": 1771354389.2420585,
+    "ast_hash": "7ff79a92f93c372ccc956306346d7a76",
+    "semantic_hash": "7ff79a92f93c372ccc956306346d7a76"
+  },
+  "/home/akumar/remake_dpp/coffee_machine.json": {
+    "mtime": 1771354388.8380587,
+    "ast_hash": "7e5d2b814da06d36c85e5ceb4e2ec309",
+    "semantic_hash": "7e5d2b814da06d36c85e5ceb4e2ec309"
+  },
+  "/home/akumar/remake_dpp/package.json": {
+    "mtime": 1771354389.2420585,
+    "ast_hash": "49d2bc8b7347f40695d5d685df951858",
+    "semantic_hash": "49d2bc8b7347f40695d5d685df951858"
+  },
+  "/home/akumar/remake_dpp/generate_dpp_json.py": {
+    "mtime": 1771354388.8460588,
+    "ast_hash": "84854ef20549c7a046e800e8a3fba688",
+    "semantic_hash": "84854ef20549c7a046e800e8a3fba688"
+  },
+  "/home/akumar/remake_dpp/docs/docs.json": {
+    "mtime": 1771356697.3273082,
+    "ast_hash": "e32ca6d05c28c8202cd467ce2d893232",
+    "semantic_hash": "e32ca6d05c28c8202cd467ce2d893232"
+  },
+  "/home/akumar/remake_dpp/.claude/settings.local.json": {
+    "mtime": 1779116179.85985,
+    "ast_hash": "29f512bd650548d78e9b9865197814aa",
+    "semantic_hash": "29f512bd650548d78e9b9865197814aa"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/api.py": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "734f39381b35d7984903fd236d471b67",
+    "semantic_hash": "734f39381b35d7984903fd236d471b67"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/schema_base.py": {
+    "mtime": 1771354389.2420585,
+    "ast_hash": "68ba7ce9a907b104bf19a8bd94149130",
+    "semantic_hash": "68ba7ce9a907b104bf19a8bd94149130"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/adapters.py": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "a1b1f8beb5ce848d137261d1a5008862",
+    "semantic_hash": "a1b1f8beb5ce848d137261d1a5008862"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/utils.py": {
+    "mtime": 1771354389.2420585,
+    "ast_hash": "42a6ae3496b391ad98ddfb2aecfe2bc2",
+    "semantic_hash": "42a6ae3496b391ad98ddfb2aecfe2bc2"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/eclass_build_mapping.py": {
+    "mtime": 1771354388.8460588,
+    "ast_hash": "9c34d401a2d22f3cfddedbbe321c7785",
+    "semantic_hash": "9c34d401a2d22f3cfddedbbe321c7785"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/model.py": {
+    "mtime": 1771354388.8460588,
+    "ast_hash": "3ee792d58047706b54556242ecac3f32",
+    "semantic_hash": "3ee792d58047706b54556242ecac3f32"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/schema_registry.py": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "75b2b12dfd0d91d2dbed6042542cd5d5",
+    "semantic_hash": "75b2b12dfd0d91d2dbed6042542cd5d5"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/part_class.py": {
+    "mtime": 1771354389.2420585,
+    "ast_hash": "75461fba7ac2b36fed6df9150c1c96cf",
+    "semantic_hash": "75461fba7ac2b36fed6df9150c1c96cf"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/__init__.py": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "22bf530661ebe70b66503a0d64a40fdb",
+    "semantic_hash": "22bf530661ebe70b66503a0d64a40fdb"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/isa95_build_mapping.py": {
+    "mtime": 1771354388.8460588,
+    "ast_hash": "3a59df9ed62bec41256b7ec69f6074e6",
+    "semantic_hash": "3a59df9ed62bec41256b7ec69f6074e6"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/cli.py": {
+    "mtime": 1771354388.8460588,
+    "ast_hash": "e30cde3ab352d647ce7b4438e0118e14",
+    "semantic_hash": "e30cde3ab352d647ce7b4438e0118e14"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/ontology_data/isa95/Schema/AllSchemas.json": {
+    "mtime": 1771354389.2380586,
+    "ast_hash": "49f4aab863fae790122a4e04de3bdfa4",
+    "semantic_hash": "49f4aab863fae790122a4e04de3bdfa4"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/mappers/isa95_mapper.py": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "0e710f8ac4e03f7c2cc65634fee3c2f9",
+    "semantic_hash": "0e710f8ac4e03f7c2cc65634fee3c2f9"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/mappers/__init__.py": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "6f06579da7267f4dea13e0ade12551dc",
+    "semantic_hash": "6f06579da7267f4dea13e0ade12551dc"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/mappers/eclass_mapper.py": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "5a5367a5de7e83df49437b8b007fa95f",
+    "semantic_hash": "5a5367a5de7e83df49437b8b007fa95f"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/mappers/battery_dpp_mapper.py": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "633eecc1e2de7bd0834cf2e53754c52a",
+    "semantic_hash": "633eecc1e2de7bd0834cf2e53754c52a"
+  },
+  "/home/akumar/remake_dpp/tests/test_schema_registry.py": {
+    "mtime": 1771354389.2420585,
+    "ast_hash": "8c188e87cc7988a279c65ccf982d4ffe",
+    "semantic_hash": "8c188e87cc7988a279c65ccf982d4ffe"
+  },
+  "/home/akumar/remake_dpp/tests/test_model.py": {
+    "mtime": 1771354389.2420585,
+    "ast_hash": "b203aff83ff56762be747f6ca42da599",
+    "semantic_hash": "b203aff83ff56762be747f6ca42da599"
+  },
+  "/home/akumar/remake_dpp/tests/test_mappers.py": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "e70531a5a5891416da2b2f6a53d22c44",
+    "semantic_hash": "e70531a5a5891416da2b2f6a53d22c44"
+  },
+  "/home/akumar/remake_dpp/tests/test_api.py": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "1441feeb353b89b95a0fbbe73ce1ed56",
+    "semantic_hash": "1441feeb353b89b95a0fbbe73ce1ed56"
+  },
+  "/home/akumar/remake_dpp/tests/test_schema_registry_second.py": {
+    "mtime": 1771354389.2420585,
+    "ast_hash": "52d27430e2fc86d4566dc8355174cec0",
+    "semantic_hash": "52d27430e2fc86d4566dc8355174cec0"
+  },
+  "/home/akumar/remake_dpp/tests/test_part_class.py": {
+    "mtime": 1771354389.2420585,
+    "ast_hash": "e80ec4703f6fe5b588ddafb04f72143d",
+    "semantic_hash": "e80ec4703f6fe5b588ddafb04f72143d"
+  },
+  "/home/akumar/remake_dpp/tests/test_battery_dpp_mapper.py": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "4616a4307a8324d7566302465d0d6d57",
+    "semantic_hash": "4616a4307a8324d7566302465d0d6d57"
+  },
+  "/home/akumar/remake_dpp/tests/test_registry_extended.py": {
+    "mtime": 1771354389.2420585,
+    "ast_hash": "86da2e23ee1dc4f5ca8d1f14d4e3c719",
+    "semantic_hash": "86da2e23ee1dc4f5ca8d1f14d4e3c719"
+  },
+  "/home/akumar/remake_dpp/CONTRIBUTING.md": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "6b330222544d39ad80b4c758f05c81e8",
+    "semantic_hash": "6b330222544d39ad80b4c758f05c81e8"
+  },
+  "/home/akumar/remake_dpp/PRD_DPP.md": {
+    "mtime": 1771354388.8180587,
+    "ast_hash": "1d9f2862c2e755a8225b7da02e6948ea",
+    "semantic_hash": "1d9f2862c2e755a8225b7da02e6948ea"
+  },
+  "/home/akumar/remake_dpp/isa95_part_class_mapping.yaml": {
+    "mtime": 1771354388.8460588,
+    "ast_hash": "5fec7a807791bbe252a6dfb31e5f9c42",
+    "semantic_hash": "5fec7a807791bbe252a6dfb31e5f9c42"
+  },
+  "/home/akumar/remake_dpp/README.md": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "f6bd301ba5a9042466a4ed120daee422",
+    "semantic_hash": "f6bd301ba5a9042466a4ed120daee422"
+  },
+  "/home/akumar/remake_dpp/eclass_part_class_mapping.yaml": {
+    "mtime": 1771354388.8460588,
+    "ast_hash": "c73dbb20adaf1e4907aedcdc879cddc3",
+    "semantic_hash": "c73dbb20adaf1e4907aedcdc879cddc3"
+  },
+  "/home/akumar/remake_dpp/LICENSE.txt": {
+    "mtime": 1771354388.8180587,
+    "ast_hash": "384f290255c79f08d820b11c5e6d9c93",
+    "semantic_hash": "384f290255c79f08d820b11c5e6d9c93"
+  },
+  "/home/akumar/remake_dpp/docs/concepts-gas.md": {
+    "mtime": 1771354388.8380587,
+    "ast_hash": "655f5793aa9e7112267c3c3d545b469f",
+    "semantic_hash": "655f5793aa9e7112267c3c3d545b469f"
+  },
+  "/home/akumar/remake_dpp/docs/quickstart.md": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "78f76de3be87a2d0b64b63f492dcf426",
+    "semantic_hash": "78f76de3be87a2d0b64b63f492dcf426"
+  },
+  "/home/akumar/remake_dpp/docs/usage-python.md": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "f546998dd6c937017481f099f7483e1c",
+    "semantic_hash": "f546998dd6c937017481f099f7483e1c"
+  },
+  "/home/akumar/remake_dpp/docs/intro.md": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "df98e05ea64c1384e2cf3575e510a0e2",
+    "semantic_hash": "df98e05ea64c1384e2cf3575e510a0e2"
+  },
+  "/home/akumar/remake_dpp/docs/api-model.md": {
+    "mtime": 1771354388.8380587,
+    "ast_hash": "9c713fb70a6d40ba06cc68abea64c2aa",
+    "semantic_hash": "9c713fb70a6d40ba06cc68abea64c2aa"
+  },
+  "/home/akumar/remake_dpp/docs/schemas-isa95.md": {
+    "mtime": 1771354388.8380587,
+    "ast_hash": "0111326b57e0fd92d2db97cc92a8cbce",
+    "semantic_hash": "0111326b57e0fd92d2db97cc92a8cbce"
+  },
+  "/home/akumar/remake_dpp/docs/api-schema-registry.md": {
+    "mtime": 1771354388.8380587,
+    "ast_hash": "d833f7b23df1563ebba894233e4c261d",
+    "semantic_hash": "d833f7b23df1563ebba894233e4c261d"
+  },
+  "/home/akumar/remake_dpp/docs/schemas-eclass.md": {
+    "mtime": 1771354388.8380587,
+    "ast_hash": "27927cc0f24aa6c0b081e010fc624f1b",
+    "semantic_hash": "27927cc0f24aa6c0b081e010fc624f1b"
+  },
+  "/home/akumar/remake_dpp/config/schemas.yml": {
+    "mtime": 1779116114.1758702,
+    "ast_hash": "926351007796fbe2262fb8d4a4465562",
+    "semantic_hash": "926351007796fbe2262fb8d4a4465562"
+  },
+  "/home/akumar/remake_dpp/.github/workflows/publish.yml": {
+    "mtime": 1771354388.8180587,
+    "ast_hash": "8078a7095ee230d447fb777baa27687c",
+    "semantic_hash": "8078a7095ee230d447fb777baa27687c"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/ontology_data/README.md": {
+    "mtime": 1771354388.8460588,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/ontology_data/isa95/README.md": {
+    "mtime": 1771354389.2340586,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/ontology_data/isa95/Examples/Readme.txt": {
+    "mtime": 1771354389.2300587,
+    "ast_hash": "bf9cf16c4a61f610834697230eb689a4",
+    "semantic_hash": "bf9cf16c4a61f610834697230eb689a4"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/ontology_data/eclass_16/ECLASS_ASSET_XML_Read_Me_EN_v1.pdf": {
+    "mtime": 1771354388.8460588,
+    "ast_hash": "c2f7eedc6f842488810a79e382ed2ea6",
+    "semantic_hash": "c2f7eedc6f842488810a79e382ed2ea6"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/ontology_data/isa95/Examples/ReportAboutUseOfB2MMLinARTISAN.pdf": {
+    "mtime": 1771354389.2340586,
+    "ast_hash": "b8746f4d4f85bc5ec2a40f9667361af8",
+    "semantic_hash": "b8746f4d4f85bc5ec2a40f9667361af8"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/ontology_data/isa95/Documentation/B2MML-JSON-Documentation.pdf": {
+    "mtime": 1771354389.2180586,
+    "ast_hash": "e010e7c95d1ecff9e8193017aa5dc49e",
+    "semantic_hash": "e010e7c95d1ecff9e8193017aa5dc49e"
+  },
+  "/home/akumar/remake_dpp/nmis_dpp/ontology_data/isa95/Documentation/B2MML-Documentation.pdf": {
+    "mtime": 1771354389.2140586,
+    "ast_hash": "1af172489b1f2a73033dc1ff0c201def",
+    "semantic_hash": "1af172489b1f2a73033dc1ff0c201def"
+  },
+  "/home/akumar/remake_dpp/docs/assets/logo-light.png": {
+    "mtime": 1771356697.3273082,
+    "ast_hash": "1eb5ac094134a26cdcbdd8bf51a94616",
+    "semantic_hash": "1eb5ac094134a26cdcbdd8bf51a94616"
+  },
+  "/home/akumar/remake_dpp/docs/assets/logo-dark.png": {
+    "mtime": 1771356697.3273082,
+    "ast_hash": "1eb5ac094134a26cdcbdd8bf51a94616",
+    "semantic_hash": "1eb5ac094134a26cdcbdd8bf51a94616"
+  },
+  "/home/akumar/remake_dpp/assets/git_clone_remake.gif": {
+    "mtime": 1771354388.8300588,
+    "ast_hash": "da4462d11e4454e2a331eb9c16ca562b",
+    "semantic_hash": "da4462d11e4454e2a331eb9c16ca562b"
+  },
+  "/home/akumar/remake_dpp/assets/pip_install_remake.gif": {
+    "mtime": 1771354388.8380587,
+    "ast_hash": "7a3a2adf092f33830abfd4c9b9a608b3",
+    "semantic_hash": "7a3a2adf092f33830abfd4c9b9a608b3"
+  }
+}

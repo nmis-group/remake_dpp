@@ -13,7 +13,7 @@ Use `pip` to install the package:
 pip install remake_dpp
 ```
 
-Or for local development:
+Or from GitHub for local development:
 
 ```bash
 git clone git@github.com:nmis-group/remake_dpp.git
@@ -38,12 +38,6 @@ python3 -m nmis_dpp.isa95_build_mapping
 These YAML files live at the repo root and are used by ECLASSMapper and
 ISA95Mapper to bind ontology concepts to PartClass types.
 
-## 3. Create a basic Digital Product Passport - Run the example
 
-```bash
-python3 usage.py coffee_machine.json ECLASS
-# python usage.py coffee_machine.json ISA-95
-
-```
 
 
