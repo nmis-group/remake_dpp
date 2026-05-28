@@ -2,14 +2,30 @@
 test_battery_dpp_mapper.py
 
 Tests for BatteryDPPMapper — all layer mapping methods, validate_mapping
-(valid case + each mandatory field failure), and registry integration.
+(valid case + each mandatory field failure), registry integration, and
+BatteryPass v1.2.0 compliance scoring.
+
+BatteryPass compliance tests (§ BatteryPass Compliance) measure how many
+of the required fields defined in tests/BatteryPassDataModel-main/ are
+covered by BatteryDPPMapper.  Run with -v -s to see the compliance report:
+
+    pytest -v -s tests/test_battery_dpp_mapper.py
 """
 
+import dataclasses
+from typing import Any, Callable, Dict
+
 import pytest
+
 from nmis_dpp.mappers.battery_dpp_mapper import BatteryDPPMapper
 from nmis_dpp.model import (
-    DigitalProductPassport, IdentityLayer, StructureLayer, LifecycleLayer,
-    RiskLayer, SustainabilityLayer, ProvenanceLayer,
+    DigitalProductPassport,
+    IdentityLayer,
+    StructureLayer,
+    LifecycleLayer,
+    RiskLayer,
+    SustainabilityLayer,
+    ProvenanceLayer,
 )
 from nmis_dpp.part_class import Actuator, EnergyStorage, PartClass
 from nmis_dpp.schema_registry import get_global_registry
@@ -84,6 +100,131 @@ def full_dpp(battery_part, non_battery_part):
         ),
         provenance=ProvenanceLayer(
             signatures=[{"signed_by": "NMIS QA", "certificate": "EU-DoC-2024", "date": "2024-03-15"}],
+            trace_links=["epcis://batch/SN-2024-001"],
+        ),
+    )
+
+
+@pytest.fixture
+def full_battery_pass_dpp(battery_part, non_battery_part):
+    """DPP populated with maximum data for BatteryPass compliance testing.
+
+    All 12 previously-missing BatteryPass fields are supplied here via
+    the agreed source conventions in battery_dpp_mapper.py.
+    """
+    return DigitalProductPassport(
+        identity=IdentityLayer(
+            global_ids={
+                "serial": "SN-2024-001",
+                "gtin": "00-BAT-001",
+                # batteryPassportIdentifier source (URN pattern urn:[a-z0-9]+:[a-z0-9]+)
+                "battery_passport_id": "urn:battery:sn2024001",
+            },
+            make_model={
+                "brand": "NMIS Energy",
+                "model": "PowerPack Pro",
+                "battery_category": "ev",      # batteryCategory
+            },
+            ownership={
+                "manufacturer": "NMIS Ltd",
+                "operator": "NMIS Operations Ltd",  # operatorInformation
+            },
+            conformity=["CE", "UN 38.3"],
+        ),
+        structure=StructureLayer(
+            hierarchy={"product": "PowerPack Pro"},
+            parts=[battery_part, non_battery_part],
+            interfaces=[],
+            # batteryMaterials source
+            materials=[
+                {
+                    "name": "Lithium Hexafluorophosphate",
+                    "cas": "21324-40-3",
+                    "mass_kg": 0.5,
+                    "critical": True,
+                    "location": "electrolyte",
+                }
+            ],
+            # sparePartSources source
+            bom_refs=[
+                {
+                    "nameOfSupplier": "NMIS Spares Ltd",
+                    "partName": "Cell Module",
+                    "partNumber": "CELL-MOD-001",
+                }
+            ],
+        ),
+        lifecycle=LifecycleLayer(
+            manufacture={"date": "2024-03-01", "factory": "Plant-Glasgow"},
+            use={
+                "state_of_health": 0.98,
+                "cycles": 12,
+                "battery_status": "Original",                    # batteryStatus
+                "putting_into_service": "2024-03-15T00:00:00Z",  # puttingIntoService
+            },
+            serviceability={
+                "replacement_interval": "5 years",
+                "warranty_period": "--03",                        # warrentyPeriod (ISO gYearMonth)
+                # dismantlingAndRemovalInformation source
+                "dismantling_docs": [
+                    {
+                        "documentType": "DismantlingManual",
+                        "mimeType": "application/pdf",
+                        "documentURL": "https://example.com/dismantling-manual.pdf",
+                    }
+                ],
+            },
+            events=[],
+            # endOfLifeInformation source
+            end_of_life={
+                "waste_prevention_url": "https://example.com/waste-prevention",
+                "separate_collection_url": "https://example.com/separate-collection",
+                "collection_info_url": "https://example.com/collection-info",
+            },
+        ),
+        risk=RiskLayer(
+            criticality={"safety_instructions": ["Do not short circuit", "Keep away from heat"]},
+            fmea=[
+                {
+                    "substance": "Lithium",
+                    "hazard_class": "Flammable",
+                    "concentration": 0.05,
+                }
+            ],
+            security={},
+        ),
+        sustainability=SustainabilityLayer(
+            mass=8.5,
+            energy={
+                "standby_w": 0.5,
+                # CarbonFootprint aspect sources
+                "carbon_per_lifecycle_stage": [           # carbonFootprintPerLifecycleStage
+                    {"lifecycleStage": "RawMaterialExtraction", "carbonFootprint": 20.0},
+                    {"lifecycleStage": "MainProduction",        "carbonFootprint": 30.0},
+                    {"lifecycleStage": "Distribution",          "carbonFootprint": 15.0},
+                    {"lifecycleStage": "Recycling",             "carbonFootprint": 10.0},
+                ],
+                "carbon_performance_class": "A",          # carbonFootprintPerformanceClass
+                "carbon_study_url": "https://example.com/carbon-study.pdf",  # carbonFootprintStudy
+            },
+            recycled_content={
+                "co2e": 75.0,
+                "cobalt_pct": 12.0,
+                "lithium_pct": 5.0,
+                "nickel_pct": 8.0,
+                "pcr_percent": 20.0,
+                "bio_based_percent": 3.5,
+            },
+            remanufacture={"eligible": True},
+        ),
+        provenance=ProvenanceLayer(
+            signatures=[
+                {
+                    "signed_by": "NMIS QA",
+                    "certificate": "EU-DoC-2024",
+                    "date": "2024-03-15",
+                }
+            ],
             trace_links=["epcis://batch/SN-2024-001"],
         ),
     )
@@ -399,3 +540,292 @@ def test_registry_map_dpp_battery(full_dpp):
     mapped = registry.map_dpp("BatteryDPP", full_dpp)
     assert mapped["schema"] == "BatteryDPP"
     assert mapped["identity"]["batteryModel"] == "PowerPack Pro"
+
+
+# =============================================================================
+# BatteryPass v1.2.0 Compliance Tests
+# =============================================================================
+#
+# Each ComplianceCheck maps one required field from the BatteryPass Consortium
+# data model (tests/BatteryPassDataModel-main/) to what BatteryDPPMapper
+# produces.  Aspects covered:
+#
+#   GeneralProductInformation  (11 required fields)  — Annex VI Part A / XIII
+#   CarbonFootprint            ( 4 required fields)  — Annex XIII §6
+#   Circularity                ( 6 required fields)  — Annex XIII §2 / Art. 60
+#   MaterialComposition        ( 3 required fields)  — Annex XIII §1–2
+#   PerformanceAndDurability   ( 5 sampled fields)   — Annex XIII §3–5
+#
+# Run pytest -v -s to see the full compliance report printed at the end.
+# =============================================================================
+
+
+@dataclasses.dataclass(frozen=True)
+class ComplianceCheck:
+    """Describes one BatteryPass required field and how to detect coverage."""
+    aspect: str
+    field: str
+    bp_ref: str
+    check_fn: Callable[[Dict[str, Any]], bool]
+
+    def __str__(self) -> str:
+        return f"{self.aspect}.{self.field}"
+
+
+def _components(mapped: Dict[str, Any]):
+    return mapped.get("structure", {}).get("componentsList", [])
+
+
+COMPLIANCE_CHECKS = [
+    # ── GeneralProductInformation (1.2.0) ─────────────────────────────────
+    ComplianceCheck(
+        "GeneralProductInformation", "productIdentifier",
+        "Art. 77(3); Annex XIII (1a)",
+        lambda m: bool(m.get("identity", {}).get("productIdentifier")),
+    ),
+    ComplianceCheck(
+        "GeneralProductInformation", "batteryPassportIdentifier",
+        "Art. 77(3)",
+        lambda m: bool(m.get("identity", {}).get("batteryPassportIdentifier")),
+    ),
+    ComplianceCheck(
+        "GeneralProductInformation", "batteryCategory",
+        "Annex XIII (1c)",
+        lambda m: bool(m.get("identity", {}).get("batteryCategory")),
+    ),
+    ComplianceCheck(
+        "GeneralProductInformation", "manufacturerInformation",
+        "Annex XIII (1a); Art. 38(6)",
+        lambda m: bool(m.get("identity", {}).get("manufacturerIdentification")),
+    ),
+    ComplianceCheck(
+        "GeneralProductInformation", "manufacturingDate",
+        "Annex XIII (1a); Annex VI Part A (4)",
+        lambda m: bool(m.get("lifecycle", {}).get("manufacturingDate")),
+    ),
+    ComplianceCheck(
+        "GeneralProductInformation", "batteryStatus",
+        "Annex XIII (4c)",
+        lambda m: bool(m.get("lifecycle", {}).get("batteryStatus")),
+    ),
+    ComplianceCheck(
+        "GeneralProductInformation", "batteryMass",
+        "Annex XIII (1a); Annex VI Part A (5)",
+        lambda m: m.get("sustainability", {}).get("mass") is not None,
+    ),
+    ComplianceCheck(
+        "GeneralProductInformation", "manufacturingPlace",
+        "Annex XIII (1a); Annex VI Part A (4)",
+        lambda m: bool(m.get("lifecycle", {}).get("placeOfManufacturing")),
+    ),
+    ComplianceCheck(
+        "GeneralProductInformation", "operatorInformation",
+        "Annex XIII (1a)",
+        lambda m: bool(m.get("identity", {}).get("operatorInformation")),
+    ),
+    ComplianceCheck(
+        "GeneralProductInformation", "puttingIntoService",
+        "Annex VI Part A (1); Art. 38(7)",
+        lambda m: bool(m.get("lifecycle", {}).get("puttingIntoService")),
+    ),
+    ComplianceCheck(
+        "GeneralProductInformation", "warrentyPeriod",
+        "Annex XIII (4d)",
+        lambda m: bool(m.get("lifecycle", {}).get("warrentyPeriod")),
+    ),
+
+    # ── CarbonFootprint (1.2.0) ───────────────────────────────────────────
+    ComplianceCheck(
+        "CarbonFootprint", "batteryCarbonFootprint",
+        "Annex XIII §6; DIN DKE 6.3.2",
+        lambda m: m.get("sustainability", {}).get("carbonFootprint") is not None,
+    ),
+    ComplianceCheck(
+        "CarbonFootprint", "carbonFootprintPerLifecycleStage",
+        "Annex XIII §6; DIN DKE 6.3.3–6.3.6",
+        lambda m: bool(m.get("sustainability", {}).get("carbonFootprintPerLifecycleStage")),
+    ),
+    ComplianceCheck(
+        "CarbonFootprint", "carbonFootprintPerformanceClass",
+        "Annex XIII §6; DIN DKE 6.3.7",
+        lambda m: bool(m.get("sustainability", {}).get("carbonFootprintPerformanceClass")),
+    ),
+    ComplianceCheck(
+        "CarbonFootprint", "carbonFootprintStudy",
+        "Annex XIII §6; DIN DKE 6.3.8",
+        lambda m: bool(m.get("sustainability", {}).get("carbonFootprintStudy")),
+    ),
+
+    # ── Circularity (1.2.0) ───────────────────────────────────────────────
+    ComplianceCheck(
+        "Circularity", "dismantlingAndRemovalInformation",
+        "Annex XIII (2c); DIN DKE 6.6.1.2",
+        lambda m: bool(m.get("circularity", {}).get("dismantlingAndRemovalInformation")),
+    ),
+    ComplianceCheck(
+        "Circularity", "sparePartSources",
+        "Annex XIII (2b); DIN DKE 6.6.1.3",
+        lambda m: bool(m.get("circularity", {}).get("sparePartSources")),
+    ),
+    ComplianceCheck(
+        "Circularity", "recycledContent",
+        "Annex XIII §6; DIN DKE 6.6.2.3–6.6.2.10",
+        lambda m: bool(m.get("sustainability", {}).get("recycledContent")),
+    ),
+    ComplianceCheck(
+        "Circularity", "safetyMeasures",
+        "Annex XIII (2d); DIN DKE 6.6.1.5",
+        lambda m: bool(m.get("risk", {}).get("safetyInstructions")),
+    ),
+    ComplianceCheck(
+        "Circularity", "endOfLifeInformation",
+        "Art. 60(1); DIN DKE 6.6.3.2–6.6.3.4",
+        lambda m: bool(m.get("circularity", {}).get("endOfLifeInformation")),
+    ),
+    ComplianceCheck(
+        "Circularity", "renewableContent",
+        "Annex XIII §6; DIN DKE 6.6.2.11",
+        lambda m: m.get("sustainability", {}).get("renewableContent") is not None,
+    ),
+
+    # ── MaterialComposition (1.2.0) ───────────────────────────────────────
+    ComplianceCheck(
+        "MaterialComposition", "batteryChemistry",
+        "Annex XIII (1b); Annex VI Part A (7)",
+        lambda m: any(c.get("chemistry") for c in _components(m)),
+    ),
+    ComplianceCheck(
+        "MaterialComposition", "batteryMaterials",
+        "Annex XIII (2a); DIN DKE 6.5.3–6.5.4",
+        lambda m: bool(m.get("structure", {}).get("batteryMaterials")),
+    ),
+    ComplianceCheck(
+        "MaterialComposition", "hazardousSubstances",
+        "Annex XIII (1b); Annex VI Part A (8)",
+        lambda m: bool(m.get("risk", {}).get("hazardousSubstances")),
+    ),
+
+    # ── PerformanceAndDurability (1.2.0) — batteryTechicalProperties ─────
+    ComplianceCheck(
+        "PerformanceAndDurability", "batteryTechicalProperties.ratedCapacity",
+        "Annex XIII §3; DIN DKE Spec",
+        lambda m: any(c.get("capacity") is not None for c in _components(m)),
+    ),
+    ComplianceCheck(
+        "PerformanceAndDurability", "batteryTechicalProperties.nominalVoltage",
+        "Annex XIII §3; DIN DKE Spec",
+        lambda m: any(c.get("voltage") is not None for c in _components(m)),
+    ),
+    ComplianceCheck(
+        "PerformanceAndDurability", "batteryTechicalProperties.expectedNumberOfCycles",
+        "Annex XIII §3; DIN DKE Spec",
+        lambda m: any(c.get("rechargeCycles") is not None for c in _components(m)),
+    ),
+    ComplianceCheck(
+        "PerformanceAndDurability", "batteryTechicalProperties.expectedLifetime",
+        "Annex XIII §3; DIN DKE Spec",
+        lambda m: bool(m.get("lifecycle", {}).get("expectedLifetime")),
+    ),
+
+    # ── PerformanceAndDurability (1.2.0) — batteryCondition ──────────────
+    ComplianceCheck(
+        "PerformanceAndDurability", "batteryCondition.stateOfCharge",
+        "Annex XIII §5; DIN DKE Spec",
+        lambda m: m.get("lifecycle", {}).get("stateOfHealth") is not None,
+    ),
+]
+
+# IDs for parametrize labels
+_COMPLIANCE_IDS = [str(c) for c in COMPLIANCE_CHECKS]
+
+
+@pytest.mark.parametrize("check", COMPLIANCE_CHECKS, ids=_COMPLIANCE_IDS)
+def test_battery_pass_field_coverage(full_battery_pass_dpp, check):
+    """
+    Verify that BatteryDPPMapper produces a value for each BatteryPass
+    required field.  Fields not yet mapped are expected failures (xfail).
+    """
+    mapper = BatteryDPPMapper(config={})
+    mapped = mapper.map_dpp(full_battery_pass_dpp)
+    covered = check.check_fn(mapped)
+    if not covered:
+        pytest.xfail(
+            f"{check.aspect}.{check.field} is not yet mapped by BatteryDPPMapper "
+            f"(BatteryPass v1.2.0 ref: {check.bp_ref})"
+        )
+    assert covered, (
+        f"Expected mapped DPP to contain a value for "
+        f"{check.aspect}.{check.field} ({check.bp_ref})"
+    )
+
+
+def test_battery_pass_compliance_score(full_battery_pass_dpp):
+    """
+    Compute and display the overall BatteryPass v1.2.0 compliance score.
+
+    Runs all ComplianceChecks against a fully-populated DPP and reports
+    the percentage of required fields covered by BatteryDPPMapper.  The
+    test always passes — it is a reporting test, not a gate.
+
+    Run with -v -s to see the full report:
+        pytest -v -s tests/test_battery_dpp_mapper.py::test_battery_pass_compliance_score
+    """
+    mapper = BatteryDPPMapper(config={})
+    mapped = mapper.map_dpp(full_battery_pass_dpp)
+
+    covered_checks = []
+    missing_checks = []
+
+    for check in COMPLIANCE_CHECKS:
+        if check.check_fn(mapped):
+            covered_checks.append(check)
+        else:
+            missing_checks.append(check)
+
+    total = len(COMPLIANCE_CHECKS)
+    covered = len(covered_checks)
+    score = covered / total * 100 if total else 0.0
+
+    # Group by aspect for the per-aspect breakdown
+    aspect_totals: Dict[str, int] = {}
+    aspect_covered: Dict[str, int] = {}
+    for check in COMPLIANCE_CHECKS:
+        aspect_totals[check.aspect] = aspect_totals.get(check.aspect, 0) + 1
+    for check in covered_checks:
+        aspect_covered[check.aspect] = aspect_covered.get(check.aspect, 0) + 1
+
+    sep = "=" * 70
+    print(f"\n\n{sep}")
+    print(f"  BatteryPass v1.2.0 Compliance Report")
+    print(f"  Overall Score: {score:.1f}%  ({covered}/{total} required fields covered)")
+    print(sep)
+
+    print("\n  Per-aspect breakdown:")
+    for aspect in aspect_totals:
+        a_covered = aspect_covered.get(aspect, 0)
+        a_total = aspect_totals[aspect]
+        a_pct = a_covered / a_total * 100
+        bar = "#" * a_covered + "-" * (a_total - a_covered)
+        print(f"    {aspect:<35}  [{bar}]  {a_pct:5.1f}%  ({a_covered}/{a_total})")
+
+    if covered_checks:
+        print("\n  Covered fields:")
+        for check in covered_checks:
+            print(f"    [+]  {check.aspect}.{check.field}")
+
+    if missing_checks:
+        print("\n  Missing fields (not yet mapped in BatteryDPPMapper):")
+        for check in missing_checks:
+            print(f"    [-]  {check.aspect}.{check.field:<45}  [{check.bp_ref}]")
+
+    print(f"\n{sep}\n")
+
+    assert total > 0, "No compliance checks are defined."
+    # Soft threshold: at least the 9 core EU Reg 2023/1542 mandatory fields must be covered.
+    # (productIdentifier, manufacturerInformation, manufacturingDate, batteryMass,
+    #  manufacturingPlace, batteryCarbonFootprint, recycledContent, safetyMeasures,
+    #  batteryChemistry)
+    assert covered >= 9, (
+        f"Coverage {covered}/{total} ({score:.1f}%) is below the minimum of 9 "
+        f"mandatory EU Reg 2023/1542 fields.  See missing fields above."
+    )

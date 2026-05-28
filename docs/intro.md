@@ -1,11 +1,11 @@
 ---
 title: Introduction
-description: Overview of DPP Bridge / nmis_dpp
+description: Overview of DPP Bridge / remake_dpp
 ---
 
 # Introduction
 
-**DPP Bridge** (Python package `nmis_dpp`) is an open source ETL and harmonisation
+**DPP Bridge** (Python package `remake_dpp`) is an open source ETL and harmonisation
 layer for **Digital Product Passports (DPPs)**.
 
 It ingests product and manufacturing data in multiple schemas and ontologies

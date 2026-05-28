@@ -13,6 +13,20 @@ Key mandatory fields per EU Reg 2023/1542 Annex XIII:
   - carbonFootprint  (numeric kg CO₂e / kWh)
   - recycledContent  (dict with at least one material entry)
   - At least one EnergyStorage part in structure.componentsList
+
+DPP source conventions for BatteryPass fields:
+  identity.global_ids["battery_passport_id"]   → batteryPassportIdentifier
+  identity.ownership["operator"]               → operatorInformation
+  lifecycle.use["battery_status"]              → batteryStatus
+  lifecycle.use["putting_into_service"]        → puttingIntoService
+  lifecycle.serviceability["warranty_period"]  → warrentyPeriod
+  lifecycle.serviceability["dismantling_docs"] → dismantlingAndRemovalInformation
+  lifecycle.end_of_life (url keys)             → endOfLifeInformation
+  sustainability.energy["carbon_per_lifecycle_stage"]  → carbonFootprintPerLifecycleStage
+  sustainability.energy["carbon_performance_class"]    → carbonFootprintPerformanceClass
+  sustainability.energy["carbon_study_url"]            → carbonFootprintStudy
+  structure.materials                          → batteryMaterials
+  structure.bom_refs                           → sparePartSources
 """
 
 from __future__ import annotations
@@ -23,6 +37,7 @@ import logging
 
 from nmis_dpp.schema_base import SchemaMapper
 from nmis_dpp.model import (
+    DigitalProductPassport,
     IdentityLayer,
     StructureLayer,
     LifecycleLayer,
@@ -71,45 +86,61 @@ class BatteryDPPMapper(SchemaMapper):
             "xsd":     "http://www.w3.org/2001/XMLSchema#",
             "eclass":  "https://eclass.eu/eclass-standard/v16-0/",
             # Identity
-            "batteryModel":               "battery:batteryModel",
-            "manufacturerIdentification": "battery:manufacturerIdentification",
-            "productIdentifier":          "schema:serialNumber",
-            "conformityCertification":    "battery:conformityCertification",
-            "batteryCategory":            "battery:batteryCategory",
+            "batteryModel":                        "battery:batteryModel",
+            "manufacturerIdentification":          "battery:manufacturerIdentification",
+            "productIdentifier":                   "schema:serialNumber",
+            "batteryPassportIdentifier":           "battery:batteryPassportIdentifier",
+            "conformityCertification":             "battery:conformityCertification",
+            "batteryCategory":                     "battery:batteryCategory",
+            "operatorInformation":                 "battery:operatorInformation",
             # Structure
-            "componentsList":             "battery:componentsList",
-            "chemistry":                  "battery:electrochemistry",
-            "capacity":                   "battery:ratedCapacity",
-            "voltage":                    "battery:nominalVoltage",
-            "rechargeCycles":             "battery:expectedLifetimeCycles",
+            "componentsList":                      "battery:componentsList",
+            "chemistry":                           "battery:electrochemistry",
+            "capacity":                            "battery:ratedCapacity",
+            "voltage":                             "battery:nominalVoltage",
+            "rechargeCycles":                      "battery:expectedLifetimeCycles",
+            "batteryMaterials":                    "battery:batteryMaterials",
             # Lifecycle
-            "manufacturingDate":          "schema:dateCreated",
-            "placeOfManufacturing":       "battery:placeOfManufacturing",
-            "expectedLifetime":           "battery:expectedLifetime",
-            "stateOfHealth":              "battery:stateOfHealth",
-            "cycleCount":                 "battery:cycleCount",
+            "manufacturingDate":                   "schema:dateCreated",
+            "placeOfManufacturing":                "battery:placeOfManufacturing",
+            "expectedLifetime":                    "battery:expectedLifetime",
+            "stateOfHealth":                       "battery:stateOfHealth",
+            "cycleCount":                          "battery:cycleCount",
+            "batteryStatus":                       "battery:batteryStatus",
+            "puttingIntoService":                  "battery:puttingIntoService",
+            "warrentyPeriod":                      "battery:warrentyPeriod",
             # Risk
-            "hazardousSubstances":        "battery:hazardousSubstances",
-            "safetyInstructions":         "battery:safetyInstructions",
+            "hazardousSubstances":                 "battery:hazardousSubstances",
+            "safetyInstructions":                  "battery:safetyInstructions",
             # Sustainability
-            "carbonFootprint":            "battery:carbonFootprint",
-            "recycledContent":            "battery:recycledContent",
-            "renewableContent":           "battery:renewableContent",
-            "mass":                       "battery:mass",
+            "carbonFootprint":                     "battery:carbonFootprint",
+            "carbonFootprintPerLifecycleStage":    "battery:carbonFootprintPerLifecycleStage",
+            "carbonFootprintPerformanceClass":     "battery:carbonFootprintPerformanceClass",
+            "carbonFootprintStudy":                "battery:carbonFootprintStudy",
+            "recycledContent":                     "battery:recycledContent",
+            "renewableContent":                    "battery:renewableContent",
+            "mass":                                "battery:mass",
+            # Circularity
+            "dismantlingAndRemovalInformation":    "battery:dismantlingAndRemovalInformation",
+            "sparePartSources":                    "battery:sparePartSources",
+            "endOfLifeInformation":                "battery:endOfLifeInformation",
             # Provenance
-            "conformityDeclaration":      "battery:declarationOfConformity",
-            "dueDiligenceReport":         "battery:dueDiligenceReport",
-            "supplyChainInfo":            "battery:supplyChainDueDiligence",
+            "conformityDeclaration":               "battery:declarationOfConformity",
+            "dueDiligenceReport":                  "battery:dueDiligenceReport",
+            "supplyChainInfo":                     "battery:supplyChainDueDiligence",
         }
 
     def map_identity_layer(self, layer: IdentityLayer) -> Dict[str, Any]:
         """
         Map IdentityLayer to Battery Passport identity fields.
 
-        batteryModel             ← make_model.model
+        batteryModel               ← make_model.model
         manufacturerIdentification ← ownership.manufacturer
-        productIdentifier        ← global_ids.serial or global_ids.gtin
-        conformityCertification  ← conformity list
+        productIdentifier          ← global_ids.serial or global_ids.gtin
+        batteryPassportIdentifier  ← global_ids.battery_passport_id
+        conformityCertification    ← conformity list
+        batteryCategory            ← make_model.battery_category
+        operatorInformation        ← ownership.operator
         """
         return {
             "batteryModel":               layer.make_model.get("model"),
@@ -117,23 +148,28 @@ class BatteryDPPMapper(SchemaMapper):
             "productIdentifier":          (
                 layer.global_ids.get("serial") or layer.global_ids.get("gtin")
             ),
+            "batteryPassportIdentifier":  layer.global_ids.get("battery_passport_id"),
             "conformityCertification":    list(layer.conformity or []),
             "batteryCategory":            layer.make_model.get("battery_category"),
+            "operatorInformation":        layer.ownership.get("operator"),
         }
 
     def map_structure_layer(self, layer: StructureLayer) -> Dict[str, Any]:
         """
-        Map StructureLayer to Battery Passport componentsList.
+        Map StructureLayer to Battery Passport componentsList and batteryMaterials.
 
         EnergyStorage parts have their typed attributes (capacity, voltage,
         chemistry, recharge_cycles) surfaced as top-level Battery Passport
         fields alongside the generic id/name.  All other part types are
         listed as supporting components.
+
+        batteryMaterials ← structure.materials (CAS-identified material entries)
         """
         components = [self.map_part_class(p) for p in layer.parts]
         return {
-            "componentsList": components,
-            "hierarchy":      layer.hierarchy,
+            "componentsList":  components,
+            "hierarchy":       layer.hierarchy,
+            "batteryMaterials": list(layer.materials or []),
         }
 
     def map_lifecycle_layer(self, layer: LifecycleLayer) -> Dict[str, Any]:
@@ -142,15 +178,26 @@ class BatteryDPPMapper(SchemaMapper):
 
         stateOfHealth and cycleCount are read from lifecycle.use counters
         if present, as these are updated during the battery's operational life.
+
+        batteryStatus     ← use.battery_status
+        puttingIntoService← use.putting_into_service
+        warrentyPeriod    ← serviceability.warranty_period
         """
         use = layer.use or {}
+        svc = layer.serviceability or {}
         return {
             "manufacturingDate":    layer.manufacture.get("date"),
             "placeOfManufacturing": layer.manufacture.get("factory"),
-            "expectedLifetime":     layer.serviceability.get("replacement_interval")
-                                    if layer.serviceability else None,
+            "expectedLifetime":     svc.get("replacement_interval"),
             "stateOfHealth":        use.get("state_of_health") or use.get("stateOfHealth"),
             "cycleCount":           use.get("cycles") or use.get("cycleCount"),
+            "batteryStatus":        use.get("battery_status") or use.get("batteryStatus"),
+            "puttingIntoService":   (
+                use.get("putting_into_service")
+                or use.get("puttingIntoService")
+                or layer.manufacture.get("commissioning_date")
+            ),
+            "warrentyPeriod":       svc.get("warranty_period") or svc.get("warrentyPeriod"),
         }
 
     def map_risk_layer(self, layer: RiskLayer) -> Dict[str, Any]:
@@ -184,22 +231,35 @@ class BatteryDPPMapper(SchemaMapper):
         """
         Map SustainabilityLayer to Battery Passport sustainability fields.
 
-        carbonFootprint  ← lifecycle.manufacture.co2e (set via config or data)
-                           falls back to sustainability config key 'co2e'.
-        recycledContent  ← recycled_content dict (cobalt, lithium, nickel, lead %).
-        renewableContent ← recycled_content.bio_based_percent.
-        mass             ← SustainabilityLayer.mass (kg).
+        carbonFootprint               ← recycled_content.co2e or config.carbon_footprint
+        carbonFootprintPerLifecycleStage ← energy.carbon_per_lifecycle_stage
+        carbonFootprintPerformanceClass  ← energy.carbon_performance_class
+        carbonFootprintStudy             ← energy.carbon_study_url
+        recycledContent               ← recycled_content dict (cobalt, lithium, nickel, lead %)
+        renewableContent              ← recycled_content.bio_based_percent
+        mass                          ← SustainabilityLayer.mass (kg)
 
         carbonFootprint is mandatory per EU Reg 2023/1542 Annex XIII.
         """
         recycled = layer.recycled_content or {}
-        co2e = (
-            recycled.get("co2e")
-            or self.config.get("carbon_footprint")
-        )
+        energy = layer.energy or {}
+        co2e = recycled.get("co2e") or self.config.get("carbon_footprint")
 
         return {
             "carbonFootprint": co2e,
+            "carbonFootprintPerLifecycleStage": (
+                energy.get("carbon_per_lifecycle_stage")
+                or energy.get("carbonFootprintPerLifecycleStage")
+            ),
+            "carbonFootprintPerformanceClass": (
+                energy.get("carbon_performance_class")
+                or energy.get("carbonFootprintPerformanceClass")
+                or recycled.get("carbon_performance_class")
+            ),
+            "carbonFootprintStudy": (
+                energy.get("carbon_study_url")
+                or energy.get("carbonFootprintStudy")
+            ),
             "recycledContent": {
                 "cobalt":   recycled.get("cobalt_pct") or recycled.get("cobalt"),
                 "lithium":  recycled.get("lithium_pct") or recycled.get("lithium"),
@@ -234,6 +294,51 @@ class BatteryDPPMapper(SchemaMapper):
             "dueDiligenceReport":    None,   # populated externally if available
             "supplyChainInfo":       list(layer.trace_links or []),
         }
+
+    def map_circularity_layer(
+        self, lifecycle: LifecycleLayer, structure: StructureLayer
+    ) -> Dict[str, Any]:
+        """
+        Map circularity data to the Battery Passport Circularity aspect.
+
+        dismantlingAndRemovalInformation ← serviceability.dismantling_docs
+        sparePartSources                 ← structure.bom_refs
+        endOfLifeInformation             ← end_of_life (waste_prevention_url,
+                                           separate_collection_url,
+                                           collection_info_url)
+        """
+        svc = lifecycle.serviceability or {}
+        eol = lifecycle.end_of_life or {}
+
+        end_of_life_info = None
+        waste_url = eol.get("waste_prevention_url") or eol.get("wastePrevention")
+        collection_url = eol.get("separate_collection_url") or eol.get("separateCollection")
+        info_url = eol.get("collection_info_url") or eol.get("informationOnCollection")
+        if waste_url or collection_url or info_url:
+            end_of_life_info = {
+                "wastePrevention":        waste_url,
+                "separateCollection":     collection_url,
+                "informationOnCollection": info_url,
+            }
+
+        return {
+            "dismantlingAndRemovalInformation": (
+                svc.get("dismantling_docs") or svc.get("dismantlingAndRemovalInformation") or []
+            ),
+            "sparePartSources": list(structure.bom_refs or []),
+            "endOfLifeInformation": end_of_life_info,
+        }
+
+    def map_dpp(self, dpp: DigitalProductPassport) -> Dict[str, Any]:
+        """
+        Override map_dpp to add the Battery Passport circularity section.
+
+        Calls the base implementation for all standard layers, then injects
+        the circularity block produced by map_circularity_layer.
+        """
+        mapped = super().map_dpp(dpp)
+        mapped["circularity"] = self.map_circularity_layer(dpp.lifecycle, dpp.structure)
+        return mapped
 
     def map_part_class(self, part: PartClass) -> Dict[str, Any]:
         """
