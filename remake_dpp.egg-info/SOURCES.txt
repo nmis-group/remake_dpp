@@ -23,6 +23,8 @@ tests/test_battery_dpp_mapper.py
 tests/test_mappers.py
 tests/test_model.py
 tests/test_part_class.py
+tests/test_payload_battery_pass.py
 tests/test_registry_extended.py
+tests/test_schema_f1_coverage.py
 tests/test_schema_registry.py
 tests/test_schema_registry_second.py

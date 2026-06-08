@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: remake_dpp
-Version: 1.0.0
+Version: 1.1.0
 Summary: A modular Python package for Digital Product Passport modeling with identity, structure, lifecycle, risk, sustainability, provenance layers, and universal part classes.
 Author-email: Anmol Kumar <anmol.kumar@starth.ac.uk>
 License: MIT License
@@ -95,6 +95,7 @@ remake_dpp/
 ├── nmis_dpp/
 │   ├── mappers/
 │   │   ├── __init__.py
+│   │   ├── battery_dpp_mapper.py       # EU Battery Passport mapper (Reg 2023/1542)
 │   │   ├── eclass_mapper.py
 │   │   └── isa95_mapper.py
 │   ├── ontology_data/
@@ -129,7 +130,9 @@ remake_dpp/
 │   │   │   │   └── BatchML-GeneralRecipeExtensions.xsd
 │   │   │   └── README.md
 │   │   └── README.md 
-│   ├── __init__.py                     # Package initialization 
+│   ├── __init__.py                     # Package initialization
+│   ├── adapters.py                     # Input adapters (ECLASS XML, ISA-95, CSV → DPP)
+│   ├── api.py                          # High-level facade for the package
 │   ├── cli.py                          # Command line interface 
 │   ├── eclass_build_mapping.py         # ECLASS build mapping 
 │   ├── isa95_build_mapping.py          # ISA95 build mapping 
@@ -138,16 +141,31 @@ remake_dpp/
 │   ├── schema_base.py                  # Base schema for DPP layers 
 │   ├── schema_registry.py              # Schema registry 
 │   └── utils.py                        # Any helper functions 
-├── tests/ 
-│   ├── test_mappers.py                 # Test mappers 
-│   ├── test_model.py                   # Test models 
-│   ├── test_part_class.py              # Test part classes 
-│   ├── test_registry_extended.py       # Test registry extended 
-│   ├── test_schema_registry.py         # Test schema registry 
-│   └── test_schema_registry_second.py  # Test schema registry second 
+├── tests/
+│   ├── BatteryPassDataModel-main/      # BatteryPass Consortium v1.2.0 reference schemas
+│   │   ├── BatteryPass/                # SAMM aspect models (TTL) and generated artefacts
+│   │   │   ├── io.BatteryPass.CarbonFootprint/
+│   │   │   ├── io.BatteryPass.Circularity/
+│   │   │   ├── io.BatteryPass.GeneralProductInformation/
+│   │   │   ├── io.BatteryPass.MaterialComposition/
+│   │   │   ├── io.BatteryPass.Performance/
+│   │   │   └── io.BatteryPass.SupplyChainDueDiligence/
+│   │   └── docs/                       # BatteryPass consortium deliverables (PDFs)
+│   ├── JSON_Payload/
+│   │   └── BattreyPassportPayload.json # Real-world Catena-X battery passport payload
+│   ├── test_api.py                     # Tests for the high-level API facade
+│   ├── test_battery_dpp_mapper.py      # BatteryDPPMapper unit tests + BatteryPass v1.2.0 compliance scoring
+│   ├── test_mappers.py                 # Tests for ECLASS and ISA-95 mappers
+│   ├── test_model.py                   # Tests for DPP layer models
+│   ├── test_part_class.py              # Tests for part class hierarchy
+│   ├── test_payload_battery_pass.py    # End-to-end: Catena-X payload → DPP → BatteryPass compliance
+│   ├── test_registry_extended.py       # Extended schema registry tests
+│   ├── test_schema_f1_coverage.py      # Precision / recall / F1 coverage metrics vs literature baselines
+│   ├── test_schema_registry.py         # Schema registry tests
+│   └── test_schema_registry_second.py  # Additional registry tests
 ├── .gitignore                          # Git ignore 
 ├── .gitattributes                      # Git attributes
-├── coffee_machine.json                 # Coffee machine DPP 
+├── coffee_machine.json                 # Coffee machine DPP example
 ├── eclass_part_class_mapping.yaml      # ECLASS part class mapping
 ├── generate_dpp_json.py                # Generate Coffee Machine DPP JSON 
 ├── isa95_part_class_mapping.yaml       # ISA95 part class mapping 
