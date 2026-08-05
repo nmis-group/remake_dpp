@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DPP wizard — final</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --scarlet: #FF3300;
+    --earth:   #290800;
+    --snow:    #ffffff;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--snow);
+    color: var(--earth);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Header ── */
+  .header {
+    border-bottom: 0.5px solid var(--earth);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(41,8,0,0.5);
+  }
+  .header strong { color: var(--earth); font-size: 13px; font-weight: 500; }
+
+  /* ── Progress ── */
+  .progress {
+    border-bottom: 0.5px solid rgba(41,8,0,0.15);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    color: rgba(41,8,0,0.4);
+  }
+  .dots { display: flex; gap: 6px; }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 0.5px solid rgba(41,8,0,0.3);
+    background: transparent;
+  }
+  .dot.active { background: var(--earth); border-color: var(--earth); }
+  .dot.done { background: var(--scarlet); border-color: var(--scarlet); }
+
+  /* ── Main ── */
+  main {
+    flex: 1;
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 64px 24px 48px;
+  }
+
+
+  /* ── Question screen ── */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+
+  .question-label {
+    font-size: 11px;
+    color: rgba(41,8,0,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.25;
+    margin-bottom: 36px;
+    color: var(--earth);
+  }
+
+  .options { display: flex; flex-direction: column; gap: 10px; }
+
+  .option {
+    border: 0.5px solid rgba(41,8,0,0.2);
+    border-radius: 4px;
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: #fff;
+  }
+  .option:hover { border-color: var(--scarlet); }
+  .option.selected { border-color: var(--scarlet); background: var(--scarlet); color: #fff; }
+  .option.selected .option-sub { color: rgba(255,255,255,0.7); }
+
+  .option-label { font-size: 15px; font-weight: 400; line-height: 1.4; }
+  .option-sub { font-size: 12px; color: rgba(41,8,0,0.45); }
+
+  /* ── Nav ── */
+  .nav {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .btn-back {
+    background: none;
+    border: none;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    color: rgba(41,8,0,0.6);
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    text-decoration-color: rgba(41,8,0,0.2);
+    text-underline-offset: 3px;
+  }
+  .btn-back:hover { color: var(--earth); text-decoration-color: rgba(41,8,0,0.5); }
+
+  /* ── Exit screen ── */
+  .exit-tag {
+    font-size: 11px;
+    color: rgba(41,8,0,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+
+  .exit-headline {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 24px;
+    max-width: 480px;
+  }
+
+  .exit-body {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--earth);
+    opacity: 0.7;
+    max-width: 520px;
+    margin-bottom: 32px;
+  }
+  .exit-body p + p { margin-top: 14px; }
+
+  .cta-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    border: 0.5px solid rgba(41,8,0,0.25);
+    border-radius: 4px;
+    padding: 11px 18px;
+    cursor: pointer;
+    background: none;
+    color: var(--earth);
+    text-decoration: none;
+    width: fit-content;
+  }
+  .cta:hover { border-color: var(--earth); }
+  .cta.primary { background: var(--scarlet); color: #fff; border-color: var(--scarlet); }
+  .cta.primary:hover { background: #cc2900; }
+
+  /* ── Result screen ── */
+  .result-header {
+    border-bottom: 0.5px solid rgba(41,8,0,0.15);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  .result-tag {
+    font-size: 11px;
+    color: rgba(41,8,0,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .result-headline {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    color: var(--earth);
+    padding-left: 20px;
+    border-left: 3px solid var(--scarlet);
+  }
+  .result-summary {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--earth);
+    opacity: 0.7;
+  }
+
+  .steps-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(41,8,0,0.4);
+    margin-bottom: 16px;
+  }
+
+  .steps { list-style: none; display: flex; flex-direction: column; gap: 0; margin-bottom: 36px; }
+  .step {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 0.5px solid rgba(41,8,0,0.1);
+    align-items: flex-start;
+  }
+  .step-num {
+    font-size: 11px;
+    color: var(--scarlet);
+    padding-top: 2px;
+    min-width: 20px;
+    font-weight: 500;
+  }
+  .step-text { font-size: 14px; line-height: 1.6; color: var(--earth); opacity: 0.8; }
+  .step-link {
+    display: inline;
+    font-size: 11px;
+    color: rgba(41,8,0,0.4);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .result-ctas {
+    border-top: 0.5px solid rgba(41,8,0,0.15);
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* ── Start screen ── */
+  .start-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 60vh;
+  }
+  .start-screen h1 {
+    margin-bottom: 16px;
+    font-size: 32px;
+    font-weight: 500;
+    padding-left: 20px;
+    border-left: 3px solid var(--scarlet);
+  }
+  .start-screen p {
+    font-size: 15px;
+    color: var(--earth);
+    opacity: 0.6;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 380px;
+  }
+  .start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--scarlet);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 14px 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    width: fit-content;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .start-btn:hover { background: #cc2900; }
+
+  .bottom-nav {
+    margin-top: 36px;
+    padding-top: 20px;
+    border-top: 0.5px solid rgba(41,8,0,0.08);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .bottom-nav-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .restart {
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    color: rgba(41,8,0,0.55);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    display: block;
+    text-align: left;
+    text-decoration: underline;
+    text-decoration-color: rgba(41,8,0,0.2);
+    text-underline-offset: 3px;
+  }
+  .restart:hover { color: var(--earth); text-decoration-color: rgba(41,8,0,0.5); }
+  .feedback-link {
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    color: rgba(41,8,0,0.35);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    display: block;
+    text-align: left;
+    text-decoration: underline;
+    text-decoration-color: rgba(41,8,0,0.15);
+    text-underline-offset: 3px;
+  }
+  .feedback-link:hover { color: rgba(41,8,0,0.65); }
+
+  /* ── Email capture ── */
+  .email-capture { margin-top: 4px; }
+  .email-capture-label {
+    font-size: 11px;
+    font-family: 'Inter', sans-serif;
+    color: rgba(41,8,0,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .email-capture-row {
+    display: flex;
+    gap: 0;
+    max-width: 400px;
+  }
+  .email-capture-row input {
+    flex: 1;
+    border: 0.5px solid rgba(41,8,0,0.2);
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    padding: 11px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    outline: none;
+    color: var(--earth);
+    background: #fff;
+  }
+  .email-capture-row input:focus { border-color: var(--scarlet); }
+  .email-capture-row button {
+    border: 0.5px solid var(--scarlet);
+    border-radius: 0 4px 4px 0;
+    background: var(--scarlet);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    padding: 11px 16px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .email-capture-row button:hover { background: #cc2900; }
+</style>
+</head>
+<body>
+
+<div class="header" style="border-bottom: 0.5px solid rgba(41,8,0,0.12);">
+  <strong style="font-size:14px; letter-spacing:-0.01em;">open<span style="color:var(--scarlet)">-dpp</span></strong>
+</div>
+
+<!-- ═══════════════ START ═══════════════ -->
+<div id="screen-start" class="screen active">
+  <main>
+    <div class="start-screen">
+      <h1>Find out what the EU's Digital Product Passport means for you.</h1>
+      <p>Three questions. Two minutes. One answer about your specific obligations - and what to do next.</p>
+      <button class="start-btn" onclick="go('screen-q1')">Get started →</button>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════ Q1 ═══════════════ -->
+<div id="screen-q1" class="screen">
+  <div class="progress">
+    <div class="dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <span>Question 1 of 3</span>
+  </div>
+  <main>
+    <div class="question-label">Question 1</div>
+    <h1>Do you sell products in Europe?</h1>
+    <div class="options">
+      <div class="option" onclick="select(this, 'q1', 'yes', 'screen-q2')">
+        <span class="option-label">Yes, I sell in the EU</span>
+      </div>
+      <div class="option" onclick="select(this, 'q1', 'planning', 'screen-exit-02')">
+        <span class="option-label">Not yet, but I'm planning to</span>
+      </div>
+      <div class="option" onclick="select(this, 'q1', 'no', 'screen-exit-01')">
+        <span class="option-label">No, I don't sell in Europe</span>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="bottom-nav-left">
+        <button class="btn-back" onclick="go('screen-start')">← Back</button>
+      </div>
+      <button class="feedback-link" onclick="#">I don't see myself here or I see a mistake</button>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════ Q2 ═══════════════ -->
+<div id="screen-q2" class="screen">
+  <div class="progress">
+    <div class="dots">
+      <div class="dot done"></div>
+      <div class="dot active"></div>
+      <div class="dot"></div>
+    </div>
+    <span>Question 2 of 3</span>
+  </div>
+  <main>
+    <div class="question-label">Question 2</div>
+    <h1>What kind of products do you make or work with?</h1>
+    <div class="options">
+      <div class="option" onclick="select(this, 'q2', 'textiles', 'screen-q3')">
+        <span class="option-label">Clothing, textiles and fabric goods</span>
+        <span class="option-sub">Garments, fabrics, yarn, home textiles</span>
+      </div>
+      <div class="option" onclick="select(this, 'q2', 'mixed', 'screen-q3')">
+        <span class="option-label">Mixed — textile plus other materials</span>
+        <span class="option-sub">Bags, footwear, outerwear with hardware</span>
+      </div>
+      <div class="option" onclick="select(this, 'q2', 'other', 'screen-exit-03')">
+        <span class="option-label">Something else</span>
+        <span class="option-sub">More categories coming soon</span>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="bottom-nav-left">
+        <button class="btn-back" onclick="go('screen-q1')">← Back</button>
+      </div>
+      <button class="feedback-link" onclick="#">I don't see myself here or I see a mistake</button>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════ Q3 ═══════════════ -->
+<div id="screen-q3" class="screen">
+  <div class="progress">
+    <div class="dots">
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot active"></div>
+    </div>
+    <span>Question 3 of 3</span>
+  </div>
+  <main>
+    <div class="question-label">Question 3</div>
+    <h1>Which best describes your business?</h1>
+    <div class="options">
+      <div class="option" onclick="select(this, 'q3', 'manufacturer', null); route()">
+        <span class="option-label">I design and manufacture my own products</span>
+        <span class="option-sub">You control the production process</span>
+      </div>
+      <div class="option" onclick="select(this, 'q3', 'importer', null); route()">
+        <span class="option-label">I import products made outside the EU</span>
+        <span class="option-sub">You bring goods into the EU market</span>
+      </div>
+      <div class="option" onclick="select(this, 'q3', 'distributor', 'screen-exit-04')">
+        <span class="option-label">I buy and resell products I don't manufacture</span>
+        <span class="option-sub">You're a retailer or distributor</span>
+      </div>
+      <div class="option" onclick="select(this, 'q3', 'tech', 'screen-exit-05')">
+        <span class="option-label">I build software or technology for brands</span>
+        <span class="option-sub">You're a platform or technology provider</span>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="bottom-nav-left">
+        <button class="btn-back" onclick="go('screen-q2')">← Back</button>
+      </div>
+      <button class="feedback-link" onclick="#">I don't see myself here or I see a mistake</button>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════ EXIT 01 — No ═══════════════ -->
+<div id="screen-exit-01" class="screen">
+  <main>
+    <div class="exit-tag">Not in scope</div>
+    <div class="exit-headline">You're out of scope for now</div>
+    <div class="exit-body">
+      <p>DPP rules only apply to products placed on the EU market. If that changes - if you start selling into Europe, or someone downstream from you does - come back and we'll help you work out what applies.</p>
+    </div>
+    <div class="cta-list">
+      <div class="email-capture">
+        <span class="email-capture-label">Get notified when things change</span>
+        <div class="email-capture-row">
+          <input type="email" placeholder="your@email.com">
+          <button>Notify me</button>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="bottom-nav-left">
+        <button class="btn-back" onclick="go('screen-q1')">← Back to previous question</button>
+        <button class="restart" onclick="restart()">← Start again</button>
+      </div>
+      <button class="feedback-link" onclick="#">I don't see myself here or I see a mistake</button>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════ EXIT 02 — Planning ═══════════════ -->
+<div id="screen-exit-02" class="screen">
+  <main>
+    <div class="exit-tag">Not in scope yet</div>
+    <div class="exit-headline">You're not in scope yet, but you will be</div>
+    <div class="exit-body">
+      <p>DPP obligations kick in when your products hit the EU market. The 2027 deadline gives you time, but the data you'll need - fibre composition, supplier identifiers, certifications - is going to take time to collect.</p>
+      <p>Start talking to your suppliers and customers. Ask them what their strategy is, if anything, around DPPs. To succeed selling in Europe, you'll need to have the necessary data in place.</p>
+    </div>
+    <div class="cta-list">
+      <div class="email-capture">
+        <span class="email-capture-label">Get notified when things change</span>
+        <div class="email-capture-row">
+          <input type="email" placeholder="your@email.com">
+          <button>Notify me</button>
+        </div>
+      </div>
+      <a class="cta" href="#">Get in touch if you want help</a>
+    </div>
+    <div class="bottom-nav">
+      <div class="bottom-nav-left">
+        <button class="btn-back" onclick="go('screen-q1')">← Back to previous question</button>
+        <button class="restart" onclick="restart()">← Start again</button>
+      </div>
+      <button class="feedback-link" onclick="#">I don't see myself here or I see a mistake</button>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════ EXIT 03 — Something else ═══════════════ -->
+<div id="screen-exit-03" class="screen">
+  <main>
+    <div class="exit-tag">Category not yet covered</div>
+    <div class="exit-headline">More industry-specific requirements coming soon - we're working on it</div>
+    <div class="exit-body">
+      <p>So far this tool only covers the industries listed in the previous step. If you let us know what you're looking for information on, we'll make sure you get it soon.</p>
+    </div>
+    <div class="cta-list">
+      <div class="email-capture">
+        <span class="email-capture-label">Get notified when things change</span>
+        <div class="email-capture-row">
+          <input type="email" placeholder="your@email.com">
+          <button>Notify me</button>
+        </div>
+      </div>
+      <a class="cta" href="#">Get in touch if you want help</a>
+    </div>
+    <div class="bottom-nav">
+      <div class="bottom-nav-left">
+        <button class="btn-back" onclick="go('screen-q2')">← Back to previous question</button>
+        <button class="restart" onclick="restart()">← Start again</button>
+      </div>
+      <button class="feedback-link" onclick="#">I don't see myself here or I see a mistake</button>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════ EXIT 04 — Distributor ═══════════════ -->
+<div id="screen-exit-04" class="screen">
+  <main>
+    <div class="exit-tag">Limited obligation</div>
+    <div class="exit-headline">You don't create the DPP, but you need to make sure one exists</div>
+    <div class="exit-body">
+      <p>Before you put a product on the EU market, as of 2027, you'll need a valid DPP in place. If there isn't one, you can't sell it. The brands and manufacturers you source from are responsible for creating it. Start asking them what they're doing about it, and if they're struggling, put us in touch. We're here to help producers.</p>
+    </div>
+    <div class="cta-list">
+      <a class="cta primary" href="#">Get in touch if you want help</a>
+      <div class="email-capture" style="margin-top: 6px;">
+        <span class="email-capture-label">Get notified when things change</span>
+        <div class="email-capture-row">
+          <input type="email" placeholder="your@email.com">
+          <button>Notify me</button>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="bottom-nav-left">
+        <button class="btn-back" onclick="go('screen-q3')">← Back to previous question</button>
+        <button class="restart" onclick="restart()">← Start again</button>
+      </div>
+      <button class="feedback-link" onclick="#">I don't see myself here or I see a mistake</button>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════ EXIT 05 — Tech ═══════════════ -->
+<div id="screen-exit-05" class="screen">
+  <main>
+    <div class="exit-tag">No direct obligation</div>
+    <div class="exit-headline">No direct obligation, but the standards matter</div>
+    <div class="exit-body">
+      <p>The ESPR requires DPP data to be built on open standards, in machine-readable formats, transferable through open networks without vendor lock-in. Any platform handling DPP data needs to be built this way.</p>
+      <p>open-dpp is a reference site built on these principles - fork it, build on it, use it as your baseline, or open a discussion on GitHub and we'll respond.</p>
+    </div>
+    <div class="cta-list">
+      <a class="cta primary" href="https://rhys-the-davies.github.io/open-dpp/" target="_blank">Read the open-dpp reference documentation</a>
+      <a class="cta" href="https://github.com/rhys-the-davies/open-dpp" target="_blank">Browse the open schema on GitHub</a>
+      <a class="cta" href="#">Get in touch with AWARE™ for direct help</a>
+    </div>
+    <div class="bottom-nav">
+      <div class="bottom-nav-left">
+        <button class="btn-back" onclick="go('screen-q3')">← Back to previous question</button>
+        <button class="restart" onclick="restart()">← Start again</button>
+      </div>
+      <button class="feedback-link" onclick="#">I don't see myself here or I see a mistake</button>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════ OUT-01 — Textiles / Manufacturer ═══════════════ -->
+<div id="screen-out-01" class="screen">
+  <main>
+    <div class="result-header">
+      <div class="result-tag">Textiles / Manufacturer</div>
+      <div class="result-headline">You're responsible for creating and maintaining the DPP</div>
+      <div class="result-summary">You make textiles and sell them in the EU, or are upstream of this happening, which makes you the responsible party under ESPR. The deadline is 2027. The final delegated act is still pending but the data requirements are largely known - you can start getting ready.</div>
+    </div>
+
+    <div class="steps-label">Your next steps</div>
+    <ol class="steps">
+      <li class="step">
+        <span class="step-num">01</span>
+        <span class="step-text">Understand the 18 data fields you'll need to provide, and where each one comes from in your supply chain. <span class="step-link">Textile schema →</span></span>
+      </li>
+      <li class="step">
+        <span class="step-num">02</span>
+        <span class="step-text">Map which suppliers hold which data - fibre composition from mills, facility identifiers from factories, certifications from auditors. <span class="step-link">Responsibility matrix →</span></span>
+      </li>
+      <li class="step">
+        <span class="step-num">03</span>
+        <span class="step-text">Track the delegated act - the exact compliance deadline and final field requirements land here. <span class="step-link">Legislation tracker →</span></span>
+      </li>
+    </ol>
+
+    <div class="result-ctas">
+      <a class="cta primary" href="#">Get in touch if you need help</a>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="bottom-nav-left">
+        <button class="btn-back" onclick="go('screen-q3')">← Back to previous question</button>
+        <button class="restart" onclick="restart()">← Start again</button>
+      </div>
+      <button class="feedback-link" onclick="#">I don't see myself here or I see a mistake</button>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════ OUT-02 — Textiles / Importer ═══════════════ -->
+<div id="screen-out-02" class="screen">
+  <main>
+    <div class="result-header">
+      <div class="result-tag">Textiles / Importer</div>
+      <div class="result-headline">You're responsible for the DPP as the EU importer</div>
+      <div class="result-summary">You bring textile products into the EU market and the original manufacturer isn't EU-established. That puts the obligation on you - you take on manufacturer-equivalent responsibilities, including creating and maintaining the DPP.</div>
+    </div>
+
+    <div class="steps-label">Your next steps</div>
+    <ol class="steps">
+      <li class="step">
+        <span class="step-num">01</span>
+        <span class="step-text">Confirm whether the original manufacturer has an EU legal entity - if not, the obligation is yours. <span class="step-link">Responsibility matrix →</span></span>
+      </li>
+      <li class="step">
+        <span class="step-num">02</span>
+        <span class="step-text">Understand the 18 data fields you'll need to compile - start asking your suppliers what they can provide. <span class="step-link">Textile schema →</span></span>
+      </li>
+      <li class="step">
+        <span class="step-num">03</span>
+        <span class="step-text">Track the delegated act for the exact deadline. <span class="step-link">Legislation tracker →</span></span>
+      </li>
+    </ol>
+
+    <div class="result-ctas">
+      <a class="cta primary" href="#">Get in touch if you need help</a>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="bottom-nav-left">
+        <button class="btn-back" onclick="go('screen-q3')">← Back to previous question</button>
+        <button class="restart" onclick="restart()">← Start again</button>
+      </div>
+      <button class="feedback-link" onclick="#">I don't see myself here or I see a mistake</button>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════ OUT-03 — Mixed / Manufacturer ═══════════════ -->
+<div id="screen-out-03" class="screen">
+  <main>
+    <div class="result-header">
+      <div class="result-tag">Mixed products / Manufacturer</div>
+      <div class="result-headline">The DPP obligation applies to the textile parts of what you make</div>
+      <div class="result-summary">You make products that combine textiles with other materials and sell them in the EU. The DPP obligation covers the textile components. The data requirements and the 2027 deadline are the same as for pure textile products.</div>
+    </div>
+
+    <div class="steps-label">Your next steps</div>
+    <ol class="steps">
+      <li class="step">
+        <span class="step-num">01</span>
+        <span class="step-text">Understand which of the 18 data fields apply to the textile elements of your products. <span class="step-link">Textile schema →</span></span>
+      </li>
+      <li class="step">
+        <span class="step-num">02</span>
+        <span class="step-text">Map which suppliers hold which data across your range. <span class="step-link">Responsibility matrix →</span></span>
+      </li>
+      <li class="step">
+        <span class="step-num">03</span>
+        <span class="step-text">Track the delegated act for the compliance deadline. <span class="step-link">Legislation tracker →</span></span>
+      </li>
+    </ol>
+
+    <div class="result-ctas">
+      <a class="cta primary" href="#">Get in touch if you need help</a>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="bottom-nav-left">
+        <button class="btn-back" onclick="go('screen-q3')">← Back to previous question</button>
+        <button class="restart" onclick="restart()">← Start again</button>
+      </div>
+      <button class="feedback-link" onclick="#">I don't see myself here or I see a mistake</button>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════ OUT-04 — Mixed / Importer ═══════════════ -->
+<div id="screen-out-04" class="screen">
+  <main>
+    <div class="result-header">
+      <div class="result-tag">Mixed products / Importer</div>
+      <div class="result-headline">You're responsible for the DPP on the textile elements you import</div>
+      <div class="result-summary">You bring mixed-material products into the EU market and the original manufacturer isn't EU-established. The DPP obligation covers the textile components - and as the importer, you're the one responsible for meeting it.</div>
+    </div>
+
+    <div class="steps-label">Your next steps</div>
+    <ol class="steps">
+      <li class="step">
+        <span class="step-num">01</span>
+        <span class="step-text">Confirm whether the original manufacturer has an EU legal entity - if not, the obligation is yours. <span class="step-link">Responsibility matrix →</span></span>
+      </li>
+      <li class="step">
+        <span class="step-num">02</span>
+        <span class="step-text">Understand the 18 data fields required for the textile components - start asking your suppliers what they can provide. <span class="step-link">Textile schema →</span></span>
+      </li>
+      <li class="step">
+        <span class="step-num">03</span>
+        <span class="step-text">Track the delegated act for the exact deadline. <span class="step-link">Legislation tracker →</span></span>
+      </li>
+    </ol>
+
+    <div class="result-ctas">
+      <a class="cta primary" href="#">Get in touch if you need help</a>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="bottom-nav-left">
+        <button class="btn-back" onclick="go('screen-q3')">← Back to previous question</button>
+        <button class="restart" onclick="restart()">← Start again</button>
+      </div>
+      <button class="feedback-link" onclick="#">I don't see myself here or I see a mistake</button>
+    </div>
+  </main>
+</div>
+
+<script>
+  const answers = { q1: null, q2: null, q3: null };
+
+  function go(screenId) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(screenId).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function select(el, question, value, next) {
+    // Deselect siblings
+    el.closest('.options').querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    answers[question] = value;
+    if (next) {
+      setTimeout(() => go(next), 220);
+    }
+  }
+
+  function route() {
+    // Called after Q3 manufacturer/importer selection
+    // Need a small delay to let the selection register visually
+    setTimeout(() => {
+      const q2 = answers.q2;
+      const q3 = answers.q3;
+      if (q2 === 'textiles' && q3 === 'manufacturer') go('screen-out-01');
+      else if (q2 === 'textiles' && q3 === 'importer') go('screen-out-02');
+      else if (q2 === 'mixed' && q3 === 'manufacturer') go('screen-out-03');
+      else if (q2 === 'mixed' && q3 === 'importer') go('screen-out-04');
+    }, 220);
+  }
+
+  function restart() {
+    answers.q1 = null; answers.q2 = null; answers.q3 = null;
+    document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    go('screen-start');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1780 1540" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#455A64"/>
+    </marker>
+    <marker id="arrowDash" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#78909C"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1780" height="1540" fill="#FFFFFF"/>
+  <rect x="4" y="4" width="1772" height="1532" fill="none" stroke="#CFD8DC" stroke-width="1.5" rx="10"/>
+
+  <!-- Title -->
+  <text x="890" y="45" text-anchor="middle" font-size="26" font-weight="700" fill="#1A237E">remake_dpp &#8212; System Architecture &amp; Component Relationships</text>
+  <text x="890" y="70" text-anchor="middle" font-size="14" fill="#546E7A">Digital Product Passport (DPP) generation pipeline: multi-standard ingestion &#8594; canonical model &#8594; multi-standard mapping</text>
+  <text x="890" y="90" text-anchor="middle" font-size="11.5" fill="#90A4AE" font-style="italic">nmis_dpp package (remake_dpp v0.2.3)</text>
+
+  <!-- ================= ROW 1: INPUT SOURCES ================= -->
+  <text x="750" y="140" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1565C0" letter-spacing="0.5">INPUT SOURCES</text>
+
+  <g>
+    <rect x="60" y="150" width="300" height="90" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="210" y="176" text-anchor="middle" font-size="15" font-weight="700" fill="#0D47A1">ECLASS 16.0</text>
+    <text x="210" y="194" text-anchor="middle" font-size="11" fill="#0D47A1">XML ontology export</text>
+    <text x="210" y="212" text-anchor="middle" font-size="10.5" fill="#1565C0" font-family="Consolas, monospace">ontology_data/eclass_16/</text>
+  </g>
+
+  <g>
+    <rect x="400" y="150" width="300" height="90" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="550" y="176" text-anchor="middle" font-size="15" font-weight="700" fill="#0D47A1">ISA-95 / B2MML</text>
+    <text x="550" y="194" text-anchor="middle" font-size="11" fill="#0D47A1">XSD schema suite (v0600)</text>
+    <text x="550" y="212" text-anchor="middle" font-size="10.5" fill="#1565C0" font-family="Consolas, monospace">ontology_data/isa95/</text>
+  </g>
+
+  <g>
+    <rect x="740" y="150" width="300" height="90" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="890" y="176" text-anchor="middle" font-size="15" font-weight="700" fill="#0D47A1">CSV Part List</text>
+    <text x="890" y="194" text-anchor="middle" font-size="11" fill="#0D47A1">tabular part / asset export</text>
+    <text x="890" y="212" text-anchor="middle" font-size="10.5" fill="#1565C0" font-family="Consolas, monospace">user-supplied *.csv</text>
+  </g>
+
+  <g>
+    <rect x="1080" y="150" width="300" height="90" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+    <text x="1230" y="176" text-anchor="middle" font-size="15" font-weight="700" fill="#0D47A1">YAML Configuration</text>
+    <text x="1230" y="194" text-anchor="middle" font-size="10.5" fill="#0D47A1" font-family="Consolas, monospace">config/schemas.yml, mapping.yml</text>
+    <text x="1230" y="212" text-anchor="middle" font-size="10.5" fill="#1565C0">schema aliases &amp; adapter column maps</text>
+  </g>
+
+  <!-- IN -> AD arrows -->
+  <line x1="210" y1="240" x2="210" y2="300" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="550" y1="240" x2="550" y2="300" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="890" y1="240" x2="890" y2="300" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- ================= ROW 2: ADAPTERS ================= -->
+  <text x="550" y="292" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2E7D32" letter-spacing="0.5">INPUT ADAPTERS &#8212; nmis_dpp/adapters.py</text>
+
+  <g>
+    <rect x="60" y="300" width="300" height="90" rx="10" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+    <text x="210" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="#1B5E20" font-family="Consolas, monospace">build_dpp_from_eclass()</text>
+    <text x="210" y="352" text-anchor="middle" font-size="10.5" fill="#1B5E20">parses ECLASS XML &#8594;</text>
+    <text x="210" y="366" text-anchor="middle" font-size="10.5" fill="#1B5E20">DigitalProductPassport</text>
+  </g>
+
+  <g>
+    <rect x="400" y="300" width="300" height="90" rx="10" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+    <text x="550" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="#1B5E20" font-family="Consolas, monospace">build_dpp_from_isa95()</text>
+    <text x="550" y="352" text-anchor="middle" font-size="10.5" fill="#1B5E20">parses B2MML XML &#8594;</text>
+    <text x="550" y="366" text-anchor="middle" font-size="10.5" fill="#1B5E20">DigitalProductPassport</text>
+  </g>
+
+  <g>
+    <rect x="740" y="300" width="300" height="90" rx="10" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+    <text x="890" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="#1B5E20" font-family="Consolas, monospace">build_dpp_from_csv()</text>
+    <text x="890" y="352" text-anchor="middle" font-size="10.5" fill="#1B5E20">parses tabular rows &#8594;</text>
+    <text x="890" y="366" text-anchor="middle" font-size="10.5" fill="#1B5E20">DigitalProductPassport</text>
+  </g>
+
+  <!-- AD -> CM converge -->
+  <line x1="210" y1="390" x2="200" y2="480" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="550" y1="390" x2="400" y2="480" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="890" y1="390" x2="600" y2="480" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- ================= ROW 3: CORE MODEL + TAXONOMY ================= -->
+  <g>
+    <rect x="60" y="480" width="640" height="180" rx="10" fill="#EDE7F6" stroke="#4527A0" stroke-width="2.5"/>
+    <text x="380" y="505" text-anchor="middle" font-size="16" font-weight="700" fill="#311B92" font-family="Consolas, monospace">DigitalProductPassport</text>
+    <text x="380" y="521" text-anchor="middle" font-size="10.5" fill="#4527A0" font-style="italic">model.py &#8212; core domain object (6-layer structure)</text>
+
+    <!-- layer chips row 1 -->
+    <rect x="75" y="530" width="195" height="42" rx="6" fill="#D1C4E9" stroke="#5E35B1" stroke-width="1.3"/>
+    <text x="172" y="556" text-anchor="middle" font-size="12" font-weight="600" fill="#311B92">IdentityLayer</text>
+    <rect x="282" y="530" width="195" height="42" rx="6" fill="#D1C4E9" stroke="#5E35B1" stroke-width="1.3"/>
+    <text x="379" y="556" text-anchor="middle" font-size="12" font-weight="600" fill="#311B92">StructureLayer</text>
+    <rect x="489" y="530" width="195" height="42" rx="6" fill="#D1C4E9" stroke="#5E35B1" stroke-width="1.3"/>
+    <text x="586" y="556" text-anchor="middle" font-size="12" font-weight="600" fill="#311B92">LifecycleLayer</text>
+
+    <!-- layer chips row 2 -->
+    <rect x="75" y="583" width="195" height="42" rx="6" fill="#D1C4E9" stroke="#5E35B1" stroke-width="1.3"/>
+    <text x="172" y="609" text-anchor="middle" font-size="12" font-weight="600" fill="#311B92">RiskLayer</text>
+    <rect x="282" y="583" width="195" height="42" rx="6" fill="#D1C4E9" stroke="#5E35B1" stroke-width="1.3"/>
+    <text x="379" y="609" text-anchor="middle" font-size="12" font-weight="600" fill="#311B92">SustainabilityLayer</text>
+    <rect x="489" y="583" width="195" height="42" rx="6" fill="#D1C4E9" stroke="#5E35B1" stroke-width="1.3"/>
+    <text x="586" y="609" text-anchor="middle" font-size="12" font-weight="600" fill="#311B92">ProvenanceLayer</text>
+  </g>
+
+  <!-- CM -> PT -->
+  <line x1="700" y1="570" x2="758" y2="570" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="729" y="558" text-anchor="middle" font-size="9.5" fill="#455A64" font-family="Consolas, monospace">structure.parts</text>
+
+  <g>
+    <rect x="760" y="480" width="420" height="180" rx="10" fill="#F3E5F5" stroke="#8E24AA" stroke-width="2.5"/>
+    <text x="970" y="505" text-anchor="middle" font-size="16" font-weight="700" fill="#6A1B9A" font-family="Consolas, monospace">PartClass (ABC)</text>
+    <text x="970" y="521" text-anchor="middle" font-size="10.5" fill="#8E24AA" font-style="italic">part_class.py &#8212; universal part taxonomy</text>
+
+    <text x="775" y="541" font-size="11" fill="#4A148C" font-family="Consolas, monospace">PowerConversion</text>
+    <text x="775" y="555" font-size="11" fill="#4A148C" font-family="Consolas, monospace">EnergyStorage</text>
+    <text x="775" y="569" font-size="11" fill="#4A148C" font-family="Consolas, monospace">Actuator</text>
+    <text x="775" y="583" font-size="11" fill="#4A148C" font-family="Consolas, monospace">Sensor</text>
+    <text x="775" y="597" font-size="11" fill="#4A148C" font-family="Consolas, monospace">ControlUnit</text>
+    <text x="775" y="611" font-size="11" fill="#4A148C" font-family="Consolas, monospace">UserInterface</text>
+    <text x="775" y="625" font-size="11" fill="#4A148C" font-family="Consolas, monospace">Thermal</text>
+
+    <text x="955" y="541" font-size="11" fill="#4A148C" font-family="Consolas, monospace">Fluidics</text>
+    <text x="955" y="555" font-size="11" fill="#4A148C" font-family="Consolas, monospace">Structural</text>
+    <text x="955" y="569" font-size="11" fill="#4A148C" font-family="Consolas, monospace">Transmission</text>
+    <text x="955" y="583" font-size="11" fill="#4A148C" font-family="Consolas, monospace">Protection</text>
+    <text x="955" y="597" font-size="11" fill="#4A148C" font-family="Consolas, monospace">Connectivity</text>
+    <text x="955" y="611" font-size="11" fill="#4A148C" font-family="Consolas, monospace">SoftwareModule</text>
+    <text x="955" y="625" font-size="11" fill="#4A148C" font-family="Consolas, monospace">Consumable &amp; Fastener</text>
+
+    <line x1="775" y1="635" x2="1155" y2="635" stroke="#CE93D8" stroke-width="1"/>
+    <text x="970" y="650" text-anchor="middle" font-size="10" fill="#6A1B9A" font-style="italic">+ OntologyBinding &#8212; attaches ECLASS/ISA-95 codes via .bind_ontology()</text>
+  </g>
+
+  <!-- ================= ROW 4: UTILS + ONTOLOGY BUILD (cross-cutting / auxiliary) ================= -->
+  <g>
+    <rect x="60" y="680" width="640" height="50" rx="8" fill="#ECEFF1" stroke="#546E7A" stroke-width="1.6" stroke-dasharray="6,4"/>
+    <text x="380" y="700" text-anchor="middle" font-size="11.5" font-weight="700" fill="#37474F" font-family="Consolas, monospace">utils.py</text>
+    <text x="380" y="716" text-anchor="middle" font-size="10.5" fill="#455A64">to_dict() &#183; to_json() &#183; validate_part_class() &#8212; used by model, adapters &amp; mappers</text>
+  </g>
+
+  <line x1="970" y1="680" x2="970" y2="660" stroke="#F57F17" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrowDash)"/>
+  <g>
+    <rect x="760" y="680" width="420" height="100" rx="8" fill="#FFF8E1" stroke="#F57F17" stroke-width="1.6" stroke-dasharray="6,4"/>
+    <text x="970" y="700" text-anchor="middle" font-size="11.5" font-weight="700" fill="#E65100">Ontology Build Scripts (offline)</text>
+    <text x="970" y="717" text-anchor="middle" font-size="10" fill="#E65100" font-family="Consolas, monospace">eclass_build_mapping.py &#183; isa95_build_mapping.py</text>
+    <text x="970" y="733" text-anchor="middle" font-size="10" fill="#8D6E00">parse ontology_data/ &#8594; domain-classify part classes</text>
+    <text x="970" y="749" text-anchor="middle" font-size="10" fill="#8D6E00" font-family="Consolas, monospace">generate_part_class_bindings() &#8594; OntologyBinding data</text>
+    <text x="970" y="767" text-anchor="middle" font-size="9.5" fill="#BF8F00" font-style="italic">(dev-time; not part of the runtime request path)</text>
+  </g>
+
+  <!-- CM/Utils -> Registry -->
+  <line x1="380" y1="730" x2="540" y2="820" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="405" y="775" font-size="10" fill="#455A64" font-family="Consolas, monospace" transform="rotate(35 405,775)">DigitalProductPassport</text>
+
+  <!-- PT -> Registry (map_part_class) -->
+  <line x1="1000" y1="780" x2="850" y2="820" stroke="#455A64" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="965" y="805" font-size="9.5" fill="#455A64" font-family="Consolas, monospace">map_part_class()</text>
+
+  <!-- ================= ROW 5: SCHEMA REGISTRY ================= -->
+  <g>
+    <rect x="200" y="820" width="700" height="110" rx="10" fill="#E0F7FA" stroke="#00838F" stroke-width="2.5"/>
+    <text x="550" y="848" text-anchor="middle" font-size="16" font-weight="700" fill="#006064" font-family="Consolas, monospace">SchemaRegistry</text>
+    <text x="550" y="866" text-anchor="middle" font-size="10.5" fill="#00838F" font-style="italic">schema_registry.py &#8212; lazy mapper loading &amp; alias resolution</text>
+    <text x="550" y="884" text-anchor="middle" font-size="10.5" fill="#006064" font-family="Consolas, monospace">get_global_registry() &#183; register_default_mappers()</text>
+    <text x="550" y="900" text-anchor="middle" font-size="10.5" fill="#006064" font-family="Consolas, monospace">map_dpp() &#183; map_part_class() &#183; get_context()</text>
+    <text x="550" y="916" text-anchor="middle" font-size="9.5" fill="#00838F">reads config/schemas.yml for names, aliases &amp; metadata</text>
+  </g>
+
+  <line x1="550" y1="930" x2="550" y2="970" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="620" y="954" font-size="9.5" fill="#455A64" font-family="Consolas, monospace">get_mapper()</text>
+
+  <!-- ================= ROW 6: MAPPER INTERFACE ================= -->
+  <g>
+    <rect x="200" y="970" width="700" height="110" rx="10" fill="#FCE4EC" stroke="#AD1457" stroke-width="2.5"/>
+    <text x="550" y="998" text-anchor="middle" font-size="16" font-weight="700" fill="#880E4F" font-family="Consolas, monospace">SchemaMapper (ABC)</text>
+    <text x="550" y="1016" text-anchor="middle" font-size="10.5" fill="#AD1457" font-style="italic">schema_base.py &#8212; plug-in contract for output-schema mappers</text>
+    <text x="550" y="1034" text-anchor="middle" font-size="10" fill="#880E4F" font-family="Consolas, monospace">map_identity/structure/lifecycle/risk/sustainability/provenance_layer()</text>
+    <text x="550" y="1050" text-anchor="middle" font-size="10" fill="#880E4F" font-family="Consolas, monospace">map_part_class() &#183; get_context() &#183; validate_mapping()</text>
+    <text x="550" y="1066" text-anchor="middle" font-size="9.5" fill="#AD1457">get_schema_name() &#183; get_schema_version()</text>
+  </g>
+
+  <text x="550" y="1108" text-anchor="middle" font-size="11.5" font-weight="700" fill="#283593">implemented by &#8595;</text>
+
+  <!-- Interface -> Mappers diverge -->
+  <line x1="450" y1="1080" x2="210" y2="1120" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="550" y1="1080" x2="550" y2="1120" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="650" y1="1080" x2="890" y2="1120" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- ================= ROW 7: CONCRETE MAPPERS ================= -->
+  <g>
+    <rect x="60" y="1120" width="300" height="110" rx="10" fill="#E8EAF6" stroke="#283593" stroke-width="2"/>
+    <text x="210" y="1150" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1A237E" font-family="Consolas, monospace">ECLASSMapper</text>
+    <text x="210" y="1168" text-anchor="middle" font-size="10.5" fill="#283593" font-style="italic">eclass_mapper.py</text>
+    <text x="210" y="1188" text-anchor="middle" font-size="10.5" fill="#1A237E">ECLASS 16.0 vocabulary</text>
+    <text x="210" y="1205" text-anchor="middle" font-size="10.5" fill="#1A237E">JSON-LD @context</text>
+  </g>
+
+  <g>
+    <rect x="400" y="1120" width="300" height="110" rx="10" fill="#E8EAF6" stroke="#283593" stroke-width="2"/>
+    <text x="550" y="1150" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1A237E" font-family="Consolas, monospace">ISA95Mapper</text>
+    <text x="550" y="1168" text-anchor="middle" font-size="10.5" fill="#283593" font-style="italic">isa95_mapper.py</text>
+    <text x="550" y="1188" text-anchor="middle" font-size="10.5" fill="#1A237E">ISA-95 / B2MML (IEC 62264)</text>
+    <text x="550" y="1205" text-anchor="middle" font-size="10.5" fill="#1A237E">work-order / MES view</text>
+  </g>
+
+  <g>
+    <rect x="740" y="1120" width="300" height="110" rx="10" fill="#E8EAF6" stroke="#283593" stroke-width="2"/>
+    <text x="890" y="1150" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1A237E" font-family="Consolas, monospace">BatteryDPPMapper</text>
+    <text x="890" y="1168" text-anchor="middle" font-size="10.5" fill="#283593" font-style="italic">battery_dpp_mapper.py</text>
+    <text x="890" y="1188" text-anchor="middle" font-size="10.5" fill="#1A237E">EU Battery Passport schema</text>
+    <text x="890" y="1205" text-anchor="middle" font-size="10.5" fill="#1A237E">+ circularity, Annex XIII</text>
+  </g>
+
+  <!-- Mappers -> Output -->
+  <line x1="210" y1="1230" x2="210" y2="1270" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="550" y1="1230" x2="550" y2="1270" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="890" y1="1230" x2="890" y2="1270" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="550" y="1255" text-anchor="middle" font-size="9.5" fill="#455A64" font-family="Consolas, monospace">map_dpp() / to_json()</text>
+
+  <!-- ================= ROW 8: OUTPUT SCHEMAS ================= -->
+  <g>
+    <rect x="60" y="1270" width="300" height="110" rx="10" fill="#E0F2F1" stroke="#00695C" stroke-width="2"/>
+    <text x="210" y="1300" text-anchor="middle" font-size="14" font-weight="700" fill="#004D40">ECLASS 16.0 JSON-LD</text>
+    <text x="210" y="1320" text-anchor="middle" font-size="10.5" fill="#00695C">Generic DPP,</text>
+    <text x="210" y="1336" text-anchor="middle" font-size="10.5" fill="#00695C">ECLASS vocabulary</text>
+  </g>
+
+  <g>
+    <rect x="400" y="1270" width="300" height="110" rx="10" fill="#E0F2F1" stroke="#00695C" stroke-width="2"/>
+    <text x="550" y="1300" text-anchor="middle" font-size="14" font-weight="700" fill="#004D40">ISA-95 / B2MML JSON</text>
+    <text x="550" y="1320" text-anchor="middle" font-size="10.5" fill="#00695C">Work-order / MES-facing</text>
+    <text x="550" y="1336" text-anchor="middle" font-size="10.5" fill="#00695C">document</text>
+  </g>
+
+  <g>
+    <rect x="740" y="1270" width="300" height="110" rx="10" fill="#E0F2F1" stroke="#00695C" stroke-width="2"/>
+    <text x="890" y="1300" text-anchor="middle" font-size="14" font-weight="700" fill="#004D40">EU Battery Passport JSON</text>
+    <text x="890" y="1320" text-anchor="middle" font-size="10.5" fill="#00695C">BatteryPass schema:</text>
+    <text x="890" y="1336" text-anchor="middle" font-size="10.5" fill="#00695C">sustainability + circularity</text>
+  </g>
+
+  <!-- ================= ORCHESTRATION COLUMN (right) ================= -->
+  <g>
+    <rect x="1460" y="300" width="240" height="70" rx="8" fill="#FAFAFA" stroke="#757575" stroke-width="1.6"/>
+    <text x="1580" y="326" text-anchor="middle" font-size="12.5" font-weight="700" fill="#424242">Caller</text>
+    <text x="1580" y="343" text-anchor="middle" font-size="10" fill="#616161">CLI invocation or</text>
+    <text x="1580" y="357" text-anchor="middle" font-size="10" fill="#616161" font-family="Consolas, monospace">import nmis_dpp</text>
+  </g>
+  <line x1="1580" y1="370" x2="1580" y2="420" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <g>
+    <rect x="1420" y="420" width="320" height="300" rx="10" fill="#FFF3E0" stroke="#EF6C00" stroke-width="2.5"/>
+    <text x="1580" y="448" text-anchor="middle" font-size="15.5" font-weight="700" fill="#E65100">Orchestration Layer</text>
+    <line x1="1440" y1="460" x2="1720" y2="460" stroke="#FFCC80" stroke-width="1"/>
+
+    <text x="1580" y="482" text-anchor="middle" font-size="12" font-weight="700" fill="#E65100" font-family="Consolas, monospace">cli.py</text>
+    <text x="1580" y="499" text-anchor="middle" font-size="10.5" fill="#BF360C" font-family="Consolas, monospace">main()</text>
+    <text x="1580" y="514" text-anchor="middle" font-size="9.5" fill="#EF6C00" font-style="italic">command-line entry point</text>
+
+    <line x1="1440" y1="528" x2="1720" y2="528" stroke="#FFCC80" stroke-width="1"/>
+
+    <text x="1580" y="550" text-anchor="middle" font-size="12" font-weight="700" fill="#E65100" font-family="Consolas, monospace">api.py</text>
+    <text x="1580" y="567" text-anchor="middle" font-size="10.5" fill="#BF360C" font-family="Consolas, monospace">create_dpp()</text>
+    <text x="1580" y="583" text-anchor="middle" font-size="10.5" fill="#BF360C" font-family="Consolas, monospace">list_input_schemas()</text>
+    <text x="1580" y="599" text-anchor="middle" font-size="10.5" fill="#BF360C" font-family="Consolas, monospace">list_output_schemas()</text>
+    <text x="1580" y="619" text-anchor="middle" font-size="9.5" fill="#EF6C00" font-style="italic">facade: resolves config &#8594;</text>
+    <text x="1580" y="633" text-anchor="middle" font-size="9.5" fill="#EF6C00" font-style="italic">adapter &#8594; registry</text>
+
+    <text x="1580" y="700" text-anchor="middle" font-size="9.5" fill="#A1887F" font-style="italic">single entry point wiring the</text>
+    <text x="1580" y="714" text-anchor="middle" font-size="9.5" fill="#A1887F" font-style="italic">whole pipeline end-to-end</text>
+  </g>
+
+  <!-- IN4 (config) -> Orchestration, dashed -->
+  <path d="M1230,240 L1230,270 L1370,270 L1370,430 L1418,430" fill="none" stroke="#90A4AE" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowDash)"/>
+
+  <!-- Orchestration -> Adapters, dashed -->
+  <path d="M1418,480 L1200,480 L1200,345 L1042,345" fill="none" stroke="#90A4AE" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowDash)"/>
+  <text x="1210" y="470" text-anchor="middle" font-size="9.5" fill="#78909C" font-family="Consolas, monospace">invokes build_dpp_from_*()</text>
+
+  <!-- Orchestration -> Registry, dashed -->
+  <path d="M1418,655 L1250,655 L1250,875 L902,875" fill="none" stroke="#90A4AE" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowDash)"/>
+  <text x="1258" y="770" text-anchor="middle" font-size="9.5" fill="#78909C" font-family="Consolas, monospace" transform="rotate(90 1258,770)">invokes registry.map_dpp()</text>
+
+  <!-- ================= LEGEND ================= -->
+  <g>
+    <rect x="60" y="1410" width="1660" height="112" rx="10" fill="#FAFAFA" stroke="#CFD8DC" stroke-width="1.4"/>
+    <text x="890" y="1430" text-anchor="middle" font-size="12" font-weight="700" fill="#37474F">Legend</text>
+
+    <!-- row 1 -->
+    <rect x="80" y="1442" width="16" height="16" fill="#E3F2FD" stroke="#1565C0" stroke-width="1.6"/>
+    <text x="102" y="1455" font-size="11" fill="#37474F">Input sources</text>
+
+    <rect x="330" y="1442" width="16" height="16" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1.6"/>
+    <text x="352" y="1455" font-size="11" fill="#37474F">Input adapters</text>
+
+    <rect x="580" y="1442" width="16" height="16" fill="#EDE7F6" stroke="#4527A0" stroke-width="1.6"/>
+    <text x="602" y="1455" font-size="11" fill="#37474F">Core domain model</text>
+
+    <rect x="850" y="1442" width="16" height="16" fill="#F3E5F5" stroke="#8E24AA" stroke-width="1.6"/>
+    <text x="872" y="1455" font-size="11" fill="#37474F">Part-class taxonomy</text>
+
+    <rect x="1120" y="1442" width="16" height="16" fill="#E0F7FA" stroke="#00838F" stroke-width="1.6"/>
+    <text x="1142" y="1455" font-size="11" fill="#37474F">Schema registry</text>
+
+    <rect x="1370" y="1442" width="16" height="16" fill="#FCE4EC" stroke="#AD1457" stroke-width="1.6"/>
+    <text x="1392" y="1455" font-size="11" fill="#37474F">Mapper interface (ABC)</text>
+
+    <!-- row 2 -->
+    <rect x="80" y="1474" width="16" height="16" fill="#E8EAF6" stroke="#283593" stroke-width="1.6"/>
+    <text x="102" y="1487" font-size="11" fill="#37474F">Concrete mappers</text>
+
+    <rect x="330" y="1474" width="16" height="16" fill="#E0F2F1" stroke="#00695C" stroke-width="1.6"/>
+    <text x="352" y="1487" font-size="11" fill="#37474F">Output schema documents</text>
+
+    <rect x="580" y="1474" width="16" height="16" fill="#FFF3E0" stroke="#EF6C00" stroke-width="1.6"/>
+    <text x="602" y="1487" font-size="11" fill="#37474F">Orchestration layer (api/cli)</text>
+
+    <rect x="850" y="1474" width="16" height="16" fill="#ECEFF1" stroke="#546E7A" stroke-width="1.6" stroke-dasharray="4,3"/>
+    <text x="872" y="1487" font-size="11" fill="#37474F">Cross-cutting utilities</text>
+
+    <rect x="1120" y="1474" width="16" height="16" fill="#FFF8E1" stroke="#F57F17" stroke-width="1.6" stroke-dasharray="4,3"/>
+    <text x="1142" y="1487" font-size="11" fill="#37474F">Offline ontology build scripts</text>
+
+    <line x1="1370" y1="1482" x2="1400" y2="1482" stroke="#455A64" stroke-width="2.5"/>
+    <text x="1408" y="1487" font-size="11" fill="#37474F">build / data flow</text>
+
+    <!-- row 3 -->
+    <line x1="80" y1="1506" x2="110" y2="1506" stroke="#78909C" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="118" y="1511" font-size="11" fill="#37474F">config, invocation, or cross-cutting dependency (non-data-flow)</text>
+  </g>
+</svg>

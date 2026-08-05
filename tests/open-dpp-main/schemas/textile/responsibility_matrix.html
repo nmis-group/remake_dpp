@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EU textile DPP — responsibility matrix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --snow:#FAF9F7;--snow2:#F2F0ED;--snow3:#E8E5E1;
+      --earth:#290800;--earth2:#4a1400;--earth3:#7a3a20;
+      --scarlet:#FF3300;--s10:rgba(255,51,0,.10);
+      --border:rgba(41,8,0,.13);--border2:rgba(41,8,0,.07);
+      --white:#ffffff;
+      --shadow:0 1px 3px rgba(41,8,0,.07),0 4px 14px rgba(41,8,0,.04);
+      --shadow-md:0 2px 6px rgba(41,8,0,.09),0 10px 30px rgba(41,8,0,.06);
+      --sidebar:220px;--max:1100px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{overflow-x:hidden;background:var(--snow);color:var(--earth);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6}
+    .topbar{background:var(--earth);height:48px;display:flex;align-items:center;position:sticky;top:0;z-index:200}
+    .topbar .w{max-width:var(--max);margin:0 auto;padding:0 32px;width:100%;display:flex;align-items:center}
+    .topbar-title{font-size:13px;font-weight:600;color:#fff;white-space:nowrap}
+    .topbar-nav{display:flex;align-items:center;gap:2px;margin-left:auto}
+    .topbar-link{font-size:11px;font-weight:500;color:rgba(255,255,255,0.55);text-decoration:none;padding:5px 12px;border-radius:4px;transition:all .15s;white-space:nowrap}
+    .topbar-link:hover{color:#fff;background:rgba(255,255,255,0.1)}
+    .topbar-link.current{color:#fff;background:rgba(255,255,255,0.12)}
+    .topbar-right{display:flex;align-items:center;gap:8px;margin-left:12px}
+    .pill{font-size:10px;font-weight:600;padding:3px 9px;border-radius:4px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)}
+    .pill-draft{background:rgba(255,51,0,0.25);color:#ff8866;border-color:rgba(255,51,0,0.4)}
+    .burger{display:none;align-items:center;justify-content:center;width:32px;height:32px;border-radius:5px;border:1px solid rgba(255,255,255,0.2);background:transparent;cursor:pointer;color:rgba(255,255,255,0.7)}
+    .burger:hover{background:rgba(255,255,255,0.1);color:#fff}
+    .layout{max-width:var(--max);margin:0 auto;padding:0 32px;display:grid;grid-template-columns:var(--sidebar) 1fr;gap:0;align-items:start}
+    .sidebar{position:sticky;top:48px;height:calc(100vh - 48px);overflow-y:auto;overflow-x:hidden;padding:28px 20px 28px 0;border-right:1px solid var(--border)}
+    .sidebar::-webkit-scrollbar{width:4px}
+    .sidebar::-webkit-scrollbar-thumb{background:var(--snow3);border-radius:2px}
+    .sb-label{font-size:11px;font-weight:600;color:var(--earth3);margin-bottom:10px;padding-left:2px}
+    .sb-divider{height:1px;background:var(--border2);margin:16px 0}
+    .nav-link{display:flex;align-items:baseline;gap:8px;padding:6px 8px;border-radius:5px;text-decoration:none;color:var(--earth2);font-size:12px;transition:all .15s;border-left:2px solid transparent;margin-left:-2px;cursor:pointer;background:none;border-top:none;border-right:none;border-bottom:none;width:100%;text-align:left;font-family:inherit}
+    .nav-link:hover{background:var(--snow2);color:var(--earth)}
+    .nav-link.active{background:var(--s10);color:var(--scarlet);border-left-color:var(--scarlet);font-weight:500}
+    .nav-num{font-size:10px;color:var(--earth3);min-width:14px;font-weight:600}
+    .nav-link.active .nav-num{color:var(--scarlet)}
+    .sb-link{display:block;padding:4px 8px;font-size:11px;font-weight:600;color:var(--scarlet);text-decoration:none}
+    .sb-link:hover{text-decoration:underline}
+    .footer-link{color:var(--earth3);text-decoration:none}
+    .footer-link:hover{text-decoration:underline}
+    .footer-link-bold{color:var(--earth3);font-weight:600;text-decoration:none}
+    .footer-link-bold:hover{text-decoration:underline}
+    main{padding:32px 0 80px 40px;min-height:calc(100vh - 48px);min-width:0}
+    .intro{margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid var(--border)}
+    .intro h1{font-size:24px;font-weight:700;letter-spacing:-.02em;color:var(--earth);margin-bottom:10px}
+    .intro p{font-size:13px;color:var(--earth3);line-height:1.7;max-width:560px;margin-bottom:20px}
+    .view-toggle{display:flex;gap:6px;margin-bottom:24px}
+    .toggle-btn{font-size:12px;font-weight:500;padding:6px 14px;border-radius:5px;border:1px solid var(--border);background:var(--white);color:var(--earth3);cursor:pointer;transition:all .15s}
+    .toggle-btn:hover{border-color:var(--earth3);color:var(--earth)}
+    .toggle-btn.active{background:var(--earth);color:#fff;border-color:var(--earth)}
+    .legend-label{font-size:11px;font-weight:600;color:var(--earth3);margin-right:2px}
+    .badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;white-space:nowrap}
+    .r-creates{background:#e7f4ec;color:#237a3c}
+    .r-cond{background:#f5eddb;color:#7a5010}
+    .r-provides{background:#e8edf8;color:#1a5ca8}
+    .r-updates{background:#f0eaf8;color:#5c2d8a}
+    .r-ensures{background:var(--snow2);color:var(--earth3)}
+    .actor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:32px}
+    .actor-card{padding:12px 14px;border-radius:7px;border:1px solid var(--border);background:var(--white);cursor:pointer;transition:all .15s;box-shadow:var(--shadow);user-select:none}
+    .actor-card:hover{border-color:rgba(41,8,0,.25);box-shadow:var(--shadow-md)}
+    .actor-card.selected{border-color:var(--scarlet);background:var(--s10);box-shadow:0 0 0 1px var(--scarlet)}
+    .actor-card.selected .actor-name{color:var(--scarlet)}
+    .actor-card.dimmed{opacity:.38}
+    .actor-name{font-size:12px;font-weight:600;color:var(--earth);margin-bottom:3px}
+    .actor-ref{font-size:10px;color:var(--earth3);font-family:monospace;margin-bottom:5px}
+    .actor-eg{font-size:10px;color:var(--earth3);line-height:1.4}
+    .actor-count{margin-top:8px;padding-top:7px;border-top:1px solid var(--border2);font-size:10px;font-weight:600;color:var(--earth3)}
+    .actor-card.selected .actor-count{color:var(--scarlet)}
+    .role-section{margin-bottom:36px;scroll-margin-top:64px}
+    .role-sec-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+    .role-sec-title{font-size:12px;font-weight:700;color:var(--earth3);text-transform:uppercase;letter-spacing:.04em}
+    .role-sec-count{font-size:11px;color:var(--earth3)}
+    .role-field-card{background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:8px;transition:box-shadow .15s,border-color .15s}
+    .role-field-card:hover{box-shadow:var(--shadow-md);border-color:rgba(41,8,0,.22)}
+    .role-field-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:12px 16px 10px;background:var(--snow);border-bottom:1px solid var(--border2)}
+    .field-id-name{display:flex;align-items:baseline;gap:8px}
+    .field-id{font-size:11px;font-weight:600;color:var(--earth3);min-width:26px;font-family:monospace}
+    .field-name{font-size:13px;font-weight:600;color:var(--earth);font-family:monospace}
+    .role-field-body{padding:10px 16px 14px}
+    .sub-label{font-size:11px;font-weight:600;color:var(--earth3);margin-bottom:6px;margin-top:2px}
+    .sub-row{display:flex;align-items:baseline;gap:8px;padding:5px 0;border-bottom:1px solid var(--border2)}
+    .sub-row:last-of-type{border-bottom:none}
+    .sub-id{font-size:10px;font-family:monospace;color:var(--earth3);min-width:38px}
+    .sub-name{font-size:11.5px;font-family:monospace;color:var(--earth2);flex:1}
+    .notes-toggle{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:500;color:var(--earth3);cursor:pointer;border:none;background:none;padding:0;margin-top:10px;transition:color .15s}
+    .notes-toggle:hover{color:var(--scarlet)}
+    .notes-chevron{display:flex;align-items:center}
+    .notes-chevron svg{transition:transform .18s;transform-origin:center;transform:rotate(0deg)}
+    .notes-toggle.open .notes-chevron svg{transform:rotate(90deg)}
+    .notes-panel{display:none;margin-top:8px;padding:11px 13px;background:var(--snow);border-radius:6px;border:1px solid var(--border2)}
+    .notes-panel.open{display:block}
+    .notes-citations{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:7px}
+    .reg-tag{font-size:10px;font-family:monospace;color:var(--earth3);background:var(--white);border:1px solid var(--border);padding:2px 6px;border-radius:3px}
+    .notes-text{font-size:12px;color:var(--earth2);line-height:1.65}
+    .hint-state{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:60px 20px;color:var(--earth3)}
+    .hint-state strong{font-size:14px;color:var(--earth2)}
+    .hint-state span{font-size:12px}
+    .matrix-outer{width:100%;max-width:100%;border-radius:8px;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .matrix-wrap{width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+    .matrix-table{width:100%;border-collapse:collapse;font-size:12px}
+    .matrix-table thead tr{background:var(--earth)}
+    .matrix-table th{background:var(--earth);color:rgba(255,255,255,0.8);font-size:10px;font-weight:600;padding:10px 12px;text-align:left;white-space:nowrap;border-bottom:2px solid rgba(255,255,255,0.1)}
+    .matrix-table th.col-field{min-width:210px}
+    .matrix-table th.col-actor{min-width:96px;text-align:center;font-size:9.5px}
+    .matrix-table td{padding:8px 12px;border-bottom:1px solid var(--border2);vertical-align:middle;background:var(--white)}
+    .matrix-table td.col-field{background:var(--snow)}
+    .matrix-table td.col-actor{text-align:center}
+    .matrix-table tbody tr:hover td{background:rgba(255,51,0,.025)}
+    .matrix-table tbody tr:hover td.col-field{background:rgba(255,51,0,.04)}
+    .matrix-table tr.sec-divider td{background:var(--snow2) !important;font-size:10px;font-weight:700;color:var(--earth3);text-transform:uppercase;letter-spacing:.05em;padding:6px 12px;border-top:1px solid var(--border)}
+    .matrix-table tr.sub-row-tr td.col-field{padding-left:24px}
+    .cell-empty{color:var(--border)}
+    .field-link{text-decoration:none;color:inherit}
+    .field-link:hover .cell-fname{color:var(--scarlet)}
+    .cell-fid{font-family:monospace;font-size:10px;color:var(--earth3);margin-right:6px}
+    .cell-fname{font-family:monospace;font-size:11.5px;color:var(--earth)}
+    .state{display:flex;align-items:center;justify-content:center;min-height:40vh;font-size:13px;color:var(--earth3)}
+    .overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(41,8,0,.25)}
+    .drawer{position:fixed;top:0;left:0;bottom:0;z-index:400;width:280px;background:var(--white);border-right:1px solid var(--border);padding:20px 16px;overflow-y:auto;transform:translateX(-100%);transition:transform .22s ease}
+    .drawer-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .drawer-hd span{font-size:13px;font-weight:600;color:var(--earth)}
+    .drawer-close{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:5px;cursor:pointer;background:var(--snow);color:var(--earth3);font-size:14px}
+    .drawer.open{transform:translateX(0)}
+    .site-footer{border-top:1px solid var(--border);padding:20px 32px;max-width:var(--max);margin:0 auto;font-size:11px;color:var(--earth3)}
+    /* ── Tablet ── */
+    @media(max-width:1000px){
+      .actor-grid{grid-template-columns:repeat(3,1fr)}
+      .actor-def-grid{grid-template-columns:1fr 1fr}
+      .legend-defs.open{grid-template-columns:1fr 1fr}
+    }
+    /* ── Narrow tablet / large mobile ── */
+    @media(max-width:860px){
+      .layout{grid-template-columns:1fr;padding:0 16px}
+      .sidebar{display:none}
+      main{padding:24px 0 60px}
+      .actor-grid{grid-template-columns:repeat(2,1fr)}
+      .actor-def-grid{grid-template-columns:1fr}
+      .legend-defs.open{grid-template-columns:1fr}
+      .burger{display:flex}
+      /* Matrix: let it scroll naturally, ensure container doesn't clip */
+      .matrix-outer{border-radius:4px}
+      .matrix-table th.col-actor{min-width:80px;font-size:9px;padding:8px 6px}
+      .matrix-table td.col-actor{padding:6px}
+      .matrix-table th.col-field{min-width:160px}
+    }
+    /* ── Mobile ── */
+    @media(max-width:500px){
+      .layout{padding:0 12px}
+      .actor-grid{grid-template-columns:1fr 1fr}
+      .topbar-nav{display:none}
+      .topbar-title{font-size:12px}
+      main{padding:20px 0 48px}
+      .intro h1{font-size:19px}
+      .matrix-table th.col-actor{min-width:70px;font-size:8.5px;padding:7px 4px}
+      .matrix-table td{padding:6px 8px}
+      .matrix-table td.col-actor{padding:5px 4px}
+      .matrix-table th.col-field{min-width:130px}
+    }
+  
+    /* ── Legend ── */
+    .legend{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px}
+    .legend-label{font-size:11px;font-weight:600;color:var(--earth3);margin-right:2px}
+    .legend-expand-btn{font-size:10px;font-weight:500;color:var(--earth3);cursor:pointer;border:none;background:none;padding:2px 4px;text-decoration:underline;text-underline-offset:2px;margin-left:4px}
+    .legend-expand-btn:hover{color:var(--scarlet)}
+    .legend-defs{display:none;margin-bottom:16px}
+    .legend-defs.open{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:6px;margin-bottom:16px}
+    .legend-item{display:flex;gap:10px;align-items:flex-start;padding:9px 11px;background:var(--white);border:1px solid var(--border);border-radius:6px}
+    .legend-item .badge{flex-shrink:0;margin-top:1px}
+    .legend-def{font-size:11px;color:var(--earth2);line-height:1.55}
+    /* ── Caveats ── */
+    .caveats{margin-bottom:32px;padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow)}
+    .caveats-title{font-size:11px;font-weight:700;color:var(--earth3);text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+    .caveat-row{padding:8px 0;border-bottom:1px solid var(--border2)}
+    .caveat-row:last-child{border-bottom:none;padding-bottom:0}
+    .caveat-ref{font-size:10px;font-weight:600;font-family:monospace;color:var(--earth3);margin-bottom:3px}
+    .caveat-oq .caveat-ref{color:#b45309}
+    .caveat-text{font-size:11.5px;color:var(--earth2);line-height:1.6}
+    /* ── Actor definition section (in role view) ── */
+    .actor-def-section{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:28px;box-shadow:var(--shadow)}
+    .actor-def-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border2)}
+    .actor-def-title{font-size:16px;font-weight:700;color:var(--earth)}
+    .actor-def-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+    .actor-def-block{padding:10px 12px;background:var(--snow);border-radius:6px;border:1px solid var(--border2)}
+    .actor-detail-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--earth3);margin-bottom:4px}
+    .actor-detail-text{font-size:11.5px;color:var(--earth2);line-height:1.6}
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="w">
+    <a class="topbar-title" href="../../index.html" style="text-decoration:none;color:#fff;">open-dpp</a>
+    <nav class="topbar-nav">
+      <a class="topbar-link" href="../../tracker.html">Legislation tracker</a>
+      <a class="topbar-link" href="schema.html">Textile schema</a>
+      <a class="topbar-link current" href="responsibility_matrix.html">Responsibility matrix</a>
+    </nav>
+    <div class="topbar-right">
+      <span class="pill">v0.5.0</span>
+      <span class="pill pill-draft">draft</span>
+      <button class="burger" id="burgerBtn" aria-label="Open navigation">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <line x1="2" y1="4.5" x2="14" y2="4.5"/><line x1="2" y1="8" x2="14" y2="8"/><line x1="2" y1="11.5" x2="14" y2="11.5"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-label">Views</div>
+    <button class="nav-link" id="sb-role-link">
+      <span class="nav-num">①</span><span>By actor</span>
+    </button>
+    <button class="nav-link" id="sb-matrix-link">
+      <span class="nav-num">②</span><span>Full matrix</span>
+    </button>
+    <div class="sb-divider"></div>
+    <div class="sb-label">Sections</div>
+    <div id="sb-sections"></div>
+    <div class="sb-divider"></div>
+    <div class="sb-label">Links</div>
+    <a class="sb-link" href="schema.html">Field schema ↗</a>
+    <a class="sb-link" href="responsibility_matrix.json" target="_blank" rel="noopener">Raw JSON ↗</a>
+    <a class="sb-link" href="https://github.com/rhys-the-davies/open-dpp/discussions" target="_blank" rel="noopener">Discussions ↗</a>
+    <a class="sb-link" href="https://github.com/rhys-the-davies/open-dpp" target="_blank" rel="noopener">GitHub repo ↗</a>
+  </aside>
+  <main id="main"><div class="state">Loading…</div></main>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-hd"><span>Navigation</span><button class="drawer-close" id="drawerClose">✕</button></div>
+  <div id="drawerNav"></div>
+</div>
+
+<footer>
+  <div class="site-footer">
+    Started by <a href="https://traceaware.io" target="_blank" rel="noopener" class="footer-link-bold">AWARE™</a>. Open for contribution — <a href="https://github.com/rhys-the-davies/open-dpp" target="_blank" rel="noopener" class="footer-link">view on GitHub ↗</a>
+  </div>
+</footer>
+
+<script>
+const ACTORS={
+  manufacturer:{
+    label:"Manufacturer",ref:"Art. 2(42), Art. 27",eg:"E.g. Patagonia, Zara/Inditex, any private label brand",
+    reg_def:"Art. 2(42): 'any natural or legal person that manufactures a product or that has a product designed or manufactured, and markets that product under their name or trademark'",
+    note:"The physical act of manufacturing is irrelevant to the legal definition — Zara commissions all production from third-party factories but is the manufacturer because it markets under its own trademark.",
+    dpp_obligations:"Primary DPP creator. Art. 27(1)(c): must ensure DPP is available. Art. 27(6)(a): contact details on public DPP. Art. 27(7): digital instructions maintained for 10 years. Art. 10(4): back-up copy via DPP service provider. Art. 13(4): uploads data to registry."
+  },
+  importer:{
+    label:"Importer",ref:"Art. 2(44), Art. 29",eg:"E.g. EU sourcing agent, EU wholesale buyer",
+    reg_def:"Art. 2(44): 'any natural or legal person established in the Union that places a product from a third country on the Union market'",
+    note:"Art. 34: treated as full manufacturer where the product is placed on the market under the importer's own name or trademark.",
+    dpp_obligations:"Art. 29(2)(c): must ensure DPP is available before placing on market. Art. 29(3): contact details and EORI on public DPP."
+  },
+  authorised_rep:{
+    label:"Authorised rep",ref:"Art. 2(43), Art. 28",eg:"E.g. Amsterdam compliance firm, EU regulatory entity",
+    reg_def:"Art. 2(43): 'any natural or legal person established in the Union that has received a written mandate from the manufacturer to act on the manufacturer's behalf'",
+    note:"Art. 28(1): creating the DPP and drawing up technical documentation shall NOT form part of the authorised representative's mandate — they support compliance but do not create the DPP.",
+    dpp_obligations:"Art. 28(2)(a): keeps EU declaration of conformity and technical documentation for 10 years. Art. 28(2)(b)–(c): cooperates with authorities. Does not create the DPP."
+  },
+  supply_chain_actors:{
+    label:"Supply chain actors",ref:"Art. 38",eg:"E.g. Mills, dye houses, spinners, chemical suppliers",
+    reg_def:"Art. 38 and Art. 4(6)(a)(iv) — all upstream actors: raw material processors, spinners, weavers, dyers, finishers, component manufacturers, chemical suppliers.",
+    note:"Art. 38 obligations apply only 'when specified in the delegated act'. The 'Provides data' designation in this matrix assumes the textile delegated act invokes Art. 38. If it does not, supply chain data collection relies on contractual arrangements, not regulation.",
+    dpp_obligations:"Art. 38 (when invoked): provide relevant information upon request free of charge; allow manufacturers to assess products/services; enable verification of accuracy."
+  },
+  professional_repairer_independent_operator:{
+    label:"Repairer / operator",ref:"Art. 2(47)–(48)",eg:"E.g. Repair café, recycler, refurbisher, Renewlane",
+    reg_def:"Art. 2(47): 'independent of the manufacturer and directly or indirectly involved in refurbishment, repair, maintenance or repurposing — includes waste management operators'. Art. 2(48): professional repairer provides services irrespective of whether acting within or outside manufacturer's distribution system.",
+    note:"Art. 2(47) explicitly includes waste management operators — making recyclers and end-of-life processors relevant actors for fields like end_of_life and lifecycle_status.",
+    dpp_obligations:"Post-sale DPP updaters. Art. 9(2)(g): delegated act specifies which fields may be updated. Art. 11(b): explicitly listed among actors with DPP access rights. Art. 11(f): modification rights restricted per delegated act."
+  },
+  dealer_fsp:{
+    label:"Dealer / FSP",ref:"Art. 2(45),(55), Art. 31, Art. 33",eg:"E.g. Zalando, H&M retail, Amazon FBA fulfilment",
+    reg_def:"Art. 2(45): distributor — 'any person in the supply chain, other than manufacturer or importer, that makes a product available on the market'. FSP: Reg. (EU) 2019/1020 Art. 3(11) — provides warehousing, packaging, addressing and dispatching without owning products.",
+    note:"Neither dealers nor FSPs create or update DPP data. Their regulatory role is exclusively access and preservation — ensuring the DPP reaches the customer and is not compromised in transit or storage.",
+    dpp_obligations:"Dealer — Art. 31(2): must ensure DPP is easily accessible to customers including in distance selling. Art. 10(3): receives digital copy of data carrier from manufacturer. FSP — Art. 33: handling must not jeopardise product compliance with delegated act."
+  },
+  eu_responsible_person:{
+    label:"EU responsible person",ref:"Annex III(k), 2019/1020 Art. 4",eg:"E.g. Amsterdam-registered entity for a US brand",
+    reg_def:"Annex III(k) and Reg. (EU) 2019/1020 Art. 4: the economic operator established in the Union responsible for ensuring product compliance where manufacturer is non-EU and no importer can be identified.",
+    note:"Required where a non-EU brand sells direct-to-consumer in the EU with no EU importer. Could potentially be the DPP service provider (e.g. AWARE™) if it accepts the Art. 28 mandate — but this creates additional regulatory obligations.",
+    dpp_obligations:"Annex III(k): name, contact details and unique operator identifier must appear in DPP. Reg. (EU) 2019/1020 Art. 4: point of contact for market surveillance authorities; ensures technical documentation availability."
+  }
+};
+const RESP={
+  "Creates":       {cls:"r-creates",  label:"Creates",       def:"This actor creates this field and is responsible for its accuracy in the DPP. The creating actor retains regulatory liability regardless of who collects or structures the underlying data on their behalf."},
+  "Conditional":   {cls:"r-cond",     label:"Conditional",   def:"This actor's responsibility applies only in specific circumstances — e.g. importer responsibility applies only where manufacturer is non-EU; authorised rep applies only where manufacturer has issued a written mandate per Art. 28(1)."},
+  "Provides data": {cls:"r-provides", label:"Provides data", def:"This actor provides the underlying raw data that the creating actor compiles into the DPP. The creating actor remains solely responsible for accuracy. Applies primarily to supply chain actors per Art. 38 — only triggered when invoked by the textile delegated act."},
+  "Updates":       {cls:"r-updates",  label:"Updates",       def:"This actor may update this field after initial creation — typically post-sale actors (repairers, independent operators, waste managers) updating lifecycle or end-of-life fields. Art. 9(2)(g) — textile delegated act will specify exact update rights per field."},
+  "Ensures access":{cls:"r-ensures",  label:"Ensures access",def:"Dealer / FSP column only. Dealer must ensure DPP is easily accessible to customers including in distance selling per Art. 31(2). FSP must not jeopardise product compliance during handling per Art. 33. Neither actor creates or updates DPP data."}
+};
+const FIELDS=[{"section":"1. Product identity","field_id":"1.1","field_name":"product_identifier","responsibilities":{"manufacturer":"Creates","importer":"Conditional","authorised_rep":"Conditional","supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 27(1)(c)","Art. 29(2)(c)","Art. 34","Art. 9(2)(g)"],"explanation":"Manufacturer creates per Art. 27(1)(c). Importer or authorised rep may create where manufacturer is non-EU per Art. 29(2)(c) and Art. 34. Art. 9(2)(g) — textile delegated act specifies which actors may create and update."}},{"section":"1. Product identity","field_id":"1.2","field_name":"data_carrier","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":"Ensures access","eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 10(1)(b)","Art. 27(1)(c)","Art. 31(2)","Art. 10(3)","Art. 33"],"explanation":"Manufacturer places data carrier on product/packaging per Art. 10(1)(b) and Art. 27(1)(c). Dealer must ensure DPP is easily accessible to customers including in distance selling per Art. 31(2) — receives digital copy of data carrier from manufacturer per Art. 10(3). FSP must not jeopardise compliance during handling per Art. 33."}},{"section":"1. Product identity","field_id":"1.3","field_name":"product_identification","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 27(5)","Art. 27(6)(a)"],"explanation":"Manufacturer obligation. Art. 27(5) — must ensure products bear type, batch or serial number. Art. 27(6)(a) — must appear on public DPP."}},{"section":"1. Product identity","field_id":"1.4","field_name":"global_trade_identification_number","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Annex III(c)"],"explanation":"Manufacturer or brand owner creates GTIN via GS1 membership. Annex III(c). Interim standard: GS1 GTIN (ISO/IEC 15459-6)."}},{"section":"1. Product identity","field_id":"1.5","field_name":"commodity_code","responsibilities":{"manufacturer":"Creates","importer":"Conditional","authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 60","Annex III(d)","Art. 13(1)"],"explanation":"Manufacturer provides TARIC code. Importer may confirm at customs entry per Union Customs Code Art. 60. Annex III(d). Note: Art. 13(1) requires the registry to store the commodity code — registry obligation, not the source of this DPP field."}},{"section":"1. Product identity","field_id":"1.6","field_name":"compliance_documentation","responsibilities":{"manufacturer":"Creates","importer":"Conditional","authorised_rep":"Conditional","supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 27(2)","Art. 28(2)(a)","Art. 29(2)(a)"],"explanation":"Manufacturer draws up EU declaration of conformity per Art. 27(2)–(3). Authorised rep keeps copies for 10 years per Art. 28(2)(a). Importer verifies documentation exists before placing on market per Art. 29(2)(a)."}},{"section":"1. Product identity","field_id":"1.7","field_name":"user_manuals_and_safety_information","responsibilities":{"manufacturer":"Creates","importer":"Conditional","authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":"Ensures access","eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 27(7)","Art. 29(4)","Art. 31(1)"],"explanation":"Manufacturer obligation. Art. 27(7) — must include digital instructions in DPP and maintain for at least 10 years. Importer ensures instructions available per Art. 29(4). Dealer must ensure customers have access to accompanying information per Art. 31(1)."}},{"section":"1. Product identity","field_id":"1.8","field_name":"dpp_service_provider_reference","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 10(4)","Art. 11(c)"],"explanation":"Economic operator placing product on market is responsible per Art. 10(4) — typically the manufacturer. Art. 11(c) — DPP stored by responsible economic operator or DPP service provider. Note: DPP service providers (e.g. AWARE™) are a distinct actor type not listed in Art. 2 economic operator definitions."}},{"section":"2. Actors","field_id":"2.1","field_name":"operator_identifiers[]","responsibilities":{"manufacturer":"Creates","importer":"Conditional","authorised_rep":"Conditional","supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":"Conditional"},"notes":{"regulatory_basis":["Annex III(g)","Annex III(h)","Art. 29(3)","Annex III(k)","Art. 12(2)"],"explanation":"Manufacturer creates its own ID (Annex III(g)). Importer provides its ID (Annex III(h), Art. 29(3)). Authorised rep provides its ID (Annex III(h)). EU responsible person provides its ID (Annex III(k)). Where no ID exists, DPP creator requests one on behalf of the actor per Art. 12(2). Interim standard: GS1 GLN (ISO/IEC 15459-4)."}},{"section":"2. Actors","field_id":"2.2","field_name":"manufacturer_contact_details","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 27(6)(a)"],"explanation":"Manufacturer direct obligation. Art. 27(6)(a) — must indicate name, registered trade name or trade mark, postal address and electronic contact on the public DPP."}},{"section":"2. Actors","field_id":"2.3","field_name":"unique_facility_identifiers[]","responsibilities":{"manufacturer":"Creates","importer":"Conditional","authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 38","Art. 12(3)"],"explanation":"Manufacturer compiles facility IDs for its own facilities. Supply chain actors provide IDs for their locations — Art. 38 (when invoked by delegated act). Importer may provide for import facilities. Where no ID exists, Art. 12(3) requires the DPP creator to request one on behalf of the facility."}},{"section":"2. Actors","field_id":"2.4","field_name":"importer_information","responsibilities":{"manufacturer":null,"importer":"Creates","authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 29(3)","Annex III(j)"],"explanation":"Importer direct obligation. Art. 29(3) — must indicate name, registered trade name, postal address and electronic contact on the public DPP. Annex III(j) — includes EORI."}},{"section":"2. Actors","field_id":"2.5","field_name":"eu_responsible_operator","responsibilities":{"manufacturer":null,"importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":"Creates"},"notes":{"regulatory_basis":["Annex III(k)","Reg. (EU) 2019/1020 Art. 4"],"explanation":"EU responsible person direct obligation. Annex III(k) — name, contact details and unique operator identifier must appear in DPP. Reg. (EU) 2019/1020 Art. 4 tasks include being point of contact for market surveillance authorities."}},{"section":"2. Actors","field_id":"2.6","field_name":"brand","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":[],"explanation":"Extended field — no ESPR mandate. Brand owner (who may be manufacturer or a separate entity) provides consumer-facing brand name."}},{"section":"3. Material composition","field_id":"3.1","field_name":"fibre_composition[]","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 38","Reg. (EU) 1007/2011"],"explanation":"Manufacturer compiles into DPP. Raw data originates with supply chain actors — fabric mills and spinners hold fibre type and weight percentages. Art. 38 (when invoked by delegated act). Reg. (EU) 1007/2011 already requires fibre labelling."}},{"section":"3. Material composition","field_id":"3.2","field_name":"recycled_content[]","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 38"],"explanation":"Manufacturer compiles recycled content declarations. Data originates with material suppliers (spinners, yarn producers). Certification data from certifying bodies (GRS auditors) via supply chain actor. Art. 38 (when invoked by delegated act)."},"sub_fields":[{"field_id":"3.2a","field_name":"recycled_content[].recycled_source","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":[],"explanation":"Extended field. Material supplier provides origin classification (post-consumer / post-industrial). Manufacturer compiles into DPP."}},{"field_id":"3.2b","field_name":"recycled_content[].verification_standard","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":[],"explanation":"Extended field. Third-party certifying body issues certificate. Supply chain actor provides certificate details. Manufacturer compiles into DPP."}}]},{"section":"3. Material composition","field_id":"3.3","field_name":"raw_material_origin[]","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 38"],"explanation":"Extended field. Origin data sits with Tier 3–4 suppliers (farms, ginners, fibre processors). Art. 38 (when invoked). EUDR due diligence obligations on manufacturer and importer for deforestation-linked commodities."}},{"section":"4. Supply chain","field_id":"4.1","field_name":"supply_chain[]","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 38"],"explanation":"Manufacturer compiles traceability data. Each supply chain actor provides its own facility name, location and processing stage. Art. 38 — must provide information upon request and allow access to verify accuracy when invoked by delegated act. Forced Labour Reg 2024/3015 adds facility-level obligations from 2027."}},{"section":"4. Supply chain","field_id":"4.2","field_name":"country_of_manufacture","responsibilities":{"manufacturer":"Creates","importer":"Conditional","authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 27(5)","Art. 60"],"explanation":"Manufacturer provides country of last substantial transformation per Art. 27(5). Importer may confirm at customs entry per Union Customs Code Art. 60."}},{"section":"5. Environmental performance","field_id":"5.1","field_name":"carbon_footprint","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 38"],"explanation":"Extended field. Manufacturer commissions or calculates lifecycle GHG assessment. Supply chain actors provide activity data (energy, transport, processing) for upstream scope calculations. Art. 38 (when invoked)."}},{"section":"5. Environmental performance","field_id":"5.2","field_name":"water_use","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 38"],"explanation":"Extended field. Manufacturer calculates total water use. Supply chain actors provide upstream water consumption data. Art. 38 (when invoked)."}},{"section":"6. Substances","field_id":"6.1","field_name":"substances_of_concern[]","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 7(5)","Art. 38"],"explanation":"Manufacturer responsible for tracking and disclosing per Art. 7(5) — direct ESPR obligation. CAS-level data must come from chemical suppliers and dye/finish processors. Art. 38 (when invoked). Critical data gap: Tier 2–4 chemical suppliers rarely hold or share CAS-level substance data today."},"sub_fields":[{"field_id":"6.1a","field_name":"substances_of_concern[].substance_name","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 7(5)(a)(i)"],"explanation":"Chemical supplier provides IUPAC name via Safety Data Sheet. Manufacturer compiles into DPP per Art. 7(5)(a)(i)."}},{"field_id":"6.1b","field_name":"substances_of_concern[].cas_number","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 7(5)(a)(iv)"],"explanation":"CAS number must come from chemical supplier or Safety Data Sheet. Manufacturer responsible for including it per Art. 7(5)(a)(iv)."}},{"field_id":"6.1c","field_name":"substances_of_concern[].ec_number","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 7(5)(a)(iii)"],"explanation":"EC number from ECHA or chemical supplier's Safety Data Sheet. Manufacturer responsible per Art. 7(5)(a)(iii)."}},{"field_id":"6.1d","field_name":"substances_of_concern[].location_in_product","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 7(5)(b)"],"explanation":"Manufacturer maps substance to product component. Requires component-level knowledge from supply chain actors. Art. 7(5)(b)."}},{"field_id":"6.1e","field_name":"substances_of_concern[].concentration_ppm","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 7(5)(c)","Art. 7(6)(b)"],"explanation":"Concentration from laboratory testing or supplier declaration. Art. 7(5)(c). REACH 0.1% w/w floor for SVHC per Art. 7(6)(b)."}},{"field_id":"6.1f","field_name":"substances_of_concern[].espr_category","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 2(27)"],"explanation":"Manufacturer applies ESPR Art. 2(27) category classification. Requires regulatory knowledge — not raw data from supply chain."}},{"field_id":"6.1g","field_name":"substances_of_concern[].safe_use_instructions","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 7(5)(d)"],"explanation":"Manufacturer provides safe use instructions per Art. 7(5)(d). May draw on supplier Safety Data Sheets but manufacturer is solely responsible."}}]},{"section":"6. Substances","field_id":"6.2","field_name":"restricted_substances_compliance","responsibilities":{"manufacturer":"Creates","importer":"Conditional","authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 29(1)"],"explanation":"Manufacturer provides REACH compliance declaration. Importer responsible for ensuring compliance before placing on EU market per Art. 29(1). Both may hold RSL test reports."}},{"section":"7. Circularity","field_id":"7.1","field_name":"durability","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 5(1)(a)","Annex I(a)"],"explanation":"Manufacturer responsible per Art. 5(1)(a) and Annex I(a). Test results from accredited testing laboratories. Delegated act will specify required test methods — ISO 12945, ISO 105 are candidates."}},{"section":"7. Circularity","field_id":"7.2","field_name":"repairability","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":"Updates","dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 27(7)","Art. 7(2)(b)(ii)","Art. 9(2)(g)","Art. 11(b)"],"explanation":"Manufacturer creates initial repairability data and spare parts availability per Art. 27(7) and Art. 7(2)(b)(ii). Professional repairers and independent operators may update spare parts availability and repair instructions post-sale. Art. 9(2)(g) — delegated act specifies update rights. Art. 11(b) explicitly lists professional repairers and independent operators among actors with DPP access rights."}},{"section":"7. Circularity","field_id":"7.3","field_name":"end_of_life","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":"Updates","dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 7(2)(b)(ii)","Art. 9(2)(g)","Art. 2(47)"],"explanation":"Manufacturer creates initial end-of-life information per Art. 7(2)(b)(ii)–(iii). Independent operators (recyclers, waste managers) may update take-back status or sorting information. Art. 9(2)(g) and Art. 2(47) which explicitly includes waste management operators as independent operators."}},{"section":"8. Compliance & certs","field_id":"8.1","field_name":"certifications[]","responsibilities":{"manufacturer":"Creates","importer":"Conditional","authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Annex III"],"explanation":"Extended field. Manufacturer adds product-level certifications. Supply chain actors provide facility-level certs (GOTS facility cert, GRS transaction cert). Importer may hold additional compliance certs. Annex III final paragraph — voluntary labels permitted in DPP."}},{"section":"8. Compliance & certs","field_id":"8.2","field_name":"conformity_declarations[]","responsibilities":{"manufacturer":"Creates","importer":"Conditional","authorised_rep":"Conditional","supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 27(2)","Art. 29(2)(a)","Art. 28(2)(a)"],"explanation":"Manufacturer draws up EU declaration of conformity per Art. 27(2). Importer verifies documentation exists before placing on market per Art. 29(2)(a). Authorised rep keeps copies for 10 years per Art. 28(2)(a)."}},{"section":"8. Compliance & certs","field_id":"8.3","field_name":"social_compliance","responsibilities":{"manufacturer":"Creates","importer":"Conditional","authorised_rep":null,"supply_chain_actors":"Provides data","professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":[],"explanation":"Extended field. Manufacturer or importer (as CSDDD 2024/1760 responsible entity) provides declaration. Supply chain actors provide audit evidence or self-declaration data. ESPR does not mandate this field."}},{"section":"9. Lifecycle status","field_id":"9.1","field_name":"lifecycle_status","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":"Updates","dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 9(2)(g)","Art. 2(47)","Art. 11(d)"],"explanation":"Manufacturer creates initial status ('new'). Professional repairers and independent operators update after repair, refurbishment or repurposing. Art. 9(2)(g) — delegated act specifies which actors may update. Art. 2(47) defines independent operators to include refurbishers, repairers and waste management operators. Art. 11(d) — new DPP created for a product links to the original."}},{"section":"10. DPP metadata","field_id":"10.1","field_name":"dpp_metadata","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 9(1)","Art. 10(1)(d)","Art. 11(g)"],"explanation":"Economic operator placing the product on the market creates and maintains DPP metadata — typically the manufacturer. Art. 9(1) — accurate, complete and up to date. Art. 10(1)(d) — open standards, machine-readable. Art. 11(g) — data authentication."},"sub_fields":[{"field_id":"10.1a","field_name":"dpp_metadata.dpp_backup_url","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 27(7)","Art. 11(e)"],"explanation":"Manufacturer or responsible economic operator provides a fallback URL at which DPP data can be accessed if the primary operator ceases operations. Art. 27(7) - DPP must remain accessible for at least 10 years. Art. 11(e) - availability must survive insolvency or cessation of activity."}}]},{"section":"10. DPP metadata","field_id":"10.2","field_name":"data_retention","responsibilities":{"manufacturer":"Creates","importer":null,"authorised_rep":null,"supply_chain_actors":null,"professional_repairer_independent_operator":null,"dealer_fsp":null,"eu_responsible_person":null},"notes":{"regulatory_basis":["Art. 9(2)(i)","Art. 11(e)","Art. 27(3)"],"explanation":"Manufacturer (or responsible economic operator) manages retention obligations. Art. 9(2)(i) — DPP available for at least the expected product lifetime. Art. 11(e) — availability survives insolvency or cessation of activity. Art. 27(3) — 10-year minimum for technical documentation."}}];
+
+// ── Precomputed constants ──────────────────────────────────────────────────────
+const ACTOR_ENTRIES = Object.entries(ACTORS);
+const ACTOR_KEYS    = Object.keys(ACTORS);
+const RESP_VALUES   = Object.values(RESP);
+
+// Stable ordered section list
+const SECTIONS = [...new Set(FIELDS.map(f => f.section))];
+
+// Precompute section slug IDs once
+const SECTION_IDS = new Map(
+  SECTIONS.map(s => [s, 'sec-' + s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')])
+);
+function secId(s) { return SECTION_IDS.get(s) || 'sec-unknown'; }
+
+// Precompute obligation counts — O(fields) at startup, not per render
+const OBLIGATION_COUNTS = new Map(
+  ACTOR_KEYS.map(k => [
+    k,
+    FIELDS.reduce((n, f) => {
+      if (f.responsibilities[k]) n++;
+      return n + (f.sub_fields || []).filter(sf => sf.responsibilities[k]).length;
+    }, 0)
+  ])
+);
+function obligationCount(k) { return OBLIGATION_COUNTS.get(k) ?? 0; }
+
+// Static caveats — defined once
+const CAVEATS = [
+  { ref: 'Art. 9(2)(g) \u2014 delegated act pending',         oq: false, text: 'The textile delegated act will specify exactly which actors may create or update each DPP field and what data they may introduce or update. This matrix reflects responsibility as it follows from existing ESPR text. The delegated act may narrow or expand these rights.' },
+  { ref: 'Art. 38 \u2014 supply chain obligation conditional', oq: false, text: "Art. 38 obligations only apply \u2018when specified in the delegated act\u2019. The \u2018Provides data\u2019 designation assumes the textile delegated act invokes Art. 38. If it does not, supply chain data collection relies on contractual arrangements, not regulation." },
+  { ref: 'Art. 34 \u2014 importer as manufacturer',           oq: false, text: 'Importers or distributors are treated as manufacturers where they place a product on the market under their own name or trademark. In those cases, full manufacturer DPP obligations apply to the importer.' },
+  { ref: 'OQ-13 \u2014 DPP service provider liability',       oq: true,  text: 'Where a DPP service provider (e.g. AWARE\u2122) also collects and structures supply chain data on behalf of a manufacturer, ESPR Art. 11 is silent on whether the service provider carries any regulatory liability for data accuracy. All Art. 7(5) liability currently sits with the manufacturer. This is an open question for the textile delegated act or future implementing acts.' }
+];
+
+// ── State ──────────────────────────────────────────────────────────────────────
+let currentView   = 'role';
+let selectedActor = null;
+let legendDefsOpen = false; // preserved across re-renders
+
+// ── DOM helper ─────────────────────────────────────────────────────────────────
+function el(tag, cls) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  return e;
+}
+
+function respBadge(v) {
+  if (!v) return '<span class="cell-empty">\u2014</span>';
+  const r = RESP[v];
+  return r ? `<span class="badge ${r.cls}">${r.label}</span>` : '<span class="cell-empty">\u2014</span>';
+}
+
+// ── Caveats block — built once, reused ────────────────────────────────────────
+const _caveatsEl = (() => {
+  const div = el('div', 'caveats');
+  div.innerHTML =
+    `<div class="caveats-title">` +
+    `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">` +
+    `<circle cx="6" cy="6" r="5"/><line x1="6" y1="4" x2="6" y2="6.5"/>` +
+    `<circle cx="6" cy="8.5" r="0.6" fill="currentColor" stroke="none"/></svg>Critical caveats</div>` +
+    CAVEATS.map(c =>
+      `<div class="caveat-row${c.oq ? ' caveat-oq' : ''}">` +
+      `<div class="caveat-ref">${c.ref}</div>` +
+      `<div class="caveat-text">${c.text}</div></div>`
+    ).join('');
+  return div;
+})();
+
+// ── Notes ──────────────────────────────────────────────────────────────────────
+function notesBlock(notes) {
+  if (!notes || !notes.explanation) return '';
+  const cits = (notes.regulatory_basis || [])
+    .map(r => `<span class="reg-tag">${r}</span>`).join('');
+  return (
+    `<button class="notes-toggle" onclick="toggleNotes(this)">` +
+    `<span class="notes-chevron">` +
+    `<svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">` +
+    `<polyline points="3,2 7,5 3,8"/></svg></span>Regulatory basis &amp; notes</button>` +
+    `<div class="notes-panel">` +
+    (cits ? `<div class="notes-citations">${cits}</div>` : '') +
+    `<div class="notes-text">${notes.explanation}</div></div>`
+  );
+}
+
+function toggleNotes(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+
+// ── Legend / intro ─────────────────────────────────────────────────────────────
+function introHTML() {
+  const badges = RESP_VALUES.map(v => `<span class="badge ${v.cls}">${v.label}</span>`).join('');
+  const defs   = RESP_VALUES.map(v =>
+    `<div class="legend-item"><span class="badge ${v.cls}">${v.label}</span>` +
+    `<span class="legend-def">${v.def}</span></div>`
+  ).join('');
+  return (
+    `<div class="intro">` +
+    `<h1>EU textile DPP \u2014 responsibility matrix</h1>` +
+    `<p>Who creates, provides, and updates each field in the textile digital product passport. Select an actor to see their obligations, or switch to the full matrix view.</p>` +
+    `<div class="legend"><span class="legend-label">Key</span>${badges}` +
+    `<button class="legend-expand-btn" id="legend-expand-btn">definitions ${legendDefsOpen ? '\u2191' : '\u2193'}</button></div>` +
+    `<div class="legend-defs${legendDefsOpen ? ' open' : ''}" id="legend-defs">${defs}</div>` +
+    `</div>`
+  );
+}
+
+function viewToggleHTML() {
+  return (
+    `<div class="view-toggle">` +
+    `<button class="toggle-btn${currentView === 'role'   ? ' active' : ''}" data-view="role">By actor</button>` +
+    `<button class="toggle-btn${currentView === 'matrix' ? ' active' : ''}" data-view="matrix">Full matrix</button>` +
+    `</div>`
+  );
+}
+
+// ── Actor grid ─────────────────────────────────────────────────────────────────
+function renderActorGrid() {
+  const w = el('div', 'actor-grid');
+  for (const [k, a] of ACTOR_ENTRIES) {
+    const n        = obligationCount(k);
+    const selected = selectedActor === k;
+    const dimmed   = selectedActor && !selected;
+    const c = el('div', 'actor-card' + (selected ? ' selected' : dimmed ? ' dimmed' : ''));
+    c.innerHTML =
+      `<div class="actor-name">${a.label}</div>` +
+      `<div class="actor-ref">${a.ref}</div>` +
+      `<div class="actor-eg">${a.eg}</div>` +
+      `<div class="actor-count">${n} obligation${n !== 1 ? 's' : ''}</div>`;
+    c.addEventListener('click', () => {
+      selectedActor = selectedActor === k ? null : k;
+      renderMain();
+    });
+    w.appendChild(c);
+  }
+  return w;
+}
+
+// ── Role view ──────────────────────────────────────────────────────────────────
+function renderRoleView() {
+  const frag = document.createDocumentFragment();
+  const iw   = el('div');
+  iw.innerHTML = introHTML() + viewToggleHTML();
+  frag.appendChild(iw);
+  frag.appendChild(renderActorGrid());
+
+  if (!selectedActor) {
+    const h = el('div', 'hint-state');
+    h.innerHTML = '<strong>Select an actor above</strong><span>to see their obligations across all 41 DPP fields</span>';
+    frag.appendChild(h);
+    return frag;
+  }
+
+  // Actor definition panel
+  const a = ACTORS[selectedActor];
+  if (a) {
+    const n      = obligationCount(selectedActor);
+    const defSec = el('div', 'actor-def-section');
+    defSec.innerHTML =
+      `<div class="actor-def-header">` +
+      `<div class="actor-def-title">${a.label}</div>` +
+      `<span class="badge r-creates" style="font-size:10px">${n} obligation${n !== 1 ? 's' : ''}</span>` +
+      `</div><div class="actor-def-grid">` +
+      `<div class="actor-def-block"><div class="actor-detail-label">Regulatory definition</div>` +
+      `<div class="actor-detail-text">${a.reg_def}</div></div>` +
+      (a.note
+        ? `<div class="actor-def-block"><div class="actor-detail-label">Key point</div>` +
+          `<div class="actor-detail-text">${a.note}</div></div>`
+        : '') +
+      `<div class="actor-def-block"><div class="actor-detail-label">DPP obligations</div>` +
+      `<div class="actor-detail-text">${a.dpp_obligations}</div></div></div>`;
+    frag.appendChild(defSec);
+  }
+
+  // Group fields by section for selected actor
+  const sm = new Map();
+  for (const fd of FIELDS) {
+    const hasTop = fd.responsibilities[selectedActor];
+    const hasSub = (fd.sub_fields || []).some(sf => sf.responsibilities[selectedActor]);
+    if (!hasTop && !hasSub) continue;
+    if (!sm.has(fd.section)) sm.set(fd.section, []);
+    sm.get(fd.section).push(fd);
+  }
+
+  if (sm.size === 0) {
+    const e = el('div', 'hint-state');
+    e.innerHTML = '<strong>No obligations found</strong><span>This actor has no data obligations under the current schema</span>';
+    frag.appendChild(e);
+    return frag;
+  }
+
+  for (const [sn, fds] of sm) {
+    const s  = el('div', 'role-section');
+    s.id     = secId(sn);
+    const hd = el('div', 'role-sec-header');
+    hd.innerHTML =
+      `<span class="role-sec-title">${sn.replace(/^\d+\.\s*/, '')}</span>` +
+      `<span class="role-sec-count">${fds.length} field${fds.length !== 1 ? 's' : ''}</span>`;
+    s.appendChild(hd);
+
+    for (const fd of fds) {
+      const ar           = fd.responsibilities[selectedActor];
+      const relevantSubs = (fd.sub_fields || []).filter(sf => sf.responsibilities[selectedActor]);
+      const c  = el('div', 'role-field-card');
+      const hh = el('div', 'role-field-head');
+      hh.innerHTML =
+        `<div class="field-id-name">` +
+        `<span class="field-id">${fd.field_id}</span>` +
+        `<span class="field-name">${fd.field_name}</span></div>` +
+        `<div>${respBadge(ar)}</div>`;
+      c.appendChild(hh);
+
+      const b = el('div', 'role-field-body');
+      if (relevantSubs.length > 0) {
+        const subLabel = el('div', 'sub-label');
+        subLabel.textContent = 'Sub-fields';
+        b.appendChild(subLabel);
+        const sw = el('div');
+        for (const sf of relevantSubs) {
+          const r = el('div', 'sub-row');
+          r.innerHTML =
+            `<span class="sub-id">${sf.field_id}</span>` +
+            `<span class="sub-name">${sf.field_name}</span>` +
+            respBadge(sf.responsibilities[selectedActor]);
+          sw.appendChild(r);
+        }
+        b.appendChild(sw);
+      }
+      b.innerHTML += notesBlock(fd.notes);
+      c.appendChild(b);
+      s.appendChild(c);
+    }
+    frag.appendChild(s);
+  }
+  return frag;
+}
+
+// ── Matrix view ────────────────────────────────────────────────────────────────
+function renderMatrixView() {
+  const frag  = document.createDocumentFragment();
+  const iw    = el('div');
+  iw.innerHTML = introHTML() + viewToggleHTML();
+  frag.appendChild(iw);
+
+  const outer = el('div', 'matrix-outer');
+  const w     = el('div', 'matrix-wrap');
+  const t     = el('table', 'matrix-table');
+
+  const thead = document.createElement('thead');
+  thead.innerHTML =
+    `<tr><th class="col-field">Field</th>` +
+    ACTOR_ENTRIES.map(([, a]) => `<th class="col-actor">${a.label}</th>`).join('') +
+    `</tr>`;
+  t.appendChild(thead);
+
+  const tbody        = document.createElement('tbody');
+  let   lastSection  = null;
+  const colCount     = ACTOR_ENTRIES.length + 1;
+
+  const appendRow = (fd, isSub) => {
+    const tr    = document.createElement('tr');
+    if (isSub) tr.className = 'sub-row-tr';
+    const anchor = fd.field_id.replace(/\./g, '--');
+    tr.innerHTML =
+      `<td class="col-field"><a class="field-link" href="schema.html#f-${anchor}">` +
+      `<span class="cell-fid">${fd.field_id}</span>` +
+      `<span class="cell-fname">${fd.field_name}</span></a></td>` +
+      ACTOR_ENTRIES.map(([k]) => `<td class="col-actor">${respBadge(fd.responsibilities[k])}</td>`).join('');
+    tbody.appendChild(tr);
+  };
+
+  for (const fd of FIELDS) {
+    if (fd.section !== lastSection) {
+      lastSection = fd.section;
+      const dr    = document.createElement('tr');
+      dr.className = 'sec-divider';
+      dr.id        = secId(fd.section);
+      dr.innerHTML = `<td colspan="${colCount}">${fd.section.replace(/^\d+\.\s*/, '')}</td>`;
+      tbody.appendChild(dr);
+    }
+    appendRow(fd, false);
+    (fd.sub_fields || []).forEach(sf => appendRow(sf, true));
+  }
+
+  t.appendChild(tbody);
+  w.appendChild(t);
+  outer.appendChild(w);
+  frag.appendChild(outer);
+  return frag;
+}
+
+// ── Sidebar ────────────────────────────────────────────────────────────────────
+// Drawer nav is static — built once at init
+function buildDrawerNav() {
+  const nav = document.getElementById('drawerNav');
+  nav.innerHTML =
+    '<div class="sb-label">By actor</div>' +
+    ACTOR_ENTRIES.map(([k, a]) =>
+      `<button class="nav-link drawer-actor-btn" data-actor="${k}">` +
+      `<span class="nav-num">\u2192</span><span>${a.label}</span></button>`
+    ).join('') +
+    '<div class="sb-divider"></div>' +
+    '<div class="sb-label">Views</div>' +
+    '<button class="nav-link drawer-view-btn" data-view="role"><span class="nav-num">\u2460</span><span>By actor</span></button>' +
+    '<button class="nav-link drawer-view-btn" data-view="matrix"><span class="nav-num">\u2461</span><span>Full matrix</span></button>';
+
+  nav.addEventListener('click', e => {
+    const ab = e.target.closest('.drawer-actor-btn');
+    const vb = e.target.closest('.drawer-view-btn');
+    if (ab) { selectedActor = ab.dataset.actor; currentView = 'role'; renderMain(); closeDrawer(); }
+    if (vb) { switchView(vb.dataset.view); closeDrawer(); }
+  });
+}
+
+function renderSidebar() {
+  document.getElementById('sb-role-link').classList.toggle('active',   currentView === 'role');
+  document.getElementById('sb-matrix-link').classList.toggle('active', currentView === 'matrix');
+
+  let visibleSections = SECTIONS;
+  if (currentView === 'role' && selectedActor) {
+    visibleSections = SECTIONS.filter(s =>
+      FIELDS.some(f =>
+        f.section === s && (
+          f.responsibilities[selectedActor] ||
+          (f.sub_fields || []).some(sf => sf.responsibilities[selectedActor])
+        )
+      )
+    );
+  }
+
+  document.getElementById('sb-sections').innerHTML = visibleSections.map(s => {
+    const num   = s.match(/^(\d+)/)?.[1] || '';
+    const label = s.replace(/^\d+\.\s*/, '');
+    return `<a href="#${secId(s)}" class="nav-link"><span class="nav-num">${num}</span><span>${label}</span></a>`;
+  }).join('');
+}
+
+// ── Main render ────────────────────────────────────────────────────────────────
+function renderMain() {
+  const m = document.getElementById('main');
+  m.innerHTML = '';
+  m.appendChild(currentView === 'role' ? renderRoleView() : renderMatrixView());
+  m.appendChild(_caveatsEl);
+
+  // Legend expand button — recreated each render via introHTML
+  const legendBtn = document.getElementById('legend-expand-btn');
+  if (legendBtn) {
+    legendBtn.addEventListener('click', () => {
+      legendDefsOpen = !legendDefsOpen;
+      document.getElementById('legend-defs').classList.toggle('open', legendDefsOpen);
+      legendBtn.textContent = `definitions ${legendDefsOpen ? '\u2191' : '\u2193'}`;
+    });
+  }
+
+  // View toggle buttons — recreated each render via viewToggleHTML
+  document.querySelectorAll('.toggle-btn[data-view]').forEach(btn => {
+    btn.addEventListener('click', () => switchView(btn.dataset.view));
+  });
+
+  renderSidebar();
+}
+
+function switchView(v) {
+  currentView = v;
+  renderMain();
+}
+
+// ── Sidebar view buttons ───────────────────────────────────────────────────────
+document.getElementById('sb-role-link').addEventListener('click',   () => switchView('role'));
+document.getElementById('sb-matrix-link').addEventListener('click', () => switchView('matrix'));
+
+// ── Drawer ─────────────────────────────────────────────────────────────────────
+const drawer  = document.getElementById('drawer');
+const overlay = document.getElementById('overlay');
+
+function openDrawer()  { drawer.classList.add('open');    overlay.classList.add('open');    document.body.style.overflow = 'hidden'; }
+function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+document.getElementById('burgerBtn').addEventListener('click',  openDrawer);
+document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+
+// ── Init ───────────────────────────────────────────────────────────────────────
+buildDrawerNav();
+renderMain();
+
+</script>
+</body>
+</html>

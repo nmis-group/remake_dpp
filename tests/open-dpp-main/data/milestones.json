@@ -1,0 +1,413 @@
+{
+  "_meta": {
+    "description": "Milestone data for the AWARE DPP Legislative Tracker",
+    "last_updated": "2026-02-03",
+    "note": "This file is the source of truth for DPP legislation. index.html currently embeds this data, but a future release will have index.html read from this file dynamically.",
+    "citation_guide": "All refs must be primary EU sources. Type must be: official | technical | analysis | consultation"
+  },
+
+  "refs": [
+    {
+      "id": 1,
+      "title": "Regulation (EU) 2024/1781 — Ecodesign for Sustainable Products Regulation (ESPR)",
+      "detail": "Official Journal of the European Union. Entered into force 18 July 2024.",
+      "type": "official",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401781"
+    },
+    {
+      "id": 2,
+      "title": "ESPR and Energy Labelling Working Plan 2025–2030 — Commission Communication COM(2025) 187",
+      "detail": "Adopted 16 April 2025. Identifies priority product groups (textiles, furniture, steel, aluminium, tyres, mattresses) and delegated act timelines for 2025–2030.",
+      "type": "official",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025DC0187"
+    },
+    {
+      "id": 3,
+      "title": "Ecodesign Forum — Meeting Documents (CIRCABC)",
+      "detail": "Official meeting notes and working documents from the Ecodesign Forum, the stakeholder body consulted on all ESPR delegated acts and the Working Plan.",
+      "type": "official",
+      "url": "https://circabc.europa.eu/ui/group/418195ae-4919-45fa-a959-3b695c9aab28/library/16b3c448-cfaa-4fb3-9288-c8497c7aface?p=1&n=10&sort=created_DESC"
+    },
+    {
+      "id": 4,
+      "title": "Regulation (EU) 2023/1542 — EU Battery Regulation",
+      "detail": "Official Journal. Entered into force 17 August 2023. Repealed Directive 2006/66/EC from 18 August 2025. Covers carbon footprint declarations (Article 7), due diligence (Article 48), and battery passport (Article 77).",
+      "type": "official",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1542"
+    },
+    {
+      "id": 5,
+      "title": "Regulation (EU) 2024/1252 — Critical Raw Materials Act (CRMA)",
+      "detail": "Official Journal. Entered into force 23 May 2024. Article 28 introduces permanent magnet traceability and passport requirements.",
+      "type": "official",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401252"
+    },
+    {
+      "id": 6,
+      "title": "Have Your Say — Digital Product Passport (DPP Registry)",
+      "detail": "European Commission consultation portal entry for the DPP registry initiative under ESPR Article 12.",
+      "type": "official",
+      "url": "https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/16052-Digital-Product-Passport-Registry_en"
+    },
+    {
+      "id": 7,
+      "title": "Have Your Say — Digital Product Passport Rules for Service Providers",
+      "detail": "European Commission consultation portal entry for DPP rules for service providers.",
+      "type": "official",
+      "url": "https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/14382-Digital-product-passport-rules-for-service-providers_en"
+    },
+    {
+      "id": 8,
+      "title": "CIRPASS2 Initiative — DPP Technical Pilots",
+      "detail": "Pre-industrial pilot project testing DPP data models, digital identifiers, and technical standards across product categories.",
+      "type": "technical",
+      "url": "https://cirpass2.eu/"
+    }
+  ],
+
+  "tracks": [
+    {
+      "id": "espr",
+      "name": "ESPR Framework",
+      "short": "Ecodesign for Sustainable Products",
+      "reg": "Reg. (EU) 2024/1781",
+      "desc": "The overarching regulation establishing the DPP framework for virtually all physical goods placed on the EU market. Specific data requirements arrive product-by-product via delegated acts.",
+      "in_force": "18 July 2024",
+      "milestones": [
+        {
+          "id": "e1",
+          "date": "2024-07-18",
+          "title": "ESPR enters into force",
+          "status": "done",
+          "refs": [1],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "e2",
+          "date": "2025-04-16",
+          "title": "ESPR Working Plan 2025–2030 adopted",
+          "status": "done",
+          "refs": [2, 3],
+          "last_verified": null,
+          "verified_by": null,
+          "note": "Textile delegated act shifted to 2027 from earlier 2026 signal. Mandatory compliance now expected no earlier than 2028."
+        },
+        {
+          "id": "e3",
+          "date": "2025-07-19",
+          "title": "Unsold goods disclosure obligations — large enterprises",
+          "status": "done",
+          "refs": [9, 16],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "e4",
+          "date": "2026-01-01",
+          "title": "First delegated act consultations — textiles and steel (expected)",
+          "status": "expected",
+          "refs": [11, 13, 17],
+          "last_verified": null,
+          "verified_by": null,
+          "note": "Date not yet confirmed in official Commission calendar. Multiple analyses indicate late 2025–early 2026. Watch Have Your Say portal."
+        },
+        {
+          "id": "e5",
+          "date": "2026-07-19",
+          "title": "DPP Registry must be operational",
+          "status": "pending",
+          "refs": [8],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "e6",
+          "date": "2026-07-19",
+          "title": "Textile & footwear destruction prohibition — large enterprises",
+          "status": "pending",
+          "refs": [9],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "e7",
+          "date": "2027-01-01",
+          "title": "Textile delegated act formally adopted (est.)",
+          "status": "expected",
+          "refs": [2, 10, 13, 14],
+          "last_verified": null,
+          "verified_by": null,
+          "note": "Commission originally signalled January 2026. Current consensus across multiple analyses is 2027. This date will be confirmed when the consultation launches."
+        },
+        {
+          "id": "e8",
+          "date": "2028-01-01",
+          "title": "Textile DPP compliance mandatory (est.)",
+          "status": "expected",
+          "refs": [14, 17],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "e9",
+          "date": "2028-01-01",
+          "title": "ESPR mid-term review",
+          "status": "expected",
+          "refs": [2],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "e10",
+          "date": "2030-07-19",
+          "title": "Unsold goods destruction prohibition — medium enterprises",
+          "status": "expected",
+          "refs": [9],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        }
+      ]
+    },
+
+    {
+      "id": "battery",
+      "name": "Battery Passport",
+      "short": "EU Battery Regulation DPP",
+      "reg": "Reg. (EU) 2023/1542",
+      "desc": "The most advanced DPP track in the EU. Running under a dedicated regulation, separate from ESPR. Being closely watched as the template for all future DPP implementations.",
+      "in_force": "17 August 2023",
+      "milestones": [
+        {
+          "id": "b1",
+          "date": "2023-08-17",
+          "title": "Battery Regulation enters into force",
+          "status": "done",
+          "refs": [4],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "b2",
+          "date": "2024-02-18",
+          "title": "Initial provisions apply",
+          "status": "done",
+          "refs": [4],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "b3",
+          "date": "2025-08-18",
+          "title": "Battery Directive 2006/66/EC fully repealed",
+          "status": "done",
+          "refs": [4],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "b4",
+          "date": "2025-11-01",
+          "title": "Carbon footprint declaration — EV batteries",
+          "status": "active",
+          "refs": [5],
+          "last_verified": null,
+          "verified_by": null,
+          "note": "VERIFY: Confirm whether the Commission has published the implementing act specifying the carbon footprint calculation methodology. Expected mid-2025."
+        },
+        {
+          "id": "b5",
+          "date": "2026-07-26",
+          "title": "Battery passport guidelines publication deadline (extended)",
+          "status": "pending",
+          "refs": [15],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "b6",
+          "date": "2026-08-18",
+          "title": "Commission adopts battery passport implementing act",
+          "status": "pending",
+          "refs": [6],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "b7",
+          "date": "2027-02-18",
+          "title": "Battery Passport mandatory — EV, LMT, industrial (≥2kWh)",
+          "status": "pending",
+          "refs": [6, 19],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "b8",
+          "date": "2027-08-18",
+          "title": "Due diligence — cobalt, lithium, nickel, natural graphite",
+          "status": "expected",
+          "refs": [15],
+          "last_verified": null,
+          "verified_by": null,
+          "note": "VERIFY: History of postponement on this article. Confirm current status of implementing acts."
+        }
+      ]
+    },
+
+    {
+      "id": "textile",
+      "name": "Textile & Apparel DPP",
+      "short": "ESPR Textile Delegated Act",
+      "reg": "ESPR + Delegated Act (forthcoming)",
+      "desc": "The textile-specific DPP track inside ESPR. Has its own JRC preparatory study timeline and stakeholder process. Most directly relevant track for fashion and apparel supply chains.",
+      "in_force": "Delegated act pending",
+      "milestones": [
+        {
+          "id": "t1",
+          "date": "2023-07-01",
+          "title": "JRC preparatory study on textiles begins",
+          "status": "done",
+          "refs": [3],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "t2",
+          "date": "2024-11-01",
+          "title": "JRC textile assessment published",
+          "status": "done",
+          "refs": [10, 20],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "t3",
+          "date": "2025-02-01",
+          "title": "Ecodesign Forum consultation — textile priorities",
+          "status": "done",
+          "refs": [18],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "t4",
+          "date": "2025-04-16",
+          "title": "Textiles confirmed as priority in Working Plan",
+          "status": "done",
+          "refs": [2, 20],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "t5",
+          "date": "2025-07-19",
+          "title": "Textile destruction prohibition — large enterprises",
+          "status": "done",
+          "refs": [9],
+          "last_verified": null,
+          "verified_by": null,
+          "note": "This obligation is live now."
+        },
+        {
+          "id": "t6",
+          "date": "2026-01-01",
+          "title": "Textile delegated act — public consultation (expected)",
+          "status": "expected",
+          "refs": [11, 13, 17],
+          "last_verified": null,
+          "verified_by": null,
+          "note": "Highest-value document to capture when published. Watch the EC Have Your Say portal."
+        },
+        {
+          "id": "t7",
+          "date": "2027-01-01",
+          "title": "Textile delegated act formally adopted (est.)",
+          "status": "expected",
+          "refs": [2, 13, 14],
+          "last_verified": null,
+          "verified_by": null,
+          "note": "Commission originally signalled January 2026. Current consensus is 2027."
+        },
+        {
+          "id": "t8",
+          "date": "2028-01-01",
+          "title": "Textile DPP compliance mandatory (est.)",
+          "status": "expected",
+          "refs": [14, 17],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "t9",
+          "date": "2030-07-19",
+          "title": "Textile destruction prohibition — medium enterprises",
+          "status": "expected",
+          "refs": [9],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        }
+      ]
+    },
+
+    {
+      "id": "crma",
+      "name": "CRMA Passport",
+      "short": "Critical Raw Materials Act — Permanent Magnets",
+      "reg": "Reg. (EU) 2024/1252",
+      "desc": "Introduces traceability and passport requirements for permanent magnets. Relevant for electronics, EVs, wind turbines, and industrial motors.",
+      "in_force": "23 May 2024",
+      "milestones": [
+        {
+          "id": "c1",
+          "date": "2024-05-23",
+          "title": "CRMA enters into force",
+          "status": "done",
+          "refs": [7],
+          "last_verified": null,
+          "verified_by": null,
+          "note": null
+        },
+        {
+          "id": "c2",
+          "date": "2025-11-01",
+          "title": "Commission adopts permanent magnet labelling format",
+          "status": "active",
+          "refs": [7, 15],
+          "last_verified": null,
+          "verified_by": null,
+          "note": "VERIFY: Check EUR-Lex for CRMA implementing acts adopted since November 2025 to confirm this has been published."
+        },
+        {
+          "id": "c3",
+          "date": "2027-05-24",
+          "title": "Permanent magnet passport mandatory",
+          "status": "expected",
+          "refs": [7, 15],
+          "last_verified": null,
+          "verified_by": null,
+          "note": "Applies from 24 May 2027 or two years after the relevant delegated act, whichever is later."
+        }
+      ]
+    }
+  ]
+}

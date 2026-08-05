@@ -40,6 +40,7 @@ packages = ["nmis_dpp"]
 # Optional: Enable pytest discovery if you want to run tests with `pytest` automatically
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 
 # Optional: Classifiers for PyPI (helps users find your package)
 classifiers = [

@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Local dev server
+node_modules/
+npm-debug.log*
+
+# Temp / build artefacts
+*.tmp
+*.bak
+*.log
+
+# Local env / secrets
+.env
+.env.local

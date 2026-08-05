@@ -1,0 +1,1050 @@
+{
+  "x-meta": {
+    "title": "EU textile digital product passport - field schema",
+    "version": "0.5.0",
+    "product_group": "textiles",
+    "status": "draft",
+    "status_note": "Textile delegated act pending. Fields marked M2 have an Annex III basis but are not self-executing until the delegated act is adopted. This schema is a practical minimum - the fewest fields needed to build a compliant, useful DPP today.",
+    "regulatory_instrument": "Regulation (EU) 2024/1781 (ESPR)",
+    "primary_sources": [
+      "Reg. (EU) 2024/1781 (ESPR) - Art. 7, 9, 10, 11, 12, 27, 28, 29, 38 and Annex III",
+      "Reg. (EU) 2023/1542 (Battery Regulation) Annex XIII - structural reference",
+      "DIN DKE Spec 99100 v1.2 - structural reference"
+    ]
+  },
+  "fields": [
+    {
+      "field_id": "1.1",
+      "field_name": "product_identifier",
+      "section": "1. Product identity",
+      "mandate_status": "M1",
+      "access_tier": "tier_1_public",
+      "data_behaviour": "static",
+      "type": "object",
+      "description": "Persistent unique identifier and core product identification data. The id property must be a GS1 Digital Link URI built from the product's 14-digit GTIN. This URL is encoded in the QR code on the label - scanning it should resolve to this DPP. Batch or serial number can be appended to the path to raise the granularity level. Art. 27(5): manufacturer must ensure products bear a type, batch or serial number.",
+      "regulatory_basis": [
+        "Art. 9(1)",
+        "Art. 10(1)(a)",
+        "Art. 27(5)",
+        "Art. 27(6)(a)",
+        "Annex III(a)",
+        "Annex III(c)"
+      ],
+      "granularity_examples": {
+        "model": "https://id.gs1.org/01/09506000134352",
+        "batch": "https://id.gs1.org/01/09506000134352/10/B2025-04",
+        "item": "https://id.gs1.org/01/09506000134352/10/B2025-04/21/SN-000123"
+      },
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri",
+          "required": true,
+          "example": "https://id.gs1.org/01/09506000134352",
+          "description": "GS1 Digital Link URI encoding the product's GTIN as a resolvable web address. Must comply with ISO/IEC 15459. Structure: https://[resolver-domain]/01/[14-digit-GTIN] for model level; append /10/[batch] for batch level; append /21/[serial] for item level.",
+          "iri": "@id"
+        },
+        "product_name": {
+          "type": "string",
+          "description": "Commercial product name or model name.",
+          "iri": "https://schema.org/name"
+        },
+        "product_type": {
+          "type": "string",
+          "description": "Product type. E.g. 'T-shirt', 'jacket', 'trousers'.",
+          "iri": "https://open-dpp.eu/vocab#productType",
+          "iri_review": true
+        },
+        "batch_number": {
+          "type": "string",
+          "description": "Batch or lot number.",
+          "granularity": "batch",
+          "iri": "https://www.gs1.org/voc/hasBatchLotNumber"
+        },
+        "serial_number": {
+          "type": "string",
+          "description": "Individual item serial number, where DPP is issued at item level.",
+          "granularity": "item",
+          "iri": "https://schema.org/serialNumber",
+          "iri_review": true
+        },
+        "model_number": {
+          "type": "string",
+          "description": "Manufacturer model reference.",
+          "granularity": "model",
+          "iri": "https://schema.org/model"
+        },
+        "dpp_level": {
+          "type": "string",
+          "enum": [
+            "model",
+            "batch",
+            "item"
+          ],
+          "description": "Granularity level of this DPP per Art. 9(2)(d).",
+          "iri": "https://open-dpp.eu/vocab#dppLevel"
+        }
+      }
+    },
+    {
+      "field_id": "1.2",
+      "field_name": "user_manuals_and_safety_information",
+      "section": "1. Product identity",
+      "mandate_status": "M1",
+      "access_tier": "tier_1_public",
+      "data_behaviour": "static",
+      "type": "object",
+      "description": "Care instructions and end-of-life guidance. Must remain accessible for at least 10 years after market placement per Art. 27(7).",
+      "regulatory_basis": [
+        "Art. 7(2)(b)(ii)",
+        "Art. 27(7)",
+        "Art. 29(4)"
+      ],
+      "properties": {
+        "care_instructions": {
+          "type": "string",
+          "description": "Washing, drying, ironing and care instructions.",
+          "iri": "https://open-dpp.eu/vocab#careInstructions"
+        },
+        "repair_instructions_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to repair guidance.",
+          "iri": "https://schema.org/url",
+          "iri_review": true
+        },
+        "end_of_life_instructions": {
+          "type": "string",
+          "description": "Instructions for return, recycling or disposal at end of life.",
+          "iri": "https://open-dpp.eu/vocab#endOfLifeInstructions"
+        },
+        "language_codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "ISO 639-1 codes for languages in which instructions are available.",
+          "iri": "https://schema.org/inLanguage"
+        },
+        "accessible_until": {
+          "type": "string",
+          "format": "date",
+          "description": "Date until which digital instructions are guaranteed accessible. Minimum 10 years after market placement per Art. 27(7).",
+          "iri": "https://open-dpp.eu/vocab#accessibleUntil",
+          "iri_review": true
+        }
+      }
+    },
+    {
+      "field_id": "2.1",
+      "field_name": "operator_identifiers",
+      "section": "2. Actors",
+      "mandate_status": "M1",
+      "access_tier": "tier_1_public",
+      "data_behaviour": "static",
+      "type": "array",
+      "description": "Unique operator identifiers for all economic operators associated with this DPP. Must include the manufacturer at minimum. Importer, authorised rep and EU responsible person are conditional on their involvement. Interim standard: GS1 GLN (ISO/IEC 15459-4).",
+      "regulatory_basis": [
+        "Art. 27(6)",
+        "Art. 29(3)",
+        "Art. 12(2)",
+        "Annex III(g)",
+        "Annex III(h)",
+        "Annex III(j)",
+        "Annex III(k)"
+      ],
+      "items": {
+        "type": "object",
+        "required": [
+          "operator_role",
+          "operator_name",
+          "unique_operator_identifier"
+        ],
+        "properties": {
+          "operator_role": {
+            "type": "string",
+            "enum": [
+              "manufacturer",
+              "importer",
+              "authorised_representative",
+              "eu_responsible_person",
+              "dpp_service_provider"
+            ],
+            "description": "Role per ESPR Art. 2(42)-(55) and Annex III(g)-(k).",
+            "iri": "https://open-dpp.eu/vocab#operatorRole"
+          },
+          "operator_name": {
+            "type": "string",
+            "description": "Registered trade name or trademark.",
+            "iri": "https://schema.org/name"
+          },
+          "unique_operator_identifier": {
+            "type": "string",
+            "description": "Unique operator identifier per Annex III(h). Interim standard: GS1 GLN (ISO/IEC 15459-4).",
+            "iri": "https://www.gs1.org/voc/gln"
+          },
+          "postal_address": {
+            "type": "string",
+            "description": "Single postal contact point per Art. 27(6).",
+            "iri": "https://schema.org/address"
+          },
+          "electronic_contact": {
+            "type": "string",
+            "description": "Email address or web contact form URL.",
+            "iri": "https://schema.org/email",
+            "iri_review": true
+          },
+          "eori_number": {
+            "type": "string",
+            "description": "EORI number. Required for importers per Annex III(j).",
+            "iri": "https://open-dpp.eu/vocab#eoriNumber"
+          }
+        }
+      }
+    },
+    {
+      "field_id": "2.2",
+      "field_name": "manufacturer_contact_details",
+      "section": "2. Actors",
+      "mandate_status": "M1",
+      "access_tier": "tier_1_public",
+      "data_behaviour": "static",
+      "type": "object",
+      "description": "Manufacturer contact details as they must appear on the public part of the DPP. A brand that commissions all production from third-party factories but markets under its own trademark is the manufacturer per Art. 2(42). Art. 27(9): manufacturer must make publicly available communication channels for complaints.",
+      "regulatory_basis": [
+        "Art. 27(6)(a)",
+        "Art. 27(9)"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Registered trade name or trademark.",
+          "iri": "https://schema.org/name"
+        },
+        "postal_address": {
+          "type": "string",
+          "description": "Single postal contact point per Art. 27(6).",
+          "iri": "https://schema.org/address"
+        },
+        "electronic_contact": {
+          "type": "string",
+          "description": "Email address or web contact form URL.",
+          "iri": "https://schema.org/email",
+          "iri_review": true
+        },
+        "complaints_channel_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of publicly available complaints channel per Art. 27(9).",
+          "iri": "https://schema.org/url",
+          "iri_review": true
+        }
+      }
+    },
+    {
+      "field_id": "3.1",
+      "field_name": "fibre_composition",
+      "section": "3. Material composition",
+      "mandate_status": "M1",
+      "access_tier": "tier_1_public",
+      "data_behaviour": "static",
+      "type": "array",
+      "description": "Full fibre composition by weight percentage using Reg. (EU) 1007/2011 Annex I nomenclature. Where composition varies by component (e.g. shell vs lining), add separate entries per component. Manufacturer compiles from data provided by fabric mills and spinners.",
+      "regulatory_basis": [
+        "Art. 7(2)(b)(i)",
+        "Annex I(f)",
+        "Reg. (EU) 1007/2011"
+      ],
+      "items": {
+        "type": "object",
+        "required": [
+          "fibre_type",
+          "percentage"
+        ],
+        "properties": {
+          "fibre_type": {
+            "type": "string",
+            "description": "Fibre type per Reg. (EU) 1007/2011 Annex I. E.g. 'cotton', 'polyester', 'wool'.",
+            "iri": "https://open-dpp.eu/vocab#fibreType",
+            "iri_review": true
+          },
+          "percentage": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Weight percentage. Percentages must sum to 100% within each component scope.",
+            "iri": "https://open-dpp.eu/vocab#percentage",
+            "iri_review": true
+          },
+          "component": {
+            "type": "string",
+            "description": "Product component this entry relates to, where composition varies. E.g. 'shell', 'lining', 'padding'.",
+            "iri": "https://open-dpp.eu/vocab#component"
+          },
+          "is_recycled": {
+            "type": "boolean",
+            "description": "True if this fibre is recycled. Detailed recycled content data captured in field 3.2.",
+            "iri": "https://open-dpp.eu/vocab#isRecycled"
+          }
+        }
+      }
+    },
+    {
+      "field_id": "3.2",
+      "field_name": "recycled_content",
+      "section": "3. Material composition",
+      "mandate_status": "M2",
+      "access_tier": "tier_1_public",
+      "data_behaviour": "static",
+      "type": "array",
+      "description": "Recycled content declarations by material stream. Data originates with material suppliers; manufacturer compiles. Textile delegated act will specify required granularity and verification standards.",
+      "regulatory_basis": [
+        "Annex I(d)"
+      ],
+      "items": {
+        "type": "object",
+        "required": [
+          "material",
+          "recycled_percentage"
+        ],
+        "properties": {
+          "material": {
+            "type": "string",
+            "description": "Material or fibre type. E.g. 'polyester', 'nylon'.",
+            "iri": "https://schema.org/material"
+          },
+          "recycled_percentage": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Weight percentage of recycled content for this material.",
+            "iri": "https://open-dpp.eu/vocab#recycledPercentage",
+            "iri_review": true
+          },
+          "recycled_source": {
+            "type": "string",
+            "enum": [
+              "post_consumer",
+              "post_industrial",
+              "mixed",
+              "unknown"
+            ],
+            "description": "Origin of the recycled material.",
+            "iri": "https://open-dpp.eu/vocab#recycledSource",
+            "iri_review": true
+          },
+          "verification_standard": {
+            "type": "string",
+            "description": "Third-party certification standard. E.g. 'GRS 4.0', 'RCS 2.0'.",
+            "iri": "https://open-dpp.eu/vocab#verificationStandard"
+          },
+          "certificate_id": {
+            "type": "string",
+            "description": "Certificate or transaction certificate ID issued by the certifying body.",
+            "iri": "https://schema.org/identifier"
+          }
+        }
+      }
+    },
+    {
+      "field_id": "3.3",
+      "field_name": "raw_material_origin",
+      "section": "3. Material composition",
+      "mandate_status": "M3",
+      "access_tier": "tier_4_supply_chain",
+      "data_behaviour": "static",
+      "type": "array",
+      "description": "Country and region of origin for raw material inputs. Mandatory for cotton, leather and natural rubber under EUDR. Manufacturer and importer are EUDR due diligence responsible entities.",
+      "regulatory_basis": [
+        "Reg. (EU) 2023/1115 (EUDR) Art. 3",
+        "ESPR Art. 5(1)(e)"
+      ],
+      "items": {
+        "type": "object",
+        "required": [
+          "material",
+          "country_of_origin"
+        ],
+        "properties": {
+          "material": {
+            "type": "string",
+            "description": "Raw material name. E.g. 'cotton lint', 'wool fibre', 'viscose pulp'.",
+            "iri": "https://schema.org/material"
+          },
+          "country_of_origin": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 country code.",
+            "iri": "https://schema.org/countryOfOrigin"
+          },
+          "region": {
+            "type": "string",
+            "description": "Sub-national region where relevant for traceability. E.g. 'Gujarat', 'Xinjiang'. Recommended for high-risk materials.",
+            "iri": "https://schema.org/addressRegion"
+          },
+          "farm_or_source_id": {
+            "type": "string",
+            "description": "Farm or source facility identifier. Relevant for EUDR-in-scope materials.",
+            "iri": "https://open-dpp.eu/vocab#farmOrSourceId"
+          }
+        }
+      }
+    },
+    {
+      "field_id": "4.1",
+      "field_name": "supply_chain",
+      "section": "4. Supply chain",
+      "mandate_status": "M2",
+      "access_tier": "tier_4_supply_chain",
+      "data_behaviour": "static",
+      "type": "array",
+      "description": "Full production supply chain from raw material processing to final assembly. One entry per facility per stage - a product passing through spinning, dyeing and assembly in three factories has three entries. The country of the final_assembly entry is the legal country of origin per Union Customs Code Art. 60. Compiled by the brand; each facility provides its own data when Art. 38 is invoked. Access restricted to supply chain partners and authorities.",
+      "regulatory_basis": [
+        "Annex III(i)",
+        "Art. 38",
+        "Reg. (EU) 2024/3015"
+      ],
+      "items": {
+        "type": "object",
+        "required": [
+          "stage",
+          "facility_name",
+          "country"
+        ],
+        "properties": {
+          "stage": {
+            "type": "string",
+            "enum": [
+              "raw_material_processing",
+              "spinning",
+              "weaving_knitting",
+              "dyeing_finishing",
+              "cut_make_trim",
+              "final_assembly",
+              "other"
+            ],
+            "description": "Production stage performed at this facility.",
+            "iri": "https://open-dpp.eu/vocab#stage",
+            "iri_review": true
+          },
+          "facility_name": {
+            "type": "string",
+            "description": "Trading name of the facility.",
+            "iri": "https://schema.org/name"
+          },
+          "unique_facility_identifier": {
+            "type": "string",
+            "description": "Unique facility identifier. Interim standard: GS1 GLN (ISO/IEC 15459-4).",
+            "iri": "https://www.gs1.org/voc/gln"
+          },
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 country code.",
+            "iri": "https://schema.org/addressCountry"
+          },
+          "address": {
+            "type": "string",
+            "description": "Street address of the facility.",
+            "iri": "https://schema.org/address"
+          },
+          "tier": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Supply chain tier. Tier 1 = direct supplier to brand.",
+            "iri": "https://open-dpp.eu/vocab#tier"
+          }
+        }
+      }
+    },
+    {
+      "field_id": "5.1",
+      "field_name": "carbon_footprint",
+      "section": "5. Environmental performance",
+      "mandate_status": "M2",
+      "access_tier": "tier_1_public",
+      "data_behaviour": "static",
+      "type": "object",
+      "description": "Product carbon footprint in kg CO2 equivalent per unit. Highly likely to be required by the textile delegated act. PEF Category Rules for Apparel and Footwear is the most likely mandated methodology.",
+      "regulatory_basis": [
+        "Annex I(h)",
+        "Art. 7(2)(b)(i)"
+      ],
+      "properties": {
+        "total_kgco2e": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Total carbon footprint in kg CO2 equivalent.",
+          "iri": "https://open-dpp.eu/vocab#totalKgCO2e",
+          "iri_review": true
+        },
+        "calculation_methodology": {
+          "type": "string",
+          "description": "Standard used. E.g. 'PEF Category Rules for Apparel and Footwear', 'ISO 14067:2018'.",
+          "iri": "https://open-dpp.eu/vocab#calculationMethodology",
+          "iri_review": true
+        },
+        "scope_boundary": {
+          "type": "string",
+          "enum": [
+            "cradle_to_gate",
+            "cradle_to_grave",
+            "cradle_to_retailer"
+          ],
+          "description": "System boundary of the carbon footprint calculation.",
+          "iri": "https://open-dpp.eu/vocab#scopeBoundary",
+          "iri_review": true
+        },
+        "reference_year": {
+          "type": "integer",
+          "description": "Year to which the carbon footprint data relates.",
+          "iri": "https://open-dpp.eu/vocab#referenceYear"
+        }
+      }
+    },
+    {
+      "field_id": "5.2",
+      "field_name": "water_use",
+      "section": "5. Environmental performance",
+      "mandate_status": "M2",
+      "access_tier": "tier_1_public",
+      "data_behaviour": "static",
+      "type": "object",
+      "description": "Total water use in litres per unit. Textile production is among the most water-intensive industries globally. Expected to appear in the textile delegated act.",
+      "regulatory_basis": [
+        "Annex I(h)"
+      ],
+      "properties": {
+        "total_litres": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Total water use in litres per unit.",
+          "iri": "https://open-dpp.eu/vocab#totalLitres",
+          "iri_review": true
+        },
+        "calculation_methodology": {
+          "type": "string",
+          "description": "Standard used. E.g. 'ISO 14046:2014'.",
+          "iri": "https://open-dpp.eu/vocab#calculationMethodology",
+          "iri_review": true
+        },
+        "scope_boundary": {
+          "type": "string",
+          "enum": [
+            "cradle_to_gate",
+            "cradle_to_grave",
+            "cradle_to_retailer"
+          ],
+          "description": "System boundary of the water use calculation.",
+          "iri": "https://open-dpp.eu/vocab#scopeBoundary",
+          "iri_review": true
+        }
+      }
+    },
+    {
+      "field_id": "6.1",
+      "field_name": "substances_of_concern",
+      "section": "6. Substances",
+      "mandate_status": "M1",
+      "access_tier": "tier_3_end_of_life",
+      "data_behaviour": "static",
+      "type": "array",
+      "description": "All substances of concern present above applicable thresholds. An empty array is valid where none are present - but the field must exist. CAS numbers must come from supplier Safety Data Sheets. SVHCs cannot be omitted if present above 0.1% by weight (1000 ppm).",
+      "regulatory_basis": [
+        "Art. 7(5)",
+        "Art. 7(6)",
+        "Annex III(f)"
+      ],
+      "items": {
+        "type": "object",
+        "required": [
+          "substance_name",
+          "espr_category"
+        ],
+        "properties": {
+          "substance_name": {
+            "type": "string",
+            "description": "IUPAC name, or another international name where IUPAC is unavailable. Art. 7(5)(a)(i).",
+            "iri": "https://schema.org/name"
+          },
+          "other_names": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Usual name, trade name or abbreviation. Art. 7(5)(a)(ii).",
+            "iri": "https://schema.org/alternateName"
+          },
+          "cas_number": {
+            "type": "string",
+            "description": "CAS Registry Number. Art. 7(5)(a)(iv). Must come from chemical supplier Safety Data Sheet.",
+            "iri": "https://open-dpp.eu/vocab#casNumber",
+            "iri_review": true
+          },
+          "ec_number": {
+            "type": "string",
+            "description": "European Community number (EINECS, ELINCS, NLP or ECHA-assigned). Art. 7(5)(a)(iii).",
+            "iri": "https://open-dpp.eu/vocab#ecNumber",
+            "iri_review": true
+          },
+          "location_in_product": {
+            "type": "string",
+            "description": "Component or part in which the substance is present. Art. 7(5)(b).",
+            "iri": "https://open-dpp.eu/vocab#locationInProduct"
+          },
+          "concentration_ppm": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Concentration in parts per million (mg/kg). Art. 7(5)(c). REACH floor: 1000 ppm for SVHC.",
+            "iri": "https://open-dpp.eu/vocab#concentrationPpm",
+            "iri_review": true
+          },
+          "espr_category": {
+            "type": "string",
+            "enum": [
+              "substance_of_concern",
+              "svhc",
+              "hazardous_substance",
+              "other"
+            ],
+            "description": "Classification under ESPR Art. 2(27).",
+            "iri": "https://open-dpp.eu/vocab#esprCategory"
+          },
+          "safe_use_instructions": {
+            "type": "string",
+            "description": "Instructions for safe use in relation to this substance. Art. 7(5)(d).",
+            "iri": "https://open-dpp.eu/vocab#safeUseInstructions"
+          },
+          "end_of_life_handling": {
+            "type": "string",
+            "description": "Information relevant for disassembly, recycling and end-of-life management. Art. 7(5)(e).",
+            "iri": "https://open-dpp.eu/vocab#endOfLifeHandling"
+          }
+        }
+      }
+    },
+    {
+      "field_id": "6.2",
+      "field_name": "restricted_substances_compliance",
+      "section": "6. Substances",
+      "mandate_status": "M1",
+      "access_tier": "tier_1_public",
+      "data_behaviour": "static",
+      "type": "object",
+      "description": "Compliance declaration against REACH Annex XVII restricted substances. The importer must verify this before placing the product on the EU market.",
+      "regulatory_basis": [
+        "Art. 29(1)",
+        "Reg. (EC) 1907/2006 (REACH)"
+      ],
+      "properties": {
+        "reach_compliant": {
+          "type": "boolean",
+          "description": "Declaration of compliance with REACH Annex XVII restrictions.",
+          "iri": "https://open-dpp.eu/vocab#reachCompliant"
+        },
+        "rsl_standard": {
+          "type": "string",
+          "description": "Additional RSL standard applied. E.g. 'ZDHC MRSL 3.1', 'bluesign RSL', 'OEKO-TEX RSL'.",
+          "iri": "https://open-dpp.eu/vocab#rslStandard"
+        },
+        "test_report_reference": {
+          "type": "string",
+          "description": "Reference to the RSL test report supporting this declaration.",
+          "iri": "https://open-dpp.eu/vocab#testReportReference"
+        },
+        "tested_by": {
+          "type": "string",
+          "description": "Name of the accredited laboratory that conducted RSL testing.",
+          "iri": "https://schema.org/agent"
+        },
+        "test_date": {
+          "type": "string",
+          "format": "date",
+          "description": "ISO 8601 date of the most recent RSL test.",
+          "iri": "https://open-dpp.eu/vocab#testDate"
+        }
+      }
+    },
+    {
+      "field_id": "7.1",
+      "field_name": "durability",
+      "section": "7. Circularity",
+      "mandate_status": "M2",
+      "access_tier": "tier_1_public",
+      "data_behaviour": "static",
+      "type": "object",
+      "description": "Durability performance data covering pilling resistance and colourfastness. Textile delegated act will specify required test methods and minimum thresholds.",
+      "regulatory_basis": [
+        "Art. 5(1)(a)",
+        "Art. 7(2)(b)(i)",
+        "Annex I(a)"
+      ],
+      "properties": {
+        "pilling_resistance": {
+          "type": "object",
+          "iri": "https://open-dpp.eu/vocab#pillingResistance",
+          "iri_review": true,
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "test_method": {
+              "type": "string",
+              "description": "E.g. 'ISO 12945-2:2020'.",
+              "iri": "https://schema.org/measurementTechnique"
+            },
+            "test_cycles": {
+              "type": "integer"
+            }
+          }
+        },
+        "colourfastness_washing": {
+          "type": "object",
+          "iri": "https://open-dpp.eu/vocab#colourfastnessWashing",
+          "iri_review": true,
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "test_method": {
+              "type": "string",
+              "description": "E.g. 'ISO 105-C06:2010'.",
+              "iri": "https://schema.org/measurementTechnique"
+            }
+          }
+        },
+        "colourfastness_rubbing": {
+          "type": "object",
+          "iri": "https://open-dpp.eu/vocab#colourfastnessRubbing",
+          "iri_review": true,
+          "properties": {
+            "dry_score": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "wet_score": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "test_method": {
+              "type": "string",
+              "description": "E.g. 'ISO 105-X12:2016'.",
+              "iri": "https://schema.org/measurementTechnique"
+            }
+          }
+        },
+        "expected_lifetime_washes": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Expected product lifetime in number of wash cycles.",
+          "iri": "https://open-dpp.eu/vocab#expectedLifetimeWashes"
+        }
+      }
+    },
+    {
+      "field_id": "7.2",
+      "field_name": "repairability",
+      "section": "7. Circularity",
+      "mandate_status": "M2",
+      "access_tier": "tier_2_professional",
+      "data_behaviour": "dynamic",
+      "type": "object",
+      "description": "Repairability information. Dynamic: manufacturers set initial data; professional repairers and independent operators may update spare parts availability and repair guidance after sale.",
+      "regulatory_basis": [
+        "Art. 5(1)(b)",
+        "Art. 7(2)(b)(ii)",
+        "Art. 9(2)(g)",
+        "Art. 11(b)",
+        "Annex I(b)"
+      ],
+      "properties": {
+        "repairability_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Repairability score on a 0-10 scale, where defined by delegated act.",
+          "iri": "https://open-dpp.eu/vocab#repairabilityScore",
+          "iri_review": true
+        },
+        "spare_parts_available": {
+          "type": "boolean",
+          "description": "Whether spare parts (e.g. buttons, zips, patches) are available for purchase.",
+          "iri": "https://open-dpp.eu/vocab#sparePartsAvailable"
+        },
+        "spare_parts_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to spare parts catalogue or ordering page.",
+          "iri": "https://schema.org/url",
+          "iri_review": true
+        },
+        "repair_instructions_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to repair instructions or technical repair documentation.",
+          "iri": "https://schema.org/url",
+          "iri_review": true
+        },
+        "repair_network_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to authorised or recommended repair network.",
+          "iri": "https://schema.org/url",
+          "iri_review": true
+        },
+        "last_updated": {
+          "type": "string",
+          "format": "date",
+          "description": "ISO 8601 date of most recent update to this field.",
+          "iri": "https://schema.org/dateModified"
+        },
+        "updated_by": {
+          "type": "string",
+          "description": "Actor that last updated this field. E.g. 'manufacturer', 'independent_operator'.",
+          "iri": "https://schema.org/agent"
+        }
+      }
+    },
+    {
+      "field_id": "7.3",
+      "field_name": "end_of_life",
+      "section": "7. Circularity",
+      "mandate_status": "M2",
+      "access_tier": "tier_1_public",
+      "data_behaviour": "dynamic",
+      "type": "object",
+      "description": "End-of-life handling information. Dynamic: manufacturers provide initial data; recyclers and waste managers may update after sale.",
+      "regulatory_basis": [
+        "Art. 7(2)(b)(ii)",
+        "Art. 7(2)(b)(iii)",
+        "Art. 9(2)(g)",
+        "Art. 2(47)",
+        "Annex I(e)"
+      ],
+      "properties": {
+        "recyclability_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Estimated recyclability rate as a percentage of product weight.",
+          "iri": "https://open-dpp.eu/vocab#recyclabilityRate",
+          "iri_review": true
+        },
+        "disassembly_instructions": {
+          "type": "string",
+          "description": "Instructions for disassembly to facilitate sorting and recycling. Art. 7(2)(b)(iii).",
+          "iri": "https://open-dpp.eu/vocab#disassemblyInstructions"
+        },
+        "take_back_scheme_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to manufacturer or retailer take-back or collection scheme.",
+          "iri": "https://schema.org/url",
+          "iri_review": true
+        },
+        "waste_sorting_code": {
+          "type": "string",
+          "description": "Waste sorting classification code relevant to end-of-life handling.",
+          "iri": "https://open-dpp.eu/vocab#wasteSortingCode",
+          "iri_review": true
+        },
+        "contains_non_recyclable_components": {
+          "type": "boolean",
+          "description": "Whether the product contains components that cannot currently be recycled.",
+          "iri": "https://open-dpp.eu/vocab#containsNonRecyclableComponents"
+        },
+        "non_recyclable_components_description": {
+          "type": "string",
+          "description": "Description of non-recyclable components, where present.",
+          "iri": "https://schema.org/description"
+        },
+        "last_updated": {
+          "type": "string",
+          "format": "date",
+          "description": "ISO 8601 date of most recent update.",
+          "iri": "https://schema.org/dateModified"
+        },
+        "updated_by": {
+          "type": "string",
+          "description": "Actor that last updated this field.",
+          "iri": "https://schema.org/agent"
+        }
+      }
+    },
+    {
+      "field_id": "8.1",
+      "field_name": "certifications",
+      "section": "8. Compliance & certs",
+      "mandate_status": "M3",
+      "access_tier": "tier_1_public",
+      "data_behaviour": "dynamic",
+      "type": "array",
+      "description": "Product and facility certifications. Dynamic: must be updated when certificates are renewed or withdrawn. Manufacturers add product-level certifications; supply chain actors provide facility-level certifications.",
+      "regulatory_basis": [
+        "Annex III - voluntary labels"
+      ],
+      "items": {
+        "type": "object",
+        "required": [
+          "standard_name",
+          "certificate_id",
+          "issued_by"
+        ],
+        "properties": {
+          "standard_name": {
+            "type": "string",
+            "description": "Certification standard name. E.g. 'GOTS 7.0', 'OEKO-TEX STANDARD 100', 'GRS 4.0'.",
+            "iri": "https://schema.org/name"
+          },
+          "certificate_id": {
+            "type": "string",
+            "description": "Certificate number issued by the certifying body.",
+            "iri": "https://schema.org/identifier"
+          },
+          "issued_by": {
+            "type": "string",
+            "description": "Name of the certifying body.",
+            "iri": "https://schema.org/issuer"
+          },
+          "valid_from": {
+            "type": "string",
+            "format": "date",
+            "description": "ISO 8601 date from which the certificate is valid.",
+            "iri": "https://schema.org/validFrom"
+          },
+          "valid_until": {
+            "type": "string",
+            "format": "date",
+            "description": "ISO 8601 date on which the certificate expires.",
+            "iri": "https://schema.org/validThrough"
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "product",
+              "facility",
+              "transaction"
+            ],
+            "description": "Whether this certificate applies to the product, a supply chain facility, or a specific transaction.",
+            "iri": "https://open-dpp.eu/vocab#scope",
+            "iri_review": true
+          },
+          "certificate_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the publicly verifiable certificate record.",
+            "iri": "https://schema.org/url",
+            "iri_review": true
+          }
+        }
+      }
+    },
+    {
+      "field_id": "9.1",
+      "field_name": "lifecycle_status",
+      "section": "9. Lifecycle status",
+      "mandate_status": "M1",
+      "access_tier": "tier_1_public",
+      "data_behaviour": "dynamic",
+      "type": "object",
+      "description": "Current lifecycle status of this product. Starts as 'new' at manufacture. Professional repairers and independent operators update this after repair, refurbishment or resale. Where a new DPP is created after a lifecycle intervention, it must link back to the original.",
+      "regulatory_basis": [
+        "Art. 9(2)(g)",
+        "Art. 11(d)",
+        "Art. 2(47)"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "new",
+            "repaired",
+            "refurbished",
+            "repurposed",
+            "remanufactured",
+            "second_hand",
+            "end_of_life"
+          ],
+          "description": "Current lifecycle status. Textile delegated act will define the applicable set - battery passport uses 'original', 'repurposed', 're-used', 'remanufactured', 'waste' as reference.",
+          "iri": "https://open-dpp.eu/vocab#status"
+        },
+        "status_date": {
+          "type": "string",
+          "format": "date",
+          "description": "ISO 8601 date on which the current status was set.",
+          "iri": "https://open-dpp.eu/vocab#statusDate"
+        },
+        "intervention_description": {
+          "type": "string",
+          "description": "Description of the repair, refurbishment or other lifecycle intervention that triggered the status change.",
+          "iri": "https://schema.org/description"
+        },
+        "updated_by": {
+          "type": "string",
+          "description": "Actor that set the current status. E.g. 'manufacturer', 'professional_repairer', 'independent_operator'.",
+          "iri": "https://schema.org/agent"
+        },
+        "previous_dpp_reference": {
+          "type": "string",
+          "format": "uri",
+          "description": "URI of the original or previous DPP, where this DPP was created following a lifecycle intervention per Art. 11(d).",
+          "iri": "https://open-dpp.eu/vocab#previousDppReference"
+        }
+      }
+    },
+    {
+      "field_id": "10.1",
+      "field_name": "dpp_metadata",
+      "section": "10. DPP metadata",
+      "mandate_status": "M1",
+      "access_tier": "tier_1_public",
+      "data_behaviour": "dynamic",
+      "type": "object",
+      "description": "Metadata about this DPP instance. Created and maintained by the economic operator or their DPP platform.",
+      "regulatory_basis": [
+        "Art. 9(1)",
+        "Art. 10(1)(d)",
+        "Art. 11(g)"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "description": "Version of this schema used to create this DPP instance. E.g. '0.4.0'.",
+          "iri": "https://open-dpp.eu/vocab#schemaVersion",
+          "iri_review": true
+        },
+        "dpp_created_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 datetime at which this DPP was first created.",
+          "iri": "https://schema.org/dateCreated"
+        },
+        "dpp_last_updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 datetime of the most recent update to any field in this DPP.",
+          "iri": "https://schema.org/dateModified"
+        },
+        "responsible_economic_operator": {
+          "type": "string",
+          "description": "Name of the economic operator responsible for this DPP per Art. 10(4). Typically the manufacturer.",
+          "iri": "https://open-dpp.eu/vocab#responsibleEconomicOperator"
+        },
+        "language": {
+          "type": "string",
+          "description": "ISO 639-1 language code of the primary language of this DPP.",
+          "iri": "https://schema.org/inLanguage"
+        },
+        "registry_unique_registration_identifier": {
+          "type": "string",
+          "description": "Unique registration identifier issued by the EU DPP registry upon upload per Art. 13(5). Populated after registry submission.",
+          "iri": "https://open-dpp.eu/vocab#registryUniqueRegistrationIdentifier"
+        }
+      }
+    }
+  ]
+}

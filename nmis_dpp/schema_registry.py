@@ -402,4 +402,11 @@ def register_default_mappers() -> None:
         aliases=["battery", "battery_dpp", "EU-battery"],
     )
 
+    registry.register_lazy(
+        canonical_name="TextileDPP",
+        module_path="nmis_dpp.mappers.textile_dpp_mapper",
+        class_name="TextileDPPMapper",
+        aliases=["textile", "textile_dpp", "EU-textile"],
+    )
+
     logger.info("Default mappers registered in global SchemaRegistry")

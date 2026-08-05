@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DPP Legislation Tracker — open-dpp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --snow:#FAF9F7;--snow2:#F2F0ED;--snow3:#E8E5E1;
+    --earth:#290800;--earth2:#4a1400;--earth3:#7a3a20;
+    --scarlet:#FF3300;--scarlet-10:rgba(255,51,0,0.10);--scarlet-20:rgba(255,51,0,0.20);
+    --border:rgba(41,8,0,0.13);--border2:rgba(41,8,0,0.07);
+    --white:#ffffff;
+    --shadow:0 1px 3px rgba(41,8,0,0.07),0 4px 14px rgba(41,8,0,0.04);
+    --shadow-md:0 2px 6px rgba(41,8,0,0.09),0 10px 30px rgba(41,8,0,0.06);
+    --max:1100px;--gutter:48px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;overflow-x:hidden;}
+  body{background:var(--snow);color:var(--earth);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;min-height:100vh;overflow-x:hidden;}
+
+  .w{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);}
+
+
+
+  /* ── Top bar ── shared across both pages */
+  .topbar{background:var(--earth);height:48px;display:flex;align-items:center;position:sticky;top:0;z-index:200;}
+  .topbar .w{display:flex;align-items:center;gap:0;width:100%;}
+  .topbar-title{font-size:13px;font-weight:600;color:#fff;white-space:nowrap;}
+  .topbar-nav{display:flex;align-items:center;gap:2px;margin-left:auto;}
+  .topbar-link{font-size:11px;font-weight:500;color:rgba(255,255,255,0.55);text-decoration:none;padding:5px 12px;border-radius:4px;transition:all .15s;white-space:nowrap;}
+  .topbar-link:hover{color:#fff;background:rgba(255,255,255,0.1);}
+  .topbar-link.current{color:#fff;background:rgba(255,255,255,0.12);}
+  .topbar-right{margin-left:12px;font-size:11px;color:rgba(255,255,255,0.4);}
+
+
+  .hero{position:relative;z-index:1;border-bottom:1px solid var(--border);}
+  .hero .w{padding-top:52px;padding-bottom:40px;}
+  .hero h1{font-size:38px;font-weight:300;letter-spacing:-.025em;line-height:1.08;color:var(--earth);max-width:540px;margin-bottom:24px;}
+  .hero h1 strong{font-weight:700;}
+  .hero-kpis{display:flex;gap:36px;}
+  .kpi-num{display:block;font-size:26px;font-weight:700;letter-spacing:-.03em;color:var(--earth);line-height:1;}
+  .kpi-label{display:block;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--earth3);margin-top:3px;}
+
+  .legend{background:var(--snow2);border-bottom:1px solid var(--border);}
+  .legend .w{padding-top:11px;padding-bottom:11px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .lg-label{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--earth3);margin-right:4px;}
+  .lg-item{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:500;color:var(--earth2);background:var(--white);border:1px solid var(--border);border-radius:20px;padding:3px 11px;}
+  .sdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+  .sdot-done{background:#237a3c;}
+  .sdot-active{background:var(--scarlet);}
+  .sdot-pending{background:#1a5ca8;}
+  .sdot-expected{background:#b8921a;}
+
+  .nav{position:sticky;top:48px;z-index:190;background:var(--white);border-bottom:1px solid var(--border);overflow-x:auto;}
+  .nav::-webkit-scrollbar{display:none;}
+  .nav .w{display:flex;padding-top:0;padding-bottom:0;}
+  .ntab{flex-shrink:0;padding:14px 18px;font-size:12px;font-weight:500;color:var(--earth3);border-bottom:2px solid transparent;cursor:pointer;transition:all .15s;user-select:none;white-space:nowrap;}
+  .ntab:hover{color:var(--earth);}
+  .ntab.active{color:var(--earth);border-bottom-color:var(--scarlet);font-weight:600;}
+
+  .content{max-width:var(--max);margin:0 auto;padding:48px var(--gutter) 80px;position:relative;z-index:1;}
+  .view{display:none;}
+  .view.active{display:block;}
+
+  .shd{margin-bottom:28px;}
+  .shd h2{font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--earth);margin-bottom:6px;}
+  .shd p{font-size:13px;color:var(--earth3);line-height:1.7;max-width:520px;}
+  .shd-meta{display:flex;gap:20px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border2);flex-wrap:wrap;}
+  .shd-meta-item{font-size:11px;color:var(--earth3);}
+  .shd-meta-item strong{color:var(--earth);font-weight:600;}
+
+  .ov-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;}
+  .ov-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--shadow);cursor:pointer;transition:all .15s;}
+  .ov-card:hover{box-shadow:var(--shadow-md);transform:translateY(-1px);border-color:rgba(41,8,0,.22);}
+  .ov-card-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
+  .ov-card-name{font-size:14px;font-weight:700;color:var(--earth);margin-bottom:2px;}
+  .ov-card-reg{font-size:10px;color:var(--earth3);}
+  .ov-grid-top{margin-bottom:52px;}
+  .ov-card p{font-size:12px;color:var(--earth3);line-height:1.6;margin-bottom:12px;}
+  .ov-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-top:1px solid var(--border2);font-size:11px;}
+  .ov-row:first-of-type{border-top:none;}
+  .ov-row-title{flex:1;color:var(--earth);}
+  .ov-more{font-size:10px;color:var(--earth3);margin-top:8px;}
+  .ov-row-date{font-size:10px;color:var(--earth3);white-space:nowrap;}
+
+  .timeline{position:relative;padding-left:30px;}
+  .timeline::before{content:'';position:absolute;left:8px;top:12px;bottom:12px;width:1px;background:var(--border);}
+  .yr-lbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--earth3);margin-bottom:12px;margin-top:26px;display:flex;align-items:center;gap:12px;position:relative;left:-30px;padding-left:30px;}
+  .yr-lbl::after{content:'';flex:1;height:1px;background:var(--border2);}
+  .yr-lbl:first-child{margin-top:0;}
+
+  .ms{position:relative;margin-bottom:14px;padding:17px 19px 15px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);transition:box-shadow .15s,border-color .15s;animation:fadeup .25s ease both;}
+  .ms:hover{box-shadow:var(--shadow-md);border-color:rgba(41,8,0,.22);}
+  .ms:nth-child(2){animation-delay:.04s}
+  .ms:nth-child(3){animation-delay:.08s}
+  .ms:nth-child(4){animation-delay:.12s}
+  .ms:nth-child(5){animation-delay:.16s}
+  @keyframes fadeup{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+  .ms::before{content:'';position:absolute;left:-22px;top:20px;width:12px;height:12px;border-radius:50%;border:2px solid var(--snow);}
+  .ms[data-s="done"]::before{background:#237a3c;}
+  .ms[data-s="active"]::before{background:var(--scarlet);box-shadow:0 0 0 3px var(--scarlet-20);}
+  .ms[data-s="pending"]::before{background:#1a5ca8;}
+  .ms[data-s="expected"]::before{background:#b8921a;}
+  .ms[data-s="active"]{border-left:3px solid var(--scarlet);padding-left:16px;}
+  .ms-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:7px;}
+  .ms-date{font-size:11px;font-weight:500;color:var(--earth3);letter-spacing:.03em;margin-bottom:3px;}
+  .ms-title{font-size:14px;font-weight:600;color:var(--earth);line-height:1.3;}
+  .sbadge{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:4px;flex-shrink:0;margin-top:2px;}
+  .sbadge-done{background:#e7f4ec;color:#237a3c;}
+  .sbadge-active{background:var(--scarlet-10);color:var(--scarlet);}
+  .sbadge-pending{background:#e8edf8;color:#1a5ca8;}
+  .sbadge-expected{background:#f5eddb;color:#7a5010;}
+  .ms-desc{font-size:13px;color:var(--earth2);line-height:1.75;margin-bottom:6px;}
+  .cite{font-size:9px;font-weight:700;color:var(--scarlet);vertical-align:super;cursor:pointer;text-decoration:none;margin-left:1px;transition:opacity .1s;}
+  .cite:hover{opacity:.65;}
+  .ms-note{margin-top:8px;padding:10px 13px;background:var(--scarlet-10);border-left:2px solid var(--scarlet);border-radius:0 6px 6px 0;font-size:12px;color:var(--earth2);line-height:1.65;}
+  .ms-note strong{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--scarlet);margin-bottom:3px;}
+
+  .refs-section{margin-top:52px;padding-top:28px;border-top:2px solid var(--border);}
+  .refs-section h3{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--earth3);margin-bottom:16px;}
+  .refs-list{display:flex;flex-direction:column;}
+  .ref-row{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--border2);font-size:12px;line-height:1.6;transition:background .2s;}
+  .ref-row.highlight{background:var(--scarlet-10);}
+  .ref-num{font-size:11px;font-weight:700;color:var(--scarlet);width:22px;flex-shrink:0;padding-top:1px;}
+  .ref-body{flex:1;}
+  .ref-title{font-weight:600;color:var(--earth);margin-bottom:1px;}
+  .ref-detail{font-size:11px;color:var(--earth3);}
+  .ref-link{display:inline-block;margin-top:4px;font-size:11px;font-weight:600;color:var(--scarlet);text-decoration:none;}
+  .ref-link:hover{text-decoration:underline;}
+  .rtype{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;}
+  .rtype-official{background:#e7f4ec;color:#237a3c;}
+  .rtype-technical{background:#e8edf8;color:#1a5ca8;}
+
+  .hint{margin-top:48px;padding:16px 20px;background:var(--snow2);border:1px dashed var(--border);border-radius:8px;font-size:12px;color:var(--earth3);line-height:1.7;}
+  .hint code{font-family:monospace;font-size:11px;background:var(--white);padding:1px 5px;border:1px solid var(--border);border-radius:3px;color:var(--earth2);}
+
+  ::-webkit-scrollbar{width:5px;height:5px;}
+  ::-webkit-scrollbar-track{background:var(--snow);}
+  ::-webkit-scrollbar-thumb{background:var(--snow3);border-radius:3px;}
+  ::-webkit-scrollbar-thumb:hover{background:rgba(41,8,0,.2);}
+
+  @media(max-width:900px){
+    :root{--gutter:24px;}
+    .hero .w{padding-top:36px;padding-bottom:28px;}
+    .hero h1{font-size:28px;}
+    .topbar-right{display:none;}
+  }
+  @media(max-width:640px){
+    :root{--gutter:16px;}
+    .hero .w{padding-top:24px;padding-bottom:20px;}
+    .hero h1{font-size:22px;line-height:1.2;}
+    .hero-kpis{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .kpi-num{font-size:20px;}
+    .kpi-label{font-size:10px;}
+    .lg-label{display:none;}
+    .lg-item{font-size:10px;padding:2px 8px;}
+    .nav .w{-webkit-mask-image:linear-gradient(to right,black 85%,transparent 100%);mask-image:linear-gradient(to right,black 85%,transparent 100%);}
+    .ntab{padding:12px 10px;font-size:11px;}
+    .content{padding-top:28px;}
+    .ov-grid{grid-template-columns:1fr;gap:10px;}
+    .ov-card{padding:16px;}
+    .timeline{padding-left:22px;}
+    .timeline::before{left:6px;}
+    .ms{padding:13px 13px 11px;}
+    .ms::before{left:-16px;width:10px;height:10px;top:17px;}
+    .ms[data-s="active"]{padding-left:11px;}
+    .ms-top{flex-direction:column;gap:5px;align-items:flex-start;}
+    .ms-title{font-size:13px;}
+    .ms-desc{font-size:12px;line-height:1.65;}
+    .sbadge{align-self:flex-start;}
+    .ref-row{gap:8px;}
+    .ref-link{word-break:break-all;font-size:10px;}
+    .hint{font-size:11px;padding:14px;}
+    .topbar-title{font-size:11px;padding-right:12px;margin-right:8px;}
+    .topbar-link{padding:4px 7px;font-size:10px;}
+  }
+  @media(max-width:400px){
+    .hero h1{font-size:19px;}
+    .ntab{padding:11px 8px;font-size:10px;}
+  }
+
+  .oq-section{margin-top:52px;padding-top:28px;border-top:2px solid var(--border);}
+  .oq-section-title{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--earth3);margin-bottom:8px;}
+  .oq-section-sub{font-size:13px;color:var(--earth3);max-width:520px;line-height:1.7;margin-bottom:20px;}
+  .oq-list{display:flex;flex-direction:column;gap:8px;}
+  .oq-row{display:flex;align-items:flex-start;gap:14px;padding:13px 16px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);transition:box-shadow .15s,border-color .15s;}
+  .oq-row:hover{box-shadow:var(--shadow-md);border-color:rgba(41,8,0,.22);}
+  .oq-id{font-size:10px;font-weight:700;font-family:monospace;color:var(--earth3);min-width:36px;padding-top:2px;flex-shrink:0;}
+  .oq-body{flex:1;min-width:0;}
+  .oq-question{font-size:13px;font-weight:600;color:var(--earth);line-height:1.4;margin-bottom:5px;}
+  .oq-meta{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:6px;}
+  .oq-field{font-size:10px;font-family:monospace;color:var(--earth3);background:var(--snow2);border:1px solid var(--border2);padding:1px 6px;border-radius:3px;}
+  .oq-source{font-size:10px;color:var(--earth3);}
+  .oq-assumption{font-size:11.5px;color:var(--earth2);padding:7px 10px;background:var(--snow);border-radius:5px;border-left:2px solid var(--border);line-height:1.55;}
+  .oq-assumption strong{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--earth3);display:block;margin-bottom:2px;}
+  .oq-discuss{flex-shrink:0;font-size:11px;font-weight:600;color:var(--scarlet);text-decoration:none;padding:5px 12px;border:1px solid rgba(255,51,0,.25);border-radius:5px;background:var(--scarlet-10);transition:all .15s;white-space:nowrap;align-self:flex-start;margin-top:1px;}
+  .oq-discuss:hover{background:var(--scarlet);color:#fff;border-color:var(--scarlet);}
+  @media(max-width:640px){
+    .oq-row{flex-wrap:wrap;gap:10px;}
+    .oq-discuss{margin-left:50px;}
+  }
+
+  .footer-link{color:var(--earth3);text-decoration:none;}
+  .footer-link:hover{text-decoration:underline;}
+  .footer-link-bold{color:var(--earth3);font-weight:600;text-decoration:none;}
+  .footer-link-bold:hover{text-decoration:underline;}
+  .site-footer{border-top:1px solid var(--border);padding:20px var(--gutter);font-size:11px;color:var(--earth3);}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+  DATA — edit this block to update tracker content.
+  Canonical data source: milestones.json (root of repo).
+  This file embeds data directly for portability — a future
+  release will fetch from milestones.json at runtime.
+
+  Citation rule: every factual claim uses <a href="#ref-N" class="cite">[N]</a>
+  Primary sources (official EU) must cover all dates and obligations.
+  Secondary analysis refs acceptable only to corroborate timelines.
+============================================================ -->
+<script>
+const DATA = {
+  meta:{updated:"2026-03-06"},
+  refs:[
+    null,
+    {id:1,title:"Regulation (EU) 2024/1781 — Ecodesign for Sustainable Products Regulation (ESPR)",detail:"Official Journal of the European Union. Published 28 June 2024. Entered into force 18 July 2024 (twentieth day following publication per Article 80).",type:"official",url:"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401781"},
+    {id:2,title:"ESPR and Energy Labelling Working Plan 2025–2030 — Commission Communication COM(2025) 187",detail:"Adopted 16 April 2025. Identifies priority product groups (textiles, furniture, steel, aluminium, tyres, mattresses) and delegated act timelines for 2025–2030.",type:"official",url:"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025DC0187"},
+    {id:3,title:"Ecodesign Forum — Meeting Documents (CIRCABC)",detail:"Official meeting notes and working documents from the Ecodesign Forum, the stakeholder body consulted on all ESPR delegated acts and the Working Plan.",type:"official",url:"https://circabc.europa.eu/ui/group/418195ae-4919-45fa-a959-3b695c9aab28/library/16b3c448-cfaa-4fb3-9288-c8497c7aface?p=1&n=10&sort=created_DESC"},
+    {id:4,title:"Regulation (EU) 2023/1542 — EU Battery Regulation",detail:"Official Journal. Entered into force 17 August 2023. Repealed Directive 2006/66/EC from 18 August 2025. Covers carbon footprint declarations (Article 7), due diligence (Article 48), and battery passport (Article 77).",type:"official",url:"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1542"},
+    {id:5,title:"Regulation (EU) 2024/1252 — Critical Raw Materials Act (CRMA)",detail:"Official Journal. Entered into force 23 May 2024. Article 28 introduces permanent magnet traceability and passport requirements. Article 28(2) requires the Commission to adopt a labelling format implementing act by 24 November 2026.",type:"official",url:"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401252"},
+    {id:6,title:"Have Your Say — Digital Product Passport Registry",detail:"European Commission consultation portal entry for the DPP registry initiative under ESPR Article 13.",type:"official",url:"https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/16052-Digital-Product-Passport-Registry_en"},
+    {id:7,title:"Have Your Say — Digital Product Passport Rules for Service Providers",detail:"European Commission consultation portal entry for DPP rules for service providers.",type:"official",url:"https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/14382-Digital-product-passport-rules-for-service-providers_en"},
+    {id:8,title:"CIRPASS2 Initiative — DPP Technical Pilots",detail:"Pre-industrial pilot project testing DPP data models, digital identifiers, and technical standards across product categories.",type:"technical",url:"https://cirpass2.eu/"},
+    {id:9,title:"JRC145830 — Methodology for defining data requirements for the Digital Product Passport under the ESPR framework",detail:"Chawla, K. et al. Joint Research Centre, European Commission, 2026. Practical step-by-step methodology for defining DPP data requirements under ESPR. Introduces the five-tier access model (Annex 8) and guidance on granularity levels (Annex 7). Basis for the access tier structure used in the open-dpp schema.",type:"technical",url:"https://data.europa.eu/doi/10.2760/4511279"}
+  ],
+  tracks:[
+    {id:"espr",name:"ESPR Framework",short:"Ecodesign for Sustainable Products",reg:"Reg. (EU) 2024/1781",desc:"The overarching regulation establishing the DPP framework for virtually all physical goods placed on the EU market. Specific data requirements arrive product-by-product via delegated acts.",in_force:"18 July 2024",ms:[
+      {id:"e1",date:"2024-07-18",title:"ESPR enters into force",status:"done",desc:`Regulation (EU) 2024/1781 published in the Official Journal and entered into force.<a href="#ref-1" class="cite">[1]</a> Establishes the legal basis for DPPs across all product categories. Scope is almost universal — excluding only food, feed, medicinal products, and vehicles subject to type-approval systems.`,note:null},
+      {id:"e2",date:"2025-04-16",title:"ESPR Working Plan 2025–2030 adopted",status:"done",desc:`Commission adopted the first ESPR Working Plan<a href="#ref-2" class="cite">[2]</a> on 16 April 2025. Identifies four final product groups (textiles, furniture, tyres, mattresses), two intermediate categories (steel, aluminium), and two horizontal requirements (repairability scoring, EEE recyclability). Preparatory work on textiles and steel began immediately.<a href="#ref-3" class="cite">[3]</a>`,note:`The textile delegated act shifted to 2027 — earlier signals had indicated January 2026 adoption. Mandatory compliance now expected no earlier than 2028.`},
+      {id:"e3",date:"2026-01-14",title:"Ecodesign Forum textile workshops (completed)",status:"done",desc:`Two Ecodesign Forum stakeholder workshops took place on 14–15 January 2026 as part of the JRC preparatory study on the textile delegated act.<a href="#ref-3" class="cite">[3]</a> Technical working sessions covering product technology analysis and lifecycle assessment methodology — not a formal public consultation. A fourth milestone focusing on DPP requirements is expected to follow.<a href="#ref-2" class="cite">[2]</a>`,note:`These workshops are a preparatory step, not the formal Have Your Say public consultation. The Commission has not yet launched a formal consultation on the textile delegated act. Watch the Have Your Say portal for that launch.`},
+      {id:"e4",date:"2026-07-19",title:"DPP Registry must be operational",status:"pending",desc:`Commission must have a DPP Registry operational by this date under ESPR Article 13.<a href="#ref-1" class="cite">[1]</a> The central infrastructure will store unique product identifiers and support market surveillance authorities. Technical specifications are expected via a delegated act ahead of this deadline.<a href="#ref-6" class="cite">[6]</a>`,note:null},
+      {id:"e5",date:"2027-01-01",title:"Textile delegated act formally adopted (est.)",status:"expected",desc:`Delegated act specifying DPP requirements for textiles and apparel expected to be formally adopted.<a href="#ref-2" class="cite">[2]</a> Will define data fields including fibre composition, recycled content, durability metrics, water and chemical use, supply chain traceability, and repair and end-of-life information. The 18-month compliance clock starts from adoption date.`,note:`Commission originally signalled January 2026. Working Plan 2025–2030 shifts this to 2027. Date will be confirmed when consultation launches.`},
+      {id:"e6",date:"2028-01-01",title:"Textile DPP compliance mandatory (est.)",status:"expected",desc:`After the minimum 18-month transition period following delegated act adoption, DPP compliance becomes legally required for textiles placed on the EU market.<a href="#ref-2" class="cite">[2]</a> No valid DPP means no market access — for EU manufacturers and importers alike.`,note:`Estimated based on 18-month transition following delegated act adoption. No primary source confirms this date yet.`},
+      {id:"e7",date:"2028-01-01",title:"ESPR mid-term review",status:"expected",desc:`Commission mid-term review of the Working Plan.<a href="#ref-2" class="cite">[2]</a> Can expand scope to additional product groups including footwear, paints, detergents, lubricants, and chemicals. A study on chemicals was due to launch by end of 2025; footwear study due by end of 2027.`,note:null}
+    ]},
+    {id:"battery",name:"Battery Passport",short:"EU Battery Regulation DPP",reg:"Reg. (EU) 2023/1542",desc:"The most advanced DPP track in the EU — running under a dedicated regulation, separate from ESPR. The battery passport is the first mandatory DPP of its kind and is being closely watched as the template for all future implementations.",in_force:"17 August 2023",ms:[
+      {id:"b1",date:"2023-08-17",title:"Battery Regulation enters into force",status:"done",desc:`Regulation (EU) 2023/1542 replaces Directive 2006/66/EC.<a href="#ref-4" class="cite">[4]</a> Introduces comprehensive lifecycle requirements: carbon footprint obligations, supply chain due diligence, and the Battery Passport framework across EV, LMT, industrial, and portable battery categories.`,note:null},
+      {id:"b2",date:"2024-02-18",title:"Initial provisions apply",status:"done",desc:`Initial provisions of the Battery Regulation enter into force.<a href="#ref-4" class="cite">[4]</a> Includes labelling requirements, hazardous substance restrictions, and the general obligations framework.`,note:null},
+      {id:"b3",date:"2025-08-18",title:"Battery Directive 2006/66/EC fully repealed",status:"done",desc:`Directive 2006/66/EC officially repealed.<a href="#ref-4" class="cite">[4]</a> Battery Regulation (EU) 2023/1542 is now the sole EU regulatory framework for batteries.`,note:null},
+      {id:"b4",date:"2025-02-18",title:"Carbon footprint declaration — EV batteries (statutory deadline passed)",status:"done",desc:`The statutory deadline of 18 February 2025 for mandatory carbon footprint declarations on EV batteries under Article 7 has passed.<a href="#ref-4" class="cite">[4]</a> However, actual compliance is deferred: the regulation ties the obligation to 12 months after the delegated act establishing the calculation methodology enters into force. As of March 2026, that delegated act has not been adopted — a draft was published for feedback in April 2024 but has not appeared in the Official Journal.`,note:`The deadline passed but manufacturers are not yet in breach. Effective compliance will begin 12 months after the methodology delegated act is published. Monitor EUR-Lex and Have Your Say for adoption.`},
+      {id:"b5",date:"2026-08-18",title:"Commission adopts battery passport implementing act",status:"pending",desc:`Commission must adopt an implementing act defining the technical specifications, format, and data architecture for the Battery Passport system under Article 77.<a href="#ref-4" class="cite">[4]</a> This is the key technical specification document — once published, it defines exactly how battery passport data must be structured and accessed.`,note:null},
+      {id:"b6",date:"2027-02-18",title:"Battery Passport mandatory — EV, LMT, industrial (≥2kWh)",status:"pending",desc:`Battery Passport becomes legally mandatory for all EV, Light Means of Transport, and industrial batteries ≥2kWh placed on the EU market.<a href="#ref-4" class="cite">[4]</a> Required data includes carbon footprint, material composition, due diligence attestations, capacity, state of health, and end-of-life information. This is the EU's first mandatory full DPP deadline.`,note:`The EU's first live DPP mandate. What works and what breaks here will directly shape the design of all subsequent delegated acts under ESPR — including the textile DPP.`},
+      {id:"b7",date:"2027-08-18",title:"Due diligence — cobalt, lithium, nickel, natural graphite",status:"expected",desc:`Supply chain due diligence obligations for critical raw materials in batteries under Articles 48–55.<a href="#ref-4" class="cite">[4]</a> Covers sourcing verification for cobalt, lithium, nickel, and natural graphite used in battery cells. Original deadline of August 2025 was postponed to August 2027 via Omnibus IV (Regulation (EU) 2025/1561, adopted July 2025).`,note:`Postponed from 18 August 2025 to 18 August 2027. Reason: Member States needed more time to designate notified bodies and align with CSDDD guidance timelines.`}
+    ]},
+    {id:"textile",name:"Textile & Apparel DPP",short:"ESPR Textile Delegated Act",reg:"ESPR + Delegated Act (forthcoming)",desc:"The textile-specific DPP track sits inside ESPR but has its own JRC preparatory study, Ecodesign Forum process, and stakeholder consultation timeline. The most directly relevant track for fashion and apparel supply chains.",in_force:"Delegated act pending",ms:[
+      {id:"t1",date:"2023-07-01",title:"JRC preparatory study on textiles begins",status:"done",desc:`Joint Research Centre begins the formal preparatory study to inform the textile delegated act.<a href="#ref-3" class="cite">[3]</a> Covers environmental impact assessment, data feasibility across the textile value chain, and proposed DPP data field requirements.`,note:null},
+      {id:"t2",date:"2024-11-01",title:"JRC textile assessment published",status:"done",desc:`JRC final screening assessment for textiles published. Informed the Working Plan prioritisation.<a href="#ref-2" class="cite">[2]</a> Textiles were selected partly because of the EUR 78bn EU market scale and significant potential to reduce water use, waste, and emissions. This document provides the earliest signal of likely DPP data field scope.`,note:null},
+      {id:"t3",date:"2025-02-01",title:"Ecodesign Forum consultation — textile priorities",status:"done",desc:`Stakeholder consultation via the Ecodesign Forum discussed the draft Working Plan, including textile product priorities and potential DPP data requirements.<a href="#ref-3" class="cite">[3]</a>`,note:null},
+      {id:"t4",date:"2025-04-16",title:"Textiles confirmed as priority in Working Plan",status:"done",desc:`ESPR Working Plan officially confirms textiles (garments and home textiles) as a first-wave priority product group.<a href="#ref-2" class="cite">[2]</a> Focus areas: durability, material efficiency, water use, waste generation, climate change, and energy consumption.`,note:null},
+      {id:"t5",date:"2026-01-14",title:"Ecodesign Forum textile workshops (completed)",status:"done",desc:`Two Ecodesign Forum stakeholder workshops took place on 14–15 January 2026 as part of the JRC preparatory study on the textile delegated act.<a href="#ref-3" class="cite">[3]</a> Technical working sessions covering product technology analysis and lifecycle assessment methodology — not a formal public consultation. A fourth milestone focusing on DPP requirements is expected to follow.<a href="#ref-2" class="cite">[2]</a>`,note:`These workshops are a preparatory step, not the formal Have Your Say public consultation. The Commission has not yet published a formal consultation on the textile delegated act. Watch the Have Your Say portal for that launch.`},
+      {id:"t6",date:"2027-01-01",title:"Textile delegated act formally adopted (est.)",status:"expected",desc:`Delegated act specifying DPP requirements for textiles and apparel expected to be adopted.<a href="#ref-2" class="cite">[2]</a> Expected data fields: fibre composition, origin, recycled content, certifications, carbon footprint, water use, durability metrics, repairability scores, and end-of-life instructions.`,note:`Commission originally signalled January 2026. Working Plan 2025–2030 shifts this to 2027. No primary source confirms this date.`},
+      {id:"t7",date:"2028-01-01",title:"Textile DPP compliance mandatory (est.)",status:"expected",desc:`After the minimum 18-month transition period, DPP compliance becomes legally required for all textiles and apparel placed on the EU market.<a href="#ref-2" class="cite">[2]</a> No valid DPP means no market access — for EU brands and non-EU importers alike.`,note:`Estimated based on 18-month transition following delegated act adoption. No primary source confirms this date.`}
+    ]},
+    {id:"crma",name:"CRMA Passport",short:"Critical Raw Materials Act — Permanent Magnets",reg:"Reg. (EU) 2024/1252",desc:"The CRMA introduces traceability and passport requirements for permanent magnets, running parallel to ESPR. Relevant for electronics, EVs, wind turbines, and industrial motors in supply chains.",in_force:"23 May 2024",ms:[
+      {id:"c1",date:"2024-05-23",title:"CRMA enters into force",status:"done",desc:`Regulation (EU) 2024/1252 entered into force.<a href="#ref-5" class="cite">[5]</a> Sets EU strategic targets for critical raw materials, establishes a monitoring framework, and introduces traceability and passport requirements for permanent magnets in key product categories under Article 28.`,note:null},
+      {id:"c2",date:"2026-11-24",title:"Commission adopts permanent magnet labelling format",status:"pending",desc:`Commission must adopt the implementing act defining the format for labelling permanent magnets with their critical raw material content under Article 28(2).<a href="#ref-5" class="cite">[5]</a> Deadline is 24 November 2026. As of March 2026, no implementing act has been published.`,note:`Scope is still being defined. The Commission's RESourceEU Action Plan (December 2025) proposed expanding the list of products requiring permanent magnet labelling, which the implementing act will need to account for.`},
+      {id:"c3",date:"2027-05-24",title:"Permanent magnet passport mandatory",status:"expected",desc:`Products containing permanent magnets over 0.2kg must disclose the share of critical raw materials recovered from post-consumer waste.<a href="#ref-5" class="cite">[5]</a> Applies from 24 May 2027 or two years after the relevant delegated act, whichever is later. Affected categories: EV motors, wind turbines, industrial motors, heat pumps, MRI machines, and consumer electronics.`,note:null}
+    ]}
+  ],
+  oqs:[
+    {id:"OQ-1",q:"Item-level or batch-level identifiers for textiles?",fields:["product_identifier"],source:"Textiles delegated act — earliest 2027",assumption:"Design for item-level. Accept batch as fallback for low-value products."},
+    {id:"OQ-2",q:"Which data carrier type will be mandated — QR code, NFC, or RFID?",fields:["data_carrier.type"],source:"Textiles delegated act",assumption:"QR code on care label as primary. Build to support NFC and RFID."},
+    {id:"OQ-3",q:"Will durability test methods be set at EU level or delegated to CEN?",fields:["durability.*"],source:"EC mandate to CEN or delegated act",assumption:"Design fields to ISO 12945 and ISO 105 as candidate methods."},
+    {id:"OQ-4",q:"What format will the EU DPP Registry API use?",fields:["dpp_metadata.registry_id"],source:"EC technical specification — expected Q2 2026",assumption:"No assumption yet. Registry operational July 2026."},
+    {id:"OQ-5",q:"Will recycled content require third-party verification or is self-declaration acceptable?",fields:["recycled_content[].verification_standard"],source:"Textiles delegated act",assumption:"Flag verification as recommended, not required, until decided."},
+    {id:"OQ-6",q:"How will tiered access be technically implemented at EU DPP Registry level?",fields:["dpp_metadata.access_tier"],source:"EC implementing acts on DPP Registry",assumption:"Use simplified three-tier model. Design for field-level access in future."},
+    {id:"OQ-7",q:"What is the defined expected product lifetime for textiles?",fields:["data_retention.retain_until"],source:"Textiles delegated act or EC guidance",assumption:"Working assumption: 5-year expected lifetime &#x2192; 15-year minimum retention."},
+    {id:"OQ-8",q:"Will the delegated act mandate a specific facility identifier standard?",fields:["supply_chain[].facility_id"],source:"Textiles delegated act",assumption:"Accept any standard. Flag OARSI and OS ID as recommended."},
+    {id:"OQ-9",q:"Will fibre composition qualifiers &#x2014; organic, recycled &#x2014; have legally defined meanings in EU law?",fields:["fibre_composition[].qualifier"],source:"Green Claims Directive or delegated act",assumption:"Use GOTS and GRS definitions as working proxy until EU standard confirmed."},
+    {id:"OQ-10",q:"When will PEF Category Rules for textiles be finalised?",fields:["carbon_footprint.*"],source:"EC JRC &#x2014; no confirmed timeline",assumption:"Carbon footprint remains extended (non-mandatory) until PEF rules confirmed."},
+    {id:"OQ-11",q:"Which product categories will the textile delegated act cover &#x2014; garments only, or bags, accessories and home textiles too?",fields:["product_name.product_category"],source:"Textiles delegated act &#x2014; earliest 2027",assumption:"Working Plan names garments and home textiles. Accessories and bags unconfirmed."},
+    {id:"OQ-12",q:"Will the delegated act reference specific certification schemes &#x2014; GOTS, GRS, Oeko-Tex &#x2014; as recognised compliance pathways?",fields:["certifications[].standard"],source:"Textiles delegated act or Green Claims Directive",assumption:"No assumption. Track Green Claims Directive adoption for early signal."},
+    {id:"OQ-13",q:"Where does liability sit when a DPP service provider collects and structures supply chain data on behalf of a manufacturer?",fields:["dpp_responsible_party.*"],source:"Textiles delegated act or future implementing acts",assumption:"All Art. 7(5) liability currently sits with the manufacturer. ESPR Art. 11 is silent on service provider liability."}
+  ]
+};
+</script>
+
+<!-- ============================================================ RENDER ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+
+  const STATUS={
+    done:    {label:"Adopted",       badge:"sbadge-done",     dot:"sdot-done"},
+    active:  {label:"In effect now", badge:"sbadge-active",   dot:"sdot-active"},
+    pending: {label:"Scheduled",     badge:"sbadge-pending",  dot:"sdot-pending"},
+    expected:{label:"Expected",      badge:"sbadge-expected", dot:"sdot-expected"}
+  };
+
+  const nextPerTrack = () => DATA.tracks.map(t=>{
+    const next=t.ms.find(m=>m.status!=='done');
+    return next?{...next,tid:t.id,tname:t.name}:null;
+  }).filter(Boolean);
+
+  const totalMs   = DATA.tracks.reduce((n,t)=>n+t.ms.length,0);
+  const doneMs    = DATA.tracks.flatMap(t=>t.ms).filter(m=>m.status==='done'||m.status==='active').length;
+  const totalRefs = DATA.refs.filter(Boolean).length;
+
+  const mCard = m => `
+    <div class="ms" data-s="${m.status}">
+      <div class="ms-top">
+        <div>
+          <div class="ms-date">${m.date}</div>
+          <div class="ms-title">${m.title}</div>
+        </div>
+        <span class="sbadge ${STATUS[m.status].badge}">${STATUS[m.status].label}</span>
+      </div>
+      <div class="ms-desc">${m.desc}</div>
+      ${m.note?`<div class="ms-note"><strong>Note</strong>${m.note}</div>`:''}
+    </div>`;
+
+  const timeline = t => {
+    const by={};
+    t.ms.forEach(m=>{const y=m.date.slice(0,4);(by[y]=by[y]||[]).push(m);});
+    return Object.entries(by).sort().map(([y,ms])=>
+      `<div class="yr-lbl">${y}</div>${ms.map(mCard).join('')}`
+    ).join('');
+  };
+
+  const refsForTrack = t => {
+    const cited=new Set();
+    t.ms.forEach(m=>{
+      [...(m.desc+(m.note||'')).matchAll(/href="#ref-(\d+)"/g)].forEach(r=>cited.add(+r[1]));
+    });
+    const sorted=[...cited].sort((a,b)=>a-b).map(id=>DATA.refs[id]).filter(Boolean);
+    if(!sorted.length) return '';
+    return `<div class="refs-section">
+      <h3>Sources cited in this section</h3>
+      <div class="refs-list">
+        ${sorted.map(r=>`
+          <div class="ref-row" id="ref-${r.id}-${t.id}">
+            <div class="ref-num">[${r.id}]</div>
+            <div class="ref-body">
+              <div class="ref-title">${r.title}<span class="rtype rtype-${r.type}">${r.type}</span></div>
+              <div class="ref-detail">${r.detail}</div>
+              <a class="ref-link" href="${r.url}" target="_blank" rel="noopener">&#x2197; ${r.url}</a>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+  };
+
+  const DISCUSS = 'https://github.com/rhys-the-davies/open-dpp/discussions';
+  const oqSection = `<div class="oq-section">
+    <div class="oq-section-title">Open questions</div>
+    <p class="oq-section-sub">Questions the legislation doesn't yet answer. These will be resolved by the textile delegated act, expected 2027, or by subsequent EC implementing acts. Working assumptions are used in the schema in the meantime.</p>
+    <div class="oq-list">
+      ${DATA.oqs.map(q=>`
+        <div class="oq-row">
+          <div class="oq-id">${q.id}</div>
+          <div class="oq-body">
+            <div class="oq-question">${q.q}</div>
+            <div class="oq-meta">
+              ${q.fields.map(f=>`<span class="oq-field">${f}</span>`).join('')}
+              <span class="oq-source"> &middot; ${q.source}</span>
+            </div>
+            <div class="oq-assumption"><strong>Working assumption</strong>${q.assumption}</div>
+          </div>
+          <a class="oq-discuss" href="${DISCUSS}" target="_blank" rel="noopener">Discuss &#x2197;</a>
+        </div>
+      `).join('')}
+    </div>
+  </div>`;
+
+  document.body.innerHTML = `
+
+
+    <div class="topbar">
+      <div class="w">
+        <a class="topbar-title" href="index.html" style="text-decoration:none;color:#fff;">open-dpp</a>
+        <nav class="topbar-nav">
+          <a class="topbar-link current" href="index.html">Legislation tracker</a>
+          <a class="topbar-link" href="schemas/textile/schema.html">Textile schema</a>
+          <a class="topbar-link" href="schemas/textile/responsibility_matrix.html">Responsibility matrix</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="w">
+        <h1>Digital Product Passport<br><strong>Legislation Tracker</strong></h1>
+        <div class="hero-kpis">
+          <div><span class="kpi-num">${DATA.tracks.length}</span><span class="kpi-label">Regulatory tracks</span></div>
+          <div><span class="kpi-num">${totalMs}</span><span class="kpi-label">Total milestones</span></div>
+          <div><span class="kpi-num">${doneMs}</span><span class="kpi-label">Reached</span></div>
+          <div><span class="kpi-num">${totalRefs}</span><span class="kpi-label">Primary sources</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="w">
+        <span class="lg-label">Status</span>
+        ${Object.entries(STATUS).map(([k,v])=>`<div class="lg-item"><div class="sdot ${v.dot}"></div>${v.label}</div>`).join('')}
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="w">
+        <div class="ntab active" data-view="overview">Overview</div>
+        ${DATA.tracks.map(t=>`<div class="ntab" data-view="${t.id}">${t.name}</div>`).join('')}
+      </div>
+    </nav>
+
+    <div class="content">
+
+      <div class="view active" id="view-overview">
+        <div class="shd">
+          <h2>What's coming next</h2>
+          <p>The next upcoming milestone from each regulatory track.</p>
+        </div>
+        <div class="ov-grid ov-grid-top">
+          ${nextPerTrack().map(m=>`
+            <div class="ov-card" data-view="${m.tid}">
+              <div class="ov-card-hd">
+                <div>
+                  <div class="ov-card-name">${m.tname}</div>
+                  <div class="ov-card-reg">${m.date}</div>
+                </div>
+                <span class="sbadge ${STATUS[m.status].badge}">${STATUS[m.status].label}</span>
+              </div>
+              <p>${m.title}</p>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="shd">
+          <h2>All tracks</h2>
+        </div>
+        <div class="ov-grid">
+          ${DATA.tracks.map(t=>`
+            <div class="ov-card" data-view="${t.id}">
+              <div class="ov-card-hd">
+                <div>
+                  <div class="ov-card-name">${t.name}</div>
+                  <div class="ov-card-reg">${t.reg}</div>
+                </div>
+              </div>
+              <p>${t.desc.substring(0,110)}&#x2026;</p>
+              ${t.ms.slice(0,4).map(m=>`
+                <div class="ov-row">
+                  <div class="sdot ${STATUS[m.status].dot}"></div>
+                  <div class="ov-row-title">${m.title}</div>
+                  <div class="ov-row-date">${m.date.slice(0,7)}</div>
+                </div>
+              `).join('')}
+              ${t.ms.length>4?`<div class="ov-more">+ ${t.ms.length-4} more &#x2192;</div>`:''}
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="hint">
+          <strong>Updating this tracker:</strong> The canonical data source is <code>data/milestones.json</code>. This file currently embeds data directly for portability — a future release will fetch from the JSON at runtime. To add or edit milestones, update both files. Add milestones to the <code>ms</code> array of the relevant track. Inline citations use <code>&lt;a href="#ref-N" class="cite"&gt;[N]&lt;/a&gt;</code>.
+        </div>
+
+        <div class="refs-section">
+          <h3>All primary sources</h3>
+          <div class="refs-list">
+            ${DATA.refs.filter(Boolean).map(r=>`
+              <div class="ref-row" id="ref-${r.id}">
+                <div class="ref-num">[${r.id}]</div>
+                <div class="ref-body">
+                  <div class="ref-title">${r.title}<span class="rtype rtype-${r.type}">${r.type}</span></div>
+                  <div class="ref-detail">${r.detail}</div>
+                  <a class="ref-link" href="${r.url}" target="_blank" rel="noopener">&#x2197; ${r.url}</a>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </div>
+
+      ${DATA.tracks.map(t=>`
+        <div class="view" id="view-${t.id}">
+          <div class="shd">
+            <h2>${t.name}</h2>
+            <p>${t.desc}</p>
+            <div class="shd-meta">
+              <div class="shd-meta-item"><strong>Legal basis:</strong> ${t.reg}</div>
+              <div class="shd-meta-item"><strong>In force:</strong> ${t.in_force}</div>
+            </div>
+          </div>
+          <div class="timeline">${timeline(t)}</div>
+          ${refsForTrack(t)}
+        </div>
+      `).join('')}
+
+      ${oqSection}
+    </div>
+
+    <footer>
+      <div class="site-footer">
+        Started by <a href="https://traceaware.io" target="_blank" rel="noopener" class="footer-link-bold">AWARE™</a>. Open for contribution — <a href="https://github.com/rhys-the-davies/open-dpp" target="_blank" rel="noopener" class="footer-link">view on GitHub ↗</a>
+      </div>
+    </footer>
+  `;
+
+  document.addEventListener('click',e=>{
+    const cite=e.target.closest('.cite');
+    if(cite){
+      e.preventDefault();
+      const trackView=document.querySelector('.view.active');
+      const trackId=trackView?trackView.id.replace('view-',''):null;
+      setTimeout(()=>{
+        const refId=cite.getAttribute('href').replace('#ref-','');
+        const el=document.getElementById('ref-'+refId+'-'+trackId)||document.getElementById('ref-'+refId);
+        if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.add('highlight');setTimeout(()=>el.classList.remove('highlight'),1600);}
+      },80);
+      return;
+    }
+    const el=e.target.closest('[data-view]');
+    if(el) navigate(el.dataset.view);
+  });
+
+  function navigate(id){
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('active'));
+    const view=document.getElementById('view-'+id);
+    if(view) view.classList.add('active');
+    const tab=document.querySelector('.ntab[data-view="'+id+'"]');
+    if(tab) tab.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+});
+</script>
+</body>
+</html>

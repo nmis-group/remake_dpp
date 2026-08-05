@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>open-dpp  - Digital Product Passports, without the noise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --snow:    #FAF9F7;
+      --snow2:   #F2F0ED;
+      --snow3:   #E8E5E1;
+      --earth:   #290800;
+      --earth2:  #4a1400;
+      --earth3:  #7a3a20;
+      --scarlet: #FF3300;
+      --s10:     rgba(255,51,0,.10);
+      --s20:     rgba(255,51,0,.20);
+      --border:  rgba(41,8,0,.13);
+      --border2: rgba(41,8,0,.07);
+      --white:   #ffffff;
+      --shadow:  0 1px 3px rgba(41,8,0,.07), 0 4px 14px rgba(41,8,0,.04);
+      --shadow-md: 0 2px 6px rgba(41,8,0,.09), 0 10px 30px rgba(41,8,0,.06);
+      --max: 1100px;
+      --gutter: 48px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { background: var(--snow); color: var(--earth); font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; }
+
+    .w { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* ── Top bar ── */
+    .topbar { background: var(--earth); height: 48px; display: flex; align-items: center; position: sticky; top: 0; z-index: 200; }
+    .topbar .w { display: flex; align-items: center; width: 100%; }
+    .topbar-title { font-size: 13px; font-weight: 600; color: #fff; white-space: nowrap; }
+    .topbar-nav { display: flex; align-items: center; gap: 2px; margin-left: auto; }
+    .topbar-link { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.55); text-decoration: none; padding: 5px 12px; border-radius: 4px; transition: all .15s; white-space: nowrap; }
+    .topbar-link:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .topbar-link.current { color: #fff; background: rgba(255,255,255,0.12); }
+
+    /* ── Hero ── */
+    .hero {
+      border-bottom: 1px solid var(--border);
+      padding: 72px 0 64px;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--scarlet);
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: 46px;
+      font-weight: 300;
+      letter-spacing: -.03em;
+      line-height: 1.06;
+      color: var(--earth);
+      margin-bottom: 24px;
+    }
+    .hero h1 strong { font-weight: 700; }
+    .hero-lead {
+      font-size: 16px;
+      color: var(--earth2);
+      line-height: 1.75;
+      max-width: 500px;
+      margin-bottom: 36px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--scarlet); color: #fff;
+      font-size: 13px; font-weight: 600;
+      padding: 11px 22px; border-radius: 6px;
+      text-decoration: none; transition: all .15s;
+      border: 1px solid transparent;
+    }
+    .btn-primary:hover { background: #e02d00; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(255,51,0,.3); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--white); color: var(--earth);
+      font-size: 13px; font-weight: 600;
+      padding: 11px 22px; border-radius: 6px;
+      text-decoration: none; transition: all .15s;
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { background: var(--snow2); transform: translateY(-1px); box-shadow: var(--shadow); }
+
+    /* Hero stat panel */
+    .hero-panel {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+    }
+    .panel-label {
+      font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--earth3); margin-bottom: 20px;
+    }
+    .panel-stat { padding: 14px 0; border-bottom: 1px solid var(--border2); }
+    .panel-stat:last-child { border-bottom: none; padding-bottom: 0; }
+    .panel-stat:first-of-type { padding-top: 0; }
+    .panel-num { font-size: 28px; font-weight: 700; letter-spacing: -.04em; color: var(--earth); line-height: 1; }
+    .panel-desc { font-size: 12px; color: var(--earth3); margin-top: 3px; }
+    .panel-tag {
+      display: inline-block; margin-top: 6px;
+      font-size: 10px; font-weight: 600; padding: 2px 8px;
+      border-radius: 4px; background: var(--s10); color: var(--scarlet);
+    }
+
+    /* ── What is a DPP ── */
+    .what {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--scarlet); margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: 30px; font-weight: 700; letter-spacing: -.025em;
+      color: var(--earth); margin-bottom: 16px;
+    }
+    .section-lead {
+      font-size: 15px; color: var(--earth2); line-height: 1.75;
+      max-width: 580px; margin-bottom: 44px;
+    }
+
+    .what-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .what-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .what-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--s10); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; font-size: 18px;
+    }
+    .what-card h3 { font-size: 14px; font-weight: 700; color: var(--earth); margin-bottom: 8px; }
+    .what-card p { font-size: 12.5px; color: var(--earth3); line-height: 1.7; }
+
+    /* ── Who it's for ── */
+    .who {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--snow2);
+    }
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 44px;
+    }
+    .who-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; padding: 24px 28px;
+      box-shadow: var(--shadow);
+    }
+    .who-role {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--scarlet); margin-bottom: 10px;
+    }
+    .who-card h3 { font-size: 16px; font-weight: 700; color: var(--earth); margin-bottom: 10px; }
+    .who-card p { font-size: 13px; color: var(--earth2); line-height: 1.7; margin-bottom: 16px; }
+    .who-links { display: flex; flex-direction: column; gap: 6px; }
+    .who-link {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; color: var(--scarlet);
+      text-decoration: none;
+    }
+    .who-link:hover { text-decoration: underline; }
+    .who-link::before { content: '→'; font-size: 11px; }
+
+    /* ── Why this site ── */
+    .why {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .why-left {}
+    .why-list { margin-top: 32px; display: flex; flex-direction: column; gap: 0; }
+    .why-item {
+      display: flex; gap: 16px;
+      padding: 20px 0; border-bottom: 1px solid var(--border2);
+    }
+    .why-item:first-child { padding-top: 0; }
+    .why-num {
+      font-size: 11px; font-weight: 700; color: var(--scarlet);
+      min-width: 20px; padding-top: 2px;
+    }
+    .why-item h4 { font-size: 13px; font-weight: 700; color: var(--earth); margin-bottom: 4px; }
+    .why-item p { font-size: 12.5px; color: var(--earth3); line-height: 1.65; }
+
+    .why-right {
+      position: sticky; top: 72px;
+    }
+    .quote-block {
+      background: var(--earth); color: var(--snow);
+      border-radius: 12px; padding: 32px;
+    }
+    .quote-mark { font-size: 48px; line-height: 1; color: var(--scarlet); margin-bottom: 8px; }
+    .quote-text { font-size: 15px; line-height: 1.75; font-weight: 300; margin-bottom: 20px; }
+    .quote-source { font-size: 11px; color: rgba(250,249,247,.45); }
+
+    .open-block {
+      margin-top: 20px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .open-block h4 { font-size: 13px; font-weight: 700; color: var(--earth); margin-bottom: 8px; }
+    .open-block p { font-size: 12.5px; color: var(--earth3); line-height: 1.65; margin-bottom: 16px; }
+    .open-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* ── Timeline strip ── */
+    .timeline-strip {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--snow2);
+    }
+    .timeline-strip .section-title { margin-bottom: 8px; }
+    .tl-note { font-size: 13px; color: var(--earth3); margin-bottom: 36px; }
+    .tl-row {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0;
+    }
+    .tl-spine {
+      display: flex; flex-direction: column; align-items: center;
+      padding-top: 6px;
+    }
+    .tl-dot {
+      width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+      border: 2px solid var(--snow2);
+    }
+    .tl-dot-done    { background: #237a3c; }
+    .tl-dot-active  { background: var(--scarlet); box-shadow: 0 0 0 3px var(--s20); }
+    .tl-dot-pending { background: #1a5ca8; }
+    .tl-line { width: 1px; flex: 1; background: var(--border); margin: 4px 0; min-height: 16px; }
+
+    .tl-events { display: flex; flex-direction: column; gap: 0; }
+    .tl-event { padding: 0 0 24px; }
+    .tl-date { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--earth3); margin-bottom: 3px; }
+    .tl-title { font-size: 13px; font-weight: 600; color: var(--earth); }
+    .tl-body { font-size: 12px; color: var(--earth3); margin-top: 2px; }
+    .tl-badge {
+      display: inline-block; margin-top: 5px;
+      font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 3px;
+    }
+    .tl-b-done    { background: #e7f4ec; color: #237a3c; }
+    .tl-b-active  { background: var(--s10); color: var(--scarlet); }
+    .tl-b-pending { background: #e8edf8; color: #1a5ca8; }
+
+    /* ── CTA ── */
+    .cta-band {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cta-inner { text-align: center; }
+    .cta-inner .section-title { max-width: 560px; margin: 0 auto 16px; }
+    .cta-inner .section-lead { margin: 0 auto 36px; text-align: center; }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 28px 0;
+      background: var(--earth);
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; color: rgba(250,249,247,.4);
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-link { color: rgba(250,249,247,.6); text-decoration: none; }
+    .footer-link:hover { color: #fff; text-decoration: underline; }
+    .footer-link-bold { color: rgba(250,249,247,.8); font-weight: 600; text-decoration: none; }
+    .footer-link-bold:hover { color: #fff; }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      :root { --gutter: 24px; }
+      .hero { padding: 48px 0 44px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+      .hero h1 { font-size: 34px; }
+      .hero-panel { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
+      .panel-stat { border-bottom: none; border-right: 1px solid var(--border2); padding: 0 20px; }
+      .panel-stat:last-child { border-right: none; }
+      .what-grid { grid-template-columns: 1fr; }
+      .who-grid { grid-template-columns: 1fr; }
+      .why-inner { grid-template-columns: 1fr; gap: 40px; }
+      .why-right { position: static; }
+      .section-title { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="w">
+      <a class="topbar-title" href="index.html" style="text-decoration:none;color:#fff;">open-dpp</a>
+      <nav class="topbar-nav">
+      <a class="topbar-link" href="tracker.html">Legislation tracker</a>
+      <a class="topbar-link" href="schemas/textile/schema.html">Textile schema</a>
+      <a class="topbar-link" href="schemas/textile/responsibility_matrix.html">Responsibility matrix</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="w">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-eyebrow">open-dpp</div>
+          <h1>Digital Product Passports,<br><strong>without the noise</strong></h1>
+          <p class="hero-lead">
+            The EU is mandating Digital Product Passports for textiles by 2027. The regulatory framework is in place; the delegated act specifying exact data requirements is pending. This site documents what is known, what is still open, and what a practical reference implementation looks like.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="schemas/textile/schema.html">View the textile schema →</a>
+            <a class="btn-secondary" href="tracker.html">Legislation tracker</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="panel-label">Where things stand  - March 2026</div>
+          <div class="panel-stat">
+            <div class="panel-num">2027</div>
+            <div class="panel-desc">First EU textile DPPs required</div>
+            <div class="panel-tag">Delegated act pending</div>
+          </div>
+          <div class="panel-stat">
+            <div class="panel-num">18</div>
+            <div class="panel-desc">Data fields in the reference schema</div>
+          </div>
+          <div class="panel-stat">
+            <div class="panel-num">5</div>
+            <div class="panel-desc">Access tiers for DPP data, from public consumer access to full regulatory access</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is a DPP -->
+  <section class="what">
+    <div class="w">
+      <div class="section-eyebrow">The basics</div>
+      <h2 class="section-title">What is a Digital Product Passport?</h2>
+      <p class="section-lead">
+        A DPP is a structured set of data about a product  - where it was made, what's in it, how to care for it, and what to do with it at end of life. Encoded in a QR code on the label. Required by EU law from 2027.
+      </p>
+      <div class="what-grid">
+        <div class="what-card">
+          <div class="what-icon">🏷️</div>
+          <h3>A QR code on the label</h3>
+          <p>Scan it and you reach a structured data record  - not a PDF, not a marketing page. Machine-readable information that software can process automatically.</p>
+        </div>
+        <div class="what-card">
+          <div class="what-icon">📋</div>
+          <h3>Regulated data fields</h3>
+          <p>The EU specifies what information must be included  - fibre composition, recycled content, supply chain, repairability, end-of-life guidance. Some fields are public; others are restricted to authorities and verified parties.</p>
+        </div>
+        <div class="what-card">
+          <div class="what-icon">🔗</div>
+          <h3>Lives with the product</h3>
+          <p>A DPP follows the garment through its whole life  - manufacture, retail, resale, repair, recycling. Dynamic fields can be updated after sale, by repairers, refurbishers, and recyclers.</p>
+        </div>
+        <div class="what-card">
+          <div class="what-icon">⚖️</div>
+          <h3>Required by ESPR</h3>
+          <p>The Ecodesign for Sustainable Products Regulation (Reg. EU 2024/1781) is the legal basis. Textiles are the first major product category. A delegated act specifying exact requirements is expected in 2025-2026.</p>
+        </div>
+        <div class="what-card">
+          <div class="what-icon">🏭</div>
+          <h3>The brand is responsible</h3>
+          <p>The manufacturer  - which in fashion typically means the brand that designs and markets the product  - is legally responsible for the DPP. Not the factory. Not the retailer.</p>
+        </div>
+        <div class="what-card">
+          <div class="what-icon">🌍</div>
+          <h3>Applies to imports too</h3>
+          <p>Any product placed on the EU market needs a DPP  - including products made outside the EU. The importer or EU authorised representative takes on the manufacturer's obligations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="who">
+    <div class="w">
+      <div class="section-eyebrow">Audience</div>
+      <h2 class="section-title">Who this site is for</h2>
+      <div class="who-grid">
+        <div class="who-card">
+          <div class="who-role">Fashion & apparel brands</div>
+          <h3>You need to comply  - practically</h3>
+          <p>You have a deadline, a product range, and a supply chain to coordinate. You don't need another 80-page standards document. You need to know what data to collect, from whom, in what format, and by when.</p>
+          <div class="who-links">
+            <a class="who-link" href="schemas/textile/schema.html">See the 18-field textile schema</a>
+            <a class="who-link" href="schemas/textile/responsibility_matrix.html">Understand who provides each data point</a>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-role">Technology providers</div>
+          <h3>Building DPP platforms and tools</h3>
+          <p>open-dpp is a reference implementation with concrete decisions about identifiers, data structure, and access tiers. Use it as a baseline, fork it, or build on top of it.</p>
+          <div class="who-links">
+            <a class="who-link" href="schemas/textile/schema.html">Browse the open schema</a>
+            <a class="who-link" href="https://github.com/rhys-the-davies/open-dpp" target="_blank" rel="noopener">View the GitHub repo ↗</a>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-role">Policy & standards professionals</div>
+          <h3>Tracking the legislative landscape</h3>
+          <p>The standards space is genuinely complex  - ESPR, delegated acts, CEN/CENELEC JTC 24, GS1, UNTP, CIRPASS. The legislation tracker maps the key milestones and what's still open.</p>
+          <div class="who-links">
+            <a class="who-link" href="tracker.html">Open the legislation tracker</a>
+          </div>
+        </div>
+        <div class="who-card">
+          <div class="who-role">Supply chain & sustainability teams</div>
+          <h3>Working out what you'll need to collect</h3>
+          <p>DPP data doesn't come from nowhere  - fibre composition from mills, facility identifiers from factories, certifications from auditors. The responsibility matrix maps the data collection challenge.</p>
+          <div class="who-links">
+            <a class="who-link" href="schemas/textile/responsibility_matrix.html">See the responsibility matrix</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why this site -->
+  <section class="why">
+    <div class="w">
+      <div class="why-inner">
+        <div class="why-left">
+          <div class="section-eyebrow">Why open-dpp exists</div>
+          <h2 class="section-title">Navigating the standards landscape</h2>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-num">01</div>
+              <div>
+                <h4>Too many bodies, too little signal</h4>
+                <p>GS1, UNTP, CEN/CENELEC JTC 24, ISO, CIRPASS  - all active, all producing documents, none yet mandated. The EU hasn't specified which standards DPPs must conform to. Brands are being asked to prepare for compliance without a clear target.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-num">02</div>
+              <div>
+                <h4>Standards documents are not implementation guides</h4>
+                <p>A 120-page PDF describing a data model is not the same thing as knowing what to put in a database field. open-dpp makes concrete decisions so you don't have to start from scratch.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-num">03</div>
+              <div>
+                <h4>The delegated act is still pending</h4>
+                <p>ESPR gives the Commission power to specify exact requirements via delegated acts. The textile act hasn't been adopted yet. This means some requirements are confirmed (ESPR Art. 27 identifiers, access tiers) and others are expected but not final. We mark the difference clearly.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-num">04</div>
+              <div>
+                <h4>Openness is the point</h4>
+                <p>DPP infrastructure built on proprietary platforms creates lock-in and fragmentation. A shared open reference schema is a public good. Fork it, adapt it, contribute back.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="why-right">
+          <div class="quote-block">
+            <div class="quote-mark">"</div>
+            <p class="quote-text">The QR code on a garment should tell you what's in it, where it was made, how to care for it, and what to do with it when you're done. That's it. The rest is implementation detail.</p>
+            <div class="quote-source">open-dpp design principle</div>
+          </div>
+          <div class="open-block">
+            <h4>Open source, openly developed</h4>
+            <p>The schema, the tracker data, and this site are all in public GitHub repos. No login required to read anything. Feedback, issues, and pull requests welcome.</p>
+            <div class="open-links">
+              <a class="btn-secondary" href="https://github.com/rhys-the-davies/open-dpp" target="_blank" rel="noopener" style="font-size:12px; padding:8px 16px;">GitHub repo ↗</a>
+              <a class="btn-secondary" href="https://github.com/rhys-the-davies/open-dpp/discussions" target="_blank" rel="noopener" style="font-size:12px; padding:8px 16px;">Discussions ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline strip -->
+  <section class="timeline-strip">
+    <div class="w">
+      <div class="section-eyebrow">Key dates</div>
+      <h2 class="section-title">The ESPR textile timeline</h2>
+      <p class="tl-note">The milestones that matter most for brands preparing for compliance.</p>
+      <div class="tl-row">
+        <div class="tl-spine">
+          <div class="tl-dot tl-dot-done"></div><div class="tl-line"></div>
+          <div class="tl-dot tl-dot-done"></div><div class="tl-line"></div>
+          <div class="tl-dot tl-dot-active"></div><div class="tl-line"></div>
+          <div class="tl-dot tl-dot-pending"></div><div class="tl-line"></div>
+          <div class="tl-dot tl-dot-pending"></div>
+        </div>
+        <div class="tl-events">
+          <div class="tl-event">
+            <div class="tl-date">Jul 2024</div>
+            <div class="tl-title">ESPR enters into force</div>
+            <div class="tl-body">Regulation (EU) 2024/1781 published. Legal framework for DPPs established.</div>
+            <span class="tl-badge tl-b-done">Done</span>
+          </div>
+          <div class="tl-event">
+            <div class="tl-date">Jul 2025</div>
+            <div class="tl-title">Textile delegated act expected</div>
+            <div class="tl-body">Commission expected to adopt delegated regulation specifying exact DPP data requirements for textiles. Final requirements only known at this point.</div>
+            <span class="tl-badge tl-b-done">Done</span>
+          </div>
+          <div class="tl-event">
+            <div class="tl-date">Now</div>
+            <div class="tl-title">Preparation window</div>
+            <div class="tl-body">Brands should be building data collection pipelines, supplier engagement programmes, and technology infrastructure.</div>
+            <span class="tl-badge tl-b-active">We are here</span>
+          </div>
+          <div class="tl-event">
+            <div class="tl-date">Feb 2027</div>
+            <div class="tl-title">First DPPs operational</div>
+            <div class="tl-body">GS1 provisional standard targets first DPPs live on this date. Exact compliance deadline to be set in the delegated act.</div>
+            <span class="tl-badge tl-b-pending">Upcoming</span>
+          </div>
+          <div class="tl-event">
+            <div class="tl-date">2027+</div>
+            <div class="tl-title">Phased rollout</div>
+            <div class="tl-body">Likely phased by product category or company size. Details pending delegated act.</div>
+            <span class="tl-badge tl-b-pending">Upcoming</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 28px;">
+        <a class="btn-secondary" href="tracker.html">Full legislation tracker →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="w">
+      <div class="cta-inner">
+        <div class="section-eyebrow">Get started</div>
+        <h2 class="section-title">Start with the schema</h2>
+        <p class="section-lead">The textile schema covers 18 data fields across 10 sections. Every field is annotated with its regulatory basis, access tier, and who in the supply chain provides the data.</p>
+        <div class="cta-actions">
+          <a class="btn-primary" href="schemas/textile/schema.html">Open the textile schema →</a>
+          <a class="btn-secondary" href="https://github.com/rhys-the-davies/open-dpp" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="btn-secondary" href="https://github.com/rhys-the-davies/open-dpp/discussions" target="_blank" rel="noopener">Join the discussion ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="w">
+      <div class="footer-inner">
+        <span>Started by <a class="footer-link-bold" href="https://traceaware.io" target="_blank" rel="noopener">AWARE™</a>. Open for contribution.</span>
+        <a class="footer-link" href="https://github.com/rhys-the-davies/open-dpp" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

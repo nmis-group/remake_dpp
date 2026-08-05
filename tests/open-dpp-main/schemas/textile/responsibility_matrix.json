@@ -1,0 +1,904 @@
+{
+  "title": "EU textile DPP — responsibility matrix v0.4",
+  "version": "0.4",
+  "legal_note": "Actor definitions per Reg. (EU) 2024/1781 Art. 2(42)–(55). DPP create/update rights per Art. 9(2)(g) and Art. 11(f) — textile delegated act will specify actor-level access rights for each field.",
+  "actor_definitions": {
+    "manufacturer": "Art. 2(42), Art. 27 — the brand or entity placing the product on the EU market under their name (e.g. Patagonia, Zara)",
+    "importer": "Art. 2(44), Art. 29 — EU-based entity bringing non-EU products into the market (e.g. EU sourcing agent)",
+    "authorised_rep": "Art. 2(43), Art. 28 — EU-based entity acting formally on behalf of a non-EU manufacturer",
+    "supply_chain_actors": "Art. 38 — mills, spinners, dye houses, chemical suppliers; obligations activate when delegated act invokes Art. 38",
+    "professional_repairer_independent_operator": "Art. 2(47)–(48) — repair shops, refurbishers, recyclers, waste managers",
+    "dealer_fsp": "Art. 2(45),(55), Art. 31, Art. 33 — retailers and fulfilment service providers; no data creation rights",
+    "eu_responsible_person": "Annex III(k), Reg. (EU) 2019/1020 Art. 4 — required where a non-EU manufacturer has no EU importer"
+  },
+  "responsibility_values": {
+    "Creates": "This actor creates and is responsible for this field",
+    "Conditional": "This actor creates this field only in specified circumstances — see notes",
+    "Provides data": "This actor provides source data that the manufacturer compiles into the DPP",
+    "Updates": "This actor may update this field post-sale — delegated act will specify exact rights",
+    "Ensures access": "This actor is responsible for ensuring the DPP is accessible, not for data creation"
+  },
+  "fields": [
+    {
+      "section": "1. Product identity",
+      "field_id": "1.1",
+      "field_name": "product_identifier",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": "Conditional",
+        "authorised_rep": "Conditional",
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 27(1)(c)",
+          "Art. 29(2)(c)",
+          "Art. 34",
+          "Art. 9(2)(g)"
+        ],
+        "explanation": "Manufacturer creates per Art. 27(1)(c). Importer or authorised rep may create where manufacturer is non-EU per Art. 29(2)(c) and Art. 34. Art. 9(2)(g) — textile delegated act specifies which actors may create and update."
+      }
+    },
+    {
+      "section": "1. Product identity",
+      "field_id": "1.2",
+      "field_name": "data_carrier",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": "Ensures access",
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 10(1)(b)",
+          "Art. 27(1)(c)",
+          "Art. 31(2)",
+          "Art. 10(3)",
+          "Art. 33"
+        ],
+        "explanation": "Manufacturer places data carrier on product/packaging per Art. 10(1)(b) and Art. 27(1)(c). Dealer must ensure DPP is easily accessible to customers including in distance selling per Art. 31(2) — receives digital copy of data carrier from manufacturer per Art. 10(3). FSP must not jeopardise compliance during handling per Art. 33."
+      }
+    },
+    {
+      "section": "1. Product identity",
+      "field_id": "1.3",
+      "field_name": "product_identification",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 27(5)",
+          "Art. 27(6)(a)"
+        ],
+        "explanation": "Manufacturer obligation. Art. 27(5) — must ensure products bear type, batch or serial number. Art. 27(6)(a) — must appear on public DPP."
+      }
+    },
+    {
+      "section": "1. Product identity",
+      "field_id": "1.4",
+      "field_name": "global_trade_identification_number",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "GS1 membership",
+          "Annex III(c)",
+          "GS1 GTIN",
+          "ISO/IEC 15459-6"
+        ],
+        "explanation": "Manufacturer or brand owner creates GTIN via GS1 membership. Annex III(c). Interim standard: GS1 GTIN (ISO/IEC 15459-6)."
+      }
+    },
+    {
+      "section": "1. Product identity",
+      "field_id": "1.5",
+      "field_name": "commodity_code",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": "Conditional",
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 60",
+          "Annex III(d)",
+          "Art. 13(1)"
+        ],
+        "explanation": "Manufacturer provides TARIC code. Importer may confirm at customs entry per Union Customs Code Art. 60. Annex III(d). Note: Art. 13(1) requires the registry to store the commodity code — registry obligation, not the source of this DPP field."
+      }
+    },
+    {
+      "section": "1. Product identity",
+      "field_id": "1.6",
+      "field_name": "compliance_documentation",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": "Conditional",
+        "authorised_rep": "Conditional",
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 27(2)",
+          "Art. 28(2)(a)",
+          "Art. 29(2)(a)"
+        ],
+        "explanation": "Manufacturer draws up EU declaration of conformity per Art. 27(2)–(3). Authorised rep keeps copies for 10 years per Art. 28(2)(a). Importer verifies documentation exists before placing on market per Art. 29(2)(a)."
+      }
+    },
+    {
+      "section": "1. Product identity",
+      "field_id": "1.7",
+      "field_name": "user_manuals_and_safety_information",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": "Conditional",
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": "Ensures access",
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 27(7)",
+          "Art. 29(4)",
+          "Art. 31(1)"
+        ],
+        "explanation": "Manufacturer obligation. Art. 27(7) — must include digital instructions in DPP and maintain for at least 10 years. Importer ensures instructions available per Art. 29(4). Dealer must ensure customers have access to accompanying information per Art. 31(1)."
+      }
+    },
+    {
+      "section": "1. Product identity",
+      "field_id": "1.8",
+      "field_name": "dpp_service_provider_reference",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 10(4)",
+          "Art. 11(c)",
+          "Art. 2"
+        ],
+        "explanation": "Economic operator placing product on market is responsible per Art. 10(4) — typically the manufacturer. Art. 11(c) — DPP stored by responsible economic operator or DPP service provider. Note: DPP service providers (e.g. AWARE™) are a distinct actor type not listed in Art. 2 economic operator definitions — see OQ-13 and Actor definitions sheet."
+      }
+    },
+    {
+      "section": "2. Actors",
+      "field_id": "2.1",
+      "field_name": "operator_identifiers[]",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": "Conditional",
+        "authorised_rep": "Conditional",
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": "Conditional"
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Annex III(g))",
+          "Annex III(h)",
+          "Art. 29(3))",
+          "Annex III(h))",
+          "Annex III(k))",
+          "Art. 12(2)",
+          "GS1 GLN",
+          "ISO/IEC 15459-4"
+        ],
+        "explanation": "Manufacturer creates its own ID (Annex III(g)). Importer provides its ID (Annex III(h), Art. 29(3)). Authorised rep provides its ID (Annex III(h)). EU responsible person provides its ID (Annex III(k)). Where no ID exists, DPP creator requests one on behalf of the actor per Art. 12(2). Interim standard: GS1 GLN (ISO/IEC 15459-4)."
+      }
+    },
+    {
+      "section": "2. Actors",
+      "field_id": "2.2",
+      "field_name": "manufacturer_contact_details",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 27(6)(a)"
+        ],
+        "explanation": "Manufacturer direct obligation. Art. 27(6)(a) — must indicate name, registered trade name or trade mark, postal address and electronic contact on the public DPP."
+      }
+    },
+    {
+      "section": "2. Actors",
+      "field_id": "2.3",
+      "field_name": "unique_facility_identifiers[]",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": "Conditional",
+        "authorised_rep": null,
+        "supply_chain_actors": "Provides data",
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 38",
+          "Art. 12(3)",
+          "GS1 GLN",
+          "ISO/IEC 15459-4"
+        ],
+        "explanation": "Manufacturer compiles facility IDs for its own facilities. Supply chain actors provide IDs for their locations — Art. 38 (when invoked by delegated act). Importer may provide for import facilities. Where no ID exists, Art. 12(3) requires the DPP creator to request one on behalf of the facility. Interim standard: GS1 GLN (ISO/IEC 15459-4)."
+      }
+    },
+    {
+      "section": "2. Actors",
+      "field_id": "2.4",
+      "field_name": "importer_information",
+      "responsibilities": {
+        "manufacturer": null,
+        "importer": "Creates",
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 29(3)",
+          "Annex III(j)"
+        ],
+        "explanation": "Importer direct obligation. Art. 29(3) — must indicate name, registered trade name, postal address and electronic contact on the public DPP. Annex III(j) — includes EORI."
+      }
+    },
+    {
+      "section": "2. Actors",
+      "field_id": "2.5",
+      "field_name": "eu_responsible_operator",
+      "responsibilities": {
+        "manufacturer": null,
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": "Creates"
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Annex III(k)",
+          "Reg. (EU) 2019/1020 Art. 4"
+        ],
+        "explanation": "EU responsible person direct obligation. Annex III(k) — name, contact details and unique operator identifier must appear in DPP. Reg. (EU) 2019/1020 Art. 4 tasks include being point of contact for market surveillance authorities."
+      }
+    },
+    {
+      "section": "2. Actors",
+      "field_id": "2.6",
+      "field_name": "brand",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [],
+        "explanation": "Extended field — no ESPR mandate. Brand owner (who may be manufacturer or a separate entity) provides consumer-facing brand name."
+      }
+    },
+    {
+      "section": "3. Material composition",
+      "field_id": "3.1",
+      "field_name": "fibre_composition[]",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": "Provides data",
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 38",
+          "Reg. (EU) 1007/2011"
+        ],
+        "explanation": "Manufacturer compiles into DPP. Raw data originates with supply chain actors — fabric mills and spinners hold fibre type and weight percentages. Art. 38 (when invoked by delegated act). Reg. (EU) 1007/2011 already requires fibre labelling."
+      }
+    },
+    {
+      "section": "3. Material composition",
+      "field_id": "3.2",
+      "field_name": "recycled_content[]",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": "Provides data",
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 38"
+        ],
+        "explanation": "Manufacturer compiles recycled content declarations. Data originates with material suppliers (spinners, yarn producers). Certification data from certifying bodies (GRS auditors) via supply chain actor. Art. 38 (when invoked by delegated act)."
+      },
+      "sub_fields": [
+        {
+          "field_id": "3.2a",
+          "field_name": "recycled_content[].recycled_source",
+          "responsibilities": {
+            "manufacturer": "Creates",
+            "importer": null,
+            "authorised_rep": null,
+            "supply_chain_actors": "Provides data",
+            "professional_repairer_independent_operator": null,
+            "dealer_fsp": null,
+            "eu_responsible_person": null
+          },
+          "notes": {
+            "regulatory_basis": [],
+            "explanation": "Extended field. Material supplier provides origin classification (post-consumer / post-industrial). Manufacturer compiles into DPP."
+          }
+        },
+        {
+          "field_id": "3.2b",
+          "field_name": "recycled_content[].verification_standard",
+          "responsibilities": {
+            "manufacturer": "Creates",
+            "importer": null,
+            "authorised_rep": null,
+            "supply_chain_actors": "Provides data",
+            "professional_repairer_independent_operator": null,
+            "dealer_fsp": null,
+            "eu_responsible_person": null
+          },
+          "notes": {
+            "regulatory_basis": [],
+            "explanation": "Extended field. Third-party certifying body issues certificate. Supply chain actor provides certificate details. Manufacturer compiles into DPP."
+          }
+        }
+      ]
+    },
+    {
+      "section": "3. Material composition",
+      "field_id": "3.3",
+      "field_name": "raw_material_origin[]",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": "Provides data",
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 38"
+        ],
+        "explanation": "Extended field. Origin data sits with Tier 3–4 suppliers (farms, ginners, fibre processors). Art. 38 (when invoked). EUDR due diligence obligations on manufacturer and importer for deforestation-linked commodities."
+      }
+    },
+    {
+      "section": "4. Supply chain",
+      "field_id": "4.1",
+      "field_name": "supply_chain[]",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": "Provides data",
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 38"
+        ],
+        "explanation": "Manufacturer compiles traceability data. Each supply chain actor provides its own facility name, location and processing stage. Art. 38 — must provide information upon request and allow access to verify accuracy when invoked by delegated act. Forced Labour Reg 2024/3015 adds facility-level obligations from 2027."
+      }
+    },
+    {
+      "section": "4. Supply chain",
+      "field_id": "4.2",
+      "field_name": "country_of_manufacture",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": "Conditional",
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 27(5)",
+          "Art. 60"
+        ],
+        "explanation": "Manufacturer provides country of last substantial transformation per Art. 27(5). Importer may confirm at customs entry per Union Customs Code Art. 60."
+      }
+    },
+    {
+      "section": "5. Environmental performance",
+      "field_id": "5.1",
+      "field_name": "carbon_footprint",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": "Provides data",
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 38"
+        ],
+        "explanation": "Extended field. Manufacturer commissions or calculates lifecycle GHG assessment. Supply chain actors provide activity data (energy, transport, processing) for upstream scope calculations. Art. 38 (when invoked)."
+      }
+    },
+    {
+      "section": "5. Environmental performance",
+      "field_id": "5.2",
+      "field_name": "water_use",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": "Provides data",
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 38"
+        ],
+        "explanation": "Extended field. Manufacturer calculates total water use. Supply chain actors provide upstream water consumption data. Art. 38 (when invoked)."
+      }
+    },
+    {
+      "section": "6. Substances",
+      "field_id": "6.1",
+      "field_name": "substances_of_concern[]",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": "Provides data",
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 7(5)",
+          "Art. 38"
+        ],
+        "explanation": "Manufacturer responsible for tracking and disclosing per Art. 7(5) — direct ESPR obligation. CAS-level data must come from chemical suppliers and dye/finish processors. Art. 38 (when invoked). Critical data gap: Tier 2–4 chemical suppliers rarely hold or share CAS-level substance data today."
+      },
+      "sub_fields": [
+        {
+          "field_id": "6.1a",
+          "field_name": "substances_of_concern[].substance_name",
+          "responsibilities": {
+            "manufacturer": "Creates",
+            "importer": null,
+            "authorised_rep": null,
+            "supply_chain_actors": "Provides data",
+            "professional_repairer_independent_operator": null,
+            "dealer_fsp": null,
+            "eu_responsible_person": null
+          },
+          "notes": {
+            "regulatory_basis": [
+              "Art. 7(5)(a)(i)"
+            ],
+            "explanation": "Chemical supplier provides IUPAC name via Safety Data Sheet. Manufacturer compiles into DPP per Art. 7(5)(a)(i)."
+          }
+        },
+        {
+          "field_id": "6.1b",
+          "field_name": "substances_of_concern[].cas_number",
+          "responsibilities": {
+            "manufacturer": "Creates",
+            "importer": null,
+            "authorised_rep": null,
+            "supply_chain_actors": "Provides data",
+            "professional_repairer_independent_operator": null,
+            "dealer_fsp": null,
+            "eu_responsible_person": null
+          },
+          "notes": {
+            "regulatory_basis": [
+              "Art. 7(5)(a)(iv)"
+            ],
+            "explanation": "CAS number must come from chemical supplier or Safety Data Sheet. Manufacturer responsible for including it per Art. 7(5)(a)(iv)."
+          }
+        },
+        {
+          "field_id": "6.1c",
+          "field_name": "substances_of_concern[].ec_number",
+          "responsibilities": {
+            "manufacturer": "Creates",
+            "importer": null,
+            "authorised_rep": null,
+            "supply_chain_actors": "Provides data",
+            "professional_repairer_independent_operator": null,
+            "dealer_fsp": null,
+            "eu_responsible_person": null
+          },
+          "notes": {
+            "regulatory_basis": [
+              "Art. 7(5)(a)(iii)"
+            ],
+            "explanation": "EC number from ECHA or chemical supplier's Safety Data Sheet. Manufacturer responsible per Art. 7(5)(a)(iii)."
+          }
+        },
+        {
+          "field_id": "6.1d",
+          "field_name": "substances_of_concern[].location_in_product",
+          "responsibilities": {
+            "manufacturer": "Creates",
+            "importer": null,
+            "authorised_rep": null,
+            "supply_chain_actors": "Provides data",
+            "professional_repairer_independent_operator": null,
+            "dealer_fsp": null,
+            "eu_responsible_person": null
+          },
+          "notes": {
+            "regulatory_basis": [
+              "Art. 7(5)(b)"
+            ],
+            "explanation": "Manufacturer maps substance to product component. Requires component-level knowledge from supply chain actors. Art. 7(5)(b)."
+          }
+        },
+        {
+          "field_id": "6.1e",
+          "field_name": "substances_of_concern[].concentration_ppm",
+          "responsibilities": {
+            "manufacturer": "Creates",
+            "importer": null,
+            "authorised_rep": null,
+            "supply_chain_actors": "Provides data",
+            "professional_repairer_independent_operator": null,
+            "dealer_fsp": null,
+            "eu_responsible_person": null
+          },
+          "notes": {
+            "regulatory_basis": [
+              "Art. 7(5)(c)",
+              "REACH 0.1%",
+              "Art. 7(6)(b)"
+            ],
+            "explanation": "Concentration from laboratory testing or supplier declaration. Art. 7(5)(c). REACH 0.1% w/w floor for SVHC per Art. 7(6)(b)."
+          }
+        },
+        {
+          "field_id": "6.1f",
+          "field_name": "substances_of_concern[].espr_category",
+          "responsibilities": {
+            "manufacturer": "Creates",
+            "importer": null,
+            "authorised_rep": null,
+            "supply_chain_actors": null,
+            "professional_repairer_independent_operator": null,
+            "dealer_fsp": null,
+            "eu_responsible_person": null
+          },
+          "notes": {
+            "regulatory_basis": [
+              "Art. 2(27)"
+            ],
+            "explanation": "Manufacturer applies ESPR Art. 2(27) category classification. Requires regulatory knowledge — not raw data from supply chain."
+          }
+        },
+        {
+          "field_id": "6.1g",
+          "field_name": "substances_of_concern[].safe_use_instructions",
+          "responsibilities": {
+            "manufacturer": "Creates",
+            "importer": null,
+            "authorised_rep": null,
+            "supply_chain_actors": null,
+            "professional_repairer_independent_operator": null,
+            "dealer_fsp": null,
+            "eu_responsible_person": null
+          },
+          "notes": {
+            "regulatory_basis": [
+              "Art. 7(5)(d)"
+            ],
+            "explanation": "Manufacturer provides safe use instructions per Art. 7(5)(d). May draw on supplier Safety Data Sheets but manufacturer is solely responsible."
+          }
+        }
+      ]
+    },
+    {
+      "section": "6. Substances",
+      "field_id": "6.2",
+      "field_name": "restricted_substances_compliance",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": "Conditional",
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 29(1)"
+        ],
+        "explanation": "Manufacturer provides REACH compliance declaration. Importer responsible for ensuring compliance before placing on EU market per Art. 29(1). Both may hold RSL test reports."
+      }
+    },
+    {
+      "section": "7. Circularity",
+      "field_id": "7.1",
+      "field_name": "durability",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": "Provides data",
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 5(1)(a)",
+          "Annex I(a)",
+          "ISO 12945",
+          "ISO 105 are candidates"
+        ],
+        "explanation": "Manufacturer responsible per Art. 5(1)(a) and Annex I(a). Test results from accredited testing laboratories. Delegated act will specify required test methods — ISO 12945, ISO 105 are candidates."
+      }
+    },
+    {
+      "section": "7. Circularity",
+      "field_id": "7.2",
+      "field_name": "repairability",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": "Updates",
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 27(7)",
+          "Art. 7(2)(b)(ii)",
+          "Art. 9(2)(g)",
+          "Art. 11(b)"
+        ],
+        "explanation": "Manufacturer creates initial repairability data and spare parts availability per Art. 27(7) and Art. 7(2)(b)(ii). Professional repairers and independent operators may update spare parts availability and repair instructions post-sale. Art. 9(2)(g) — delegated act specifies update rights. Art. 11(b) explicitly lists professional repairers and independent operators among actors with DPP access rights."
+      }
+    },
+    {
+      "section": "7. Circularity",
+      "field_id": "7.3",
+      "field_name": "end_of_life",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": "Updates",
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 7(2)(b)(ii)",
+          "Art. 9(2)(g)",
+          "Art. 2(47)"
+        ],
+        "explanation": "Manufacturer creates initial end-of-life information per Art. 7(2)(b)(ii)–(iii). Independent operators (recyclers, waste managers) may update take-back status or sorting information. Art. 9(2)(g) and Art. 2(47) which explicitly includes waste management operators as independent operators."
+      }
+    },
+    {
+      "section": "8. Compliance & certs",
+      "field_id": "8.1",
+      "field_name": "certifications[]",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": "Conditional",
+        "authorised_rep": null,
+        "supply_chain_actors": "Provides data",
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Annex III"
+        ],
+        "explanation": "Extended field. Manufacturer adds product-level certifications. Supply chain actors provide facility-level certs (GOTS facility cert, GRS transaction cert). Importer may hold additional compliance certs. Annex III final paragraph — voluntary labels permitted in DPP."
+      }
+    },
+    {
+      "section": "8. Compliance & certs",
+      "field_id": "8.2",
+      "field_name": "conformity_declarations[]",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": "Conditional",
+        "authorised_rep": "Conditional",
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 27(2)",
+          "Art. 29(2)(a)",
+          "Art. 28(2)(a)"
+        ],
+        "explanation": "Manufacturer draws up EU declaration of conformity per Art. 27(2). Importer verifies documentation exists before placing on market per Art. 29(2)(a). Authorised rep keeps copies for 10 years per Art. 28(2)(a)."
+      }
+    },
+    {
+      "section": "8. Compliance & certs",
+      "field_id": "8.3",
+      "field_name": "social_compliance",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": "Conditional",
+        "authorised_rep": null,
+        "supply_chain_actors": "Provides data",
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [],
+        "explanation": "Extended field. Manufacturer or importer (as CSDDD 2024/1760 responsible entity) provides declaration. Supply chain actors provide audit evidence or self-declaration data. ESPR does not mandate this field."
+      }
+    },
+    {
+      "section": "9. Lifecycle status",
+      "field_id": "9.1",
+      "field_name": "lifecycle_status",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": "Updates",
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 9(2)(g)",
+          "Art. 2(47)",
+          "Art. 11(d)"
+        ],
+        "explanation": "Manufacturer creates initial status ('new'). Professional repairers and independent operators update after repair, refurbishment or repurposing. Art. 9(2)(g) — delegated act specifies which actors may update. Art. 2(47) defines independent operators to include refurbishers, repairers and waste management operators. Art. 11(d) — new DPP created for a product links to the original."
+      }
+    },
+    {
+      "section": "10. DPP metadata",
+      "field_id": "10.1",
+      "field_name": "dpp_metadata",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 9(1)",
+          "Art. 10(1)(d)",
+          "Art. 11(g)"
+        ],
+        "explanation": "Economic operator placing the product on the market creates and maintains DPP metadata — typically the manufacturer. Art. 9(1) — accurate, complete and up to date. Art. 10(1)(d) — open standards, machine-readable. Art. 11(g) — data authentication."
+      },
+      "sub_fields": [
+        {
+          "field_id": "10.1a",
+          "field_name": "dpp_metadata.dpp_backup_url",
+          "responsibilities": {
+            "manufacturer": "Creates",
+            "importer": null,
+            "authorised_rep": null,
+            "supply_chain_actors": null,
+            "professional_repairer_independent_operator": null,
+            "dealer_fsp": null,
+            "eu_responsible_person": null
+          },
+          "notes": {
+            "regulatory_basis": [
+              "Art. 27(7)",
+              "Art. 11(e)"
+            ],
+            "explanation": "Manufacturer or responsible economic operator provides a fallback URL at which DPP data can be accessed if the primary operator ceases operations. Art. 27(7) - DPP must remain accessible for at least 10 years. Art. 11(e) - availability must survive insolvency or cessation of activity."
+          }
+        }
+      ]
+    },
+    {
+      "section": "10. DPP metadata",
+      "field_id": "10.2",
+      "field_name": "data_retention",
+      "responsibilities": {
+        "manufacturer": "Creates",
+        "importer": null,
+        "authorised_rep": null,
+        "supply_chain_actors": null,
+        "professional_repairer_independent_operator": null,
+        "dealer_fsp": null,
+        "eu_responsible_person": null
+      },
+      "notes": {
+        "regulatory_basis": [
+          "Art. 9(2)(i)",
+          "Art. 11(e)",
+          "Art. 27(3)"
+        ],
+        "explanation": "Manufacturer (or responsible economic operator) manages retention obligations. Art. 9(2)(i) — DPP available for at least the expected product lifetime. Art. 11(e) — availability survives insolvency or cessation of activity. Art. 27(3) — 10-year minimum for technical documentation."
+      }
+    }
+  ]
+}
