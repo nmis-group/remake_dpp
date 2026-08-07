@@ -50,6 +50,10 @@ pip install .
 ```text
 remake_dpp/
 ├── docs/
+│   ├── assets/
+│   │   ├── architecture-diagram.svg    # System architecture & component relationship diagram
+│   │   ├── logo-dark.png
+│   │   └── logo-light.png
 │   ├── api-model.md
 │   ├── api-schema-registry.md
 │   ├── concepts-gas.md
@@ -64,7 +68,8 @@ remake_dpp/
 │   │   ├── __init__.py
 │   │   ├── battery_dpp_mapper.py       # EU Battery Passport mapper (Reg 2023/1542)
 │   │   ├── eclass_mapper.py
-│   │   └── isa95_mapper.py
+│   │   ├── isa95_mapper.py
+│   │   └── textile_dpp_mapper.py       # open-dpp EU Textile DPP mapper (ESPR, schema v0.5.0)
 │   ├── ontology_data/
 │   │   ├── eclass_16/
 │   │   │   ├── dictionary_assets_en/
@@ -118,6 +123,11 @@ remake_dpp/
 │   │   │   ├── io.BatteryPass.Performance/
 │   │   │   └── io.BatteryPass.SupplyChainDueDiligence/
 │   │   └── docs/                       # BatteryPass consortium deliverables (PDFs)
+│   ├── open-dpp-main/                  # open-dpp EU Textile DPP field schema (v0.5.0)
+│   │   ├── schemas/textile/
+│   │   │   ├── schema.json             # 18-field textile schema (M1/M2/M3 mandate tiers)
+│   │   │   └── responsibility_matrix.json
+│   │   └── data/milestones.json        # DPP legislative tracker
 │   ├── JSON_Payload/
 │   │   └── BattreyPassportPayload.json # Real-world Catena-X battery passport payload
 │   ├── test_api.py                     # Tests for the high-level API facade
@@ -127,9 +137,10 @@ remake_dpp/
 │   ├── test_part_class.py              # Tests for part class hierarchy
 │   ├── test_payload_battery_pass.py    # End-to-end: Catena-X payload → DPP → BatteryPass compliance
 │   ├── test_registry_extended.py       # Extended schema registry tests
-│   ├── test_schema_f1_coverage.py      # Precision / recall / F1 coverage metrics vs literature baselines
+│   ├── test_schema_f1_coverage.py      # Precision / recall / F1 coverage metrics vs literature baselines (Battery)
 │   ├── test_schema_registry.py         # Schema registry tests
-│   └── test_schema_registry_second.py  # Additional registry tests
+│   ├── test_schema_registry_second.py  # Additional registry tests
+│   └── test_textile_schema_f1_coverage.py  # Precision / recall / F1 coverage metrics vs literature baselines (Textile)
 ├── .gitignore                          # Git ignore 
 ├── .gitattributes                      # Git attributes
 ├── coffee_machine.json                 # Coffee machine DPP example

@@ -184,61 +184,78 @@
   <text x="550" y="1108" text-anchor="middle" font-size="11.5" font-weight="700" fill="#283593">implemented by &#8595;</text>
 
   <!-- Interface -> Mappers diverge -->
-  <line x1="450" y1="1080" x2="210" y2="1120" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
-  <line x1="550" y1="1080" x2="550" y2="1120" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
-  <line x1="650" y1="1080" x2="890" y2="1120" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="400" y1="1080" x2="175" y2="1120" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="500" y1="1080" x2="425" y2="1120" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="600" y1="1080" x2="675" y2="1120" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="700" y1="1080" x2="925" y2="1120" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
 
   <!-- ================= ROW 7: CONCRETE MAPPERS ================= -->
   <g>
-    <rect x="60" y="1120" width="300" height="110" rx="10" fill="#E8EAF6" stroke="#283593" stroke-width="2"/>
-    <text x="210" y="1150" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1A237E" font-family="Consolas, monospace">ECLASSMapper</text>
-    <text x="210" y="1168" text-anchor="middle" font-size="10.5" fill="#283593" font-style="italic">eclass_mapper.py</text>
-    <text x="210" y="1188" text-anchor="middle" font-size="10.5" fill="#1A237E">ECLASS 16.0 vocabulary</text>
-    <text x="210" y="1205" text-anchor="middle" font-size="10.5" fill="#1A237E">JSON-LD @context</text>
+    <rect x="60" y="1120" width="230" height="110" rx="10" fill="#E8EAF6" stroke="#283593" stroke-width="2"/>
+    <text x="175" y="1150" text-anchor="middle" font-size="13" font-weight="700" fill="#1A237E" font-family="Consolas, monospace">ECLASSMapper</text>
+    <text x="175" y="1168" text-anchor="middle" font-size="10" fill="#283593" font-style="italic">eclass_mapper.py</text>
+    <text x="175" y="1188" text-anchor="middle" font-size="10" fill="#1A237E">ECLASS 16.0 vocabulary</text>
+    <text x="175" y="1205" text-anchor="middle" font-size="10" fill="#1A237E">JSON-LD @context</text>
   </g>
 
   <g>
-    <rect x="400" y="1120" width="300" height="110" rx="10" fill="#E8EAF6" stroke="#283593" stroke-width="2"/>
-    <text x="550" y="1150" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1A237E" font-family="Consolas, monospace">ISA95Mapper</text>
-    <text x="550" y="1168" text-anchor="middle" font-size="10.5" fill="#283593" font-style="italic">isa95_mapper.py</text>
-    <text x="550" y="1188" text-anchor="middle" font-size="10.5" fill="#1A237E">ISA-95 / B2MML (IEC 62264)</text>
-    <text x="550" y="1205" text-anchor="middle" font-size="10.5" fill="#1A237E">work-order / MES view</text>
+    <rect x="310" y="1120" width="230" height="110" rx="10" fill="#E8EAF6" stroke="#283593" stroke-width="2"/>
+    <text x="425" y="1150" text-anchor="middle" font-size="13" font-weight="700" fill="#1A237E" font-family="Consolas, monospace">ISA95Mapper</text>
+    <text x="425" y="1168" text-anchor="middle" font-size="10" fill="#283593" font-style="italic">isa95_mapper.py</text>
+    <text x="425" y="1188" text-anchor="middle" font-size="10" fill="#1A237E">ISA-95 / B2MML (IEC 62264)</text>
+    <text x="425" y="1205" text-anchor="middle" font-size="10" fill="#1A237E">work-order / MES view</text>
   </g>
 
   <g>
-    <rect x="740" y="1120" width="300" height="110" rx="10" fill="#E8EAF6" stroke="#283593" stroke-width="2"/>
-    <text x="890" y="1150" text-anchor="middle" font-size="14.5" font-weight="700" fill="#1A237E" font-family="Consolas, monospace">BatteryDPPMapper</text>
-    <text x="890" y="1168" text-anchor="middle" font-size="10.5" fill="#283593" font-style="italic">battery_dpp_mapper.py</text>
-    <text x="890" y="1188" text-anchor="middle" font-size="10.5" fill="#1A237E">EU Battery Passport schema</text>
-    <text x="890" y="1205" text-anchor="middle" font-size="10.5" fill="#1A237E">+ circularity, Annex XIII</text>
+    <rect x="560" y="1120" width="230" height="110" rx="10" fill="#E8EAF6" stroke="#283593" stroke-width="2"/>
+    <text x="675" y="1150" text-anchor="middle" font-size="13" font-weight="700" fill="#1A237E" font-family="Consolas, monospace">BatteryDPPMapper</text>
+    <text x="675" y="1168" text-anchor="middle" font-size="10" fill="#283593" font-style="italic">battery_dpp_mapper.py</text>
+    <text x="675" y="1188" text-anchor="middle" font-size="10" fill="#1A237E">EU Battery Passport schema</text>
+    <text x="675" y="1205" text-anchor="middle" font-size="10" fill="#1A237E">+ circularity, Annex XIII</text>
+  </g>
+
+  <g>
+    <rect x="810" y="1120" width="230" height="110" rx="10" fill="#E8EAF6" stroke="#283593" stroke-width="2"/>
+    <text x="925" y="1150" text-anchor="middle" font-size="13" font-weight="700" fill="#1A237E" font-family="Consolas, monospace">TextileDPPMapper</text>
+    <text x="925" y="1168" text-anchor="middle" font-size="10" fill="#283593" font-style="italic">textile_dpp_mapper.py</text>
+    <text x="925" y="1188" text-anchor="middle" font-size="10" fill="#1A237E">open-dpp textile schema</text>
+    <text x="925" y="1205" text-anchor="middle" font-size="10" fill="#1A237E">+ circularity, ESPR M1/M2</text>
   </g>
 
   <!-- Mappers -> Output -->
-  <line x1="210" y1="1230" x2="210" y2="1270" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
-  <line x1="550" y1="1230" x2="550" y2="1270" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
-  <line x1="890" y1="1230" x2="890" y2="1270" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="175" y1="1230" x2="175" y2="1270" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="425" y1="1230" x2="425" y2="1270" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="675" y1="1230" x2="675" y2="1270" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="925" y1="1230" x2="925" y2="1270" stroke="#455A64" stroke-width="2.5" marker-end="url(#arrow)"/>
   <text x="550" y="1255" text-anchor="middle" font-size="9.5" fill="#455A64" font-family="Consolas, monospace">map_dpp() / to_json()</text>
 
   <!-- ================= ROW 8: OUTPUT SCHEMAS ================= -->
   <g>
-    <rect x="60" y="1270" width="300" height="110" rx="10" fill="#E0F2F1" stroke="#00695C" stroke-width="2"/>
-    <text x="210" y="1300" text-anchor="middle" font-size="14" font-weight="700" fill="#004D40">ECLASS 16.0 JSON-LD</text>
-    <text x="210" y="1320" text-anchor="middle" font-size="10.5" fill="#00695C">Generic DPP,</text>
-    <text x="210" y="1336" text-anchor="middle" font-size="10.5" fill="#00695C">ECLASS vocabulary</text>
+    <rect x="60" y="1270" width="230" height="110" rx="10" fill="#E0F2F1" stroke="#00695C" stroke-width="2"/>
+    <text x="175" y="1300" text-anchor="middle" font-size="13" font-weight="700" fill="#004D40">ECLASS 16.0 JSON-LD</text>
+    <text x="175" y="1320" text-anchor="middle" font-size="10" fill="#00695C">Generic DPP,</text>
+    <text x="175" y="1336" text-anchor="middle" font-size="10" fill="#00695C">ECLASS vocabulary</text>
   </g>
 
   <g>
-    <rect x="400" y="1270" width="300" height="110" rx="10" fill="#E0F2F1" stroke="#00695C" stroke-width="2"/>
-    <text x="550" y="1300" text-anchor="middle" font-size="14" font-weight="700" fill="#004D40">ISA-95 / B2MML JSON</text>
-    <text x="550" y="1320" text-anchor="middle" font-size="10.5" fill="#00695C">Work-order / MES-facing</text>
-    <text x="550" y="1336" text-anchor="middle" font-size="10.5" fill="#00695C">document</text>
+    <rect x="310" y="1270" width="230" height="110" rx="10" fill="#E0F2F1" stroke="#00695C" stroke-width="2"/>
+    <text x="425" y="1300" text-anchor="middle" font-size="13" font-weight="700" fill="#004D40">ISA-95 / B2MML JSON</text>
+    <text x="425" y="1320" text-anchor="middle" font-size="10" fill="#00695C">Work-order / MES-facing</text>
+    <text x="425" y="1336" text-anchor="middle" font-size="10" fill="#00695C">document</text>
   </g>
 
   <g>
-    <rect x="740" y="1270" width="300" height="110" rx="10" fill="#E0F2F1" stroke="#00695C" stroke-width="2"/>
-    <text x="890" y="1300" text-anchor="middle" font-size="14" font-weight="700" fill="#004D40">EU Battery Passport JSON</text>
-    <text x="890" y="1320" text-anchor="middle" font-size="10.5" fill="#00695C">BatteryPass schema:</text>
-    <text x="890" y="1336" text-anchor="middle" font-size="10.5" fill="#00695C">sustainability + circularity</text>
+    <rect x="560" y="1270" width="230" height="110" rx="10" fill="#E0F2F1" stroke="#00695C" stroke-width="2"/>
+    <text x="675" y="1300" text-anchor="middle" font-size="13" font-weight="700" fill="#004D40">EU Battery Passport JSON</text>
+    <text x="675" y="1320" text-anchor="middle" font-size="10" fill="#00695C">BatteryPass schema:</text>
+    <text x="675" y="1336" text-anchor="middle" font-size="10" fill="#00695C">sustainability + circularity</text>
+  </g>
+
+  <g>
+    <rect x="810" y="1270" width="230" height="110" rx="10" fill="#E0F2F1" stroke="#00695C" stroke-width="2"/>
+    <text x="925" y="1300" text-anchor="middle" font-size="13" font-weight="700" fill="#004D40">EU Textile DPP JSON</text>
+    <text x="925" y="1320" text-anchor="middle" font-size="10" fill="#00695C">open-dpp schema v0.5.0:</text>
+    <text x="925" y="1336" text-anchor="middle" font-size="10" fill="#00695C">fibre comp. + ESPR fields</text>
   </g>
 
   <!-- ================= ORCHESTRATION COLUMN (right) ================= -->
