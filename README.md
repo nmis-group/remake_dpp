@@ -10,6 +10,7 @@
 ## Contents
 
 - [Description](#description)
+- [Architecture](#architecture)
 - [Installation](#installation)
 - [Package Layout](#package-layout)
 - [Requirements](#requirements)
@@ -22,6 +23,11 @@
 ## Description
 
 A modular Python package that enables manufacturing companies to create interoperable Digital Product Passports (DPPs) by mapping their existing business data to standardized DPP data models using automated semantic matching and intuitive configuration tools.
+
+---
+
+## Architecture
+[remake_dpp_architecture.pdf](https://github.com/user-attachments/files/31739845/remake_dpp_architecture.pdf)
 
 ---
 
